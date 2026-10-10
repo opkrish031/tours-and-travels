@@ -2,25 +2,44 @@
   "name": "toursandtravels",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run validate-data && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate-data": "tsx scripts/validate-data.ts",
+    "validate-data:strict": "tsx scripts/validate-data.ts --strict",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "lucide-react": "^1.54.0",
     "next": "16.4.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "react-hook-form": "^7.89.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
-    "@types/node": "^20",
+    "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "playwright-core": "^1.64.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vitest": "^5.0.3"
   }
 }
