@@ -2,42 +2,60 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { services } from "@/data/services";
+import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 
 export function ServicesGrid() {
   return (
-    <Section tone="sand" size="md">
+    <Section tone="mist" size="md">
       <SectionHeader
-        number="02"
-        eyebrow="Services"
-        title="Five ways to book a car in Jodhpur"
-        description="Pick the service that fits the trip. Each page lists what is included, which cars run it, and the routes it covers."
+        eyebrow="Specialised Travel"
+        title="Services Designed Around Your Itinerary"
+        description="From punctual airport pickups to week-long Rajasthan heritage circuits, choose the service that matches your travel plans."
       />
-      <ul className="mt-10 grid gap-5 md:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+
+      <Stagger as="div" className="space-y-4">
         {services.map((service, index) => (
-          <li key={service.slug}>
+          <StaggerItem key={service.slug} as="div">
             <Link
               href={`/${service.slug}`}
-              className="group border-line-strong bg-paper hover:border-ink flex h-full flex-col rounded-md border p-6 transition-colors duration-200 lg:p-7"
+              className="group relative flex flex-col md:flex-row md:items-center justify-between gap-6 rounded-3xl border border-line bg-white/80 p-7 md:p-8 transition-all duration-300 hover:border-black/20 hover:bg-white hover:shadow-md"
             >
-              <span className="eyebrow text-stone-light tabular">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="display mt-4 text-2xl">{service.name}</h3>
-              <p className="text-stone mt-3 flex-1 text-sm leading-relaxed">
-                {service.summary}
-              </p>
-              <span className="hover:text-brass-deep mt-5 inline-flex items-center gap-1.5 text-sm font-medium transition-colors">
-                View service
-                <ArrowUpRight
-                  aria-hidden="true"
-                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  strokeWidth={1.5}
-                />
-              </span>
+              <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 flex-1">
+                {/* Index & Category */}
+                <span className="font-mono text-xs font-semibold text-gold-deep tabular bg-gold/10 px-2.5 py-1 rounded-full w-fit">
+                  0{index + 1}
+                </span>
+
+                {/* Title & Summary */}
+                <div className="flex-1">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-text group-hover:text-black transition-colors">
+                      {service.name}
+                    </h3>
+                  </div>
+                  <p className="mt-1.5 text-sm md:text-[0.9375rem] text-text-muted max-w-[60ch] leading-relaxed">
+                    {service.summary}
+                  </p>
+                </div>
+              </div>
+
+              {/* Action and Arrow */}
+              <div className="flex items-center gap-4 shrink-0">
+                <span className="text-xs font-semibold uppercase tracking-wider text-text-muted group-hover:text-text transition-colors hidden sm:inline">
+                  View Details
+                </span>
+                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-mist text-text transition-all duration-300 group-hover:bg-black group-hover:text-white group-hover:scale-105">
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    strokeWidth={2}
+                  />
+                </div>
+              </div>
             </Link>
-          </li>
+          </StaggerItem>
         ))}
-      </ul>
+      </Stagger>
     </Section>
   );
 }

@@ -1,89 +1,131 @@
+"use client";
+
 import Link from "next/link";
+import { m } from "motion/react";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { WhatsAppButton } from "@/components/booking/WhatsAppButton";
+import { Button } from "@/components/ui/Button";
 import { routes } from "@/data/routes";
 import { services } from "@/data/services";
 import { contextMessage } from "@/lib/whatsapp";
+import { ArrowUpRight } from "lucide-react";
 
 export default function NotFound() {
   return (
     <>
-      <Section tone="paper" size="lg">
-        <p className="eyebrow text-stone">404</p>
-        <h1 className="display mt-5 max-w-[20ch] text-[clamp(2.2rem,5vw,3.6rem)]">
-          This page took a wrong turn.
-        </h1>
-        <p className="text-stone mt-5 max-w-[52ch] leading-relaxed">
-          The link may be old, or the page never existed. The trips below are the ones
-          travellers book most — or start from the home page and work from there.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link
-            href="/"
-            className="bg-ink text-paper hover:bg-ink/90 inline-flex h-11 items-center justify-center rounded-sm px-6 text-sm font-semibold transition-colors duration-200"
-          >
-            Go to home page
-          </Link>
-          <Link
-            href="/taxi-fare"
-            className="border-line-strong hover:border-ink hover:bg-ink/[0.04] inline-flex h-11 items-center justify-center rounded-sm border px-6 text-sm font-semibold transition-colors duration-200"
-          >
-            See all fares
-          </Link>
-          <WhatsAppButton
-            location="404"
-            page="/404"
-            message={contextMessage("I could not find a page on your site")}
-          >
-            Ask on WhatsApp
-          </WhatsAppButton>
+      <Section tone="black" size="lg" className="text-center relative overflow-hidden">
+        {/* Ambient gold glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[750px] rounded-full bg-gold/10 blur-[140px]"
+        />
+
+        <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+          {/* Animated 404 & route line illustration */}
+          <div className="relative mb-6">
+            <span className="font-mono text-8xl md:text-9xl font-bold tracking-tighter text-white/90 select-none">
+              404
+            </span>
+
+            {/* Gently moving route line illustration */}
+            <div className="w-48 h-12 mx-auto mt-2">
+              <svg viewBox="0 0 200 40" fill="none" className="w-full h-full text-gold">
+                <m.path
+                  d="M 10 20 Q 50 5 100 20 T 190 20"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeDasharray="6 4"
+                  fill="transparent"
+                  initial={{ strokeDashoffset: 0 }}
+                  animate={{ strokeDashoffset: -40 }}
+                  transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                />
+                <circle cx="10" cy="20" r="4" fill="currentColor" />
+                <circle cx="190" cy="20" r="4" fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+            This Route Took a Detour
+          </h1>
+
+          <p className="mt-3 text-base text-text-dark-muted max-w-[46ch] leading-relaxed">
+            The page you are looking for has moved or does not exist. Browse our most booked
+            destinations below or return to the main station.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
+            <Button href="/" variant="primary" size="md">
+              Return Home
+            </Button>
+            <Button href="/taxi-fare" variant="secondary" size="md" onDark>
+              Browse Rate Card
+            </Button>
+            <WhatsAppButton
+              location="404"
+              page="/404"
+              variant="outline"
+              size="md"
+              onDark
+              message={contextMessage("I could not find a page on your site")}
+            >
+              Ask on WhatsApp
+            </WhatsAppButton>
+          </div>
         </div>
       </Section>
 
-      <Section tone="sand" size="md">
-        <SectionHeader eyebrow="Services" title="Ways to book a car" />
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+      {/* Popular Services Directory */}
+      <Section tone="snow" size="md">
+        <SectionHeader
+          eyebrow="Explore Fleet"
+          title="Popular Travel Categories"
+        />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {services.map((service) => (
-            <li key={service.slug}>
-              <Link
-                href={`/${service.slug}`}
-                className="group border-line-strong hover:border-ink bg-sand block h-full rounded-md border p-6 transition-colors duration-200"
-              >
-                <div className="flex items-baseline justify-between gap-3">
-                  <h3 className="text-[1.0625rem] font-medium">{service.name}</h3>
-                  <span
-                    aria-hidden="true"
-                    className="text-stone-light group-hover:text-brass-deep transition-colors"
-                  >
-                    →
-                  </span>
-                </div>
-                <p className="text-stone mt-2 text-sm leading-relaxed">
+            <Link
+              key={service.slug}
+              href={`/${service.slug}`}
+              className="group flex flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md"
+            >
+              <div>
+                <h3 className="text-lg font-semibold tracking-tight text-text group-hover:text-gold-deep transition-colors">
+                  {service.name}
+                </h3>
+                <p className="mt-2 text-xs md:text-sm text-text-muted leading-relaxed">
                   {service.summary}
                 </p>
-              </Link>
-            </li>
+              </div>
+              <div className="mt-6 pt-4 border-t border-line/70 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-text-muted group-hover:text-black">
+                <span>View Details</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </div>
+            </Link>
           ))}
-        </ul>
+        </div>
       </Section>
 
-      <Section tone="paper" size="md">
-        <SectionHeader eyebrow="Routes" title="Popular trips from Jodhpur" />
-        <ul className="bg-line mt-10 grid gap-px sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
-          {routes.map((route) => (
-            <li key={route.slug} className="bg-paper">
-              <Link
-                href={`/${route.slug}`}
-                className="group border-line-strong hover:border-ink block rounded-md border p-5 transition-colors duration-200"
-              >
-                <h3 className="font-medium">
-                  {route.from} to {route.to}
-                </h3>
-                <p className="text-stone mt-1 text-sm">{route.tagline}</p>
-              </Link>
-            </li>
+      {/* Popular Routes */}
+      <Section tone="mist" size="md">
+        <SectionHeader
+          eyebrow="Direct Routes"
+          title="Frequent Highway Destinations"
+        />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+          {routes.slice(0, 6).map((route) => (
+            <Link
+              key={route.slug}
+              href={`/${route.slug}`}
+              className="group rounded-2xl border border-line bg-white p-5 shadow-xs transition-all hover:border-black/20"
+            >
+              <h3 className="font-semibold text-text group-hover:text-gold-deep transition-colors">
+                {route.from} to {route.to}
+              </h3>
+              <p className="text-xs text-text-muted mt-1">{route.tagline}</p>
+            </Link>
           ))}
-        </ul>
+        </div>
       </Section>
     </>
   );

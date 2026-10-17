@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { routes } from "@/data/routes";
 import { formatRupees } from "@/lib/fare";
@@ -6,54 +9,69 @@ import { durationLabel } from "@/lib/format";
 
 export function RoutesGrid() {
   return (
-    <Section tone="sand" size="md">
+    <Section tone="mist" size="md">
       <SectionHeader
-        number="04"
-        eyebrow="Popular routes"
-        title="Jodhpur to Rajasthan, distance by distance"
-        description="Starting fares are for a sedan, one way, from Jodhpur. Open a route for the full price table, sights along the way, and the FAQ."
+        eyebrow="Outstation Directory"
+        title="Intercity Routes Across Rajasthan"
+        description="Private chauffeur service from Jodhpur to major cities, heritage towns, and desert destinations with fixed starting fares."
       />
-      <ul className="bg-line mt-10 grid gap-px sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+
+      {/* Typographic Index with Hover Dim */}
+      <div className="group/list divide-y divide-line rounded-3xl border border-line bg-white/70 backdrop-blur-md shadow-xs overflow-hidden">
         {routes.map((route) => (
-          <li key={route.slug} className="bg-sand">
-            <Link
-              href={`/${route.slug}`}
-              className="group hover:bg-paper flex h-full flex-col p-6 transition-colors duration-200 lg:p-7"
-            >
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="text-[1.0625rem] leading-snug font-medium">
-                  {route.from} to {route.to}
+          <Link
+            key={route.slug}
+            href={`/${route.slug}`}
+            className="group flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 sm:px-8 sm:py-6 transition-all duration-200 hover:bg-white group-hover/list:opacity-45 hover:!opacity-100"
+          >
+            {/* Route title & tagline */}
+            <div className="flex-1">
+              <div className="flex items-center gap-3">
+                <h3 className="text-lg md:text-xl font-semibold tracking-tight text-text group-hover:text-black">
+                  {route.from} <span className="text-gold-deep mx-1">→</span> {route.to}
                 </h3>
-                <span
-                  aria-hidden="true"
-                  className="text-stone-light group-hover:text-brass-deep transition-colors"
-                >
-                  →
-                </span>
               </div>
-              <p className="text-stone mt-1 text-sm font-medium italic">
+              <p className="mt-1 text-xs md:text-sm text-text-muted">
                 {route.tagline}
               </p>
-              <dl className="text-stone mt-5 flex flex-wrap gap-x-6 gap-y-1.5 text-sm">
-                <div className="flex gap-1.5">
-                  <dt className="text-stone-light">Distance</dt>
-                  <dd className="tabular text-ink">{route.distanceKm} km</dd>
-                </div>
-                <div className="flex gap-1.5">
-                  <dt className="text-stone-light">Time</dt>
-                  <dd className="tabular text-ink">
-                    {durationLabel(route.durationHours)}
-                  </dd>
-                </div>
-                <div className="flex gap-1.5">
-                  <dt className="text-stone-light">From</dt>
-                  <dd className="tabular text-ink">{formatRupees(route.startingFare)}</dd>
-                </div>
-              </dl>
-            </Link>
-          </li>
+            </div>
+
+            {/* Metrics */}
+            <div className="flex items-center gap-6 md:gap-10 text-xs sm:text-sm text-text-muted">
+              <div>
+                <span className="block text-[0.6875rem] uppercase text-text-muted/70">
+                  Distance
+                </span>
+                <span className="tabular font-medium text-text">
+                  {route.distanceKm} km
+                </span>
+              </div>
+
+              <div>
+                <span className="block text-[0.6875rem] uppercase text-text-muted/70">
+                  Est. Time
+                </span>
+                <span className="tabular font-medium text-text">
+                  {durationLabel(route.durationHours)}
+                </span>
+              </div>
+
+              <div>
+                <span className="block text-[0.6875rem] uppercase text-text-muted/70">
+                  From
+                </span>
+                <span className="tabular text-base font-semibold text-gold-deep">
+                  {formatRupees(route.startingFare)}
+                </span>
+              </div>
+
+              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-mist text-text transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-black group-hover:text-white">
+                <ArrowUpRight aria-hidden="true" className="h-4 w-4" strokeWidth={2} />
+              </div>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </Section>
   );
 }

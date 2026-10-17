@@ -9,7 +9,7 @@ import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   return buildMetadata({
-    title: "Terms and Conditions | Marwar Cabs",
+    title: `Terms and Conditions | ${site.brandName}`,
     description: `Booking terms for ${site.brandName}: how estimates work, what the fare covers, tolls and taxes, payments, and driver conduct.`,
     path: "/terms",
   });
@@ -17,46 +17,46 @@ export function generateMetadata(): Metadata {
 
 const sections = [
   {
-    heading: "Bookings and estimates",
+    heading: "Bookings & Fare Estimates",
     body: [
-      "A booking is confirmed only after you approve the fare estimate we send. The estimate states the car class, the billed kilometres or package, and the total. Until you confirm, no car is assigned and no amount is owed.",
-      "Pickup points, routes, and travel times shared in the estimate form the basis of the trip. Major changes (a different destination, an extra day, or a significantly different pickup area) are re-quoted before travel.",
+      "A booking is confirmed only after you explicitly approve the fare estimate we send. The estimate itemizes the car class, the billed kilometres or package, and the total. Until you confirm, no vehicle is locked and no payment is owed.",
+      "Pickup points, route waypoints, and travel times shared in the estimate establish the journey parameters. Significant itinerary modifications are re-quoted prior to departure.",
     ],
   },
   {
-    heading: "What the fare includes",
+    heading: "Inclusions",
     body: [fareIncludes.join(". ") + "."],
   },
   {
-    heading: "What is charged extra",
+    heading: "Actuals & Extra Expenses",
     body: [
       fareExcludes.join(". ") + ".",
-      "Tolls and state entry tax are charged as per the actual receipts collected on the trip, shown to you at the end.",
+      "Highway tolls and state border entry taxes are charged strictly as per the physical receipts collected on your journey and presented at trip conclusion.",
     ],
   },
   {
-    heading: "Payments",
+    heading: "Payment Terms",
     body: [
-      "Payment is settled at the end of the trip by the mode agreed at booking — cash, UPI, or bank transfer. No online payment is collected on this site.",
+      "Fares are settled at the end of the trip via the method agreed upon during reservation — cash, UPI, or direct bank transfer. No online payments are captured directly on this site.",
     ],
   },
   {
-    heading: "Driver conduct and vehicle standards",
+    heading: "Chauffeur Conduct & Vehicle Standards",
     body: [
-      "Drivers hold valid commercial licences and are expected to follow traffic rules, stay sober on duty, and keep to the agreed route and schedule. Vehicles are cleaned between trips and checked for basic roadworthiness before long drives.",
-      "If anything about the trip goes wrong on the day, call or message us during the trip itself — most issues are resolved faster while the car is still with you.",
+      "Drivers hold valid commercial licences, adhere strictly to highway regulations, and remain sober on duty. Vehicles are cleaned between bookings and mechanically inspected prior to highway departures.",
+      "If any concern arises on the road, message or call us immediately — issues are resolved fastest while your vehicle is still en route.",
     ],
   },
   {
-    heading: "Liability",
+    heading: "Liability & Force Majeure",
     body: [
-      "We run the car and driver with reasonable care and skill. We are not responsible for delays caused by weather, road closures, traffic, strikes, or other circumstances outside reasonable control. Entry tickets, parking fines from your own stops, and personal expenses remain the traveller's responsibility.",
+      "We operate our chauffeur service with professional care. We are not liable for delays resulting from extreme weather, highway blockades, unforeseen traffic, or regional strikes. Monument tickets and personal expenses remain the guest's responsibility.",
     ],
   },
   {
-    heading: "Governing terms",
+    heading: "Jurisdiction",
     body: [
-      `These terms are governed by the laws of India, and disputes are subject to the courts of ${site.address.region}. Questions about a specific booking are best raised on the same WhatsApp chat used for the estimate, so the full thread stays together.`,
+      `These terms are governed by the laws of India, with disputes subject to courts in ${site.address.region}.`,
     ],
   },
 ] as const;
@@ -67,32 +67,36 @@ export default function TermsPage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Terms and conditions", path: "/terms" },
+          { name: "Terms and Conditions", path: "/terms" },
         ])}
       />
-      <Section tone="paper" size="sm">
+      <Section tone="snow" size="sm">
         <Container className="max-w-[75ch]">
-          <Breadcrumbs items={[{ label: "Terms and conditions" }]} />
-          <h1 className="display mt-6 text-[clamp(2rem,4.5vw,3rem)]">
-            Terms and conditions
+          <Breadcrumbs items={[{ label: "Terms and Conditions" }]} />
+          <h1 className="mt-6 text-[clamp(2rem,4.5vw,3rem)] font-semibold tracking-[-0.03em] text-text">
+            Terms &amp; Conditions
           </h1>
-          <p className="text-stone mt-4 text-sm leading-relaxed">
-            These terms apply to every booking made with {site.brandName} through this
-            site, WhatsApp, or a phone call.
+          <p className="mt-4 text-sm text-text-muted leading-relaxed">
+            These terms govern every reservation placed with {site.brandName} via our
+            website, WhatsApp, or phone.
           </p>
-          {sections.map((section) => (
-            <section key={section.heading} className="mt-10">
-              <h2 className="text-[1.125rem] font-medium">{section.heading}</h2>
-              {section.body.map((paragraph) => (
-                <p
-                  key={paragraph.slice(0, 40)}
-                  className="text-stone mt-3 text-[0.9375rem] leading-relaxed"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </section>
-          ))}
+          <div className="mt-10 space-y-10 divide-y divide-line">
+            {sections.map((section) => (
+              <section key={section.heading} className="pt-8 first:pt-0">
+                <h2 className="text-lg font-semibold tracking-tight text-text">
+                  {section.heading}
+                </h2>
+                {section.body.map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 40)}
+                    className="mt-3 text-[0.9375rem] text-text-muted leading-relaxed"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </section>
+            ))}
+          </div>
         </Container>
       </Section>
     </>

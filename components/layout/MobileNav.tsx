@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, type KeyboardEvent as ReactKeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { ChevronDown, X } from "lucide-react";
+import { m, AnimatePresence } from "motion/react";
 import { CallButton } from "@/components/booking/CallButton";
 import { WhatsAppButton } from "@/components/booking/WhatsAppButton";
 import { navGroups, primaryNav } from "@/lib/nav";
 import { contextMessage } from "@/lib/whatsapp";
 import { site } from "@/data/site";
+import { duration, ease, stagger } from "@/lib/motion";
 
 export function MobileNav({
   open,
@@ -20,8 +22,9 @@ export function MobileNav({
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
 
-  // Keep Tab focus inside the dialog while it is open.
+  // Keep Tab focus inside dialog
   const trapFocus = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if (event.key !== "Tab") return;
     const root = rootRef.current;
@@ -35,10 +38,10 @@ export function MobileNav({
     const active = document.activeElement;
     if (event.shiftKey && active === first) {
       event.preventDefault();
-      last.focus();
+      last?.focus();
     } else if (!event.shiftKey && active === last) {
       event.preventDefault();
-      first.focus();
+      first?.focus();
     }
   };
 
@@ -66,101 +69,206 @@ export function MobileNav({
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [open, onClose]);
 
-  if (!open) return null;
-
   return (
-    <div
-      ref={rootRef}
-      id="mobile-nav"
-      className="bg-paper fixed inset-0 z-50 flex flex-col lg:hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Menu"
-      onKeyDown={trapFocus}
-    >
-      <div className="border-line flex h-16 items-center justify-between border-b px-5 sm:px-8">
-        <span className="display text-[1.4rem]">{site.brandName}</span>
-        <button
-          ref={closeRef}
-          type="button"
-          onClick={onClose}
-          aria-label="Close menu"
-          className="text-ink hover:text-brass-deep -mr-2 flex h-11 w-11 items-center justify-center rounded-xs transition-colors"
+    <AnimatePresence>
+      {open && (
+        <div
+          ref={rootRef}
+          id="mobile-nav"
+          className="fixed inset-0 z-50 flex flex-col lg:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation Menu"
+          onKeyDown={trapFocus}
         >
-          <X aria-hidden strokeWidth={1.5} className="h-5 w-5" />
-        </button>
-      </div>
+          {/* Backdrop */}
+          <m.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: duration.fast }}
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={onClose}
+          />
 
-      <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-5 pb-8 sm:px-8">
-        <ul className="border-line border-t">
-          {primaryNav.slice(0, 1).map((item) => (
-            <li key={item.href} className="border-line border-b">
-              <Link
-                href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-                className="block py-4 text-lg font-medium"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-          {navGroups.map((group) => (
-            <li key={group.label} className="border-line border-b">
-              <details className="group">
-                <summary className="flex cursor-pointer list-none items-center justify-between py-4 text-lg font-medium marker:hidden [&::-webkit-details-marker]:hidden">
-                  {group.label}
-                  <ChevronDown
-                    aria-hidden
-                    strokeWidth={1.5}
-                    className="text-stone h-4 w-4 transition-transform duration-200 group-open:rotate-180"
-                  />
-                </summary>
-                <ul className="pb-3">
-                  {group.items.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        aria-current={pathname === item.href ? "page" : undefined}
-                        className={`block py-2 pl-3 text-[0.9375rem] ${
-                          pathname === item.href ? "text-brass-deep" : "text-stone"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            </li>
-          ))}
-          {primaryNav.slice(1).map((item) => (
-            <li key={item.href} className="border-line border-b">
-              <Link
-                href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-                className="block py-4 text-lg font-medium"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-8 grid gap-3">
-          <CallButton variant="secondary" size="md" location="mobile-nav" page={pathname}>
-            Call {site.phoneDisplay}
-          </CallButton>
-          <WhatsAppButton
-            message={contextMessage("I found your website and would like a quote.")}
-            variant="primary"
-            size="md"
-            location="mobile-nav"
-            page={pathname}
+          {/* Drawer content */}
+          <m.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: duration.base, ease: ease.out }}
+            className="relative z-10 flex h-full w-full flex-col bg-snow/98 backdrop-blur-2xl"
           >
-            Chat on WhatsApp
-          </WhatsAppButton>
+            {/* Top Bar */}
+            <div className="flex h-16 items-center justify-between border-b border-line px-6 sm:px-8">
+              <Link
+                href="/"
+                onClick={onClose}
+                className="flex items-center gap-2 select-none"
+              >
+                <span className="text-xl font-semibold tracking-tight text-text">
+                  {site.brandName}
+                </span>
+                <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[0.6875rem] font-medium text-gold-deep border border-gold/30">
+                  Jodhpur
+                </span>
+              </Link>
+              <button
+                ref={closeRef}
+                type="button"
+                onClick={onClose}
+                aria-label="Close menu"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-text transition-colors hover:bg-mist active:scale-95"
+              >
+                <X aria-hidden="true" strokeWidth={1.75} className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Nav list */}
+            <nav
+              aria-label="Mobile Navigation"
+              className="flex-1 overflow-y-auto px-6 py-6 sm:px-8"
+            >
+              <m.ul
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: stagger.fast },
+                  },
+                }}
+                className="divide-y divide-line/70"
+              >
+                {/* First primary nav item */}
+                {primaryNav.slice(0, 1).map((item) => (
+                  <m.li
+                    key={item.href}
+                    variants={{
+                      hidden: { opacity: 0, x: -12 },
+                      visible: { opacity: 1, x: 0 },
+                    }}
+                    className="py-1"
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={onClose}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                      className={`block py-3 text-lg font-medium tracking-tight ${
+                        pathname === item.href ? "text-gold-deep font-semibold" : "text-text"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </m.li>
+                ))}
+
+                {/* Nav groups */}
+                {navGroups.map((group) => {
+                  const isExpanded = openGroup === group.label;
+                  return (
+                    <m.li
+                      key={group.label}
+                      variants={{
+                        hidden: { opacity: 0, x: -12 },
+                        visible: { opacity: 1, x: 0 },
+                      }}
+                      className="py-1"
+                    >
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenGroup(isExpanded ? null : group.label)
+                        }
+                        className="flex w-full items-center justify-between py-3 text-left text-lg font-medium tracking-tight text-text"
+                      >
+                        <span>{group.label}</span>
+                        <ChevronDown
+                          aria-hidden="true"
+                          strokeWidth={1.75}
+                          className={`h-4 w-4 text-text-muted transition-transform duration-200 ${
+                            isExpanded ? "rotate-180 text-gold-deep" : ""
+                          }`}
+                        />
+                      </button>
+
+                      {isExpanded && (
+                        <ul className="mb-2 space-y-1 rounded-2xl bg-mist/80 p-2">
+                          {group.items.map((subItem) => (
+                            <li key={subItem.href}>
+                              <Link
+                                href={subItem.href}
+                                onClick={onClose}
+                                aria-current={
+                                  pathname === subItem.href ? "page" : undefined
+                                }
+                                className={`block rounded-xl px-3 py-2 text-sm font-medium ${
+                                  pathname === subItem.href
+                                    ? "bg-gold/15 text-gold-deep font-semibold"
+                                    : "text-text-muted hover:text-text"
+                                }`}
+                              >
+                                {subItem.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </m.li>
+                  );
+                })}
+
+                {/* Remaining primary nav items */}
+                {primaryNav.slice(1).map((item) => (
+                  <m.li
+                    key={item.href}
+                    variants={{
+                      hidden: { opacity: 0, x: -12 },
+                      visible: { opacity: 1, x: 0 },
+                    }}
+                    className="py-1"
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={onClose}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                      className={`block py-3 text-lg font-medium tracking-tight ${
+                        pathname === item.href ? "text-gold-deep font-semibold" : "text-text"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </m.li>
+                ))}
+              </m.ul>
+
+              {/* Bottom CTAs inside menu */}
+              <div className="mt-8 grid gap-3">
+                <CallButton
+                  variant="secondary"
+                  size="md"
+                  location="mobile-nav"
+                  page={pathname}
+                >
+                  Call {site.phoneDisplay}
+                </CallButton>
+                <WhatsAppButton
+                  message={contextMessage(
+                    "I found your website and would like a quote.",
+                  )}
+                  variant="primary"
+                  size="md"
+                  location="mobile-nav"
+                  page={pathname}
+                >
+                  Chat on WhatsApp
+                </WhatsAppButton>
+              </div>
+            </nav>
+          </m.div>
         </div>
-      </nav>
-    </div>
+      )}
+    </AnimatePresence>
   );
 }

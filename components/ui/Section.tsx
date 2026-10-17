@@ -1,89 +1,100 @@
 import type { ReactNode } from "react";
 import { Container } from "./Container";
 
-type Tone = "paper" | "sand" | "umber" | "ink";
+export type SectionTone =
+  | "snow"
+  | "mist"
+  | "graphite"
+  | "black"
+  | "paper"
+  | "sand"
+  | "umber"
+  | "ink";
 
-const tones: Record<Tone, string> = {
-  paper: "bg-paper text-ink",
-  sand: "bg-sand text-ink",
-  umber: "bg-umber text-paper",
-  ink: "bg-ink text-paper",
+const toneStyles: Record<SectionTone, string> = {
+  snow: "bg-snow text-text",
+  mist: "bg-mist text-text",
+  graphite: "bg-graphite text-text-dark",
+  black: "bg-black text-text-dark",
+  // Legacy aliases for backward compatibility
+  paper: "bg-snow text-text",
+  sand: "bg-mist text-text",
+  umber: "bg-graphite text-text-dark",
+  ink: "bg-black text-text-dark",
 };
 
 const sizes = {
   sm: "py-12 md:py-16",
-  md: "py-16 md:py-24",
-  lg: "py-20 md:py-32",
+  md: "py-20 md:py-28",
+  lg: "py-24 md:py-36",
 };
 
 export function Section({
   id,
-  tone = "paper",
+  tone = "snow",
   size = "md",
   container = true,
   className = "",
   children,
 }: {
   id?: string;
-  tone?: Tone;
+  tone?: SectionTone;
   size?: keyof typeof sizes;
   container?: boolean;
   className?: string;
   children: ReactNode;
 }) {
   return (
-    <section id={id} className={`${tones[tone]} ${sizes[size]} ${className}`}>
+    <section id={id} className={`${toneStyles[tone]} ${sizes[size]} relative ${className}`}>
       {container ? <Container>{children}</Container> : children}
     </section>
   );
 }
 
 export function SectionHeader({
-  number,
   eyebrow,
   title,
   description,
   action,
   dark = false,
+  number,
 }: {
-  number?: string;
   eyebrow: string;
   title: ReactNode;
   description?: ReactNode;
   action?: ReactNode;
   dark?: boolean;
+  number?: string;
 }) {
   return (
-    <div className="grid gap-x-8 gap-y-6 lg:grid-cols-12">
+    <div className="grid gap-x-12 gap-y-6 lg:grid-cols-12 mb-12 md:mb-16">
       <div className="lg:col-span-7">
         <p
-          className={`eyebrow mb-5 flex items-center gap-3 ${dark ? "text-stone-light" : "text-stone"}`}
+          className={`eyebrow mb-3.5 flex items-center gap-2.5 ${
+            dark ? "text-gold" : "text-gold-deep"
+          }`}
         >
           {number ? (
-            <>
-              <span className={`tabular ${dark ? "text-brass" : "text-brass-deep"}`}>
-                {number}
-              </span>
-              <span
-                aria-hidden="true"
-                className={`h-px w-7 ${dark ? "bg-line-dark" : "bg-line-strong"}`}
-              />
-            </>
+            <span className="font-mono text-xs opacity-75">{number}</span>
           ) : null}
           <span>{eyebrow}</span>
         </p>
-        <h2 className="display text-[clamp(1.9rem,4.4vw,3.4rem)]">{title}</h2>
+        <h2 className="text-[clamp(2rem,3.8vw,3.25rem)] font-semibold tracking-[-0.035em] leading-[1.08]">
+          {title}
+        </h2>
       </div>
       {description || action ? (
-        <div className="flex flex-col justify-end gap-5 lg:col-span-4 lg:col-start-9">
+        <div className="flex flex-col justify-end gap-5 lg:col-span-5 lg:col-start-8">
           {description ? (
             <p
-              className={`max-w-[46ch] text-[0.9375rem] leading-relaxed ${dark ? "text-stone-light" : "text-stone"}`}
+              className={`max-w-[48ch] text-[0.9375rem] md:text-base leading-relaxed ${
+                dark ? "text-text-dark-muted" : "text-text-muted"
+              }`}
             >
               {description}
             </p>
           ) : null}
-          {action}
+          {action ? <div className="pt-1">{action}</div> : null}
         </div>
       ) : null}
     </div>

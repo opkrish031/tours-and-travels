@@ -1,66 +1,137 @@
-import Link from "next/link";
-import { PhotoPlaceholder } from "@/components/ui/PhotoPlaceholder";
-import { Section, SectionHeader } from "@/components/ui/Section";
+"use client";
+
+import { useState } from "react";
+import { Users, Briefcase } from "lucide-react";
+import { Section } from "@/components/ui/Section";
+import { MediaFrame } from "@/components/ui/MediaFrame";
+import { SegmentedControl } from "@/components/ui/SegmentedControl";
+import { Button } from "@/components/ui/Button";
 import { vehicles } from "@/data/vehicles";
 import { formatRupees } from "@/lib/fare";
+import { Chip } from "@/components/ui/Chip";
+
+type FleetFilter = "all" | "sedan" | "suv" | "tempo";
 
 export function FleetCards() {
+  const [filter, setFilter] = useState<FleetFilter>("all");
+
+  const filteredVehicles = vehicles.filter((v) => {
+    if (filter === "all") return true;
+    if (filter === "sedan") return v.slug.includes("sedan");
+    if (filter === "suv") return v.slug.includes("suv") || v.slug.includes("innova");
+    if (filter === "tempo") return v.slug.includes("tempo");
+    return true;
+  });
+
   return (
-    <Section tone="paper" size="md">
-      <SectionHeader
-        number="03"
-        eyebrow="The fleet"
-        title="Four car classes, priced by the kilometre"
-        description="Every class lists its rate and daily limit up front. Choose one in the calculator to see what your route costs in that car."
-        action={
-          <Link
-            href="/taxi-fare"
-            className="hover:text-brass-deep inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-          >
-            Compare all rates <span aria-hidden="true">→</span>
-          </Link>
-        }
-      />
-      <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
-        {vehicles.map((vehicle) => (
-          <li key={vehicle.slug} className="flex flex-col">
-            <PhotoPlaceholder
-              label={`${vehicle.name} · ${vehicle.models[0]}`}
-              alt={vehicle.imageAlt}
-              aspect="4 / 3"
-            />
-            <div className="mt-4 flex flex-1 flex-col">
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="text-[1.0625rem] font-medium">{vehicle.name}</h3>
-                {vehicle.popular ? (
-                  <span className="bg-brass/15 text-brass-deep rounded-xs px-2 py-0.5 text-[0.625rem] font-semibold tracking-wider uppercase">
-                    Popular
-                  </span>
-                ) : null}
+    <Section tone="snow" size="md">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <span className="eyebrow text-gold-deep font-semibold uppercase tracking-wider block mb-1">
+            Our Fleet
+          </span>
+          <h2 className="text-[clamp(2rem,3.8vw,3.25rem)] font-semibold tracking-[-0.035em] leading-[1.08] text-text">
+            Chauffeured Vehicles For Every Group
+          </h2>
+          <p className="mt-2 text-text-muted max-w-[50ch] text-sm md:text-base leading-relaxed">
+            Spotless interiors, verified drivers, and transparent per-kilometre pricing with daily limits disclosed upfront.
+          </p>
+        </div>
+
+        <div>
+          <SegmentedControl<FleetFilter>
+            options={[
+              { value: "all", label: "All Vehicles" },
+              { value: "sedan", label: "Sedans" },
+              { value: "suv", label: "SUVs" },
+              { value: "tempo", label: "Group Coaches" },
+            ]}
+            value={filter}
+            onChange={setFilter}
+            size="sm"
+          />
+        </div>
+      </div>
+
+      {/* Snap Carousel Container */}
+      <div className="-mx-5 px-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0">
+        <ul className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none lg:grid lg:grid-cols-4 lg:overflow-visible">
+          {filteredVehicles.map((vehicle) => (
+            <li
+              key={vehicle.slug}
+              className="flex w-[82vw] sm:w-[320px] lg:w-auto shrink-0 snap-start flex-col rounded-3xl border border-line bg-white p-5 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md"
+            >
+              {/* Vehicle MediaFrame */}
+              <div className="relative">
+                <MediaFrame
+                  label={`${vehicle.name}`}
+                  alt={vehicle.imageAlt}
+                  aspect="4 / 3"
+                  icon="car"
+                  category={vehicle.popular ? "Most Booked" : undefined}
+                />
               </div>
-              <p className="text-stone mt-1 text-sm">
-                {vehicle.seats} seats · {vehicle.luggage}
-              </p>
-              <p className="mt-3">
-                <span className="display tabular text-2xl">
-                  {formatRupees(vehicle.perKm)}
-                </span>
-                <span className="text-stone text-sm"> / km</span>
-                <span className="text-stone-light text-xs">
-                  {" "}
-                  · {vehicle.dailyKmLimit} km/day
-                </span>
-              </p>
-              <Link
-                href={`/${vehicle.slug}`}
-                className="border-line-strong hover:border-ink hover:bg-ink/[0.04] mt-4 inline-flex h-10 items-center justify-center rounded-sm border text-sm font-semibold transition-colors duration-200"
-              >
-                Book {vehicle.name}
-              </Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+
+              {/* Specs and Details */}
+              <div className="mt-5 flex flex-1 flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="text-lg font-semibold tracking-tight text-text">
+                      {vehicle.name}
+                    </h3>
+                    {vehicle.popular ? (
+                      <Chip variant="gold" size="sm">
+                        Popular
+                      </Chip>
+                    ) : null}
+                  </div>
+
+                  <p className="text-xs text-text-muted mt-1">
+                    {vehicle.models.join(" · ")}
+                  </p>
+
+                  <div className="mt-3 flex items-center gap-3 text-xs text-text-muted">
+                    <span className="flex items-center gap-1">
+                      <Users className="h-3.5 w-3.5 text-gold-deep" />
+                      {vehicle.seats} seats
+                    </span>
+                    <span>·</span>
+                    <span className="flex items-center gap-1">
+                      <Briefcase className="h-3.5 w-3.5 text-gold-deep" />
+                      {vehicle.luggage}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Rate card & CTA */}
+                <div className="mt-6 pt-4 border-t border-line/70">
+                  <div className="flex items-baseline justify-between mb-4">
+                    <div>
+                      <span className="tabular text-2xl font-bold tracking-tight text-text">
+                        {formatRupees(vehicle.perKm)}
+                      </span>
+                      <span className="text-xs text-text-muted"> / km</span>
+                    </div>
+                    <span className="text-xs text-text-muted tabular">
+                      Min. {vehicle.dailyKmLimit} km/day
+                    </span>
+                  </div>
+
+                  <Button
+                    href={`/${vehicle.slug}`}
+                    variant="secondary"
+                    size="sm"
+                    className="w-full"
+                    arrow
+                  >
+                    View Vehicle
+                  </Button>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </Section>
   );
 }

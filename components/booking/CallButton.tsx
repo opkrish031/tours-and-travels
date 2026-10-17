@@ -2,7 +2,7 @@
 
 import { trackEvent } from "@/lib/analytics";
 import { telHref } from "@/lib/whatsapp";
-import { Button } from "@/components/ui/Button";
+import { Button, type ButtonSize, type ButtonVariant } from "@/components/ui/Button";
 
 export function CallButton({
   children,
@@ -15,8 +15,8 @@ export function CallButton({
   page,
 }: {
   children: React.ReactNode;
-  variant?: "primary" | "brass" | "secondary";
-  size?: "sm" | "md";
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   onDark?: boolean;
   arrow?: boolean;
   className?: string;

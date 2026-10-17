@@ -4,23 +4,25 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useId, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
-import { Check } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
+import { m, AnimatePresence } from "motion/react";
 import { vehicles } from "@/data/vehicles";
 import { trackEvent } from "@/lib/analytics";
 import { bookingMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
 import { buildBookingSchema } from "@/lib/validation";
 import { Button } from "@/components/ui/Button";
+import { duration, ease } from "@/lib/motion";
 
 type BookingSchema = ReturnType<typeof buildBookingSchema>;
 type FormValues = z.output<BookingSchema>;
 
 const inputClass =
-  "w-full rounded-sm border border-ink/25 bg-paper px-3.5 py-2.5 text-sm text-ink placeholder:text-stone-light focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink/40";
+  "w-full rounded-xl border border-line bg-mist/60 px-4 py-3 text-sm text-text placeholder:text-text-muted/60 transition-all focus:border-gold focus:bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 dark:border-white/10 dark:bg-white/5 dark:text-text-dark dark:focus:bg-graphite-2";
 const labelClass =
-  "mb-1.5 block text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-stone";
-const errorClass = "mt-1 block text-xs text-[#9c3b2e]";
+  "mb-1.5 block text-xs font-semibold tracking-tight text-text-muted";
+const errorClass = "mt-1.5 block text-xs font-medium text-rose-600 dark:text-rose-400";
 
-/** Pad a Date into a datetime-local value in the browser's local time. */
+/** Pad a Date into a datetime-local value in browser's local time. */
 function toInputValue(date: Date): string {
   const pad = (n: number) => String(n).padStart(2, "0");
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
@@ -40,14 +42,14 @@ function formatDatetime(value: string): string {
   });
 }
 
-type BookingFormProps = {
+export type BookingFormProps = {
   sourcePage: string;
   variant?: "hero" | "contact";
   defaultPickup?: string;
   defaultDrop?: string;
-  /** Vehicle slug to preselect in the form. */
   defaultVehicle?: string;
   className?: string;
+  dark?: boolean;
 };
 
 export function BookingForm({
@@ -57,6 +59,7 @@ export function BookingForm({
   defaultDrop = "",
   defaultVehicle = "",
   className = "",
+  dark = false,
 }: BookingFormProps) {
   const uid = useId();
   const [submitted, setSubmitted] = useState(false);
@@ -67,7 +70,7 @@ export function BookingForm({
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<z.input<BookingSchema>, unknown, FormValues>({
     resolver: zodResolver(
       buildBookingSchema({
@@ -107,24 +110,44 @@ export function BookingForm({
 
   if (submitted) {
     return (
-      <div
-        role="status"
-        className={`border-ink/20 bg-paper rounded-md border p-6 text-center ${className}`}
-      >
-        <span className="bg-brass/20 text-ink mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full">
-          <Check aria-hidden className="h-5 w-5" strokeWidth={1.75} />
-        </span>
-        <p className="font-[family-name:var(--font-instrument-serif)] text-xl">
-          Enquiry opened
-        </p>
-        <p className="text-stone mx-auto mt-2 max-w-sm text-sm leading-relaxed">
-          WhatsApp should now be open with your trip details. Send the message and we will
-          confirm your car on the same chat.
-        </p>
-        <Button variant="secondary" size="sm" className="mt-4" onClick={onReset}>
-          Send another enquiry
-        </Button>
-      </div>
+      <AnimatePresence>
+        <m.div
+          role="status"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: duration.base, ease: ease.out }}
+          className={`overflow-hidden rounded-3xl border ${
+            dark
+              ? "border-line-dark bg-graphite text-text-dark"
+              : "border-line bg-white text-text shadow-sm"
+          } p-8 text-center ${className}`}
+        >
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold border border-gold/30">
+            <Check aria-hidden="true" className="h-7 w-7" strokeWidth={2} />
+          </div>
+          <h3 className="text-2xl font-semibold tracking-tight">
+            Enquiry Prepared
+          </h3>
+          <p
+            className={`mx-auto mt-2 max-w-sm text-sm leading-relaxed ${
+              dark ? "text-text-dark-muted" : "text-text-muted"
+            }`}
+          >
+            WhatsApp is now opened with your trip details. Send the pre-filled message
+            to confirm availability and exact pricing instantly.
+          </p>
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button
+              variant="secondary"
+              size="sm"
+              onDark={dark}
+              onClick={onReset}
+            >
+              Send another enquiry
+            </Button>
+          </div>
+        </m.div>
+      </AnimatePresence>
     );
   }
 
@@ -137,8 +160,6 @@ export function BookingForm({
           const payload = {
             ...values,
             sourcePage,
-            // Assert the submit is at least the minimum time-to-submit after the
-            // form appeared; the server rejects anything younger (or missing).
             startedAt: Date.now() - 3_000,
           };
 
@@ -167,7 +188,9 @@ export function BookingForm({
             }),
           );
 
-          const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
+          const isMobile = /android|iphone|ipad|ipod|mobile/i.test(
+            navigator.userAgent,
+          );
           if (isMobile) {
             window.location.href = url;
           } else {
@@ -177,20 +200,38 @@ export function BookingForm({
         })(event);
       }}
       noValidate
-      className={`border-ink/20 bg-paper relative rounded-md border p-5 md:p-6 ${className}`}
+      className={`relative overflow-hidden rounded-3xl border ${
+        dark
+          ? "border-line-dark bg-graphite/90 text-text-dark backdrop-blur-xl"
+          : "border-line bg-white/95 text-text shadow-sm backdrop-blur-xl"
+      } p-6 sm:p-8 ${className}`}
     >
-      <p className="eyebrow mb-4">Book your taxi</p>
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-1">
+            Instant Quote
+          </span>
+          <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
+            Book Your Cab
+          </h3>
+        </div>
+        <div className="flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-xs font-medium text-gold">
+          <ShieldCheck className="h-3.5 w-3.5" />
+          <span>Zero Advance</span>
+        </div>
+      </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
+        {/* Pickup */}
         <div>
           <label className={labelClass} htmlFor={`${uid}-pickup`}>
-            Pickup location
+            Pickup Location
           </label>
           <input
             id={`${uid}-pickup`}
             type="text"
             autoComplete="off"
-            placeholder="Hotel, airport or landmark"
+            placeholder="Airport, Railway Stn, Hotel..."
             className={inputClass}
             aria-invalid={errors.pickup ? true : undefined}
             aria-describedby={errors.pickup ? `${uid}-pickup-error` : undefined}
@@ -203,15 +244,16 @@ export function BookingForm({
           ) : null}
         </div>
 
+        {/* Drop */}
         <div>
           <label className={labelClass} htmlFor={`${uid}-drop`}>
-            Drop location
+            Destination / Drop
           </label>
           <input
             id={`${uid}-drop`}
             type="text"
             autoComplete="off"
-            placeholder="Where are you going?"
+            placeholder="Jaisalmer, Udaipur, City Sightseeing..."
             className={inputClass}
             aria-invalid={errors.drop ? true : undefined}
             aria-describedby={errors.drop ? `${uid}-drop-error` : undefined}
@@ -224,16 +266,19 @@ export function BookingForm({
           ) : null}
         </div>
 
+        {/* Pickup Date & Time */}
         <div>
           <label className={labelClass} htmlFor={`${uid}-datetime`}>
-            Pickup date &amp; time
+            Date &amp; Time
           </label>
           <input
             id={`${uid}-datetime`}
             type="datetime-local"
             className={inputClass}
             aria-invalid={errors.datetime ? true : undefined}
-            aria-describedby={errors.datetime ? `${uid}-datetime-error` : undefined}
+            aria-describedby={
+              errors.datetime ? `${uid}-datetime-error` : undefined
+            }
             {...datetimeField}
             ref={(node) => {
               datetimeRef.current = node;
@@ -247,9 +292,10 @@ export function BookingForm({
           ) : null}
         </div>
 
+        {/* Vehicle */}
         <div>
           <label className={labelClass} htmlFor={`${uid}-vehicle`}>
-            Vehicle
+            Select Vehicle
           </label>
           <select
             id={`${uid}-vehicle`}
@@ -258,7 +304,7 @@ export function BookingForm({
             aria-describedby={errors.vehicle ? `${uid}-vehicle-error` : undefined}
             {...register("vehicle")}
           >
-            <option value="">Select a vehicle</option>
+            <option value="">Choose vehicle model</option>
             {vehicles.map((vehicle) => (
               <option key={vehicle.slug} value={vehicle.slug}>
                 {vehicle.name} · {vehicle.seats} seats · ₹{vehicle.perKm}/km
@@ -272,15 +318,16 @@ export function BookingForm({
           ) : null}
         </div>
 
+        {/* Name */}
         <div>
           <label className={labelClass} htmlFor={`${uid}-name`}>
-            Name{requireContact ? "" : " (optional)"}
+            Your Name{requireContact ? "" : " (optional)"}
           </label>
           <input
             id={`${uid}-name`}
             type="text"
             autoComplete="name"
-            placeholder="Your name"
+            placeholder="Full Name"
             className={inputClass}
             aria-invalid={errors.name ? true : undefined}
             aria-describedby={errors.name ? `${uid}-name-error` : undefined}
@@ -293,9 +340,10 @@ export function BookingForm({
           ) : null}
         </div>
 
+        {/* Phone */}
         <div>
           <label className={labelClass} htmlFor={`${uid}-phone`}>
-            Phone{requireContact ? "" : " (optional)"}
+            Contact Number{requireContact ? "" : " (optional)"}
           </label>
           <input
             id={`${uid}-phone`}
@@ -315,12 +363,12 @@ export function BookingForm({
         </div>
       </div>
 
-      {/* Honeypot — hidden from people and screen readers, tempting to bots. */}
+      {/* Honeypot field */}
       <div
         className="absolute left-[-9999px] h-px w-px overflow-hidden"
         aria-hidden="true"
       >
-        <label htmlFor={`${uid}-website`}>Leave this field empty</label>
+        <label htmlFor={`${uid}-website`}>Leave this empty</label>
         <input
           id={`${uid}-website`}
           type="text"
@@ -330,12 +378,25 @@ export function BookingForm({
         />
       </div>
 
-      <Button type="submit" className="mt-5 w-full" arrow>
-        Book on WhatsApp
-      </Button>
-      <p className="text-stone mt-3 text-center text-xs leading-relaxed">
-        Opens WhatsApp with your trip details. No payment online — confirm on chat or
-        call.
+      <div className="mt-6">
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          className="w-full"
+          arrow
+          disabled={isSubmitting}
+        >
+          Book on WhatsApp
+        </Button>
+      </div>
+
+      <p
+        className={`mt-3.5 text-center text-xs leading-relaxed ${
+          dark ? "text-text-dark-muted" : "text-text-muted"
+        }`}
+      >
+        Direct confirmation with our local dispatch team. Pay nothing online.
       </p>
     </form>
   );

@@ -1,47 +1,58 @@
 import { Clock, Receipt, ShieldCheck, Wallet } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 
 const items = [
-  { icon: Clock, title: "Open 24×7", note: "Message or call any hour" },
+  {
+    icon: Clock,
+    title: "Always On Call",
+    note: "Instant dispatch any hour of day or night.",
+  },
   {
     icon: Wallet,
-    title: "Fare before you confirm",
-    note: "Estimate sent on WhatsApp first",
+    title: "Transparent Fares",
+    note: "Complete quote provided before you travel.",
   },
   {
     icon: ShieldCheck,
-    title: "Licensed drivers",
-    note: "Commercial licence, shared before pickup",
+    title: "Verified Chauffeurs",
+    note: "Commercial permits and highway specialists.",
   },
-  { icon: Receipt, title: "Tolls per receipts", note: "State entry tax as per actual" },
+  {
+    icon: Receipt,
+    title: "Zero Hidden Costs",
+    note: "Tolls and parking billed at exact cost.",
+  },
 ] as const;
 
 export function TrustStrip() {
   return (
-    <section className="bg-umber text-paper">
+    <section className="bg-snow text-text border-b border-line py-8 md:py-10">
       <Container>
-        <ul className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((item, index) => (
-            <li
+        <Stagger
+          as="ul"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {items.map((item) => (
+            <StaggerItem
               key={item.title}
-              className={`border-line-dark flex items-start gap-3.5 py-5 sm:py-6 ${
-                index < items.length - 1 ? "border-b lg:border-b-0" : ""
-              }`}
+              as="li"
+              className="group flex items-start gap-4 rounded-2xl p-3.5 transition-colors hover:bg-mist/70"
             >
-              <item.icon
-                aria-hidden="true"
-                className="text-brass mt-0.5 h-5 w-5 shrink-0"
-                strokeWidth={1.5}
-              />
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold-deep border border-gold/25">
+                <item.icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
+              </div>
               <div>
-                <p className="text-sm font-medium">{item.title}</p>
-                <p className="text-stone-light mt-0.5 text-xs leading-relaxed">
+                <p className="text-sm font-semibold tracking-tight text-text">
+                  {item.title}
+                </p>
+                <p className="mt-0.5 text-xs text-text-muted leading-relaxed">
                   {item.note}
                 </p>
               </div>
-            </li>
+            </StaggerItem>
           ))}
-        </ul>
+        </Stagger>
       </Container>
     </section>
   );

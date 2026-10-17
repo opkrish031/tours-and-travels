@@ -4,15 +4,14 @@ import { homeFaqs } from "@/data/faqs";
 
 export function FaqSection() {
   return (
-    <Section tone="paper" size="md">
+    <Section tone="snow" size="md">
       <SectionHeader
-        number="11"
-        eyebrow="Questions"
-        title="Before you book"
-        description="The things travellers ask most. Anything else — message us on WhatsApp and we will answer before you commit."
+        eyebrow="Clear Answers"
+        title="Frequently Asked Questions"
+        description="Key information regarding upfront quotes, toll receipts, airport waiting policies, and booking confirmation."
       />
-      <div className="mt-10 md:mt-14">
-        <Accordion items={homeFaqs} />
+      <div className="mt-8 max-w-4xl mx-auto">
+        <Accordion items={homeFaqs} defaultOpen={0} />
       </div>
     </Section>
   );

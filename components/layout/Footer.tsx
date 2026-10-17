@@ -5,49 +5,72 @@ import { site } from "@/data/site";
 
 const year = new Date().getFullYear();
 
-function addressLine() {
+function formatAddress() {
   const a = site.address;
-  return `${a.street}, ${a.locality}, ${a.region} ${a.postalCode}, ${a.country === "IN" ? "India" : a.country}`;
+  return `${a.street}, ${a.locality}, ${a.region} ${a.postalCode}, ${
+    a.country === "IN" ? "India" : a.country
+  }`;
 }
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-paper">
-      <Container className="py-14 md:py-18">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
-            <p className="display text-[1.6rem]">{site.brandName}</p>
-            <p className="eyebrow text-stone-light mt-2">{site.tagline}</p>
-            <address className="text-stone-light mt-6 max-w-[34ch] text-sm leading-relaxed not-italic">
-              {addressLine()}
-            </address>
-            <div className="mt-4 flex flex-col gap-1.5 text-sm">
-              <a
-                href={`tel:${site.phone}`}
-                className="tabular text-paper hover:text-brass w-fit transition-colors"
-              >
-                {site.phoneDisplay}
-              </a>
-              <a
-                href={`mailto:${site.email}`}
-                className="text-paper hover:text-brass w-fit transition-colors"
-              >
-                {site.email}
-              </a>
-              <p className="text-stone-light">Open {site.hours}</p>
+    <footer className="bg-black text-text-dark border-t border-line-dark">
+      <Container className="py-16 md:py-24">
+        {/* Large brand statement & navigation */}
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+          {/* Brand info */}
+          <div className="lg:col-span-4 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
+                  {site.brandName}
+                </span>
+                <span className="rounded-full bg-gold/15 px-2.5 py-0.5 text-xs font-medium text-gold border border-gold/30">
+                  Rajasthan
+                </span>
+              </div>
+              <p className="text-sm md:text-[0.9375rem] text-text-dark-muted max-w-[34ch] leading-relaxed">
+                {site.tagline}
+              </p>
+            </div>
+
+            <div className="mt-8 space-y-4">
+              <address className="text-text-dark-muted text-xs leading-relaxed not-italic max-w-[36ch]">
+                {formatAddress()}
+              </address>
+              <div className="flex flex-col gap-2 text-sm">
+                <a
+                  href={`tel:${site.phone}`}
+                  className="tabular text-white hover:text-gold w-fit transition-colors font-medium"
+                >
+                  {site.phoneDisplay}
+                </a>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-text-dark-muted hover:text-gold w-fit transition-colors text-xs"
+                >
+                  {site.email}
+                </a>
+                <p className="text-text-dark-muted text-xs">
+                  Available {site.hours}
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-4">
+          {/* Nav columns */}
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
             {footerNav.map((group) => (
               <nav key={group.label} aria-label={`Footer — ${group.label}`}>
-                <h2 className="eyebrow text-brass mb-4">{group.label}</h2>
-                <ul className="space-y-2">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-gold mb-4">
+                  {group.label}
+                </h3>
+                <ul className="space-y-2.5">
                   {group.items.map((item) => (
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="text-stone-light hover:text-paper text-[0.8125rem] leading-relaxed transition-colors duration-150"
+                        className="text-text-dark-muted hover:text-white text-[0.875rem] leading-normal transition-colors duration-150"
                       >
                         {item.label}
                       </Link>
@@ -60,22 +83,27 @@ export function Footer() {
         </div>
       </Container>
 
-      <div className="border-line-dark border-t">
-        <Container className="text-stone-light flex flex-col gap-3 py-5 text-xs sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {site.legalName}. All rights reserved.
-          </p>
-          <p className="flex flex-wrap gap-5">
-            <Link href="/privacy-policy" className="hover:text-paper transition-colors">
-              Privacy policy
+      {/* Bottom bar */}
+      <div className="border-t border-line-dark">
+        <Container className="flex flex-col gap-4 py-6 text-xs text-text-dark-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} {site.legalName}. All rights reserved.</p>
+          <div className="flex flex-wrap gap-6">
+            <Link
+              href="/privacy-policy"
+              className="hover:text-gold transition-colors"
+            >
+              Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-paper transition-colors">
-              Terms
+            <Link href="/terms" className="hover:text-gold transition-colors">
+              Terms of Service
             </Link>
-            <Link href="/refund-policy" className="hover:text-paper transition-colors">
-              Refunds
+            <Link
+              href="/refund-policy"
+              className="hover:text-gold transition-colors"
+            >
+              Refund Policy
             </Link>
-          </p>
+          </div>
         </Container>
       </div>
     </footer>

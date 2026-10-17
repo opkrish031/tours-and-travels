@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Manrope } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyActionBar } from "@/components/layout/StickyActionBar";
+import { MotionProvider } from "@/components/motion/MotionProvider";
 import { site } from "@/data/site";
 import { HOME_DESCRIPTION, HOME_TITLE } from "@/lib/seo";
 import "./globals.css";
 
-const display = Instrument_Serif({
-  weight: "400",
-  style: ["normal", "italic"],
+const geistSans = Geist({
   subsets: ["latin"],
-  variable: "--font-instrument-serif",
+  variable: "--font-geist-sans",
   display: "swap",
 });
 
-const bodyFont = Manrope({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
@@ -28,27 +27,37 @@ export const metadata: Metadata = {
     template: `%s | ${site.brandName}`,
   },
   description: HOME_DESCRIPTION,
+  openGraph: {
+    siteName: site.brandName,
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${display.variable} ${bodyFont.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col pb-[calc(3.5rem+env(safe-area-inset-bottom))] md:pb-0">
-        <a
-          href="#main"
-          className="focus:bg-ink focus:text-paper sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-60 focus:rounded-sm focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold"
-        >
-          Skip to content
-        </a>
-        <Header />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <StickyActionBar />
+        <MotionProvider>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-60 focus:rounded-sm focus:bg-black focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-text-dark"
+          >
+            Skip to content
+          </a>
+          <Header />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <StickyActionBar />
+        </MotionProvider>
       </body>
     </html>
   );

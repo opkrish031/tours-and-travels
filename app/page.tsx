@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
 import { FareCalculator } from "@/components/booking/FareCalculator";
-import { ComparisonTable } from "@/components/home/ComparisonTable";
 import { CoverageSection } from "@/components/home/CoverageSection";
 import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCta } from "@/components/home/FinalCta";
 import { FleetCards } from "@/components/home/FleetCards";
-import { FleetTable } from "@/components/home/FleetTable";
 import { Hero } from "@/components/home/Hero";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { RoutesGrid } from "@/components/home/RoutesGrid";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
-import { SpotsSection } from "@/components/home/SpotsSection";
-import { TopBar } from "@/components/home/TopBar";
-import { ToursSection } from "@/components/home/ToursSection";
 import { TrustStrip } from "@/components/home/TrustStrip";
 import { WhyUs } from "@/components/home/WhyUs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -40,32 +35,45 @@ export default function Home() {
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd data={faqJsonLd(homeFaqs)} />
 
-      <TopBar />
+      {/* 1. Hero (Dark, Huge Type, SplitHeadline, Gold Glow, Booking Card) */}
       <Hero />
+
+      {/* 2. Assurance Strip (Light, 4 Short Statements, Stagger Reveal) */}
       <TrustStrip />
 
-      <WhyUs />
+      {/* 3. Services (Editorial Rows with Hover Reveal) */}
       <ServicesGrid />
+
+      {/* 4. Fleet (Snap Carousel with Segmented Filter) */}
       <FleetCards />
+
+      {/* 5. Routes (Typographic Index with Hover Dim) */}
       <RoutesGrid />
 
-      <Section id="calculator" tone="paper" size="md">
+      {/* 6. Fare Calculator (Dark, Animated Number, Segmented Control) */}
+      <Section id="calculator" tone="black" size="md">
         <SectionHeader
-          number="05"
-          eyebrow="Fare calculator"
-          title="Work out your fare before you book"
-          description="Pick the route, car class and trip type. The estimate uses the same per-km rates and daily limits that go into every quote."
+          dark
+          eyebrow="Instant Estimation"
+          title="Transparent Fare Calculator"
+          description="Calculate exact fares by route and vehicle category. All estimates match the fixed per-kilometre rates confirmed on WhatsApp."
         />
-        <FareCalculator className="mt-10 md:mt-14" />
+        <FareCalculator className="mt-8 md:mt-12" />
       </Section>
 
-      <ToursSection />
-      <FleetTable />
-      <HowItWorks number="08" />
-      <SpotsSection />
-      <ComparisonTable />
+      {/* 7. Why Us (Bento Grid with Micro-animations) */}
+      <WhyUs />
+
+      {/* 8. How It Works (Connected Stepper Cards on Dark Surface) */}
+      <HowItWorks />
+
+      {/* 9. FAQ (Framer Motion Accordions) */}
       <FaqSection />
+
+      {/* 10. Coverage / Attractions (Horizontal Rail of Rounded MediaFrames) */}
       <CoverageSection />
+
+      {/* 11. Final CTA (Dark, Large Headline, Magnetic Buttons) */}
       <FinalCta />
     </>
   );

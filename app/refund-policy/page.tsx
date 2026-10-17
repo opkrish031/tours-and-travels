@@ -9,47 +9,45 @@ import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   return buildMetadata({
-    title: "Refund and Cancellation Policy | Marwar Cabs",
-    description: `How cancellations and refunds work at ${site.brandName}: the free-cancellation window, late cancellations, and how refunds are returned.`,
+    title: `Refund and Cancellation Policy | ${site.brandName}`,
+    description: `How cancellations and refunds work at ${site.brandName}: free-cancellation windows, late policies, and process.`,
     path: "/refund-policy",
   });
 }
 
 const sections = [
   {
-    heading: "Cancelling a booking",
+    heading: "Cancelling a Reservation",
     body: [cancellationPolicy],
   },
   {
-    heading: "Free-cancellation window",
+    heading: "Free Cancellation Window",
     body: [
-      `Bookings cancelled at least ${site.cancellationWindowHours} hours before the agreed pickup time are eligible for a full refund of any advance paid. (DUMMY — confirm the window and advance terms with the client.)`,
+      `Bookings cancelled at least ${site.cancellationWindowHours} hours prior to scheduled departure are eligible for a 100% full refund of any token advance. (DUMMY — confirm window with client).`,
     ],
   },
   {
-    heading: "Late cancellations and no-shows",
+    heading: "Late Cancellations & No-Shows",
     body: [
-      "Cancellations inside the free window are assessed case by case: if the driver has already been assigned and is en route, a partial charge may apply to cover the driver's time and fuel. A no-show at the pickup point, with no message from you, is treated as a completed booking for the pickup leg.",
+      "Cancellations within the immediate departure window are reviewed fairly: if a vehicle has already been dispatched towards your pickup address, a minor partial charge may cover fuel and driver time. Unannounced no-shows are billed for the pickup leg.",
     ],
   },
   {
-    heading: "Changes instead of cancellations",
+    heading: "Date & Time Modifications",
     body: [
-      "Moving a confirmed booking to another date is usually simpler than cancelling. Message us as early as you can and we will re-confirm the car for the new date at the same estimate, subject to availability.",
+      "Rescheduling a confirmed journey is simple. Message us on WhatsApp as early as possible, and we will transfer your reservation to your new date subject to vehicle availability at no extra fee.",
     ],
   },
   {
-    heading: "How refunds are returned",
+    heading: "Refund Processing",
     body: [
-      "Refunds are returned by the same mode the advance was paid — UPI or bank transfer — within a reasonable number of working days of the cancellation being agreed in writing on the booking chat or by email to " +
-        site.email +
-        ".",
+      `Eligible refunds are returned via the original payment method (UPI or bank transfer) within standard banking turnaround days following confirmation with ${site.email}.`,
     ],
   },
   {
-    heading: "Fares we cannot refund",
+    heading: "Non-Refundable Incurred Costs",
     body: [
-      "Tolls and state entry tax are collected and passed on as per actual receipts; they are not marked up and are not refundable once the trip has started. Kilometres already driven at the time of cancellation are billed as per the estimate.",
+      "Highway tolls and entry taxes already paid to toll plazas during active transit cannot be refunded. Distance already covered prior to mid-journey cancellation is calculated at standard rate.",
     ],
   },
 ] as const;
@@ -60,32 +58,36 @@ export default function RefundPolicyPage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Refund and cancellation policy", path: "/refund-policy" },
+          { name: "Refund and Cancellation Policy", path: "/refund-policy" },
         ])}
       />
-      <Section tone="paper" size="sm">
+      <Section tone="snow" size="sm">
         <Container className="max-w-[75ch]">
-          <Breadcrumbs items={[{ label: "Refund and cancellation policy" }]} />
-          <h1 className="display mt-6 text-[clamp(2rem,4.5vw,3rem)]">
-            Refund and cancellation policy
+          <Breadcrumbs items={[{ label: "Refund Policy" }]} />
+          <h1 className="mt-6 text-[clamp(2rem,4.5vw,3rem)] font-semibold tracking-[-0.035em] text-text">
+            Refund &amp; Cancellation Policy
           </h1>
-          <p className="text-stone mt-4 text-sm leading-relaxed">
-            Plans change. Here is how cancellations, date changes, and refunds are handled
-            at {site.brandName}.
+          <p className="mt-4 text-sm text-text-muted leading-relaxed">
+            Travel plans change. Here is how cancellations, date changes, and refunds are
+            handled with transparency at {site.brandName}.
           </p>
-          {sections.map((section) => (
-            <section key={section.heading} className="mt-10">
-              <h2 className="text-[1.125rem] font-medium">{section.heading}</h2>
-              {section.body.map((paragraph) => (
-                <p
-                  key={paragraph.slice(0, 40)}
-                  className="text-stone mt-3 text-[0.9375rem] leading-relaxed"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </section>
-          ))}
+          <div className="mt-10 space-y-10 divide-y divide-line">
+            {sections.map((section) => (
+              <section key={section.heading} className="pt-8 first:pt-0">
+                <h2 className="text-lg font-semibold tracking-tight text-text">
+                  {section.heading}
+                </h2>
+                {section.body.map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 40)}
+                    className="mt-3 text-[0.9375rem] text-text-muted leading-relaxed"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </section>
+            ))}
+          </div>
         </Container>
       </Section>
     </>

@@ -1,18 +1,23 @@
 import Link from "next/link";
-import { Check, X } from "lucide-react";
+import { Check, ArrowUpRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { BookingForm } from "@/components/booking/BookingForm";
 import { FinalCta } from "@/components/home/FinalCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Accordion } from "@/components/ui/Accordion";
 import { Container } from "@/components/ui/Container";
-import { PhotoPlaceholder } from "@/components/ui/PhotoPlaceholder";
+import { MediaFrame } from "@/components/ui/MediaFrame";
 import { Section, SectionHeader } from "@/components/ui/Section";
+import { Table, tdClass, thClass } from "@/components/ui/Table";
+import { AnimatedNumber } from "@/components/motion/AnimatedNumber";
 import { routes } from "@/data/routes";
 import type { Vehicle } from "@/data/vehicles";
+import { vehicles } from "@/data/vehicles";
 import { fareExcludes, fareIncludes } from "@/data/policies";
 import { estimateFare, formatRupees } from "@/lib/fare";
 import { breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
+
+import { buildWhatsAppUrl, contextMessage } from "@/lib/whatsapp";
 
 export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
   const routeCards = routes.map((route) => ({
@@ -24,6 +29,8 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
     }),
   }));
 
+  const otherVehicles = vehicles.filter((v) => v.slug !== vehicle.slug);
+
   return (
     <>
       <JsonLd data={faqJsonLd(vehicle.faqs)} />
@@ -34,40 +41,278 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
         ])}
       />
 
-      <section className="border-line bg-paper border-b">
-        <Container className="grid items-center gap-10 py-10 md:py-14 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-6">
-            <Breadcrumbs items={[{ label: vehicle.name }]} />
-            <p className="eyebrow text-stone mt-2">Fleet</p>
-            <h1 className="display mt-4 text-[clamp(2.1rem,5vw,3.6rem)]">
-              {vehicle.name} Taxi in Jodhpur
+      {/* Apple Hardware Studio Showcase Hero (Dark Studio Presentation) */}
+      <section className="relative overflow-hidden bg-black text-text-dark border-b border-line-dark pt-12 pb-20 md:pt-16 md:pb-28">
+        <Container className="relative z-10 max-w-5xl mx-auto text-center">
+          <Breadcrumbs items={[{ label: vehicle.name }]} />
+
+          <div className="mt-6 max-w-3xl mx-auto">
+            <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-3">
+              Fleet Architecture · Category {vehicle.category.toUpperCase()}
+            </span>
+
+            <h1 className="text-[clamp(2.8rem,6.5vw,4.8rem)] font-semibold tracking-[-0.035em] leading-[1.04] text-white">
+              {vehicle.name}
             </h1>
-            <p className="text-stone mt-5 max-w-[48ch] leading-relaxed">
+
+            <p className="mt-5 text-base md:text-xl text-text-dark-muted max-w-[50ch] mx-auto leading-relaxed">
               {vehicle.comfort}
             </p>
-            <ul className="border-line-strong mt-6 inline-flex flex-wrap gap-x-6 gap-y-2 rounded-sm border px-4 py-3 text-sm">
-              <li className="text-stone">
-                <span className="text-ink tabular font-medium">{vehicle.seats}</span>{" "}
-                seats
-              </li>
-              <li className="text-stone">
-                <span className="text-ink font-medium">{vehicle.luggage}</span>
-              </li>
-              <li className="text-stone">
-                <span className="text-ink tabular font-medium">
-                  {formatRupees(vehicle.perKm)}
-                </span>{" "}
-                / km
-              </li>
-              <li className="text-stone">
-                <span className="text-ink tabular font-medium">
-                  {vehicle.dailyKmLimit}
-                </span>{" "}
-                km/day
-              </li>
+          </div>
+
+          {/* Centerstage Hardware Vehicle Showcase */}
+          <div className="mt-10 max-w-3xl mx-auto relative">
+            <div className="rounded-3xl border border-white/10 bg-graphite p-4 sm:p-6 shadow-2xl relative overflow-hidden">
+              <MediaFrame
+                label={`${vehicle.name} Studio View`}
+                alt={vehicle.imageAlt}
+                aspect="16 / 9"
+                icon="car"
+                category={vehicle.popular ? "Flagship Choice" : "Chauffeur Spec"}
+              />
+
+              <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-text-dark-muted pt-3 border-t border-white/10">
+                <span>Models in Fleet: {vehicle.models.join(" · ")}</span>
+                <span className="text-gold font-medium">BuildBlock Maintained</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Hardware Specs Pill Ticker (Apple Hardware Spec Grid) */}
+          <div className="mt-10 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
+              <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
+                Passenger Seating
+              </span>
+              <span className="tabular mt-1 block text-lg font-bold text-white">
+                {vehicle.seats} Executive Seats
+              </span>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
+              <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
+                Luggage Stowed
+              </span>
+              <span className="mt-1 block text-base font-bold text-white truncate">
+                {vehicle.luggage}
+              </span>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
+              <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
+                Outstation Base
+              </span>
+              <span className="tabular mt-1 block text-lg font-bold text-gold">
+                <AnimatedNumber value={vehicle.perKm} prefix="₹" suffix="/km" />
+              </span>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
+              <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
+                Daily Minimum
+              </span>
+              <span className="tabular mt-1 block text-lg font-bold text-white">
+                {vehicle.dailyKmLimit} km / Day
+              </span>
+            </div>
+          </div>
+
+          {/* Quick Action Dock */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={buildWhatsAppUrl(contextMessage(`I want to book ${vehicle.name} in Jodhpur`))}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-wider text-black shadow-sm hover:bg-gold-bright transition-colors"
+            >
+              Reserve {vehicle.name} on WhatsApp →
+            </a>
+            <a
+              href="#booking-tray"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white hover:bg-white/15 transition-colors"
+            >
+              Submit Travel Details ↓
+            </a>
+          </div>
+        </Container>
+      </section>
+
+      {/* Cabin Architecture & Engineering (Apple Bento Grid) */}
+      <Section tone="snow" size="md">
+        <SectionHeader
+          eyebrow="Inside The Vehicle"
+          title={`${vehicle.name} Anatomy &amp; Engineering`}
+          description={`Every ${vehicle.name} is mechanically audited, deep-sanitized between tours, and equipped with functioning multi-vent air conditioning.`}
+        />
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-10">
+          {/* Card 1: Seating & Ergonomics */}
+          <div className="rounded-3xl border border-line bg-mist/60 p-8 flex flex-col justify-between">
+            <div>
+              <span className="text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep block mb-2">
+                01 · Ergonomics
+              </span>
+              <h3 className="text-xl font-semibold text-text mb-3">
+                Cabin Layout &amp; Reclining Space
+              </h3>
+              <p className="text-sm text-text-muted leading-relaxed">
+                Generous legroom configured for long desert highway stretches. Seats feature
+                ergonomic lumbar support and individual headrests for effortless long-distance travel.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold text-text">
+              {vehicle.seats} Dedicated Passenger Capacity
+            </div>
+          </div>
+
+          {/* Card 2: Climate Protection */}
+          <div className="rounded-3xl border border-line bg-mist/60 p-8 flex flex-col justify-between">
+            <div>
+              <span className="text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep block mb-2">
+                02 · Climate Control
+              </span>
+              <h3 className="text-xl font-semibold text-text mb-3">
+                High-Ambient Cooling System
+              </h3>
+              <p className="text-sm text-text-muted leading-relaxed">
+                Tested against western Rajasthan desert heat up to 48°C. Dedicated rear vents
+                ensure rapid cabin chilling to 22°C within minutes of boarding.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold text-text">
+              Pre-Cooled Before Pickup
+            </div>
+          </div>
+
+          {/* Card 3: Luggage Stowing */}
+          <div className="rounded-3xl border border-line bg-mist/60 p-8 flex flex-col justify-between">
+            <div>
+              <span className="text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep block mb-2">
+                03 · Cargo Volume
+              </span>
+              <h3 className="text-xl font-semibold text-text mb-3">
+                Secure Boot &amp; Luggage Space
+              </h3>
+              <p className="text-sm text-text-muted leading-relaxed">
+                Stowage designed for airport trolley cases and duffels. Clean, covered boot
+                keeps your luggage dust-free across desert highways.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold text-text">
+              Capacity: {vehicle.luggage}
+            </div>
+          </div>
+        </div>
+
+        {/* Ideal Trip Profiles Pill Strip */}
+        <div className="mt-8 rounded-3xl border border-line bg-white p-6 md:p-8 shadow-xs">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">
+            Optimal Use Cases for {vehicle.name}:
+          </h4>
+          <div className="flex flex-wrap gap-3">
+            {vehicle.idealFor.map((use) => (
+              <span
+                key={use}
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-snow px-4 py-2 text-xs font-medium text-text"
+              >
+                <Check className="h-3.5 w-3.5 text-gold-deep shrink-0" />
+                <span>{use}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Outstation Rates for This Vehicle (Spec Sheet) */}
+      <Section tone="mist" size="md">
+        <SectionHeader
+          eyebrow="Route Spec Sheet"
+          title={`Intercity Fares with ${vehicle.name}`}
+          description={`Starting fixed rates for major highway departures from Jodhpur in a ${vehicle.name}.`}
+        />
+
+        <div className="mt-8">
+          <Table caption={`Intercity fares for ${vehicle.name} by route`}>
+            <thead>
+              <tr>
+                <th scope="col" className={thClass}>Destination</th>
+                <th scope="col" className={thClass}>Highway Distance</th>
+                <th scope="col" className={thClass}>Drive Time</th>
+                <th scope="col" className={thClass}>One-Way Fare</th>
+              </tr>
+            </thead>
+            <tbody>
+              {routeCards.map(({ route, estimate }) => (
+                <tr key={route.slug}>
+                  <td className={tdClass}>
+                    <Link
+                      href={`/${route.slug}`}
+                      className="font-medium text-text hover:text-gold-deep transition-colors"
+                    >
+                      {route.from} to {route.to}
+                    </Link>
+                  </td>
+                  <td className={tdClass}>{route.distanceKm} km</td>
+                  <td className={tdClass}>{route.durationHours} hrs</td>
+                  <td className={tdClass}>
+                    <span className="tabular font-semibold text-gold-deep">
+                      {formatRupees(estimate.total)}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+
+        {/* Inclusions / Exclusions Charter */}
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div className="rounded-3xl border border-line bg-white p-6 shadow-xs">
+            <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider block mb-3">
+              Standard Fare Inclusions
+            </span>
+            <ul className="space-y-2 text-xs text-text-muted">
+              {fareIncludes.slice(0, 4).map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <Check className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="lg:col-span-6">
+
+          <div className="rounded-3xl border border-line bg-white p-6 shadow-xs">
+            <span className="text-xs font-semibold text-text-muted uppercase tracking-wider block mb-3">
+              Billed at Government Actuals
+            </span>
+            <ul className="space-y-2 text-xs text-text-muted">
+              {fareExcludes.slice(0, 4).map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="text-text-muted font-bold shrink-0">·</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      {/* Dedicated Reservation Tray */}
+      <section id="booking-tray" className="scroll-mt-24 bg-snow border-y border-line py-16 md:py-24">
+        <Container className="max-w-4xl mx-auto">
+          <div className="text-center max-w-xl mx-auto mb-10">
+            <span className="eyebrow text-gold-deep font-semibold uppercase tracking-wider block mb-2">
+              Direct Reservation
+            </span>
+            <h2 className="text-3xl font-semibold tracking-tight text-text">
+              Reserve Your {vehicle.name}
+            </h2>
+            <p className="mt-2 text-sm text-text-muted">
+              Select dates and route to generate your formatted written reservation.
+            </p>
+          </div>
+
+          <div className="max-w-xl mx-auto rounded-3xl border border-line bg-white p-6 sm:p-8 shadow-sm">
             <BookingForm
               sourcePage={`/${vehicle.slug}`}
               defaultPickup="Jodhpur"
@@ -77,131 +322,50 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
         </Container>
       </section>
 
-      <Section tone="sand" size="md">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
-            <SectionHeader
-              eyebrow="Comfort and capacity"
-              title={`Inside the ${vehicle.name.toLowerCase()}`}
-              description={`Typical models: ${vehicle.models.join(", ")}. The exact car depends on what is free on your date; you receive the details before pickup.`}
-            />
-            <h2 className="eyebrow text-brass-deep mt-10 mb-4">Ideal for</h2>
-            <ul className="space-y-2.5">
-              {vehicle.idealFor.map((use) => (
-                <li
-                  key={use}
-                  className="text-stone flex items-start gap-2.5 text-sm leading-relaxed"
-                >
-                  <Check
-                    aria-hidden="true"
-                    className="text-brass-deep mt-0.5 h-4 w-4 shrink-0"
-                    strokeWidth={2}
-                  />
-                  <span>{use}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-stone mt-8 max-w-[68ch] text-[0.9375rem] leading-relaxed">
-              {vehicle.comfort} Round trips are billed on a daily kilometre limit of{" "}
-              <span className="tabular">{vehicle.dailyKmLimit}</span> km per day; one-way
-              trips are billed on distance alone.
-            </p>
-          </div>
-          <div className="lg:col-span-5">
-            <PhotoPlaceholder
-              label={`${vehicle.name} · ${vehicle.models[0]}`}
-              alt={vehicle.imageAlt}
-              aspect="4 / 3"
-            />
-          </div>
+      {/* FAQs */}
+      <Section tone="mist" size="md">
+        <SectionHeader
+          eyebrow="Questions"
+          title={`${vehicle.name} FAQs`}
+        />
+        <div className="mt-8 max-w-4xl mx-auto">
+          <Accordion items={vehicle.faqs} defaultOpen={0} />
         </div>
       </Section>
 
-      <Section tone="paper" size="md">
+      {/* Compare Other Fleet Classes */}
+      <Section tone="snow" size="md">
         <SectionHeader
-          eyebrow="The fare"
-          title="What the per-km rate covers"
-          description="The rate pays for the car, driver, and fuel over the planned kilometres. Everything outside the plan is listed as it applies."
+          eyebrow="Compare Fleet"
+          title="Alternative Vehicle Categories"
         />
-        <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-2 md:gap-16">
-          <div>
-            <h3 className="eyebrow text-brass-deep mb-4">Included</h3>
-            <ul className="space-y-2.5">
-              {fareIncludes.map((item) => (
-                <li
-                  key={item}
-                  className="text-stone flex items-start gap-2.5 text-sm leading-relaxed"
-                >
-                  <Check
-                    aria-hidden="true"
-                    className="text-brass-deep mt-0.5 h-4 w-4 shrink-0"
-                    strokeWidth={2}
-                  />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="eyebrow text-brass-deep mb-4">Charged extra</h3>
-            <ul className="space-y-2.5">
-              {fareExcludes.map((item) => (
-                <li
-                  key={item}
-                  className="text-stone flex items-start gap-2.5 text-sm leading-relaxed"
-                >
-                  <X
-                    aria-hidden="true"
-                    className="text-stone-light mt-0.5 h-4 w-4 shrink-0"
-                    strokeWidth={2}
-                  />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Section>
-
-      <Section tone="sand" size="md">
-        <SectionHeader
-          eyebrow="Routes"
-          title={`Where the ${vehicle.name.toLowerCase()} goes`}
-          description={`One-way estimates for this car class on every published route. Open a route for the full price table.`}
-        />
-        <ul className="bg-line mt-10 grid gap-px sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
-          {routeCards.map(({ route, estimate }) => (
-            <li key={route.slug} className="bg-sand">
-              <Link
-                href={`/${route.slug}`}
-                className="group hover:bg-paper flex h-full flex-col p-6 transition-colors duration-200"
-              >
-                <div className="flex items-baseline justify-between gap-3">
-                  <h3 className="text-[1.0625rem] leading-snug font-medium">
-                    {route.from} to {route.to}
-                  </h3>
-                  <span
-                    aria-hidden="true"
-                    className="text-stone-light group-hover:text-brass-deep transition-colors"
-                  >
-                    →
-                  </span>
-                </div>
-                <p className="text-stone mt-4 text-sm">
-                  <span className="tabular">{route.distanceKm} km</span>
-                  {" · "}
-                  <span className="tabular">From {formatRupees(estimate.total)}</span>
+        <div className="grid gap-6 sm:grid-cols-3 mt-8">
+          {otherVehicles.map((other) => (
+            <Link
+              key={other.slug}
+              href={`/${other.slug}`}
+              className="group flex flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md"
+            >
+              <div>
+                <MediaFrame
+                  label={other.name}
+                  alt={other.imageAlt}
+                  aspect="16 / 9"
+                  icon="car"
+                />
+                <h3 className="mt-4 text-base font-semibold text-text group-hover:text-gold-deep transition-colors">
+                  {other.name}
+                </h3>
+                <p className="mt-1 text-xs text-text-muted">
+                  {other.seats} seats · {formatRupees(other.perKm)}/km
                 </p>
-              </Link>
-            </li>
+              </div>
+              <div className="mt-5 pt-3 border-t border-line/70 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-text-muted group-hover:text-black">
+                <span>View Details</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </div>
+            </Link>
           ))}
-        </ul>
-      </Section>
-
-      <Section tone="paper" size="md">
-        <SectionHeader eyebrow="Questions" title={`${vehicle.name}, answered`} />
-        <div className="mt-10 md:mt-14">
-          <Accordion items={vehicle.faqs} />
         </div>
       </Section>
 

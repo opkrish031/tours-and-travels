@@ -1,27 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette — one accent (brass), warm Marwar neutrals */
-  --color-ink: #16130f;
-  --color-paper: #f6f1e9;
-  --color-sand: #e9dfd0;
-  --color-stone: #6f665b;
-  --color-stone-light: #a69b8c;
-  --color-brass: #b08a4a;
-  --color-brass-deep: #856530;
-  --color-umber: #2a211a;
-  --color-line: #16130f24; /* ink @ ~14% */
-  --color-line-strong: #16130f38; /* ink @ ~22% */
-  --color-line-dark: #f6f1e926; /* paper @ ~15% on dark */
+  /* ── Surfaces ── */
+  --color-black: #0A0A0B;
+  --color-graphite: #141416;
+  --color-graphite-2: #1C1C1F;
+  --color-white: #FFFFFF;
+  --color-snow: #FBFBFD;
+  --color-mist: #F5F5F7;
 
-  --radius-xs: 2px;
-  --radius-sm: 3px;
-  --radius-md: 6px;
+  /* ── Text ── */
+  --color-text: #1D1D1F;
+  --color-text-muted: #6E6E73;
+  --color-text-dark: #F5F5F7;
+  --color-text-dark-muted: #A1A1A6;
+
+  /* ── Accent: BuildBlock warm gold ── */
+  --color-gold: #C9A24D;
+  --color-gold-bright: #E0BC6A;
+  --color-gold-deep: #8A6A24;
+
+  /* ── Lines ── */
+  --color-line: rgba(0, 0, 0, 0.08);
+  --color-line-dark: rgba(255, 255, 255, 0.12);
+
+  /* ── Radii: Apple-scale soft corners ── */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
 }
 
 @theme inline {
-  --font-display: var(--font-instrument-serif), "Iowan Old Style", Georgia, serif;
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 @layer base {
@@ -32,22 +45,26 @@
   }
 
   body {
-    background-color: var(--color-paper);
-    color: var(--color-ink);
+    background-color: var(--color-snow);
+    color: var(--color-text);
     font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.5;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background-color: var(--color-brass);
-    color: var(--color-ink);
+    background-color: var(--color-gold);
+    color: var(--color-black);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-brass);
+    outline: 2px solid var(--color-gold);
     outline-offset: 3px;
-    border-radius: var(--radius-xs);
+    border-radius: var(--radius-sm);
   }
 
   h1,
@@ -55,6 +72,9 @@
   h3,
   h4 {
     text-wrap: balance;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
   }
 
   p {
@@ -68,49 +88,17 @@
     display: none;
   }
 
-  /* Small uppercase label with wide tracking — eyebrows and meta */
+  /* Sentence-case eyebrow — gold or muted grey */
   .eyebrow {
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    font-weight: 600;
+    font-size: 0.8125rem;
+    font-weight: 500;
     line-height: 1.4;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
-  /* Display serif headlines */
-  .display {
-    font-family: var(--font-display);
-    font-weight: 400;
-    line-height: 1.04;
-    letter-spacing: -0.011em;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   .tabular {
     font-variant-numeric: tabular-nums;
-  }
-}
-
-/* Scroll reveal — progressive enhancement, CSS only.
-   Browsers without scroll-driven animations simply show content. */
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      animation: rise-in 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 22%;
-    }
   }
 }
 

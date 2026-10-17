@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { MapPin, Navigation, Car } from "lucide-react";
 import { routes } from "@/data/routes";
 import { services } from "@/data/services";
 import { vehicles } from "@/data/vehicles";
@@ -14,11 +15,13 @@ import {
 } from "@/lib/fare";
 import { buildWhatsAppUrl, fareMessage } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
+import { AnimatedNumber } from "@/components/motion/AnimatedNumber";
+import { SegmentedControl } from "@/components/ui/SegmentedControl";
 
 const inputClass =
-  "w-full rounded-sm border border-ink/25 bg-paper px-3.5 py-2.5 text-sm text-ink focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink/40";
+  "w-full rounded-xl border border-white/10 bg-graphite-2 px-4 py-3 text-sm text-text-dark transition-all focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20";
 const labelClass =
-  "mb-1.5 block text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-stone";
+  "mb-2 block text-xs font-semibold tracking-tight text-text-dark-muted";
 
 const localService = services.find((service) => (service.packages?.length ?? 0) > 0);
 const packages = localService?.packages ?? [];
@@ -48,13 +51,16 @@ function routeLabel(dest: string): string {
 export function FareCalculator({ className = "" }: { className?: string }) {
   const [pickup, setPickup] = useState(pickupPoints[0] ?? "Jodhpur");
   const [dest, setDest] = useState(routes[0]?.slug ?? "");
-  const [vehicleSlug, setVehicleSlug] = useState(defaultVehicleFor(routes[0]?.slug ?? ""));
+  const [vehicleSlug, setVehicleSlug] = useState(
+    defaultVehicleFor(routes[0]?.slug ?? ""),
+  );
   const [tripType, setTripType] = useState<TripType>("one-way");
   const [days, setDays] = useState(1);
 
   const isPackage = dest.startsWith("package:");
   const packageIndex = isPackage ? Number(dest.slice("package:".length)) : -1;
-  const vehicle = vehicles.find((item) => item.slug === vehicleSlug) ?? vehicles[0];
+  const vehicle =
+    vehicles.find((item) => item.slug === vehicleSlug) ?? vehicles[0];
   const allowedSlugs = useMemo(() => allowedVehicleSlugs(dest), [dest]);
 
   const estimate = useMemo((): FareResult | null => {
@@ -85,7 +91,10 @@ export function FareCalculator({ className = "" }: { className?: string }) {
     if (!allowed.includes(vehicleSlug)) {
       setVehicleSlug(defaultVehicleFor(value));
     }
-    trackEvent("calculator_use", { route: routeLabel(value), vehicle: vehicleSlug });
+    trackEvent("calculator_use", {
+      route: routeLabel(value),
+      vehicle: vehicleSlug,
+    });
   };
 
   const handleVehicleChange = (value: string) => {
@@ -95,17 +104,26 @@ export function FareCalculator({ className = "" }: { className?: string }) {
 
   const handleBook = () => {
     if (!estimate || !vehicle) return;
-    trackEvent("calculator_book_click", { route: routeLabel(dest), vehicle: vehicle.slug });
+    trackEvent("calculator_book_click", {
+      route: routeLabel(dest),
+      vehicle: vehicle.slug,
+    });
     const url = buildWhatsAppUrl(
       fareMessage({
         route: routeLabel(dest),
-        tripType: isPackage ? "Local package" : tripType === "one-way" ? "One-way" : "Round trip",
+        tripType: isPackage
+          ? "Local package"
+          : tripType === "one-way"
+          ? "One-way"
+          : "Round trip",
         vehicle: vehicle.name,
         total: estimate.total,
         billedKm: estimate.billedKm,
       }),
     );
-    const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
+    const isMobile = /android|iphone|ipad|ipod|mobile/i.test(
+      navigator.userAgent,
+    );
     if (isMobile) {
       window.location.href = url;
     } else {
@@ -114,52 +132,48 @@ export function FareCalculator({ className = "" }: { className?: string }) {
   };
 
   return (
-    <div className={`rounded-md border border-ink/20 bg-paper p-5 md:p-6 ${className}`}>
-      <div className="grid gap-4 sm:grid-cols-2">
+    <div
+      className={`relative overflow-hidden rounded-3xl border border-line-dark bg-graphite/95 p-6 sm:p-10 text-text-dark shadow-2xl backdrop-blur-2xl ${className}`}
+    >
+      {/* Background ambient gold glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl"
+      />
+
+      {/* Top Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <span className={labelClass} id="calc-trip-type-label">
-            Trip type
+          <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-1">
+            Fare Calculator
           </span>
-          <div
-            role="radiogroup"
-            aria-labelledby="calc-trip-type-label"
-            className="flex gap-2"
-          >
-            {(
-              [
-                { value: "one-way", label: "One-way" },
-                { value: "round-trip", label: "Round trip" },
-              ] as const
-            ).map((option) => {
-              const active = tripType === option.value;
-              return (
-                <label
-                  key={option.value}
-                  className={`flex-1 cursor-pointer rounded-sm border px-4 py-2.5 text-center text-sm font-medium transition-colors focus-within:ring-1 focus-within:ring-ink/40 ${
-                    active
-                      ? "border-ink bg-ink text-paper"
-                      : "border-ink/25 text-ink hover:border-ink"
-                  } ${isPackage ? "opacity-50" : ""}`}
-                >
-                  <input
-                    type="radio"
-                    name="calc-trip-type"
-                    value={option.value}
-                    checked={tripType === option.value}
-                    disabled={isPackage}
-                    onChange={() => setTripType(option.value)}
-                    className="sr-only"
-                  />
-                  {option.label}
-                </label>
-              );
-            })}
-          </div>
+          <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+            Estimate Your Travel Cost
+          </h3>
         </div>
 
         <div>
+          <SegmentedControl<TripType>
+            options={[
+              { value: "one-way", label: "One-Way" },
+              { value: "round-trip", label: "Round Trip" },
+            ]}
+            value={tripType}
+            onChange={(val) => !isPackage && setTripType(val)}
+            dark
+            size="sm"
+          />
+        </div>
+      </div>
+
+      {/* Selection Grid */}
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Pickup */}
+        <div>
           <label className={labelClass} htmlFor="calc-pickup">
-            Pickup point
+            <span className="flex items-center gap-1.5">
+              <MapPin className="h-3.5 w-3.5 text-gold" /> Pickup Point
+            </span>
           </label>
           <select
             id="calc-pickup"
@@ -175,9 +189,12 @@ export function FareCalculator({ className = "" }: { className?: string }) {
           </select>
         </div>
 
+        {/* Destination */}
         <div>
           <label className={labelClass} htmlFor="calc-dest">
-            Destination
+            <span className="flex items-center gap-1.5">
+              <Navigation className="h-3.5 w-3.5 text-gold" /> Destination
+            </span>
           </label>
           <select
             id="calc-dest"
@@ -185,7 +202,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
             value={dest}
             onChange={(event) => handleDestChange(event.target.value)}
           >
-            <optgroup label="Outstation routes">
+            <optgroup label="Outstation Intercity Routes">
               {routes.map((route) => (
                 <option key={route.slug} value={route.slug}>
                   {route.to} ({route.distanceKm} km)
@@ -193,7 +210,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
               ))}
             </optgroup>
             {packages.length ? (
-              <optgroup label="Local packages (Jodhpur)">
+              <optgroup label="Local Sightseeing Packages">
                 {packages.map((pkg, index) => (
                   <option key={pkg.label} value={`package:${index}`}>
                     {pkg.label}
@@ -204,9 +221,12 @@ export function FareCalculator({ className = "" }: { className?: string }) {
           </select>
         </div>
 
+        {/* Vehicle */}
         <div>
           <label className={labelClass} htmlFor="calc-vehicle">
-            Vehicle
+            <span className="flex items-center gap-1.5">
+              <Car className="h-3.5 w-3.5 text-gold" /> Vehicle Category
+            </span>
           </label>
           <select
             id="calc-vehicle"
@@ -224,10 +244,11 @@ export function FareCalculator({ className = "" }: { className?: string }) {
           </select>
         </div>
 
+        {/* Days count if round trip */}
         {!isPackage && tripType === "round-trip" ? (
           <div>
             <label className={labelClass} htmlFor="calc-days">
-              Number of days
+              Trip Duration (Days)
             </label>
             <input
               id="calc-days"
@@ -239,59 +260,83 @@ export function FareCalculator({ className = "" }: { className?: string }) {
               value={String(days)}
               onChange={(event) => {
                 const next = Number.parseInt(event.target.value, 10);
-                setDays(Number.isFinite(next) ? Math.min(30, Math.max(1, next)) : 1);
+                setDays(
+                  Number.isFinite(next) ? Math.min(30, Math.max(1, next)) : 1,
+                );
               }}
             />
           </div>
         ) : null}
       </div>
 
+      {/* Result Section */}
       <div
         aria-live="polite"
-        className="mt-6 border-line-strong border-t pt-6"
+        className="mt-8 border-t border-line-dark pt-8"
       >
         {estimate && vehicle ? (
-          <>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <span className={labelClass}>Estimated total fare</span>
-                <p className="display text-[clamp(2.1rem,5vw,3rem)] tabular">
-                  {formatRupees(estimate.total)}
-                </p>
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div>
+              <span className="text-xs uppercase tracking-wider text-text-dark-muted font-medium">
+                Estimated Total Fare
+              </span>
+              <div className="mt-1 flex items-baseline gap-2">
+                <span className="text-[clamp(2.5rem,5.5vw,3.75rem)] font-bold tracking-tight text-white leading-none">
+                  <AnimatedNumber value={estimate.total} prefix="₹" />
+                </span>
+                <span className="text-xs text-gold font-medium bg-gold/10 px-2.5 py-0.5 rounded-full border border-gold/20">
+                  Fixed Estimate
+                </span>
               </div>
-              <dl className="text-stone grid grid-cols-2 gap-x-8 gap-y-2 text-sm sm:grid-cols-3">
-                <div>
-                  <dt className="text-stone-light text-xs uppercase">Distance billed</dt>
-                  <dd className="tabular text-ink">{estimate.billedKm} km</dd>
-                </div>
-                <div>
-                  <dt className="text-stone-light text-xs uppercase">Per km</dt>
-                  <dd className="tabular text-ink">{formatRupees(vehicle.perKm)}</dd>
-                </div>
-                <div>
-                  <dt className="text-stone-light text-xs uppercase">Vehicle</dt>
-                  <dd className="text-ink">{vehicle.name}</dd>
-                </div>
-              </dl>
+              <p className="mt-3 text-xs md:text-sm text-text-dark-muted max-w-[50ch] leading-relaxed">
+                {estimate.breakdown}. Includes sanitized vehicle, verified chauffeur, and fuel.
+              </p>
             </div>
-            <p className="text-stone mt-4 max-w-[70ch] text-sm leading-relaxed">
-              {estimate.breakdown}.
-              {isPackage
-                ? ` The package covers ${packages[packageIndex]?.hours ?? ""} hours and ${packages[packageIndex]?.km ?? ""} km with the driver waiting at each stop.`
-                : ""}
-            </p>
-            <p className="text-stone-light mt-2 max-w-[70ch] text-xs leading-relaxed">
-              Includes car, driver and fuel for the planned kilometres. Tolls, state entry tax
-              and parking are extra, charged as per actual receipts. Final fare confirmed on
-              WhatsApp or call.
-            </p>
-            <Button variant="brass" className="mt-5" onClick={handleBook}>
-              Book this fare on WhatsApp
-            </Button>
-          </>
+
+            {/* Stat tiles */}
+            <div className="grid grid-cols-3 gap-3 self-stretch lg:self-auto">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center">
+                <span className="block text-[0.6875rem] uppercase text-text-dark-muted">
+                  Billed Distance
+                </span>
+                <span className="tabular mt-1 block text-base font-semibold text-white">
+                  {estimate.billedKm} km
+                </span>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center">
+                <span className="block text-[0.6875rem] uppercase text-text-dark-muted">
+                  Per Km Rate
+                </span>
+                <span className="tabular mt-1 block text-base font-semibold text-white">
+                  {formatRupees(vehicle.perKm)}
+                </span>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center">
+                <span className="block text-[0.6875rem] uppercase text-text-dark-muted">
+                  Vehicle
+                </span>
+                <span className="mt-1 block text-sm font-semibold text-gold truncate">
+                  {vehicle.name}
+                </span>
+              </div>
+            </div>
+
+            {/* Action Button */}
+            <div className="shrink-0">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={handleBook}
+                arrow
+                className="w-full sm:w-auto"
+              >
+                Book This Fare on WhatsApp
+              </Button>
+            </div>
+          </div>
         ) : (
-          <p className="text-stone text-sm">
-            Choose a destination and vehicle to see your estimate.
+          <p className="text-sm text-text-dark-muted">
+            Select a destination and vehicle to view instant fare calculation.
           </p>
         )}
       </div>
