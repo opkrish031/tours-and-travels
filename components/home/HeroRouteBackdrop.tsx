@@ -12,110 +12,105 @@ interface HeroRouteBackdropProps {
 export function HeroRouteBackdrop({ activeRoute = "all" }: HeroRouteBackdropProps) {
   const uid = useId();
 
-  // Highway corridors mapped from Jodhpur origin (cx: 640, cy: 380)
+  // Highway corridors radiating from Jodhpur Dispatch Hub (cx: 735, cy: 435)
+  // Perfectly positioned in the spatial gap between left content and right booking card
   const corridors = [
     {
       id: "jaisalmer",
       name: "JAISALMER",
-      distance: "285 KM · 4.5H",
-      highway: "NH-125 / NH-11",
-      path: "M 640 380 C 480 360, 340 310, 180 240",
-      destX: 180,
-      destY: 240,
-      midX: 390,
-      midY: 325,
-      midLabel: "Pokhran Halt",
+      distance: "285 KM · NH-125",
+      path: "M 735 435 C 520 510, 260 460, 65 390",
+      destX: 65,
+      destY: 390,
+      textAnchor: "start" as const,
+      textOffsetX: 16,
+      textOffsetY: 4,
     },
     {
       id: "osian",
-      name: "OSIAN DESERT",
-      distance: "65 KM · 1.2H",
-      highway: "NH-62",
-      path: "M 640 380 C 640 280, 630 200, 620 110",
-      destX: 620,
-      destY: 110,
-      midX: 632,
-      midY: 240,
-      midLabel: "Mathania",
+      name: "OSIAN DUNES",
+      distance: "65 KM · NH-62",
+      path: "M 735 435 C 770 300, 830 180, 880 75",
+      destX: 880,
+      destY: 75,
+      textAnchor: "middle" as const,
+      textOffsetX: 0,
+      textOffsetY: -14,
     },
     {
       id: "jaipur",
       name: "JAIPUR",
-      distance: "335 KM · 5.5H",
-      highway: "NH-25 / NH-48",
-      path: "M 640 380 C 820 350, 980 320, 1220 250",
-      destX: 1220,
-      destY: 250,
-      midX: 950,
-      midY: 320,
-      midLabel: "Ajmer / Pushkar",
+      distance: "335 KM · NH-25 / 48",
+      path: "M 735 435 C 920 350, 1120 260, 1360 190",
+      destX: 1360,
+      destY: 190,
+      textAnchor: "end" as const,
+      textOffsetX: -16,
+      textOffsetY: 4,
     },
     {
       id: "udaipur",
       name: "UDAIPUR",
-      distance: "255 KM · 5.0H",
-      highway: "NH-62 via Ranakpur",
-      path: "M 640 380 C 720 470, 780 540, 870 650",
-      destX: 870,
-      destY: 650,
-      midX: 745,
-      midY: 510,
-      midLabel: "Ranakpur Temple",
+      distance: "255 KM · NH-62",
+      path: "M 735 435 C 870 510, 1040 600, 1220 700",
+      destX: 1220,
+      destY: 700,
+      textAnchor: "end" as const,
+      textOffsetX: -16,
+      textOffsetY: 4,
     },
     {
       id: "mount-abu",
       name: "MOUNT ABU",
-      distance: "265 KM · 4.5H",
-      highway: "NH-62 / NH-27",
-      path: "M 640 380 C 580 500, 500 580, 420 670",
-      destX: 420,
-      destY: 670,
-      midX: 520,
-      midY: 560,
-      midLabel: "Sirohi Ghats",
+      distance: "265 KM · NH-27",
+      path: "M 735 435 C 600 540, 480 630, 370 710",
+      destX: 370,
+      destY: 710,
+      textAnchor: "middle" as const,
+      textOffsetX: 0,
+      textOffsetY: 20,
     },
     {
       id: "nakodaji",
       name: "NAKODA JI",
-      distance: "115 KM · 2.2H",
-      highway: "SH-65",
-      path: "M 640 380 C 500 420, 390 460, 270 490",
-      destX: 270,
-      destY: 490,
-      midX: 420,
-      midY: 435,
-      midLabel: "Balotra",
+      distance: "115 KM · SH-65",
+      path: "M 735 435 C 500 510, 280 550, 85 580",
+      destX: 85,
+      destY: 580,
+      textAnchor: "start" as const,
+      textOffsetX: 16,
+      textOffsetY: 4,
     },
   ];
 
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none"
     >
       <svg
         viewBox="0 0 1440 760"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-full w-full object-cover opacity-35 sm:opacity-45 md:opacity-55"
+        className="h-full w-full object-cover"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
-          {/* Radial gold gradient centered at Jodhpur hub */}
+          {/* Radial gold underglow centered at Jodhpur hub */}
           <radialGradient
             id={`${uid}-hub-light`}
-            cx="640"
-            cy="380"
-            r="600"
+            cx="735"
+            cy="435"
+            r="650"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0%" stopColor="#C8962E" stopOpacity="0.22" />
-            <stop offset="35%" stopColor="#EA761F" stopOpacity="0.08" />
-            <stop offset="75%" stopColor="#0B172A" stopOpacity="0.02" />
+            <stop offset="0%" stopColor="#C8962E" stopOpacity="0.28" />
+            <stop offset="35%" stopColor="#EA761F" stopOpacity="0.09" />
+            <stop offset="70%" stopColor="#0B172A" stopOpacity="0.02" />
             <stop offset="100%" stopColor="#0B172A" stopOpacity="0" />
           </radialGradient>
 
-          {/* Topographic glow filter */}
+          {/* Golden Highway Glow Filter */}
           <filter id={`${uid}-glow`} x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="3.5" result="blur" />
             <feMerge>
@@ -124,50 +119,72 @@ export function HeroRouteBackdrop({ activeRoute = "all" }: HeroRouteBackdropProp
             </feMerge>
           </filter>
 
-          {/* High-precision latitude/longitude grid */}
+          {/* Coordinate Cartography Grid */}
           <pattern
             id={`${uid}-geo-grid`}
-            width="80"
-            height="80"
+            width="90"
+            height="90"
             patternUnits="userSpaceOnUse"
           >
             <path
-              d="M 80 0 L 0 0 0 80"
+              d="M 90 0 L 0 0 0 90"
               fill="none"
               stroke="#C8962E"
               strokeWidth="0.5"
-              strokeOpacity="0.08"
+              strokeOpacity="0.06"
             />
-            <circle cx="80" cy="80" r="0.75" fill="#E5B84B" fillOpacity="0.2" />
+            {/* Fine coordinate crosshair */}
+            <path
+              d="M 45 40 L 45 50 M 40 45 L 50 45"
+              stroke="#E5B84B"
+              strokeWidth="0.6"
+              strokeOpacity="0.12"
+            />
           </pattern>
         </defs>
 
-        {/* Ambient Gradient & Grid Fill */}
+        {/* Ambient Grid and Radial Glow */}
         <rect width="1440" height="760" fill={`url(#${uid}-hub-light)`} />
         <rect width="1440" height="760" fill={`url(#${uid}-geo-grid)`} />
 
-        {/* Topographic Contour Rings radiating from Jodhpur */}
-        <g stroke="#C8962E" strokeOpacity="0.07" strokeWidth="1" fill="none">
-          <ellipse cx="640" cy="380" rx="160" ry="100" />
-          <ellipse cx="640" cy="380" rx="320" ry="200" strokeDasharray="3 3" />
-          <ellipse cx="640" cy="380" rx="520" ry="320" strokeDasharray="6 6" />
-          <ellipse cx="640" cy="380" rx="720" ry="440" strokeOpacity="0.04" />
+        {/* Topographic Elevation Curves (Simulating Thar dunes and Aravalli ranges) */}
+        <g stroke="#C8962E" strokeOpacity="0.06" strokeWidth="1" fill="none">
+          <ellipse cx="735" cy="435" rx="150" ry="95" />
+          <ellipse cx="735" cy="435" rx="290" ry="185" strokeDasharray="3 4" />
+          <ellipse cx="735" cy="435" rx="470" ry="300" strokeDasharray="6 8" />
+          <ellipse cx="735" cy="435" rx="700" ry="430" strokeOpacity="0.04" />
         </g>
 
-        {/* Elevation Lines simulating Thar desert terrain & Aravalli ridges */}
-        <g stroke="#E5B84B" strokeOpacity="0.06" strokeWidth="0.8" fill="none">
-          <path d="M 60 140 Q 300 80 580 120 T 1100 90 T 1400 130" />
-          <path d="M 40 280 Q 260 250 540 270 T 1050 240 T 1420 270" strokeDasharray="4 6" />
-          <path d="M 80 560 Q 380 590 680 540 T 1180 580 T 1420 540" />
-          <path d="M 120 700 Q 420 730 760 690 T 1250 720" strokeDasharray="2 4" />
+        {/* Terrain Contours */}
+        <g stroke="#E5B84B" strokeOpacity="0.05" strokeWidth="0.75" fill="none">
+          <path d="M 40 120 Q 340 70 640 110 T 1150 80 T 1400 120" />
+          <path d="M 20 220 Q 300 190 600 210 T 1100 180 T 1420 210" strokeDasharray="4 6" />
+          <path d="M 60 620 Q 360 650 660 600 T 1140 640 T 1420 600" />
         </g>
 
-        {/* Technical Coordinate Telemetry */}
-        <text x="60" y="55" fill="#A3B3CA" opacity="0.45" fontSize="11" fontFamily="monospace">
-          26°17&apos;12&quot;N · 73°01&apos;45&quot;E [MARWAR HIGHWAY SECTOR]
+        {/* Technical Perimeter Coordinates (Automotive Instrument Style) */}
+        <text
+          x="48"
+          y="42"
+          fill="#94A3B8"
+          opacity="0.5"
+          fontSize="10"
+          fontFamily="ui-monospace, monospace"
+          letterSpacing="1"
+        >
+          MARWAR CORRIDOR TELEMETRY · 26°17&apos;12&quot;N 73°01&apos;45&quot;E
         </text>
-        <text x="1180" y="55" fill="#E5B84B" opacity="0.6" fontSize="11" fontFamily="monospace">
-          DISPATCH RADIUS: 350+ KM
+        <text
+          x="1392"
+          y="42"
+          textAnchor="end"
+          fill="#E5B84B"
+          opacity="0.55"
+          fontSize="10"
+          fontFamily="ui-monospace, monospace"
+          letterSpacing="1"
+        >
+          DISPATCH RADIUS: 350+ KM · 24×7 DISPATCH
         </text>
 
         {/* Illustrated Highway Corridors */}
@@ -181,91 +198,93 @@ export function HeroRouteBackdrop({ activeRoute = "all" }: HeroRouteBackdropProp
               <path
                 d={c.path}
                 stroke={isFocal ? "#E5B84B" : isSelected ? "#C8962E" : "#475569"}
-                strokeOpacity={isFocal ? "0.9" : isSelected ? "0.35" : "0.15"}
-                strokeWidth={isFocal ? "3" : "1.75"}
-                strokeDasharray={isFocal ? "none" : "6 4"}
+                strokeOpacity={isFocal ? "0.95" : isSelected ? "0.3" : "0.12"}
+                strokeWidth={isFocal ? "2.5" : "1.25"}
+                strokeDasharray={isFocal ? "none" : "5 5"}
                 fill="none"
                 filter={isFocal ? `url(#${uid}-glow)` : undefined}
                 className="transition-all duration-300"
               />
 
-              {/* Animated Light Pulses on Active / Highlighted Corridor */}
+              {/* Dynamic Light Pulse Trailing Along the Route */}
               {(isFocal || activeRoute === "all") && (
                 <m.path
                   d={c.path}
                   stroke={isFocal ? "#FFFFFF" : "#E5B84B"}
-                  strokeWidth={isFocal ? "2.5" : "1.5"}
-                  strokeDasharray="14 120"
-                  animate={{ strokeDashoffset: [-134, 0] }}
+                  strokeWidth={isFocal ? "2.5" : "1.25"}
+                  strokeDasharray="16 110"
+                  animate={{ strokeDashoffset: [-126, 0] }}
                   transition={{
                     repeat: Infinity,
-                    duration: isFocal ? 1.8 : 3.5,
+                    duration: isFocal ? 1.6 : 3.8,
                     ease: "linear",
                   }}
                   fill="none"
-                  strokeOpacity={isFocal ? "1" : "0.55"}
+                  strokeOpacity={isFocal ? "1" : "0.45"}
                 />
               )}
-
-              {/* Highway Route Number Label along curve */}
-              <text
-                x={c.midX}
-                y={c.midY - 10}
-                textAnchor="middle"
-                fill={isFocal ? "#FFFFFF" : "#E5B84B"}
-                opacity={isFocal ? "0.9" : "0.4"}
-                fontSize="9.5"
-                fontFamily="monospace"
-                fontWeight="600"
-                letterSpacing="0.5"
-              >
-                {c.highway}
-              </text>
-
-              {/* Waypoint Halt Node */}
-              <circle
-                cx={c.midX}
-                cy={c.midY}
-                r={isFocal ? 3.5 : 2}
-                fill={isFocal ? "#E5B84B" : "#A3B3CA"}
-                opacity={isFocal ? "0.95" : "0.4"}
-              />
 
               {/* Destination Beacon Node */}
               <circle
                 cx={c.destX}
                 cy={c.destY}
-                r={isFocal ? 6 : 4}
-                fill={isFocal ? "#E5B84B" : "#CBD5E1"}
+                r={isFocal ? 5.5 : 3.5}
+                fill={isFocal ? "#E5B84B" : "#94A3B8"}
                 stroke="#0B172A"
                 strokeWidth="2"
                 opacity={isFocal ? "1" : "0.75"}
               />
 
-              {/* Destination Text Pill */}
-              <g transform={`translate(${c.destX}, ${c.destY})`}>
+              {/* Subtle Pulsing Halo around Destination if Active */}
+              {isFocal && (
+                <circle
+                  cx={c.destX}
+                  cy={c.destY}
+                  r="12"
+                  fill="none"
+                  stroke="#E5B84B"
+                  strokeWidth="1.2"
+                  opacity="0.6"
+                >
+                  <animate
+                    attributeName="r"
+                    values="5;14;5"
+                    dur="2.4s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.8;0.1;0.8"
+                    dur="2.4s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              )}
+
+              {/* Destination Monospace Coordinate Label */}
+              <g transform={`translate(${c.destX + c.textOffsetX}, ${c.destY + c.textOffsetY})`}>
                 <text
-                  x={c.destX > 640 ? 12 : -12}
-                  y="-8"
-                  textAnchor={c.destX > 640 ? "start" : "end"}
-                  fill={isFocal ? "#FFFFFF" : "#E2E8F0"}
-                  fontSize="11.5"
-                  fontWeight="800"
-                  fontFamily="sans-serif"
-                  letterSpacing="0.5"
-                  opacity={isFocal ? "1" : "0.85"}
+                  x="0"
+                  y="0"
+                  textAnchor={c.textAnchor}
+                  fill={isFocal ? "#FFFFFF" : "#CBD5E1"}
+                  fontSize={isFocal ? "11.5" : "10"}
+                  fontWeight={isFocal ? "800" : "600"}
+                  fontFamily="ui-monospace, monospace"
+                  letterSpacing="0.8"
+                  opacity={isFocal ? "1" : "0.75"}
                 >
                   {c.name}
                 </text>
                 <text
-                  x={c.destX > 640 ? 12 : -12}
-                  y="6"
-                  textAnchor={c.destX > 640 ? "start" : "end"}
-                  fill={isFocal ? "#E5B84B" : "#94A3B8"}
-                  fontSize="9"
+                  x="0"
+                  y="12"
+                  textAnchor={c.textAnchor}
+                  fill={isFocal ? "#E5B84B" : "#64748B"}
+                  fontSize="8.5"
                   fontWeight="600"
-                  fontFamily="monospace"
-                  opacity={isFocal ? "1" : "0.6"}
+                  fontFamily="ui-monospace, monospace"
+                  opacity={isFocal ? "1" : "0.55"}
                 >
                   {c.distance}
                 </text>
@@ -276,69 +295,47 @@ export function HeroRouteBackdrop({ activeRoute = "all" }: HeroRouteBackdropProp
 
         {/* Central Origin Hub: JODHPUR */}
         <g>
-          {/* Subtle Radar Ring */}
-          <circle cx="640" cy="380" r="32" fill="#C8962E" opacity="0.12">
+          {/* Subtle Radar Ring Radiating from Hub */}
+          <circle cx="735" cy="435" r="28" fill="#C8962E" opacity="0.12">
             <animate
               attributeName="r"
-              values="20;46;20"
+              values="16;42;16"
               dur="4s"
               repeatCount="indefinite"
             />
             <animate
               attributeName="opacity"
-              values="0.25;0.03;0.25"
+              values="0.25;0.02;0.25"
               dur="4s"
               repeatCount="indefinite"
             />
           </circle>
 
-          {/* Central Origin Pin */}
+          {/* Central Hub Core Pin */}
           <circle
-            cx="640"
-            cy="380"
-            r="10"
+            cx="735"
+            cy="435"
+            r="7"
             fill="#C8962E"
             stroke="#FFFFFF"
-            strokeWidth="2.5"
+            strokeWidth="2"
             filter={`url(#${uid}-glow)`}
           />
-          <circle cx="640" cy="380" r="3.5" fill="#0B172A" />
+          <circle cx="735" cy="435" r="2.5" fill="#0B172A" />
 
-          {/* Origin Hub Callout Tag */}
-          <rect
-            x="565"
-            y="404"
-            width="150"
-            height="32"
-            rx="16"
-            fill="#0B172A"
-            stroke="#E5B84B"
-            strokeWidth="1.25"
-            strokeOpacity="0.8"
-          />
+          {/* Sleek Hub Coordinate Badge */}
           <text
-            x="640"
-            y="420"
-            textAnchor="middle"
-            fill="#FFFFFF"
-            fontSize="11"
-            fontWeight="800"
-            letterSpacing="0.8"
-            fontFamily="sans-serif"
-          >
-            📍 JODHPUR BASE
-          </text>
-          <text
-            x="640"
-            y="431"
+            x="735"
+            y="457"
             textAnchor="middle"
             fill="#E5B84B"
-            fontSize="7.5"
-            fontWeight="600"
-            letterSpacing="0.5"
-            fontFamily="monospace"
+            fontSize="8"
+            fontWeight="700"
+            fontFamily="ui-monospace, monospace"
+            letterSpacing="0.8"
+            opacity="0.8"
           >
-            AIRPORT & JUNCTION DISPATCH
+            JODHPUR DISPATCH BASE
           </text>
         </g>
       </svg>
