@@ -26,7 +26,7 @@ const sections = [
     heading: "How Information is Used",
     body: [
       "Your details are used exclusively to prepare a fare estimate, assign a car and driver, and coordinate your booking. We never sell, rent, or share personal data with external advertising parties.",
-      "Trip details are shared directly with your assigned chauffeur — name, pickup point, and contact number — to ensure seamless pickup execution.",
+      "Trip details are shared directly with your assigned chauffeur — name, pickup point, and contact number — to ensure punctual pickup execution.",
     ],
   },
   {

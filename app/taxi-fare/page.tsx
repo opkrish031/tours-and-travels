@@ -99,10 +99,10 @@ export default function TaxiFarePage() {
         <SectionHeader
           eyebrow="Fleet Spec Sheet"
           title="Vehicle Categories &amp; Per-Kilometre Rates"
-          description="Fixed pricing across four verified vehicle classes. Clean air-conditioned cars with commercial transport permits."
+          description="Fixed pricing across verified vehicle classes. Clean air-conditioned cars with commercial transport permits."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-10">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
           {vehicles.map((vehicle) => (
             <div
               key={vehicle.slug}

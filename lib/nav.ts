@@ -27,10 +27,34 @@ export const routeLinks: NavLink[] = routes.map((route) => ({
   href: `/${route.slug}`,
 }));
 
+export const conciseServiceLinks: NavLink[] = [
+  { label: "Jodhpur Local Sightseeing", href: "/local-taxi-jodhpur" },
+  { label: "Airport & Junction Pickup", href: "/airport-taxi-jodhpur" },
+  { label: "Outstation Cabs (One-Way & Return)", href: "/outstation-taxi-jodhpur" },
+  { label: "Bishnoi Village Safari", href: "/bishnoi-village-safari-jodhpur" },
+  { label: "Wedding & Luxury Car Rental", href: "/wedding-car-rental-jodhpur" },
+];
+
+export const conciseRouteLinks: NavLink[] = [
+  { label: "Jodhpur to Jaisalmer (Dunes)", href: "/jodhpur-to-jaisalmer-taxi" },
+  { label: "Jodhpur to Udaipur (Ranakpur)", href: "/jodhpur-to-udaipur-taxi" },
+  { label: "Jodhpur to Osian Desert Camp", href: "/jodhpur-to-osian-taxi" },
+  { label: "Jodhpur to Jaipur (Expressway)", href: "/jodhpur-to-jaipur-taxi" },
+  { label: "Jodhpur to Mount Abu (Hills)", href: "/jodhpur-to-mount-abu-taxi" },
+];
+
+export const conciseVehicleLinks: NavLink[] = [
+  { label: "AC Sedan (Dzire / Etios) · ₹10/km", href: "/sedan-taxi-jodhpur" },
+  { label: "Maruti Ertiga (Family MUV) · ₹13/km", href: "/suv-taxi-jodhpur" },
+  { label: "Toyota Innova Crysta · ₹17/km", href: "/innova-crysta-jodhpur" },
+  { label: "Tempo Traveller (12–26 Seater) · ₹24/km", href: "/tempo-traveller-jodhpur" },
+  { label: "All Taxi Rates & Calculator ➔", href: "/taxi-fare" },
+];
+
 export const navGroups: NavGroup[] = [
-  { label: "Services", items: serviceLinks },
-  { label: "Fleet", items: vehicleLinks },
-  { label: "Routes", items: routeLinks },
+  { label: "Services", items: conciseServiceLinks },
+  { label: "Routes", items: conciseRouteLinks },
+  { label: "Fleet", items: conciseVehicleLinks },
 ];
 
 export const footerNav: NavGroup[] = [

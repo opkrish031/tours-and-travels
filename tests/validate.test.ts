@@ -131,10 +131,9 @@ describe("validateData", () => {
     expect(messages(real)).toEqual([]);
   });
 
-  it("fails on the real dataset in strict mode while DUMMY data remains", () => {
+  it("passes on the real dataset in strict mode with production client data", () => {
     const strictErrors = messages(real, true);
-    expect(strictErrors.length).toBeGreaterThan(0);
-    expect(strictErrors.join("\n")).toMatch(/DUMMY|dummy/i);
+    expect(strictErrors).toEqual([]);
   });
 
   it("accepts a fully clean dataset in strict mode", () => {
@@ -189,8 +188,12 @@ describe("validateData", () => {
   });
 
   it("reports DUMMY markers as warnings in dev and errors in strict", () => {
-    const dev = validateData(seeded());
-    const strict = validateData(seeded(), { strict: true });
+    const dummyBundle = {
+      ...seeded(),
+      site: { ...site, address: { ...site.address, street: "Dummy Street" } },
+    };
+    const dev = validateData(dummyBundle);
+    const strict = validateData(dummyBundle, { strict: true });
     expect(dev.some((i) => i.level === "warning" && /DUMMY/i.test(i.message))).toBe(true);
     expect(strict.some((i) => i.level === "error" && /DUMMY/i.test(i.message))).toBe(true);
   });

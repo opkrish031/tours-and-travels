@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { ChevronDown, X } from "lucide-react";
 import { m, AnimatePresence } from "motion/react";
@@ -104,14 +105,25 @@ export function MobileNav({
               <Link
                 href="/"
                 onClick={onClose}
-                className="flex items-center gap-2 select-none"
+                className="flex items-center gap-2.5 select-none"
               >
-                <span className="text-xl font-semibold tracking-tight text-text">
-                  {site.brandName}
-                </span>
-                <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[0.6875rem] font-medium text-gold-deep border border-gold/30">
-                  Jodhpur
-                </span>
+                <div className="relative h-9 w-9 rounded-full overflow-hidden border-2 border-gold shadow-xs bg-white shrink-0 ring-1 ring-gold/40">
+                  <Image
+                    src="/logo.png"
+                    alt="Marwad Cabs Logo"
+                    width={36}
+                    height={36}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-serif text-base font-bold tracking-tight text-text leading-tight">
+                    MARWAD CABS
+                  </span>
+                  <span className="text-[0.5625rem] font-semibold tracking-wider text-gold-deep uppercase">
+                    Tour and Travels • Jodhpur
+                  </span>
+                </div>
               </Link>
               <button
                 ref={closeRef}

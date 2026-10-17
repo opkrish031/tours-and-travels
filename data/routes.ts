@@ -1,4 +1,3 @@
-// DUMMY DATA: replace with client data before launch
 export type Route = {
   slug: string;
   from: string;
@@ -19,78 +18,45 @@ export type Route = {
 
 export const routes: Route[] = [
   {
-    slug: "jodhpur-to-jaipur-taxi",
-    from: "Jodhpur",
-    to: "Jaipur",
-    distanceKm: 340,
-    durationHours: 5.5,
-    tagline: "The Pink City",
-    startingFare: 3740,
-    highlights: ["Amber Fort", "City Palace", "Hawa Mahal", "Nahargarh"],
-    intro:
-      "Jaipur is a long but easy day's drive from Jodhpur. The highway runs northeast across open country, and our drivers know where to stop for chai and a stretch. You reach the Pink City in one comfortable stretch, whether your plan is the Amber Fort, a wedding, or a flight from Jaipur airport.",
-    body: [
-      "The Jodhpur to Jaipur road runs northeast through Nagaur and Kuchaman, mostly smooth highway with long straight sections. Mornings are the calmest time to leave; an early start puts you in Jaipur before the evening rush. Between the towns the land is dry and open, with dhabas for chai every few kilometres. In the monsoon the fields turn green and the air clears. We take one short break on the way so the drive never feels long, and we keep the car quiet for the whole stretch.",
-      "Jaipur rewards an unhurried arrival. Share your hotel name before you start; the lanes around Hawa Mahal and Johari Bazaar are narrow and busy by afternoon, and the driver will drop you at the gate rather than drive in circles. Amber Fort opens early, so reaching the city by mid-morning suits a first visit. Nahargarh holds the best late-afternoon light over the old pink blocks. On the drive back, break once for tea from a highway kitchen, then settle in for the last stretch home.",
-    ],
-    image: "/images/routes/jodhpur-to-jaipur-taxi.jpg",
-    imageAlt: "Taxi on the highway approaching Jaipur with the old city in view",
-    relatedRoutes: ["jodhpur-to-pushkar-taxi", "jodhpur-to-ajmer-taxi"],
-    seo: {
-      title: "Jodhpur to Jaipur Taxi | Marwar Cabs",
-      description:
-        "Book a Jodhpur to Jaipur taxi with Marwar Cabs. Clean cars, trained drivers, fares from Rs 3,740. Share your dates on WhatsApp for a clear estimate.",
-    },
-    faqs: [
-      {
-        q: "When should I book the Jodhpur to Jaipur taxi?",
-        a: "Fix your date and share it a few days ahead. Weekends and the wedding season run busy, so an earlier message gives you more choice of car and pickup time.",
-      },
-      {
-        q: "What does the starting fare cover?",
-        a: "It covers the car and driver for the run to Jaipur. Tolls and state entry tax are charged as per actual receipts. Share your pickup area and stops and we send a full estimate.",
-      },
-      {
-        q: "Can Jaipur work as a same-day return?",
-        a: "It can, if you leave early and keep one clear plan for the day. For Amber Fort plus the old city, an overnight stay is the more comfortable choice.",
-      },
-    ],
-  },
-  {
     slug: "jodhpur-to-jaisalmer-taxi",
     from: "Jodhpur",
     to: "Jaisalmer",
     distanceKm: 285,
-    durationHours: 4.5,
-    tagline: "The Golden City",
-    startingFare: 3140,
-    highlights: ["Jaisalmer Fort", "Patwon Ki Haveli", "Sam Sand Dunes", "Gadisar Lake"],
+    durationHours: 4.75,
+    tagline: "Golden City & Sam Sand Dunes",
+    startingFare: 4200,
+    highlights: [
+      "Jaisalmer Golden Fort & Patwon Ki Haveli",
+      "Sam / Khuri Sand Dunes (Desert Camps)",
+      "Optional halt at Pokhran Fort & Ramdevra",
+      "Gadisar Lake & Desert National Park",
+    ],
     intro:
-      "Jaisalmer rises from the Thar like a sandstone mirage, and the drive out gets quieter with every kilometre. Our cars run the desert road in one stretch, with stops where the tea is good. Arrive in time for sunset on the fort ramparts, or leave early and reach the dunes before the light softens.",
+      "Jaisalmer is a 285-km desert drive west from Jodhpur on the smooth NH-125 and NH-11 tarmac passing Agolai, Balesar, Dechu, and Pokhran. Marwad Cabs provides clean AC sedans, Ertigas, and Innova Crystas with drivers who know where to take clean washroom breaks and which dhabas serve fresh hot rotis.",
     body: [
-      "The road to Jaisalmer is a straight desert two-lane with wide shoulders and very little traffic after Pokhran. Start by mid-morning and you reach the city with hours of daylight left for the fort and the bazaar. Roadside dhabas serve simple meals between Jodhpur and Pokhran. Winters are the pleasant season for this drive; in summer the road bakes by noon, so we travel early or after four. Carry water even in December, and the golden fort appears long before you arrive.",
-      "Spend the first evening on the fort walls or at Gadisar Lake, when the sandstone turns amber. Patwon Ki Haveli is best early, before tour groups fill the lane. For Sam Sand Dunes, plan the drive out at dusk and carry a scarf for the wind. Tell us your hotel in the old city; the lanes inside the fort are too tight for a car, so the driver drops you at the nearest gate. Book two nights if you can, since one night leaves the museum unseen.",
+      "The highway leaves the rocky outskirts of Jodhpur and opens into wide desert terrain. We offer an optional 30-minute sightseeing halt at Pokhran Fort or the revered Baba Ramdevra Temple (Runicha Dham), located just 12 km off the main highway corridor. You travel without rush, and the driver stays on the main asphalt without taking rough shortcuts.",
+      "Tell us in advance whether your booking is for a city hotel inside Jaisalmer or directly to the desert camps at Sam Sand Dunes or Khuri. Sam is located 42 km further west of Jaisalmer city, and we calculate the exact kilometre rate upfront so there is zero confusion or argument at drop-off time.",
     ],
     image: "/images/routes/jodhpur-to-jaisalmer-taxi.jpg",
-    imageAlt: "Taxi on the desert road leading into Jaisalmer near the fort",
+    imageAlt: "Marwad Cabs taxi on the NH-11 desert highway to Jaisalmer",
     relatedRoutes: ["jodhpur-to-osian-taxi", "jodhpur-to-bikaner-taxi"],
     seo: {
-      title: "Jodhpur to Jaisalmer Taxi | Marwar Cabs",
+      title: "Jodhpur to Jaisalmer Taxi | Marwad Cabs",
       description:
-        "Book a Jodhpur to Jaisalmer taxi with Marwar Cabs for the desert run. Comfortable cars, fares from Rs 3,140. Send your dates on WhatsApp for an estimate.",
+        "Book a direct Jodhpur to Jaisalmer cab with Marwad Cabs. Clean AC Dzire, Ertiga & Crysta. One-way from Rs 4,200, round-trip Rs 10/km. Free halt at Pokhran Fort.",
     },
     faqs: [
       {
-        q: "How far ahead should I book the Jaisalmer taxi?",
-        a: "Send your dates once they are fixed. Winter weekends fill first, and an early message lets us hold the car class you want before the fleet is committed elsewhere.",
+        q: "What is the driving time from Jodhpur to Jaisalmer?",
+        a: "The 285 km highway drive takes roughly 4.5 to 5 hours on NH-125 and NH-11. If you add halts at Pokhran Fort or Ramdevra Temple, add 45 to 60 minutes.",
       },
       {
-        q: "Is the listed fare a fixed price for the trip?",
-        a: "It is the starting point for the route. The estimate depends on your pickup point, halts, and car class. Tolls and state entry tax are charged as per actual receipts.",
+        q: "Do you drop passengers directly at Sam Sand Dunes desert camps?",
+        a: "Yes. Sam Dunes is 42 km west of Jaisalmer city. Inform us while booking whether your drop is in the city or the desert dunes so we quote the correct distance.",
       },
       {
-        q: "Can we break the drive at Osian?",
-        a: "Yes, Osian sits on the way and makes a natural halt for the old temples and a meal. Tell us the stop when you book and we plan the timing around it.",
+        q: "What are the toll and driver charges for this route?",
+        a: "Tolls on the Jodhpur–Jaisalmer stretch run through FASTag at actual government receipt value. Driver bhatta is ₹300/day for round trips, with no hidden night fees.",
       },
     ],
   },
@@ -98,227 +64,42 @@ export const routes: Route[] = [
     slug: "jodhpur-to-udaipur-taxi",
     from: "Jodhpur",
     to: "Udaipur",
-    distanceKm: 260,
-    durationHours: 5,
-    tagline: "The City of Lakes",
-    startingFare: 2860,
-    highlights: ["City Palace", "Lake Pichola", "Saheliyon Ki Bari", "Sajjangarh"],
+    distanceKm: 255,
+    durationHours: 5.5,
+    tagline: "City of Lakes via Ranakpur & Kumbhalgarh",
+    startingFare: 4000,
+    highlights: [
+      "Ranakpur 1444-Pillar Marble Jain Temple",
+      "Kumbhalgarh Fort & UNESCO Great Wall",
+      "Bullet Baba Dham (Om Banna) on NH-62",
+      "Lake Pichola & City Palace drop-off",
+    ],
     intro:
-      "Udaipur sits five hours south of Jodhpur, and the road climbs into the Aravallis before dropping down to the lakes. It is one of the prettiest drives in Rajasthan. Our cars make the run with a halt at Desuri for tea, so you reach the city by evening and walk to Lake Pichola while the light lasts.",
+      "Travelling from Jodhpur to Udaipur is one of Rajasthan's most popular road journeys. More than 90% of our travelers choose the scenic route via Pali, stopping at Bullet Baba Temple (Om Banna Dham), the intricately carved Ranakpur Jain Temple, and the UNESCO hill fortress of Kumbhalgarh before reaching the City of Lakes.",
     body: [
-      "The route leaves Jodhpur on a broad highway, then narrows as it enters the hills near Desuri. The tarmac is good throughout, with long curves through scrub and stone. Leaving after breakfast puts you in Udaipur around lunch, which leaves the afternoon for the City Palace, and lunch stops are easy to find near Desuri. October to March suits this drive best; the monsoon makes the Aravallis green but adds mist on the ghat sections. We keep a slow pace on the climbs and stop wherever you ask.",
-      "Udaipur is best seen on foot once you arrive. The old city lanes around the ghats are narrow, so we drop you at your hotel rather than drive through them. Keep the first evening for Lake Pichola and the Gangaur Ghat steps. Saheliyon Ki Bari is calm in the morning, and Sajjangarh holds the sunset if the sky is clear. If you plan a day trip to Kumbhalgarh or Ranakpur, tell us before you arrive and we keep the same car.",
+      "Ranakpur Jain Temple opens for non-Jain tourists at 12:00 PM and closes at 5:00 PM. We recommend a 8:30 AM or 9:00 AM departure from Jodhpur so you reach Ranakpur right as tourist entry begins. You can spend 90 unhurried minutes admiring the 1,444 uniquely hand-carved marble pillars while your driver waits in the designated shade parking lot.",
+      "The drive between Ranakpur, Kumbhalgarh, and Udaipur crosses the winding Aravalli ghat passes. Our drivers are permanent local chauffeurs trained in mountain hairpins who never turn off the AC on steep uphill climbs. In Udaipur, we drop you directly at your lakeside hotel or arrange luggage transfer if staying in the old Bhatiyani Chohatta alleys.",
     ],
     image: "/images/routes/jodhpur-to-udaipur-taxi.jpg",
-    imageAlt: "Taxi arriving in Udaipur near Lake Pichola at dusk",
+    imageAlt: "Marwad Cabs Innova Crysta travelling through the Aravalli hills toward Udaipur",
     relatedRoutes: ["jodhpur-to-ranakpur-taxi", "jodhpur-to-mount-abu-taxi"],
     seo: {
-      title: "Jodhpur to Udaipur Taxi | Marwar Cabs",
+      title: "Jodhpur to Udaipur Taxi | Marwad Cabs",
       description:
-        "Book a Jodhpur to Udaipur taxi with Marwar Cabs across the Aravalli hills. Fares from Rs 2,860. Share your pickup point on WhatsApp for an estimate.",
+        "Jodhpur to Udaipur taxi via Ranakpur Jain Temple & Kumbhalgarh Fort. Fares from Rs 4,000. Experienced drivers for Aravalli ghats. WhatsApp booking.",
     },
     faqs: [
       {
-        q: "When should I reserve the Udaipur car?",
-        a: "Book as soon as your dates are fixed, especially for October to March. The hill section is driven in daylight whenever possible, so tell us your preferred start time.",
+        q: "Can we cover both Ranakpur and Kumbhalgarh in one day before reaching Udaipur?",
+        a: "Yes. An 8:30 AM departure from Jodhpur allows visiting Ranakpur by 12:15 PM, driving 1.5 hours to Kumbhalgarh Fort by 3:00 PM, and reaching your Udaipur hotel by 7:30 PM.",
       },
       {
-        q: "What is included in the starting fare?",
-        a: "The car and driver for the run to Udaipur. Tolls and state entry tax are charged as per actual receipts. Add your hotel drop and any stops and we send one estimate.",
+        q: "What is the fare difference between direct and via Ranakpur?",
+        a: "The direct NH-62 / NH-58 route is 255 km (starting ₹4,000 for a sedan). The sightseeing route via Ranakpur and Kumbhalgarh adds about 70 km and is billed at ₹4,800 to ₹5,200 for a sedan.",
       },
       {
-        q: "Is this route comfortable for elders?",
-        a: "The highway is good and the hill stretch is short. We stop at Desuri whenever you want a break. Tell us about walking limits so we drop close to the hotel entrance.",
-      },
-    ],
-  },
-  {
-    slug: "jodhpur-to-mount-abu-taxi",
-    from: "Jodhpur",
-    to: "Mount Abu",
-    distanceKm: 265,
-    durationHours: 5,
-    tagline: "Rajasthan's hill station",
-    startingFare: 2920,
-    highlights: ["Nakki Lake", "Dilwara Temples", "Sunset Point", "Guru Shikhar"],
-    intro:
-      "Mount Abu is the only hill station in Rajasthan, and the climb to it starts soon after Sirohi. The drive takes about five hours, with the last stretch winding up through pine and teak. Our drivers take the hairpins slowly and stop at the viewpoints, so you reach Nakki Lake before the afternoon haze.",
-    body: [
-      "The road runs south on a divided highway past Luni and Sirohi, fast and level for most of the distance. From Sirohi it begins to climb, and the temperature drops a few degrees before you reach the plateau. The views open up on the way up, with the plains behind you. A late-morning start works well in winter; in summer, leave after breakfast to avoid the heat on the plains. The ghat section has many bends, so we drive it at a steady pace with a tea stop at the turn.",
-      "Mount Abu is compact, and most sights sit within a short drive of Nakki Lake. Dilwara Temples open in the morning and deserve an unhurried hour; dress modestly and remove footwear at the entrance. Guru Shikhar is the highest point and takes about an hour round trip from town. Sunset Point is busy at dusk, so reach it early. The town has bakeries and cafes along the main road for a late breakfast. For the return, an early start puts you back in Jodhpur before dinner.",
-    ],
-    image: "/images/routes/jodhpur-to-mount-abu-taxi.jpg",
-    imageAlt: "Taxi on the winding hill road to Mount Abu above the plains",
-    relatedRoutes: ["jodhpur-to-udaipur-taxi", "jodhpur-to-ranakpur-taxi"],
-    seo: {
-      title: "Jodhpur to Mount Abu Taxi | Marwar Cabs",
-      description:
-        "Book a Jodhpur to Mount Abu taxi with Marwar Cabs for the hill road. Fares from Rs 2,920. Send your dates on WhatsApp for a fare estimate.",
-    },
-    faqs: [
-      {
-        q: "Do I need to book the Mount Abu taxi early?",
-        a: "A few days of notice is enough outside peak weeks. Plan a morning departure, since the ghat climb is easier in daylight and the town is calmer before noon.",
-      },
-      {
-        q: "How is the fare on this route worked out?",
-        a: "The starting fare covers the car and driver for the journey. Tolls and state entry tax are charged as per actual receipts, and we send an estimate once you share the pickup point.",
-      },
-      {
-        q: "Is Mount Abu good for a short trip?",
-        a: "Two nights suit the town well: Dilwara Temples, Nakki Lake, and Guru Shikhar without rushing. A same-day return is long but possible if you leave Jodhpur early.",
-      },
-    ],
-  },
-  {
-    slug: "jodhpur-to-pushkar-taxi",
-    from: "Jodhpur",
-    to: "Pushkar",
-    distanceKm: 190,
-    durationHours: 3.5,
-    tagline: "The sacred lake town",
-    startingFare: 2090,
-    highlights: ["Pushkar Lake", "Brahma Temple", "Savitri Temple", "the old bazaar"],
-    intro:
-      "Pushkar is a short, easy run from Jodhpur, about three and a half hours across the desert edge to the Aravalli foothills. The town is small enough to walk in an afternoon. We drop you close to your hotel, since the lanes near the ghats are foot-only. Come for the lake at dawn and the quiet bazaar after dark.",
-    body: [
-      "The highway to Pushkar runs through Nagaur district and then turns south toward Ajmer, with the road improving as you go. Three and a half hours is an easy stretch, and the edges of Ajmer are close enough to pair the two towns in one trip. Leave after breakfast and you arrive for lunch. The best months are October to March, when the mornings are cool enough to walk the ghats. During the Pushkar Fair the town fills, so book rooms and the car well ahead.",
-      "The Brahma Temple and the main ghats sit a few minutes apart, and the old bazaar runs between them with shops selling silver, leather, and dried fruit. Savitri Temple takes a ropeway or a climb, and the view is worth either. Mornings at Pushkar Lake are calm before the crowds. If you arrive by evening, walk the perimeter of the lake once and settle in early. Dress for the temple visit, since footwear stays outside. We can keep the car for a same-day return or hold it overnight.",
-    ],
-    image: "/images/routes/jodhpur-to-pushkar-taxi.jpg",
-    imageAlt: "Taxi near the ghats of Pushkar Lake in the morning light",
-    relatedRoutes: ["jodhpur-to-ajmer-taxi", "jodhpur-to-jaipur-taxi"],
-    seo: {
-      title: "Jodhpur to Pushkar Taxi | Marwar Cabs",
-      description:
-        "Book a Jodhpur to Pushkar taxi with Marwar Cabs for an easy three and a half hour drive. Fares from Rs 2,090. Ask for an estimate on WhatsApp.",
-    },
-    faqs: [
-      {
-        q: "When should I reserve the Pushkar taxi?",
-        a: "Regular dates need only a few days of notice. Around the Pushkar Fair the town and the cars fill together, so book rooms and the taxi in the same week.",
-      },
-      {
-        q: "Does the fare cover everything on the way?",
-        a: "The starting fare covers the car and driver for the route. Tolls and state entry tax are charged as per actual receipts. Send your pickup area and we send one estimate.",
-      },
-      {
-        q: "Can we add Ajmer the same day?",
-        a: "Yes, Pushkar and Ajmer sit close together and pair well in one day. Tell us the order you want and we keep the same car from Jodhpur and back.",
-      },
-    ],
-  },
-  {
-    slug: "jodhpur-to-ajmer-taxi",
-    from: "Jodhpur",
-    to: "Ajmer",
-    distanceKm: 200,
-    durationHours: 3.5,
-    tagline: "Heritage and faith",
-    startingFare: 2200,
-    highlights: ["Ajmer Sharif Dargah", "Ana Sagar Lake", "Adhai Din Ka Jhonpra"],
-    intro:
-      "Ajmer sits between the Aravalli hills and draws visitors for the Ajmer Sharif Dargah and Ana Sagar Lake. The drive from Jodhpur takes about three and a half hours on good highway. Leave after breakfast, reach by lunch, and keep the afternoon for the shrine and the lakefront, with the car waiting nearby.",
-    body: [
-      "The Jodhpur to Ajmer road is a wide, fast highway for most of the way, with light traffic outside the town limits. It suits an early start; you reach Ana Sagar by late morning and the dargah after the lunch rush. There are dhabas along the way for a short halt and a plate of dal-bati. Winter is the comfortable season. The road runs busy near Kishangarh in the evenings, so we leave Jodhpur in the morning and carry a scarf for the shrine visit.",
-      "The Ajmer Sharif Dargah is busiest in the evening and after prayers; go with your shoes off and your head covered, and keep phones tucked away. Ana Sagar Lake has a promenade and a boat ride, best in the last light. Adhai Din Ka Jhonpra sits on the edge of town and takes an hour to walk through. Photography rules vary inside the shrine. The market near the dargah sells dry fruit and attar. Tell us your return time and the car stays within reach.",
-    ],
-    image: "/images/routes/jodhpur-to-ajmer-taxi.jpg",
-    imageAlt: "Taxi on the highway to Ajmer near Ana Sagar Lake",
-    relatedRoutes: ["jodhpur-to-pushkar-taxi", "jodhpur-to-jaipur-taxi"],
-    seo: {
-      title: "Jodhpur to Ajmer Taxi | Marwar Cabs",
-      description:
-        "Book a Jodhpur to Ajmer taxi with Marwar Cabs on a fast highway. Fares from Rs 2,200. Share your travel dates on WhatsApp for an estimate.",
-    },
-    faqs: [
-      {
-        q: "How soon should I confirm an Ajmer taxi?",
-        a: "Share the date and pickup point as soon as plans settle. For an evening visit to the dargah, an earlier start from Jodhpur keeps the return unhurried.",
-      },
-      {
-        q: "What does the listed fare include?",
-        a: "The car and driver for the run to Ajmer. Tolls and state entry tax are charged as per actual receipts. A return trip or extra waiting is priced once you share the plan.",
-      },
-      {
-        q: "Is the trip suitable for a family dargah visit?",
-        a: "Yes. The highway is straightforward and the drop can sit close to the shrine. Tell us if elders are travelling, so we plan the stop and the walking distance for them.",
-      },
-    ],
-  },
-  {
-    slug: "jodhpur-to-bikaner-taxi",
-    from: "Jodhpur",
-    to: "Bikaner",
-    distanceKm: 250,
-    durationHours: 4,
-    tagline: "Fort and desert town",
-    startingFare: 2750,
-    highlights: ["Junagarh Fort", "Karni Mata Temple", "Lalgarh Palace"],
-    intro:
-      "Bikaner is a straight run north from Jodhpur, about four hours on a wide desert highway. The city is calmer than Jaipur or Udaipur, with fort time that does not need queuing. We start in the morning and reach before lunch, leaving the afternoon for Junagarh Fort, Karni Mata Temple, and Lalgarh Palace.",
-    body: [
-      "The highway north runs level and empty, with fields giving way to scrub as you approach Bikaner. Leaving Jodhpur at seven puts you at the hotel by eleven or so. The traffic thins after the first hour, and the driver can hold a steady pace. Sri Dungargarh has dhabas for a short halt. The road is monsoon-green for a few weeks each year and dusty the rest of the time, so windows up helps. Winter mornings are cold on this stretch; keep a jacket in the car.",
-      "Junagarh Fort is the highlight and needs two unhurried hours; unlike many Rajasthan forts it sits on the plain, so there is no climb. Karni Mata Temple at Deshnok lies on the highway north of Jodhpur, so it fits as a halt without a long detour, and it is known for the rats that live inside the shrine. Lalgarh Palace has a museum. Book the morning for Junagarh, keep the afternoon for the palace, and leave the old bazaar for namkeen and leather work.",
-    ],
-    image: "/images/routes/jodhpur-to-bikaner-taxi.jpg",
-    imageAlt: "Taxi on the desert highway north of Jodhpur toward Bikaner",
-    relatedRoutes: ["jodhpur-to-jaipur-taxi", "jodhpur-to-jaisalmer-taxi"],
-    seo: {
-      title: "Jodhpur to Bikaner Taxi | Marwar Cabs",
-      description:
-        "Book a Jodhpur to Bikaner taxi with Marwar Cabs for the desert drive north. Fares from Rs 2,750. Send your dates on WhatsApp for an estimate.",
-    },
-    faqs: [
-      {
-        q: "When is a good time to book the Bikaner car?",
-        a: "A few days of notice covers most dates. An early departure puts you in Bikaner before lunch, which leaves the whole afternoon for Junagarh Fort and the palace museum.",
-      },
-      {
-        q: "Is the starting fare final for this route?",
-        a: "It is the starting point rather than a fixed quote. The estimate depends on your pickup area and car class, and tolls and state entry tax are charged as per actual receipts.",
-      },
-      {
-        q: "Can we stop at Deshnok on the way?",
-        a: "Yes, Deshnok sits on the highway north of Jodhpur, so Karni Mata Temple works as an outbound halt without a detour. Tell us when you book and we fit it into the day.",
-      },
-    ],
-  },
-  {
-    slug: "jodhpur-to-ranakpur-taxi",
-    from: "Jodhpur",
-    to: "Ranakpur",
-    distanceKm: 165,
-    durationHours: 3,
-    tagline: "Marble temples",
-    startingFare: 1820,
-    highlights: ["Ranakpur Jain Temple", "Kumbhalgarh Fort (nearby)", "Aravalli drive"],
-    intro:
-      "Ranakpur lies in the Aravalli hills about three hours from Jodhpur, on the road south toward Udaipur. The Jain temple complex is the reason to go: carved marble, many columns, and a quiet courtyard. Leave after breakfast, reach by lunch, and give the temple an hour and a half before you continue or turn back.",
-    body: [
-      "The road leaves the Jodhpur plains and climbs through scrub hills, with stone quarries and small villages along the way. It is a two-lane road for the last stretch, with curves that reward a slow pace. Morning travel gives the best light inside the temple and keeps you out of the midday sun on the return. The Aravalli scenery changes with the season, dry and pale in summer, green after the rains. We stop at the viewpoint before the descent if you like.",
-      "The Ranakpur Jain temple is dedicated to Adinatha and holds a forest of marble columns, no two alike in the carving. Photography is restricted in parts of the complex, and footwear stays at the entrance. Dress modestly and keep voices low in the main shrine. There is a small food stall near the gate, but lunch is better planned in Desuri or back on the highway. If you are continuing to Udaipur, the temple sits almost on the way and adds an easy hour.",
-    ],
-    image: "/images/routes/jodhpur-to-ranakpur-taxi.jpg",
-    imageAlt: "Taxi parked near the Ranakpur Jain temple in the Aravalli hills",
-    relatedRoutes: ["jodhpur-to-udaipur-taxi", "jodhpur-to-mount-abu-taxi"],
-    seo: {
-      title: "Jodhpur to Ranakpur Taxi | Marwar Cabs",
-      description:
-        "Book a Jodhpur to Ranakpur taxi with Marwar Cabs to see the carved Jain temple. Fares from Rs 1,820. Share your dates on WhatsApp for an estimate.",
-    },
-    faqs: [
-      {
-        q: "How do I book the Ranakpur temple trip?",
-        a: "Send the date and whether you want a same-day return or a drop to Udaipur. We confirm the car class and the estimate before the pickup, so the day is settled in advance.",
-      },
-      {
-        q: "What does the fare cover for Ranakpur?",
-        a: "The car and driver for the route from Jodhpur. Tolls and state entry tax are charged as per actual receipts. Temple entry is separate, and waiting time is agreed when you book.",
-      },
-      {
-        q: "Do travellers combine Ranakpur with Udaipur?",
-        a: "Often, since the temple sits on the road to Udaipur. Many stop for an hour and continue; others prefer the car to bring them back to Jodhpur by evening.",
+        q: "Which vehicle is best suited for the ghat curves?",
+        a: "The Toyota Innova Crysta or Maruti Ertiga provides the most comfortable ride for families through the hilly hairpin bends between Desuri Ghat and Kelwara.",
       },
     ],
   },
@@ -328,35 +109,341 @@ export const routes: Route[] = [
     to: "Osian",
     distanceKm: 65,
     durationHours: 1.25,
-    tagline: "Desert temples",
-    startingFare: 720,
-    highlights: ["Sachiya Mata Temple", "Osian Jain temples", "dune safari"],
+    tagline: "Ancient Temples & Sunset Desert Safari",
+    startingFare: 1800,
+    highlights: [
+      "Sachiya Mata Temple (8th Century)",
+      "Mahavira Jain Temple Complex",
+      "Thar Desert Camel & Jeep Dune Bashing",
+      "Cultural Rajasthani Sunset Dinner",
+    ],
     intro:
-      "Osian is an easy hour from Jodhpur, an ancient oasis town with Jain and Sachiya Mata temples rising from the sand. It works as a short half-day trip or as the first stop on the road to Jaisalmer. Leave after breakfast, walk the temples in the morning cool, and be back for lunch, or continue west.",
+      "Osian is an ancient desert town located just 65 km north of Jodhpur via Mandore, Daijar, and Mathania Road on NH-62. Famous as the gateway to the Thar Desert and the birthplace of the Oswal Jain community, Osian offers 8th-century stone temple architecture combined with authentic dune safari experiences.",
     body: [
-      "The highway west from Jodhpur is flat and fast, with sand on either side and little traffic once you leave the city. The drive takes about an hour and a quarter, so an early start means you walk the temples before the heat sets in. October to March is the comfortable season; summer days are harsh on open ground. The road is straight enough for an easy pace, and dhabas near Osian serve a late breakfast if you leave on an empty stomach.",
-      "Sachiya Mata Temple sits on a hill and needs a climb of several minutes; the view over the sand repays it. The Jain temples below are older and calmer, with carved ceilings that deserve a slow look. A guide at the gate can walk you through the history if you want company. Some visitors add a short dune safari outside town in the late afternoon. Keep the trip to half a day, or pair Osian with Jaisalmer and drive on after lunch.",
+      "The ideal time to leave Jodhpur for an Osian day excursion is around 2:00 PM. The drive takes just 75 minutes on well-paved roads. Upon arrival, visit the Sachiya Mata Temple on the hillock and the Mahavira Jain Temple first while natural daylight is strong for photography.",
+      "By 4:30 PM, your driver brings you to the Osian sand dunes for an exhilarating camel ride or 4x4 open-top jeep safari across the desert crests. Enjoy the sunset over the Thar horizon, folk music, and an authentic Marwari bajre ki roti meal at the camp before a calm drive back to Jodhpur by 9:30 PM.",
     ],
     image: "/images/routes/jodhpur-to-osian-taxi.jpg",
-    imageAlt: "Taxi on the sand-lined road to the temples at Osian",
-    relatedRoutes: ["jodhpur-to-jaisalmer-taxi", "jodhpur-to-ajmer-taxi"],
+    imageAlt: "Marwad Cabs Dzire parked near the ancient sandstone temples of Osian",
+    relatedRoutes: ["jodhpur-to-jaisalmer-taxi", "jodhpur-to-bikaner-taxi"],
     seo: {
-      title: "Jodhpur to Osian Taxi | Marwar Cabs",
+      title: "Jodhpur to Osian Taxi & Desert Safari | Marwad Cabs",
       description:
-        "Book a Jodhpur to Osian taxi with Marwar Cabs for the old desert temples. Fares from Rs 720. Ask for a half-day estimate on WhatsApp.",
+        "Book a same-day Jodhpur to Osian taxi for Sachiya Mata Temple darshan, camel safari and desert sunset dinner. Fixed round-trip sedan packages from Rs 1,800.",
     },
     faqs: [
       {
-        q: "Can Osian be a half-day trip?",
-        a: "Yes. An early start gives you the temples and a dune stop, and you are back in Jodhpur by afternoon. The car returns on the same booking, so nothing extra to arrange.",
+        q: "What is the round-trip taxi package fare for Osian?",
+        a: "A same-day round-trip package from Jodhpur to Osian is ₹1,800 in an AC Sedan and ₹2,600 in an AC Innova, including waiting time during your temple visits and desert safari.",
       },
       {
-        q: "Is the listed fare one way or round trip?",
-        a: "It covers the run from Jodhpur to Osian. If you want the car to wait and bring you back, tell us the hours you need and we add them to the estimate.",
+        q: "Can we combine Osian with Bishnoi Village Safari on the same day?",
+        a: "Yes. Bishnoi Village is south of Jodhpur and Osian is north. You can do Bishnoi Village in the morning (9 AM – 1 PM) and leave for Osian in the afternoon (2:30 PM – 9:30 PM).",
       },
       {
-        q: "Does Osian suit children and elders?",
-        a: "The drive is short and level. Sachiya Mata Temple needs a climb, so younger children and elders can stay below with the car while the rest of the group goes up.",
+        q: "Do you arrange the camel and jeep safari tickets?",
+        a: "We can connect you directly with reputable Osian desert camp operators for camel and jeep dune bashing at local un-inflated rates without middleman commissions.",
+      },
+    ],
+  },
+  {
+    slug: "jodhpur-to-jaipur-taxi",
+    from: "Jodhpur",
+    to: "Jaipur",
+    distanceKm: 335,
+    durationHours: 5.75,
+    tagline: "Fast 6-Lane Highway to the Pink City",
+    startingFare: 4500,
+    highlights: [
+      "Smooth 6-lane NH-25 & NH-48 Expressway",
+      "Optional 2-hour detour to Pushkar / Ajmer",
+      "Clean family dhaba halts with hygienic food",
+      "Direct drop at Jaipur Airport or City Hotels",
+    ],
+    intro:
+      "Jaipur is a 335-km highway drive east from Jodhpur running through Bilara, Jaitaran, Beawar, Ajmer bypass, and Kishangarh. The highway is mostly a modern multi-lane corridor allowing a comfortable, predictable drive in under 6 hours with a prompt departure.",
+    body: [
+      "Leaving Jodhpur around 6:30 AM or 7:00 AM avoids market traffic and brings you to Jaipur before afternoon congestion near Ajmeri Gate or MI Road. The expressway features frequent clean fuel stations and family restaurants where drivers stop for hot tea and clean restrooms.",
+      "Travelers often choose to add an optional 2-hour halt at Pushkar (Brahma Temple & Sacred Lake) or Ajmer Sharif Dargah along the way. We charge only for the extra detour distance at your car's standard per-kilometre rate, keeping your overall travel budget completely transparent.",
+    ],
+    image: "/images/routes/jodhpur-to-jaipur-taxi.jpg",
+    imageAlt: "Marwad Cabs sedan cruising on the 6-lane highway toward Jaipur",
+    relatedRoutes: ["jodhpur-to-pushkar-taxi", "jodhpur-to-ajmer-taxi"],
+    seo: {
+      title: "Jodhpur to Jaipur Taxi | Marwad Cabs",
+      description:
+        "Book a fast Jodhpur to Jaipur cab via 6-lane NH-25 & NH-48 expressway. Clean AC cars, one-way from Rs 4,500. Optional halt at Pushkar or Ajmer Sharif Dargah.",
+    },
+    faqs: [
+      {
+        q: "What is the one-way fare from Jodhpur to Jaipur?",
+        a: "One-way drops start at ₹4,500 for an AC Sedan (Dzire / Etios) and ₹6,500 for an Innova Crysta. Highway tolls are paid via actual FASTag receipts.",
+      },
+      {
+        q: "Can the driver drop us directly at Jaipur International Airport (JAI)?",
+        a: "Yes. Our drivers know the airport departure terminal layout at Sanganer and drop you right at the entrance gate with plenty of time for check-in.",
+      },
+      {
+        q: "How much extra is a stop at Pushkar or Ajmer on the way?",
+        a: "A detour to Pushkar adds approximately 35 km to the route. We bill the extra distance at the standard per-km vehicle rate plus waiting time.",
+      },
+    ],
+  },
+  {
+    slug: "jodhpur-to-mount-abu-taxi",
+    from: "Jodhpur",
+    to: "Mount Abu",
+    distanceKm: 265,
+    durationHours: 4.75,
+    tagline: "Rajasthan's Only Hill Station & Dilwara Temples",
+    startingFare: 4200,
+    highlights: [
+      "Dilwara White Marble Jain Temples",
+      "Nakki Lake Boating & Sunset Point",
+      "Guru Shikhar Peak (Highest in Aravallis)",
+      "28 km Uphill Ghat Climb with Active AC",
+    ],
+    intro:
+      "Mount Abu is 265 km south of Jodhpur via Pali, Sirohi, and Abu Road on NH-62 and NH-27. As Rajasthan's only hill station, it offers a cool respite from desert heat, featuring the world-renowned Dilwara marble temples, peaceful boating on Nakki Lake, and viewpoints from Guru Shikhar.",
+    body: [
+      "The highway from Jodhpur to Abu Road is flat, fast 4-lane tarmac. From Abu Road, the journey transitions into a 28-km uphill mountain ghat climb with multiple hairpins. Unlike aggregator app drivers who turn off the AC to save fuel, Marwad Cabs chauffeurs keep your air conditioning running throughout the entire ascent.",
+      "Dilwara Temples are open to non-Jains from 12:00 PM to 5:00 PM. We recommend reaching Mount Abu by noon so you can complete temple visits before enjoying an afternoon boat ride at Nakki Lake and watching the sunset from Honeymoon Point.",
+    ],
+    image: "/images/routes/jodhpur-to-mount-abu-taxi.jpg",
+    imageAlt: "Marwad Cabs taxi ascending the scenic mountain road to Mount Abu",
+    relatedRoutes: ["jodhpur-to-udaipur-taxi", "jodhpur-to-ranakpur-taxi"],
+    seo: {
+      title: "Jodhpur to Mount Abu Taxi | Marwad Cabs",
+      description:
+        "Book an AC cab from Jodhpur to Mount Abu. 28 km uphill ghat climb with AC on. Covers Dilwara Temples, Nakki Lake & Guru Shikhar. Fares from Rs 4,200.",
+    },
+    faqs: [
+      {
+        q: "Do your drivers switch off the car AC during the Mount Abu hill climb?",
+        a: "Never. All our vehicles (Dzire, Ertiga, Crysta) are well-maintained with powerful cooling systems, and our drivers keep the AC running throughout the 28 km climb.",
+      },
+      {
+        q: "What is the starting fare for Jodhpur to Mount Abu?",
+        a: "One-way drops start at ₹4,200 for a sedan and ₹5,800 for an Innova. Round-trip bookings are billed at ₹10/km (Sedan) with a 250 km/day minimum floor.",
+      },
+      {
+        q: "Are local sightseeing spots in Mount Abu covered in round trips?",
+        a: "Yes. Round-trip bookings include Nakki Lake, Dilwara Jain Temples, Guru Shikhar, Achalgarh Fort, and Sunset Point within the daily kilometre limit.",
+      },
+    ],
+  },
+  {
+    slug: "jodhpur-to-nakodaji-taxi",
+    from: "Jodhpur",
+    to: "Nakoda Ji & Balotra",
+    distanceKm: 115,
+    durationHours: 2.25,
+    tagline: "Sacred Jain Tirth & Rani Bhatiyani Dham",
+    startingFare: 2400,
+    highlights: [
+      "Shri Nakoda Parsvanath Jain Tirth Darshan",
+      "Mata Rani Bhatiyani Mandir (Jasol)",
+      "Brahma Temple at Asotra",
+      "Same-day peaceful pilgrimage circuit",
+    ],
+    intro:
+      "Nakoda Ji (Mewanagar near Balotra) is 115 km southwest of Jodhpur via Kalyanpur, Pachpadra, and Jasol. Dedicated to Shri Nakoda Bhairav and Parsvanath Bhagwan, it is one of Rajasthan's most sacred Jain pilgrimage destinations, drawing thousands of devotees for same-day darshan.",
+    body: [
+      "The drive from Jodhpur takes approximately 2 hours and 15 minutes across the Marwar plains. Our drivers are thoroughly familiar with temple darshan timings, Bhojanshala meal schedules, and puja timings, ensuring you arrive in time for morning or afternoon aarti without rush.",
+      "Most pilgrims also combine their visit with darshan at Mata Rani Bhatiyani Mandir in Jasol (just 7 km from Nakoda) and the grand marble Brahma Temple in Asotra (12 km away). Our same-day return package covers this complete religious circuit with ample waiting time.",
+    ],
+    image: "/images/routes/jodhpur-to-nakodaji-taxi.jpg",
+    imageAlt: "Marwad Cabs taxi parked outside Shri Nakoda Ji Jain Temple",
+    relatedRoutes: ["jodhpur-to-ranakpur-taxi", "jodhpur-to-osian-taxi"],
+    seo: {
+      title: "Jodhpur to Nakoda Ji Taxi | Marwad Cabs",
+      description:
+        "Same-day pilgrimage taxi from Jodhpur to Shri Nakoda Ji Tirth and Jasol Rani Bhatiyani Mandir. Fixed return fare from Rs 2,400. Punctual Marwari drivers.",
+    },
+    faqs: [
+      {
+        q: "What is the taxi package fare for a same-day Jodhpur to Nakoda Ji trip?",
+        a: "Our fixed same-day return package is ₹2,400 in an AC Sedan and ₹3,400 in an Ertiga / Innova, covering Nakoda Ji, Jasol Rani Bhatiyani Mandir, and Asotra.",
+      },
+      {
+        q: "Does the package include driver waiting time during darshan?",
+        a: "Yes. Up to 4 hours of total waiting time for darshan, puja, and lunch at the temple Bhojanshala is included in the package price.",
+      },
+      {
+        q: "Can the cab pick up directly from Jodhpur Railway Station early morning?",
+        a: "Yes. We regularly pick up devotees arriving on overnight trains at Jodhpur Junction (Platform 1 or 2) and proceed straight to Nakoda Ji.",
+      },
+    ],
+  },
+  {
+    slug: "jodhpur-to-bikaner-taxi",
+    from: "Jodhpur",
+    to: "Bikaner",
+    distanceKm: 250,
+    durationHours: 4.5,
+    tagline: "Camel Country & Junagarh Fort via Nagaur",
+    startingFare: 3800,
+    highlights: [
+      "Karni Mata Rat Temple at Deshnok",
+      "Junagarh Fort & Prachina Museum",
+      "National Research Centre on Camel (NRCC)",
+      "Lalgarh Palace & Rampuria Havelis",
+    ],
+    intro:
+      "Bikaner is 250 km north of Jodhpur along NH-62 via Khimsar, Nagaur, and Nokha. Known for its imposing un-conquered Junagarh Fort, red sandstone Rampuria havelis, and desert camel breeding farms, Bikaner is an essential pillar of the northern Rajasthan heritage route.",
+    body: [
+      "The road passes through flat Marwar scrubland. Exactly 30 km before reaching Bikaner city, the highway runs right past the renowned Karni Mata Temple in Deshnok (the Rat Temple). Our drivers automatically include a 45-minute halt at Deshnok for darshan before driving into Bikaner.",
+      "Inside Bikaner, our drivers guide you directly to Junagarh Fort, the Camel Breeding Farm (open 2:00 PM to 6:00 PM), and famous sweet shops for authentic Bikaneri bhujia, rasgulla, and ghewar before dropping you at your heritage hotel or railway station.",
+    ],
+    image: "/images/routes/jodhpur-to-bikaner-taxi.jpg",
+    imageAlt: "Marwad Cabs vehicle parked in front of Junagarh Fort Bikaner",
+    relatedRoutes: ["jodhpur-to-jaisalmer-taxi", "jodhpur-to-jaipur-taxi"],
+    seo: {
+      title: "Jodhpur to Bikaner Taxi | Marwad Cabs",
+      description:
+        "Book an AC cab from Jodhpur to Bikaner via NH-62. Stop at Karni Mata Deshnok Rat Temple on the way. Clean cars, transparent billing, starting from Rs 3,800.",
+    },
+    faqs: [
+      {
+        q: "What is the driving time from Jodhpur to Bikaner?",
+        a: "The 250 km journey takes approximately 4.5 hours on NH-62, including a brief tea halt near Nagaur and a stop at the Deshnok Rat Temple.",
+      },
+      {
+        q: "Is a stop at Karni Mata Temple in Deshnok included?",
+        a: "Yes. Deshnok is directly on the highway 30 km south of Bikaner, and our driver halts for your darshan at no extra kilometre charge.",
+      },
+      {
+        q: "What are the one-way fares for this trip?",
+        a: "One-way drops start at ₹3,800 in an AC Sedan and ₹5,200 in an AC Innova. Tolls are paid as per actual FASTag receipts.",
+      },
+    ],
+  },
+  {
+    slug: "jodhpur-to-pushkar-taxi",
+    from: "Jodhpur",
+    to: "Pushkar",
+    distanceKm: 215,
+    durationHours: 4.0,
+    tagline: "Sacred Lake & Lord Brahma Temple",
+    startingFare: 3300,
+    highlights: [
+      "Jagatpita Brahma Mandir (World's Rarest)",
+      "52 Sacred Ghats around Pushkar Lake",
+      "Optional halt at Merta City Meera Bai Temple",
+      "Savitri Devi Temple Ropeway Views",
+    ],
+    intro:
+      "Pushkar is situated 215 km east of Jodhpur via Bilara, Jaitaran, and Beawar (or via Merta City). Tucked in a valley between the Nag Pahar hills, Pushkar is famous worldwide for the sacred 52 bathing ghats of Pushkar Sarovar and the revered 14th-century temple of Lord Brahma.",
+    body: [
+      "The highway run from Jodhpur is smooth and well-maintained. If you are interested in devotional history, you can opt for the Merta City route to visit the ancestral Meera Bai Smarak temple before continuing across the hills into Pushkar.",
+      "Pushkar's central ghats are closed to all cars. Your driver parks safely in the designated outer parking lot and coordinates an e-rickshaw to take you directly to Brahma Temple or your lakeside hotel so you avoid walking in midday heat.",
+    ],
+    image: "/images/routes/jodhpur-to-pushkar-taxi.jpg",
+    imageAlt: "Marwad Cabs taxi on the highway approaching Pushkar valley",
+    relatedRoutes: ["jodhpur-to-jaipur-taxi", "jodhpur-to-ajmer-taxi"],
+    seo: {
+      title: "Jodhpur to Pushkar Taxi | Marwad Cabs",
+      description:
+        "Book a Jodhpur to Pushkar cab for holy lake darshan and Brahma Temple visit. 4-hour smooth highway ride. Fares from Rs 3,300. Instant WhatsApp quote.",
+    },
+    faqs: [
+      {
+        q: "How long does a cab take from Jodhpur to Pushkar?",
+        a: "The 215 km drive takes just under 4 hours via NH-25. It is an easy half-day drive with clean highway dhabas along the way.",
+      },
+      {
+        q: "Can the taxi enter Pushkar market near the lake?",
+        a: "Cars are restricted inside the market and Brahma Temple zone. Our driver drops you at the nearest gate and arranges a quick local e-rickshaw for your luggage.",
+      },
+      {
+        q: "What is the fare for Jodhpur to Pushkar?",
+        a: "One-way fares start at ₹3,300 for an AC Dzire or Etios sedan, and ₹4,600 for an Ertiga or Innova, with toll receipts provided at drop.",
+      },
+    ],
+  },
+  {
+    slug: "jodhpur-to-ranakpur-taxi",
+    from: "Jodhpur",
+    to: "Ranakpur",
+    distanceKm: 165,
+    durationHours: 3.5,
+    tagline: "1444 Carved Marble Pillars in the Forest",
+    startingFare: 3200,
+    highlights: [
+      "Chaumukha Temple with 1444 hand-carved pillars",
+      "Bullet Baba Dham (Om Banna) on highway",
+      "Scenic foothills of the Western Aravallis",
+      "Same-day tranquil heritage return trip",
+    ],
+    intro:
+      "Ranakpur is located 165 km south of Jodhpur near Sadri in Pali district. Surrounded by the dense green hills of the Aravalli range, the 15th-century Chaumukha Jain Temple is a masterpiece of light and carved white marble, where no two pillars share the same design.",
+    body: [
+      "The drive leaves Jodhpur on NH-62, stopping after 50 km at Om Banna (Bullet Baba Temple), a cultural phenomenon where thousands of highway travelers offer prayers for safe journeys. From Pali, the road branches into countryside tracks through Falna and Bali toward Ranakpur.",
+      "Non-Jain visitors are admitted to Ranakpur Temple only between 12:00 PM and 5:00 PM. We schedule your departure from Jodhpur between 9:00 AM and 9:30 AM so you reach the gates as tourist hours begin. Audio guides are available at the counter, and your driver waits in the quiet shaded parking area.",
+    ],
+    image: "/images/routes/jodhpur-to-ranakpur-taxi.jpg",
+    imageAlt: "Marwad Cabs sedan waiting near Ranakpur Jain Temple complex",
+    relatedRoutes: ["jodhpur-to-udaipur-taxi", "jodhpur-to-mount-abu-taxi"],
+    seo: {
+      title: "Jodhpur to Ranakpur Taxi | Marwad Cabs",
+      description:
+        "Day trip taxi from Jodhpur to Ranakpur Jain Temple (1444 carved marble pillars). Temple opens 12 PM for tourists. Om Banna halt included. Return fare Rs 3,200.",
+    },
+    faqs: [
+      {
+        q: "What is the tourist timing at Ranakpur Jain Temple?",
+        a: "The temple is reserved for Jain pilgrims in the morning and opens to all tourists strictly from 12:00 PM to 5:00 PM daily. We time your departure accordingly.",
+      },
+      {
+        q: "What does the same-day return package to Ranakpur cost?",
+        a: "A same-day return trip from Jodhpur to Ranakpur is ₹3,200 in an AC Sedan and ₹4,400 in an Innova, including waiting time at both Om Banna and Ranakpur.",
+      },
+      {
+        q: "Is there a dress code inside Ranakpur Temple?",
+        a: "Yes. Shoulders and knees must be covered. Leather items (belts, wallets, shoes) must be deposited in the secure lockers outside the sanctum.",
+      },
+    ],
+  },
+  {
+    slug: "jodhpur-to-ajmer-taxi",
+    from: "Jodhpur",
+    to: "Ajmer",
+    distanceKm: 205,
+    durationHours: 3.75,
+    tagline: "Holy Dargah Sharif & Ana Sagar Lake",
+    startingFare: 3200,
+    highlights: [
+      "Hazrat Khwaja Moinuddin Chishti Dargah",
+      "Ana Sagar Lake & Marble Baradari Pavilions",
+      "Adhai Din Ka Jhonpra Historical Mosque",
+      "Direct 4-lane expressway connectivity",
+    ],
+    intro:
+      "Ajmer is 205 km east of Jodhpur along NH-25, located at the foot of Taragarh Fort. A world-famous Sufi pilgrimage center, Ajmer draws pilgrims of all faiths to the Dargah Sharif of Hazrat Khwaja Moinuddin Chishti, alongside scenic walks by Ana Sagar Lake.",
+    body: [
+      "The highway from Jodhpur to Ajmer is a clean 4-lane stretch via Bilara and Beawar with minimal bottlenecks. The drive takes around 3 hours and 45 minutes, with clean roadside dhabas for breakfast or refreshments.",
+      "Because roads around Dargah Bazaar are crowded pedestrian lanes, our driver drops you at the nearest vehicle access point (Delhi Gate or Railway Station parking) and arranges a trusted local auto-rickshaw to carry you and your luggage to the Dargah entrance.",
+    ],
+    image: "/images/routes/jodhpur-to-ajmer-taxi.jpg",
+    imageAlt: "Marwad Cabs taxi on the highway to Ajmer Sharif",
+    relatedRoutes: ["jodhpur-to-jaipur-taxi", "jodhpur-to-pushkar-taxi"],
+    seo: {
+      title: "Jodhpur to Ajmer Sharif Taxi | Marwad Cabs",
+      description:
+        "Book a direct Jodhpur to Ajmer taxi for Dargah Sharif ziyarat & Ana Sagar Lake. 3.5 hour drive on NH-25. One-way fares from Rs 3,200. Clear tax receipts.",
+    },
+    faqs: [
+      {
+        q: "Can the taxi drive directly to the Dargah Sharif gate in Ajmer?",
+        a: "Cars cannot enter the narrow Dargah Bazaar. Our driver parks safely at the nearest authorized lot and assists you in getting an auto-rickshaw to the gate.",
+      },
+      {
+        q: "What is the one-way fare from Jodhpur to Ajmer?",
+        a: "One-way drops start at ₹3,200 in an AC Sedan and ₹4,500 in an Innova Crysta. All toll charges are billed at actual FASTag receipt value.",
+      },
+      {
+        q: "Can we combine Ajmer Dargah and Pushkar in one trip?",
+        a: "Yes. Pushkar is only 14 km from Ajmer across the hill pass. We can add Pushkar to your Ajmer trip for a nominal extra distance charge.",
       },
     ],
   },

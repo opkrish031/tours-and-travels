@@ -1,10 +1,11 @@
-# PRD: Jodhpur Taxi / Cab Hire Website
+# PRD: Marwad Cabs — Tour and Travels Website
 
 **Document type:** Product Requirements Document
+**Brand:** Marwad Cabs (Legal: Marwad Cabs — Tour and Travels)
+**Domain:** https://marwadcabs.com
 **Version:** 1.0
-**Owner:** Pratyaksh Jangid (BuildBlock)
-**Status:** Ready for build
-**Companion doc:** `TRD.md` (technical implementation)
+**Status:** Implemented
+**Companion doc:** `TRD (2).md` (technical implementation)
 
 > Placeholders in `[SQUARE_BRACKETS]` are values the client must supply before launch. Do not invent them. Sample numbers in this document (rates, distances) are illustrative and come from competitor reference sites; replace with the client's real data.
 
@@ -255,7 +256,7 @@ Privacy Policy, Terms and Conditions, Refund / Cancellation Policy (for example 
 | Google Business Profile link | |
 | Social media links | |
 
-### 6.2 Content BuildBlock produces
+### 6.2 Content Marwad Cabs produces
 - Page copy for all service, route, fleet, about pages (unique per page)
 - FAQs per page
 - Meta titles and descriptions

@@ -31,9 +31,31 @@ export const metadata: Metadata = {
     siteName: site.brandName,
     locale: "en_IN",
     type: "website",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    url: site.domain,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.brandName} - Jodhpur Taxi Service & Outstation Cabs`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    images: ["/opengraph-image.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 

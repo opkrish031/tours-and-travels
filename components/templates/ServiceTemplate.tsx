@@ -60,7 +60,7 @@ export function ServiceTemplate({ service }: { service: Service }) {
 
           <div className="mt-6 max-w-3xl">
             <span className="eyebrow text-gold-deep font-semibold uppercase tracking-wider block mb-2">
-              Private Chauffeur Operations · Jodhpur &amp; Marwar
+              Marwad Cabs · Jodhpur &amp; Rajasthan Chauffeur Operations
             </span>
 
             <h1 className="text-[clamp(2.5rem,6vw,4.4rem)] font-semibold tracking-[-0.035em] leading-[1.06] text-text">

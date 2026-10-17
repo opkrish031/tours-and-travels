@@ -1,13 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { routes } from "@/data/routes";
 import { formatRupees } from "@/lib/fare";
 import { durationLabel } from "@/lib/format";
 
 export function RoutesGrid() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleRoutes = showAll ? routes : routes.slice(0, 6);
+
   return (
     <Section tone="mist" size="md">
       <SectionHeader
@@ -18,7 +22,7 @@ export function RoutesGrid() {
 
       {/* Typographic Index with Hover Dim */}
       <div className="group/list divide-y divide-line rounded-3xl border border-line bg-white/70 backdrop-blur-md shadow-xs overflow-hidden">
-        {routes.map((route) => (
+        {visibleRoutes.map((route) => (
           <Link
             key={route.slug}
             href={`/${route.slug}`}
@@ -72,6 +76,19 @@ export function RoutesGrid() {
           </Link>
         ))}
       </div>
+
+      {routes.length > 6 && (
+        <div className="mt-6 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setShowAll(!showAll)}
+            className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-5 py-2.5 text-xs font-semibold text-text shadow-xs hover:border-gold hover:text-gold-deep transition-all active:scale-95 cursor-pointer"
+          >
+            <span>{showAll ? "Show Fewer Routes" : `View All ${routes.length} Intercity Routes`}</span>
+            {showAll ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+          </button>
+        </div>
+      )}
     </Section>
   );
 }

@@ -1,28 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Surfaces ── */
-  --color-black: #0A0A0B;
-  --color-graphite: #141416;
-  --color-graphite-2: #1C1C1F;
+  /* ── Surfaces: Marwad Cabs Palette ── */
+  --color-black: #0B172A; /* Mehrangarh Midnight Navy */
+  --color-navy: #0B172A;
+  --color-navy-dark: #060D17;
+  --color-graphite: #132542; /* Secondary Dark Surface */
+  --color-graphite-2: #1B335A;
   --color-white: #FFFFFF;
-  --color-snow: #FBFBFD;
-  --color-mist: #F5F5F7;
+  --color-snow: #FAF7F2; /* Jodhpur Sandstone Ivory */
+  --color-mist: #F2ECE1;
+  --color-sandstone: #E6DEC8;
 
   /* ── Text ── */
-  --color-text: #1D1D1F;
-  --color-text-muted: #6E6E73;
-  --color-text-dark: #F5F5F7;
-  --color-text-dark-muted: #A1A1A6;
+  --color-text: #1C2331;
+  --color-text-muted: #64748B;
+  --color-text-dark: #FAF7F2;
+  --color-text-dark-muted: #94A3B8;
 
-  /* ── Accent: BuildBlock warm gold ── */
-  --color-gold: #C9A24D;
-  --color-gold-bright: #E0BC6A;
-  --color-gold-deep: #8A6A24;
+  /* ── Accent: Marwad Royal Gold & Sunset Amber ── */
+  --color-gold: #C8962E; /* Marwad Royal Gold */
+  --color-gold-bright: #E5B84B; /* Bright Gold Highlight */
+  --color-gold-deep: #9B6E16;
+  --color-amber: #EA761F; /* Mehrangarh Sunset Amber */
+  --color-amber-hover: #D36210;
 
-  /* ── Lines ── */
-  --color-line: rgba(0, 0, 0, 0.08);
-  --color-line-dark: rgba(255, 255, 255, 0.12);
+  /* ── Lines & Borders ── */
+  --color-line: #E6DEC8; /* Warm Sandstone Border */
+  --color-line-dark: rgba(200, 150, 46, 0.25);
 
   /* ── Radii: Apple-scale soft corners ── */
   --radius-sm: 10px;

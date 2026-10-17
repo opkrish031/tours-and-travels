@@ -1,4 +1,3 @@
-// DUMMY DATA: replace with client data before launch
 export type Vehicle = {
   slug: string;
   name: string;
@@ -13,6 +12,12 @@ export type Vehicle = {
   image: string;
   imageAlt: string;
   popular?: boolean;
+  localPackages?: {
+    fourHours: string;
+    eightHours: string;
+    airportDrop: string;
+  };
+  driverBhatta?: string;
   seo: { title: string; description: string };
   faqs: { q: string; a: string }[];
 };
@@ -20,138 +25,266 @@ export type Vehicle = {
 export const vehicles: Vehicle[] = [
   {
     slug: "sedan-taxi-jodhpur",
-    name: "Sedan",
+    name: "Swift Dzire / Toyota Etios",
     category: "sedan",
-    models: ["Maruti Dzire", "Toyota Etios"],
-    seats: "4",
-    luggage: "2 large bags",
-    perKm: 11,
+    models: ["Maruti Suzuki Dzire", "Toyota Etios"],
+    seats: "4 Passengers + 1 Driver",
+    luggage: "2 Medium Suitcases + 1 Duffel (Boot space)",
+    perKm: 10,
     dailyKmLimit: 250,
     comfort:
-      "A quiet four-seat sedan, usually a Dzire or Etios or similar, with a boot that holds two large bags.",
-    idealFor: ["Airport transfers", "City sightseeing", "Couples on a trip"],
+      "Best for couples or 3 adults. Toyota Etios has a bigger 592-liter boot if you are carrying 3 large suitcases; tell us on WhatsApp if you specifically need an Etios over a Dzire.",
+    idealFor: [
+      "Couples & Solo Travelers",
+      "Airport & Junction Drops",
+      "Budget Outstation Runs",
+    ],
     image: "/images/vehicles/sedan-taxi-jodhpur.jpg",
-    imageAlt: "Sedan taxi waiting at a hotel entrance in Jodhpur",
+    imageAlt: "Marwad Cabs white AC sedan waiting at Jodhpur Junction Platform 1 exit",
+    localPackages: {
+      fourHours: "₹1,200 (4 Hr / 40 Km)",
+      eightHours: "₹1,800 (8 Hr / 80 Km)",
+      airportDrop: "₹450 – ₹600 (Fixed)",
+    },
+    driverBhatta: "₹300/day",
     seo: {
-      title: "Sedan Taxi in Jodhpur | Marwar Cabs",
+      title: "Sedan Taxi in Jodhpur | Marwad Cabs",
       description:
-        "Book a sedan taxi in Jodhpur for city trips, airport travel, and outstation runs. Dzire or Etios with trained drivers. Ask for a fare estimate on WhatsApp.",
+        "Book an AC Dzire or Etios sedan taxi in Jodhpur with Marwad Cabs. Fixed per-km outstation rates from Rs 10/km and local 8hr/80km packages from Rs 1,800.",
     },
     faqs: [
       {
-        q: "Which car will I get in the sedan class?",
-        a: "You book the sedan class and we assign a Maruti Dzire or Toyota Etios, or a similar car in the same class. The exact model depends on what is free on your travel date.",
+        q: "Which sedan will be sent for my booking?",
+        a: "We assign either a clean Maruti Suzuki Dzire or Toyota Etios. If you are carrying 3 large trolley bags, tell us in advance so we specifically dispatch an Etios with its larger 592-litre boot.",
       },
       {
-        q: "How much luggage fits in a sedan?",
-        a: "The boot holds two large bags without stacking, plus a couple of soft bags. Tell us your luggage count when you book and we will suggest the class that suits.",
+        q: "What is included in the ₹10/km outstation rate?",
+        a: "The ₹10/km rate covers the vehicle, driver, and diesel for a minimum of 250 km/day. Driver bhatta is ₹300/day. Tolls, parking, and state border taxes are paid directly against actual receipts.",
       },
       {
-        q: "Is a sedan enough for Jodhpur to Jaipur?",
-        a: "Two people with two bags travel comfortably on that highway. For three passengers or heavy luggage, the SUV or the Innova Crysta gives everyone more room for the same kind of day.",
+        q: "Can the sedan pick up from Jodhpur Railway Station?",
+        a: "Yes. Our driver arrives 15 minutes before train arrival and parks at either Platform 1 (main entrance) or Platform 2 (subhash nagar side), sending vehicle number and live location to your WhatsApp.",
       },
     ],
   },
   {
     slug: "suv-taxi-jodhpur",
-    name: "SUV",
+    name: "Maruti Suzuki Ertiga",
     category: "suv",
-    models: ["Maruti Ertiga", "Mahindra Marazzo"],
-    seats: "6",
-    luggage: "3 large bags",
-    perKm: 14,
+    models: ["Maruti Suzuki Ertiga"],
+    seats: "5–6 Passengers + 1 Driver",
+    luggage: "3–4 Suitcases (Roof carrier included)",
+    perKm: 13,
     dailyKmLimit: 250,
     comfort:
-      "A six-seat SUV with a higher seat and steady ride, and room for three large bags when all seats are not full.",
-    idealFor: ["Family holidays", "Hill road trips", "Three or four travellers"],
+      "Good budget choice for a family of 4–5 with kids. If 6 adults are travelling with heavy bags, we fold the last row or load bags on the roof carrier with a waterproof tarpaulin cover.",
+    idealFor: [
+      "Family Trips with Kids",
+      "Jodhpur Sightseeing",
+      "Jaisalmer & Osian Highway Runs",
+    ],
     image: "/images/vehicles/suv-taxi-jodhpur.jpg",
-    imageAlt: "SUV taxi parked near a heritage building in Jodhpur",
+    imageAlt: "Maruti Suzuki Ertiga cab parked outside Umaid Bhawan Palace Jodhpur",
+    localPackages: {
+      fourHours: "₹1,600 (4 Hr / 40 Km)",
+      eightHours: "₹2,400 (8 Hr / 80 Km)",
+      airportDrop: "₹650 – ₹800 (Fixed)",
+    },
+    driverBhatta: "₹300/day",
     seo: {
-      title: "SUV Taxi in Jodhpur | Marwar Cabs",
+      title: "Ertiga MUV Taxi in Jodhpur | Marwad Cabs",
       description:
-        "Book an SUV taxi in Jodhpur for family trips and highway drives. Ertiga or Marazzo, six seats, room for three large bags. Ask for a fare estimate on WhatsApp.",
+        "Book an AC Ertiga taxi in Jodhpur with Marwad Cabs. Spacious 6-seater MUV with roof carrier for family trips. Fixed rates from Rs 13/km. Reserve on WhatsApp.",
     },
     faqs: [
       {
-        q: "How many people can travel in the SUV?",
-        a: "Six passengers sit across two rows with headroom to spare. With all six seats taken, keep luggage to three large bags so everyone travels without crowding the aisle.",
+        q: "How many passengers fit comfortably in the Ertiga?",
+        a: "The Ertiga seats up to 6 passengers plus driver. For long highway trips like Jodhpur to Jaisalmer or Udaipur, 4 to 5 passengers travel with maximum legroom.",
       },
       {
-        q: "Does the SUV handle hill roads well?",
-        a: "The higher seating and steady suspension suit the ghat sections toward Mount Abu and the curves near Ranakpur. The driver keeps a slow pace on the climbs and stops when you ask.",
+        q: "Is there a roof carrier for luggage on the Ertiga?",
+        a: "Yes. All our outstation Ertigas come fitted with a sturdy roof carrier and waterproof tarpaulin so luggage stays protected from rain and desert dust.",
       },
       {
-        q: "Can I book the SUV for a one-way trip?",
-        a: "Yes. The SUV runs on one-way, round-trip, and outstation bookings alike. Share your route, dates, and passenger count and we will send the estimate for that class.",
+        q: "What is the daily billing for an outstation Ertiga?",
+        a: "Outstation round trips are billed at ₹13/km with a standard 250 km/day minimum floor plus ₹300/day driver allowance. Highway FASTag tolls and monument parking are extra at actual cost.",
+      },
+    ],
+  },
+  {
+    slug: "toyota-innova-jodhpur",
+    name: "Toyota Innova",
+    category: "suv",
+    models: ["Toyota Innova (Standard AC)"],
+    seats: "6–7 Passengers + 1 Driver",
+    luggage: "5 Large Suitcases (Heavy-duty roof carrier)",
+    perKm: 15,
+    dailyKmLimit: 250,
+    comfort:
+      "Proven highway workhorse for long Rajasthan circuits (Jodhpur–Jaisalmer–Bikaner–Jaipur). Strong AC vents in all 3 rows even in 45°C summer heat.",
+    idealFor: [
+      "Long Rajasthan Circuits",
+      "Large Family Groups",
+      "Rough Desert Roads & Summer Heat",
+    ],
+    image: "/images/vehicles/toyota-innova-jodhpur.jpg",
+    imageAlt: "Toyota Innova taxi waiting near Mehrangarh Fort parking lot",
+    localPackages: {
+      fourHours: "₹1,900 (4 Hr / 40 Km)",
+      eightHours: "₹2,800 (8 Hr / 80 Km)",
+      airportDrop: "₹800 – ₹1,000 (Fixed)",
+    },
+    driverBhatta: "₹300/day",
+    seo: {
+      title: "Toyota Innova Taxi in Jodhpur | Marwad Cabs",
+      description:
+        "Hire a Toyota Innova taxi in Jodhpur with Marwad Cabs. Reliable 7-seater SUV with roof carrier for Rajasthan highways. Fixed rates from Rs 15/km. WhatsApp us.",
+    },
+    faqs: [
+      {
+        q: "How does the Toyota Innova perform on long Rajasthan routes?",
+        a: "The Innova is famous for highway stability, high road clearance, and dual AC blowers that keep all 3 rows chilled even during 45°C summer drives through Pokhran and Bikaner.",
+      },
+      {
+        q: "How much luggage can an Innova carry?",
+        a: "With the full-length roof luggage carrier, an Innova easily carries 5 to 6 large suitcases tied down with weather-resistant tarpaulin covers.",
+      },
+      {
+        q: "Can we hire an Innova for a multi-day Rajasthan tour?",
+        a: "Yes. Multi-day tours from Jodhpur to Jaisalmer, Udaipur, Mount Abu, and Jaipur are billed at ₹15/km with a 250 km/day minimum average plus ₹300/day driver bhatta.",
       },
     ],
   },
   {
     slug: "innova-crysta-jodhpur",
-    name: "Innova Crysta",
+    name: "Toyota Innova Crysta",
     category: "mpv",
-    models: ["Toyota Innova Crysta"],
-    seats: "6",
-    luggage: "4 large bags",
-    perKm: 18,
-    dailyKmLimit: 300,
+    models: ["Toyota Innova Crysta (6+1 Captain / 7+1 Bench)"],
+    seats: "6+1 (Captain Seats) or 7+1 (Bench)",
+    luggage: "5–6 Large Suitcases (Roof carrier + cover)",
+    perKm: 17,
+    dailyKmLimit: 250,
     popular: true,
     comfort:
-      "A spacious six-seater that stays quiet on long highway stretches, with room for four large bags in the back.",
-    idealFor: ["Outstation families", "Long highway runs", "Airport pickups"],
+      "Our most booked family SUV for Jodhpur to Udaipur (via Ranakpur & Kumbhalgarh ghat roads) and Jaisalmer Sam Sand Dunes. Captain seats available on request.",
+    idealFor: [
+      "Premium Family Touring",
+      "Udaipur via Ranakpur Ghat Road",
+      "Sam Sand Dunes Luxury Transfers",
+    ],
     image: "/images/vehicles/innova-crysta-jodhpur.jpg",
-    imageAlt: "Innova Crysta taxi parked outside a hotel in Jodhpur",
+    imageAlt: "Toyota Innova Crysta parked at Ratanada Civil Airport Road Jodhpur",
+    localPackages: {
+      fourHours: "₹2,200 (4 Hr / 40 Km)",
+      eightHours: "₹3,200 (8 Hr / 80 Km)",
+      airportDrop: "₹900 – ₹1,200 (Fixed)",
+    },
+    driverBhatta: "₹300/day",
     seo: {
-      title: "Innova Crysta Taxi in Jodhpur | Marwar Cabs",
+      title: "Innova Crysta Taxi in Jodhpur | Marwad Cabs",
       description:
-        "Book an Innova Crysta taxi in Jodhpur for outstation trips with family. Six seats, four large bags, a quiet cabin. Get a fare estimate on WhatsApp.",
+        "Book a premium Innova Crysta taxi in Jodhpur with Marwad Cabs. Captain seats, roof carrier, and experienced drivers. Outstation from Rs 17/km. Call or WhatsApp.",
     },
     faqs: [
       {
-        q: "Why do travellers pick the Innova Crysta?",
-        a: "It carries six people with four large bags and holds a steady pace on the highway without straining. Families find it the most balanced car for Rajasthan distances.",
+        q: "Can I choose captain seats or bench seats in the Innova Crysta?",
+        a: "Yes. We offer both 6+1 (middle row luxury captain recliner seats) and 7+1 (bench seating) configurations. Specify your preference when messaging on WhatsApp.",
       },
       {
-        q: "Do you provide a child seat in the Crysta?",
-        a: "Child seats are not fitted as standard in any of our cars. Tell us the child's age when you book and we will confirm what can be arranged for your dates.",
+        q: "Is the Innova Crysta suitable for the Ranakpur and Kumbhalgarh ghats?",
+        a: "It is the gold standard for that stretch. Its powerful engine and balanced suspension handle the winding hairpins and steep climbs with zero engine strain and no AC drop.",
       },
       {
-        q: "Can the Crysta run a multi-day trip?",
-        a: "Yes. Daily kilometre limits and overnight halts are written into your estimate, so plan the days and stops first and we will price the whole journey before you confirm.",
+        q: "What is the per-km rate and driver allowance for Crysta?",
+        a: "Outstation rate is ₹17/km on a 250 km/day minimum calculation. Driver allowance (bhatta) is ₹300/day covering driver food and accommodation.",
       },
     ],
   },
   {
     slug: "tempo-traveller-jodhpur",
-    name: "Tempo Traveller",
+    name: "Force Tempo Traveller",
     category: "tempo",
-    models: ["12 seater", "17 seater"],
-    seats: "12",
-    luggage: "Roof carrier available",
+    models: ["12 Seater", "17 Seater", "20 Seater", "26 Seater"],
+    seats: "12, 17, 20, or 26 Pushback Seats + Driver & Helper",
+    luggage: "Dedicated rear boot + full roof rack",
     perKm: 24,
-    dailyKmLimit: 300,
+    dailyKmLimit: 250,
     comfort:
-      "A twelve-seat traveller with push-back seats and storage inside, plus a roof carrier for larger groups.",
-    idealFor: ["Group tours", "Family weddings", "Temple circuits"],
+      "Equipped with Maharaja 1x1 or 2x1 pushback seats, individual AC vents, charging sockets at every row, icebox, and curtain blinds for wedding guests and group tours.",
+    idealFor: [
+      "Destination Wedding Guests",
+      "Large Family Group Vacations",
+      "Corporate Offsites & Pilgrimages",
+    ],
     image: "/images/vehicles/tempo-traveller-jodhpur.jpg",
-    imageAlt: "Tempo Traveller minibus ready for a group trip in Jodhpur",
+    imageAlt: "Force Tempo Traveller tourist coach parked at Mandore Gardens Jodhpur",
+    localPackages: {
+      fourHours: "₹3,800 (4 Hr / 40 Km)",
+      eightHours: "₹5,500 (8 Hr / 80 Km)",
+      airportDrop: "₹1,800 – ₹2,500 (Fixed)",
+    },
+    driverBhatta: "₹500/day",
     seo: {
-      title: "Tempo Traveller on Rent in Jodhpur | Marwar Cabs",
+      title: "Tempo Traveller Rent Jodhpur | Marwad Cabs",
       description:
-        "Hire a tempo traveller in Jodhpur for group trips and temple circuits. Twelve or seventeen seats with a roof carrier. Check availability on WhatsApp.",
+        "Rent a Force Tempo Traveller in Jodhpur with Marwad Cabs. 12 to 26 seater pushback AC minibuses for weddings & family tours. Fares from Rs 24/km.",
     },
     faqs: [
       {
-        q: "How many seats does the traveller have?",
-        a: "The standard vehicle is a twelve-seater, and a seventeen-seater is available for larger groups. Both keep the same comfort level, with bags carried inside or on the roof.",
+        q: "Which seating capacities are available in your Tempo Travellers?",
+        a: "We maintain 12-seater Maharaja (1x1 recliner seats), 17-seater, 20-seater, and 26-seater AC configurations. All models feature separate rear luggage space and top roof racks.",
       },
       {
-        q: "Is a roof carrier included?",
-        a: "The roof carrier is available on request and is fitted before pickup. Tell us the luggage size when you book so we assign the right vehicle and allow time for loading.",
+        q: "Do your tempo travellers have individual AC vents and charging ports?",
+        a: "Yes. Every passenger seat has dedicated cooling vents, individual USB charging points, reclining backrests, and blackout curtains.",
       },
       {
-        q: "Which trips suit the tempo traveller?",
-        a: "Group tours, family weddings, and temple circuits such as Osian or Ranakpur. Short city days and long outstation runs both work, with the same driver through the whole trip.",
+        q: "Can a tempo traveller navigate into Jodhpur old city?",
+        a: "No 4-wheel commercial vehicle larger than an auto-rickshaw can enter Clock Tower or Navchokiya lanes. We drop groups at Sojati Gate or Jalori Gate and coordinate local autos for haveli access.",
+      },
+    ],
+  },
+  {
+    slug: "luxury-cab-jodhpur",
+    name: "Force Urbania & Toyota Fortuner",
+    category: "suv",
+    models: ["Toyota Fortuner 4x4", "Force Urbania Luxury Van"],
+    seats: "7 Seater (Fortuner) / 13–17 Seater (Urbania)",
+    luggage: "Executive luggage capacity",
+    perKm: 35,
+    dailyKmLimit: 250,
+    comfort:
+      "Booked heavily during October–March wedding and NRI season in Jodhpur (Umaid Bhawan, Ajit Bhawan, Indana Palace events). Advance booking required.",
+    idealFor: [
+      "Umaid Bhawan & Palace Weddings",
+      "VIP & Corporate Executives",
+      "Luxury High-Speed Highway Travel",
+    ],
+    image: "/images/vehicles/luxury-cab-jodhpur.jpg",
+    imageAlt: "Luxury cab parked in front of heritage palace in Jodhpur",
+    localPackages: {
+      fourHours: "₹5,000 (4 Hr / 40 Km)",
+      eightHours: "₹8,500 (8 Hr / 80 Km)",
+      airportDrop: "₹2,500 – ₹3,500 (Fixed)",
+    },
+    driverBhatta: "₹500/day",
+    seo: {
+      title: "Luxury Fortuner & Urbania | Marwad Cabs",
+      description:
+        "Hire Toyota Fortuner & Force Urbania in Jodhpur for palace weddings, VIP transfers and royal events. Premium chauffeurs. Reserve on WhatsApp.",
+    },
+    faqs: [
+      {
+        q: "How far in advance should I book an Urbania or Fortuner?",
+        a: "During the high wedding season (October to March), we recommend locking these vehicles at least 2 to 3 weeks ahead with a small advance.",
+      },
+      {
+        q: "Are these vehicles suited for palace wedding entries in Jodhpur?",
+        a: "Yes. They are commonly booked for bridal entries, VIP guest pickup from Jodhpur Airport (JDH), and convoy duty for celebrations at Umaid Bhawan, Ajit Bhawan, and Indana Palace.",
+      },
+      {
+        q: "What is the per-km billing for luxury fleet?",
+        a: "Fortuner outstation runs start at ₹35/km, while the luxury Force Urbania ranges from ₹38 to ₹42/km depending on seating size, with 250 km/day minimum.",
       },
     ],
   },

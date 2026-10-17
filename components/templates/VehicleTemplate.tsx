@@ -73,7 +73,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
 
               <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-text-dark-muted pt-3 border-t border-white/10">
                 <span>Models in Fleet: {vehicle.models.join(" · ")}</span>
-                <span className="text-gold font-medium">BuildBlock Maintained</span>
+                <span className="text-gold font-medium">Marwad Cabs Inspected</span>
               </div>
             </div>
           </div>

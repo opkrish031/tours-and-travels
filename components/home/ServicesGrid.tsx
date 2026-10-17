@@ -4,6 +4,11 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { services } from "@/data/services";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 
+// Exclude repetitive sub-variants (one-way and round-trip are encompassed by outstation-taxi-jodhpur)
+const primaryServices = services.filter(
+  (s) => s.slug !== "one-way-taxi-jodhpur" && s.slug !== "round-trip-taxi-jodhpur"
+);
+
 export function ServicesGrid() {
   return (
     <Section tone="mist" size="md">
@@ -14,7 +19,7 @@ export function ServicesGrid() {
       />
 
       <Stagger as="div" className="space-y-4">
-        {services.map((service, index) => (
+        {primaryServices.map((service, index) => (
           <StaggerItem key={service.slug} as="div">
             <Link
               href={`/${service.slug}`}

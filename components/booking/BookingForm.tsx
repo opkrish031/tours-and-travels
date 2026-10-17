@@ -64,12 +64,15 @@ export function BookingForm({
   const uid = useId();
   const [submitted, setSubmitted] = useState(false);
   const datetimeRef = useRef<HTMLInputElement | null>(null);
+  const mountedAtRef = useRef<number>(0);
 
+  const [tripType, setTripType] = useState<"sightseeing" | "outstation" | "transfer">("sightseeing");
   const requireContact = variant === "contact";
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<z.input<BookingSchema>, unknown, FormValues>({
     resolver: zodResolver(
@@ -90,6 +93,7 @@ export function BookingForm({
   });
 
   useEffect(() => {
+    mountedAtRef.current = Date.now();
     if (datetimeRef.current) {
       datetimeRef.current.min = toInputValue(new Date());
     }
@@ -160,7 +164,7 @@ export function BookingForm({
           const payload = {
             ...values,
             sourcePage,
-            startedAt: Date.now() - 3_000,
+            startedAt: mountedAtRef.current || Date.now() - 3_000,
           };
 
           fetch("/api/lead", {
@@ -206,9 +210,9 @@ export function BookingForm({
           : "border-line bg-white/95 text-text shadow-sm backdrop-blur-xl"
       } p-6 sm:p-8 ${className}`}
     >
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-5 flex items-center justify-between">
         <div>
-          <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-1">
+          <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-0.5">
             Instant Quote
           </span>
           <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
@@ -219,6 +223,55 @@ export function BookingForm({
           <ShieldCheck className="h-3.5 w-3.5" />
           <span>Zero Advance</span>
         </div>
+      </div>
+
+      {/* Booking Form Service Tabs */}
+      <div className="mb-5 grid grid-cols-3 gap-1 rounded-2xl bg-mist/60 p-1 dark:bg-white/5 border border-line dark:border-white/10 text-xs font-semibold">
+        <button
+          type="button"
+          onClick={() => {
+            setTripType("sightseeing");
+            setValue("pickup", "Hotel / Residence in Jodhpur");
+            setValue("drop", "Jodhpur Sightseeing (Mehrangarh, Jaswant Thada, Umaid Bhawan)");
+          }}
+          className={`rounded-xl py-2 px-1 text-center transition-all ${
+            tripType === "sightseeing"
+              ? "bg-gold text-black shadow-xs font-bold"
+              : "text-text-muted hover:text-text dark:text-text-dark-muted dark:hover:text-white"
+          }`}
+        >
+          Sightseeing
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setTripType("outstation");
+            setValue("pickup", "Jodhpur");
+            setValue("drop", "Jaisalmer / Udaipur / Jaipur");
+          }}
+          className={`rounded-xl py-2 px-1 text-center transition-all ${
+            tripType === "outstation"
+              ? "bg-gold text-black shadow-xs font-bold"
+              : "text-text-muted hover:text-text dark:text-text-dark-muted dark:hover:text-white"
+          }`}
+        >
+          Outstation
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setTripType("transfer");
+            setValue("pickup", "Jodhpur Airport (JDH) / Junction");
+            setValue("drop", "Hotel / Haveli in Jodhpur");
+          }}
+          className={`rounded-xl py-2 px-1 text-center transition-all ${
+            tripType === "transfer"
+              ? "bg-gold text-black shadow-xs font-bold"
+              : "text-text-muted hover:text-text dark:text-text-dark-muted dark:hover:text-white"
+          }`}
+        >
+          Airport/Stn
+        </button>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">

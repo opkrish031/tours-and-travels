@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { POST } from "@/app/api/lead/route";
 import { resetRateLimits } from "@/lib/rateLimit";
 
-const ORIGIN = "https://example.com";
+const ORIGIN = "https://marwadcabs.com";
 const WEBHOOK = "https://webhook.test/lead";
 
 function validBody(extra: Record<string, unknown> = {}) {

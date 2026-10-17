@@ -8,7 +8,7 @@ export function WhyUs() {
   return (
     <Section tone="snow" size="md">
       <SectionHeader
-        eyebrow="The BuildBlock Standard"
+        eyebrow="The Marwad Cabs Standard"
         title="Reliability in Every Kilometre"
         description="We eliminate travel uncertainty with fixed rates, vetted drivers, and transparent communication from pickup to destination."
       />
@@ -76,7 +76,7 @@ export function WhyUs() {
           highlight
           badge="Round Trips"
           title="One Dedicated Vehicle Across Your Entire Tour"
-          subtitle="Keep the exact same car and driver across multi-day circuits. Sightseeing detours at Ranakpur or Kumbhalgarh are seamlessly accommodated."
+          subtitle="Keep the exact same car and driver across multi-day circuits. Sightseeing detours at Ranakpur or Kumbhalgarh are accommodated directly without hidden fees."
           className="lg:col-span-2"
         >
           <div className="flex flex-wrap items-center justify-between gap-4">

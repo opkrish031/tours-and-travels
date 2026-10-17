@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { ChevronDown, Menu } from "lucide-react";
@@ -9,6 +10,7 @@ import { Container } from "@/components/ui/Container";
 import { CallButton } from "@/components/booking/CallButton";
 import { WhatsAppButton } from "@/components/booking/WhatsAppButton";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { TopBar } from "@/components/home/TopBar";
 import { navGroups, primaryNav, type NavLink } from "@/lib/nav";
 import { contextMessage } from "@/lib/whatsapp";
 import { site } from "@/data/site";
@@ -185,11 +187,12 @@ export function Header() {
 
   return (
     <>
+      <TopBar />
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-line bg-snow/85 backdrop-blur-xl shadow-xs"
-            : "border-b border-transparent bg-snow/60 backdrop-blur-md"
+            ? "border-b border-line bg-snow/95 backdrop-blur-xl shadow-xs"
+            : "border-b border-line/50 bg-snow/80 backdrop-blur-md"
         }`}
         onBlur={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
@@ -198,18 +201,30 @@ export function Header() {
         }}
       >
         <Container className="flex h-16 items-center justify-between gap-4 md:h-[4.5rem] lg:gap-8">
-          {/* Brand Logo */}
+          {/* Brand Logo with Gold-Ringed Circular Badge */}
           <Link
             href="/"
-            className="group flex shrink-0 items-center gap-2 select-none"
+            className="group flex shrink-0 items-center gap-2.5 sm:gap-3 select-none py-1"
             aria-label={`${site.brandName} — home`}
           >
-            <span className="text-xl md:text-[1.375rem] font-semibold tracking-[-0.03em] text-text transition-colors group-hover:text-gold-deep">
-              {site.brandName}
-            </span>
-            <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[0.6875rem] font-medium text-gold-deep border border-gold/30 hidden sm:inline-block">
-              Jodhpur
-            </span>
+            <div className="relative h-10 w-10 sm:h-12 sm:w-12 rounded-full overflow-hidden border-2 border-gold shadow-xs bg-white shrink-0 ring-1 ring-gold/40">
+              <Image
+                src="/logo.png"
+                alt="Marwad Cabs Logo"
+                width={48}
+                height={48}
+                className="h-full w-full object-cover"
+                priority
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-text leading-tight group-hover:text-gold-deep transition-colors">
+                MARWAD CABS
+              </span>
+              <span className="text-[0.625rem] sm:text-[0.6875rem] font-semibold tracking-wider text-gold-deep uppercase">
+                Tour and Travels • Jodhpur
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}

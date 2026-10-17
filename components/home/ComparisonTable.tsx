@@ -56,11 +56,11 @@ export function ComparisonTable() {
         number="10"
         eyebrow="The difference"
         title="Booking with us, compared with a street-hail taxi"
-        description="What a written booking gives you that an ad-hoc car usually does not. Every claim in the Marwar Cabs column is something you can check on this site."
+        description="What a written booking gives you that an ad-hoc car usually does not. Every claim in the Marwad Cabs column is something you can check on this site."
       />
       <div className="mt-10 md:mt-14">
         <Table
-          caption="Comparison of Marwar Cabs booking practices against typical street-hail taxis"
+          caption="Comparison of Marwad Cabs booking practices against typical street-hail taxis"
           minWidth="42rem"
         >
           <thead>
@@ -69,7 +69,7 @@ export function ComparisonTable() {
                 What matters
               </th>
               <th scope="col" className={thClass}>
-                With Marwar Cabs
+                With Marwad Cabs
               </th>
               <th scope="col" className={thClass}>
                 With a street-hail taxi

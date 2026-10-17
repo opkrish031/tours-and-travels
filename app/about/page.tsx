@@ -133,14 +133,14 @@ export default function AboutPage() {
             </ul>
           </div>
 
-          {/* Column B: BuildBlock Standard */}
+          {/* Column B: Marwad Cabs Standard */}
           <div className="rounded-3xl border border-gold/40 bg-white p-8 shadow-xs relative overflow-hidden">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute top-0 right-0 h-40 w-40 rounded-full bg-gold/10 blur-2xl"
             />
             <div className="inline-block text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep mb-2">
-              The BuildBlock Standard
+              The Marwad Cabs Standard
             </div>
             <h3 className="text-xl font-semibold text-text mb-4">
               Disciplined Fleet Discipline

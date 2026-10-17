@@ -1,9 +1,11 @@
-# TRD: Jodhpur Taxi / Cab Hire Website
+# TRD: Marwad Cabs — Tour and Travels Website
 
 **Document type:** Technical Requirements Document
+**Brand:** Marwad Cabs (Legal: Marwad Cabs — Tour and Travels)
+**Domain:** https://marwadcabs.com
 **Version:** 1.0
-**Owner:** Pratyaksh Jangid (BuildBlock)
-**Companion doc:** `PRD.md` (product requirements; read first)
+**Status:** Implemented
+**Companion doc:** `PRD (2).md` (product requirements; read first)
 **Audience:** The developer and any AI coding agent (OpenCode, Antigravity) implementing the build.
 
 > Rule for agents: `PRD.md` defines **what** to build. This document defines **how**. If they conflict, stop and ask. Never invent business data (phone numbers, rates, reviews, stats). Use clearly marked placeholders.
@@ -397,7 +399,7 @@ Targets: Lighthouse mobile 90+, LCP under 2.5 s, CLS under 0.1, INP under 200 ms
 
 ### 9.1 Environment variables (`.env.example`)
 ```
-NEXT_PUBLIC_SITE_URL=https://example.com
+NEXT_PUBLIC_SITE_URL=https://marwadcabs.com
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 LEAD_WEBHOOK_URL=https://script.google.com/macros/s/XXXX/exec
 LEAD_WEBHOOK_SECRET=change-me

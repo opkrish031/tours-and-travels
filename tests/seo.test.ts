@@ -14,23 +14,23 @@ import {
 describe("titleFor", () => {
   it("appends the brand name", () => {
     expect(titleFor("Jodhpur to Jaipur Taxi")).toBe(
-      "Jodhpur to Jaipur Taxi | Marwar Cabs",
+      "Jodhpur to Jaipur Taxi | Marwad Cabs",
     );
   });
 });
 
 describe("canonicalUrl", () => {
   it("builds absolute URLs without trailing slashes", () => {
-    expect(canonicalUrl("/taxi-fare")).toBe("https://example.com/taxi-fare");
-    expect(canonicalUrl("/about/")).toBe("https://example.com/about");
+    expect(canonicalUrl("/taxi-fare")).toBe("https://marwadcabs.com/taxi-fare");
+    expect(canonicalUrl("/about/")).toBe("https://marwadcabs.com/about");
     expect(canonicalUrl("/jodhpur-to-jaipur-taxi")).toBe(
-      "https://example.com/jodhpur-to-jaipur-taxi",
+      "https://marwadcabs.com/jodhpur-to-jaipur-taxi",
     );
   });
 
   it("keeps the root path", () => {
-    expect(canonicalUrl()).toBe("https://example.com/");
-    expect(canonicalUrl("/")).toBe("https://example.com/");
+    expect(canonicalUrl()).toBe("https://marwadcabs.com/");
+    expect(canonicalUrl("/")).toBe("https://marwadcabs.com/");
   });
 });
 
@@ -47,7 +47,7 @@ describe("buildMetadata", () => {
     expect(metadata.title).toEqual({ absolute: base.title });
     expect(metadata.description).toBe(base.description);
     expect(metadata.alternates?.canonical).toBe(
-      "https://example.com/jodhpur-one-way-taxi",
+      "https://marwadcabs.com/jodhpur-one-way-taxi",
     );
     expect(metadata.robots).toEqual({ index: true, follow: true });
   });
@@ -59,11 +59,11 @@ describe("buildMetadata", () => {
 
   it("populates Open Graph and Twitter fields", () => {
     const metadata = buildMetadata({ ...base, image: "/images/og/home.jpg" });
-    expect(metadata.openGraph?.url).toBe("https://example.com/jodhpur-one-way-taxi");
+    expect(metadata.openGraph?.url).toBe("https://marwadcabs.com/jodhpur-one-way-taxi");
     expect(metadata.openGraph?.siteName).toBe(site.brandName);
     expect(metadata.openGraph?.locale).toBe("en_IN");
     expect(metadata.openGraph?.images).toEqual([
-      { url: "https://example.com/images/og/home.jpg" },
+      { url: "https://marwadcabs.com/images/og/home.jpg" },
     ]);
     const twitter = metadata.twitter;
     expect(twitter && "card" in twitter ? twitter.card : undefined).toBe(
@@ -123,9 +123,9 @@ describe("breadcrumbJsonLd", () => {
     expect(json.itemListElement[0]).toMatchObject({
       position: 1,
       name: "Home",
-      item: "https://example.com/",
+      item: "https://marwadcabs.com/",
     });
-    expect(json.itemListElement[1].item).toBe("https://example.com/routes");
+    expect(json.itemListElement[1].item).toBe("https://marwadcabs.com/routes");
     expect(json.itemListElement[2].position).toBe(3);
   });
 });
@@ -138,9 +138,9 @@ describe("serviceJsonLd", () => {
       path: "/jodhpur-to-jaipur-taxi",
     });
     expect(json["@type"]).toBe("Service");
-    expect(json.provider["@id"]).toBe("https://example.com/#business");
+    expect(json.provider["@id"]).toBe("https://marwadcabs.com/#business");
     expect(json.offers).toBeUndefined();
-    expect(json.url).toBe("https://example.com/jodhpur-to-jaipur-taxi");
+    expect(json.url).toBe("https://marwadcabs.com/jodhpur-to-jaipur-taxi");
   });
 
   it("adds an INR offer when a price is given", () => {
