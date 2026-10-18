@@ -117,7 +117,7 @@ export function MobileNav({
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-serif text-base font-bold tracking-tight text-text leading-tight">
+                  <span className="text-base font-bold tracking-[-0.01em] text-text leading-tight">
                     MARWAD CABS
                   </span>
                   <span className="text-[0.5625rem] font-semibold tracking-wider text-gold-deep uppercase">

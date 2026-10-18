@@ -11,8 +11,8 @@ export function FleetTable() {
     <Section tone="paper" size="md">
       <SectionHeader
         number="07"
-        eyebrow="Fleet Fare Comparison"
-        title="Compare Jodhpur Taxi Rates & Capacities"
+        eyebrow="Rate card"
+        title="Compare rates by vehicle"
         description="Transparent side-by-side rates. Outstation billing is based on per-km rates with a standard 250 km/day minimum floor. Driver allowance is ₹300/day."
       />
       <div className="mt-8 md:mt-12">

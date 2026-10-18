@@ -36,7 +36,7 @@ export function Footer() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-serif text-2xl font-bold tracking-tight text-white group-hover:text-gold transition-colors">
+                  <span className="text-2xl font-bold tracking-[-0.02em] text-white group-hover:text-gold transition-colors">
                     MARWAD CABS
                   </span>
                   <span className="text-[0.6875rem] font-semibold tracking-wider text-[#E5B84B] uppercase">

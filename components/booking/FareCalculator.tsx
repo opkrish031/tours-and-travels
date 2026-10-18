@@ -281,15 +281,16 @@ export function FareCalculator({ className = "" }: { className?: string }) {
                 Estimated Total Fare
               </span>
               <div className="mt-1 flex items-baseline gap-2">
-                <span className="text-[clamp(2.5rem,5.5vw,3.75rem)] font-bold tracking-tight text-white leading-none">
+                <span className="text-[clamp(2rem,4.5vw,3rem)] font-semibold tracking-[-0.02em] text-white leading-none">
                   <AnimatedNumber value={estimate.total} prefix="₹" />
                 </span>
                 <span className="text-xs text-gold font-medium bg-gold/10 px-2.5 py-0.5 rounded-full border border-gold/20">
-                  Fixed Estimate
+                  Before extras
                 </span>
               </div>
               <p className="mt-3 text-xs md:text-sm text-text-dark-muted max-w-[50ch] leading-relaxed">
-                {estimate.breakdown}. Includes sanitized vehicle, verified chauffeur, and fuel.
+                {estimate.breakdown}. Fuel and driver included. Tolls, parking
+                and any extras are itemised in your written quote.
               </p>
             </div>
 

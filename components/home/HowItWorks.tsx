@@ -9,18 +9,18 @@ const steps = [
   },
   {
     number: "02",
-    title: "Review Exact Quote",
-    body: "Receive the verified fare with vehicle options and exact inclusions within minutes.",
+    title: "Get the Written Quote",
+    body: "We reply with the fare, vehicle options, and what’s included — before you confirm anything.",
   },
   {
     number: "03",
-    title: "Chauffeur Assigned",
-    body: "Vehicle is held. Driver contact, license, and car registration sent prior to departure.",
+    title: "Driver Assigned",
+    body: "The car is held for your dates. Driver contact and vehicle number sent before pickup.",
   },
   {
     number: "04",
-    title: "Travel & Pay at End",
-    body: "Driver arrives promptly. Settle payment comfortably upon destination arrival.",
+    title: "Travel & Pay at the End",
+    body: "Pay the driver at the end of the trip — cash or UPI. Nothing online beforehand.",
   },
 ] as const;
 
@@ -29,9 +29,9 @@ export function HowItWorks({ number }: { number?: string }) {
     <Section tone="graphite" size="md">
       <SectionHeader
         number={number}
-        eyebrow="Simple Reservation"
-        title="Four Direct Steps. No App Needed."
-        description="Booking is handled directly through WhatsApp or phone with total pricing agreed before your journey starts."
+        eyebrow="How booking works"
+        title="Four steps, no app needed."
+        description="Booking is handled directly on WhatsApp or phone. The fare is agreed before your journey starts."
         dark
       />
 
@@ -55,7 +55,7 @@ export function HowItWorks({ number }: { number?: string }) {
                 <span className="h-2 w-2 rounded-full bg-gold/50" />
               </div>
 
-              <h3 className="text-xl font-semibold tracking-tight text-white mb-2">
+              <h3 className="text-lg font-semibold tracking-[-0.01em] text-white mb-2">
                 {step.title}
               </h3>
               <p className="text-sm text-text-dark-muted leading-relaxed">

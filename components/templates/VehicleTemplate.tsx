@@ -48,10 +48,10 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
 
           <div className="mt-6 max-w-3xl mx-auto">
             <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-3">
-              Fleet Architecture · Category {vehicle.category.toUpperCase()}
+              Vehicle Class · {vehicle.category.toUpperCase()}
             </span>
 
-            <h1 className="text-[clamp(2.8rem,6.5vw,4.8rem)] font-semibold tracking-[-0.035em] leading-[1.04] text-white">
+            <h1 className="text-[clamp(2.1rem,5vw,3.6rem)] font-semibold tracking-[-0.02em] leading-[1.12] text-white">
               {vehicle.name}
             </h1>
 
@@ -64,16 +64,16 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
           <div className="mt-10 max-w-3xl mx-auto relative">
             <div className="rounded-3xl border border-white/10 bg-graphite p-4 sm:p-6 shadow-2xl relative overflow-hidden">
               <MediaFrame
-                label={`${vehicle.name} Studio View`}
+                label={`${vehicle.name} Photo`}
                 alt={vehicle.imageAlt}
                 aspect="16 / 9"
                 icon="car"
-                category={vehicle.popular ? "Flagship Choice" : "Chauffeur Spec"}
+                category={vehicle.popular ? "Most Booked" : "Standard Fleet"}
               />
 
               <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-text-dark-muted pt-3 border-t border-white/10">
                 <span>Models in Fleet: {vehicle.models.join(" · ")}</span>
-                <span className="text-gold font-medium">Marwad Cabs Inspected</span>
+                <span className="text-gold font-medium">Serviced and checked</span>
               </div>
             </div>
           </div>
@@ -82,16 +82,16 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
           <div className="mt-10 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
               <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
-                Passenger Seating
+                Seats
               </span>
               <span className="tabular mt-1 block text-lg font-bold text-white">
-                {vehicle.seats} Executive Seats
+                {vehicle.seats} Seats
               </span>
             </div>
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
               <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
-                Luggage Stowed
+                Luggage
               </span>
               <span className="mt-1 block text-base font-bold text-white truncate">
                 {vehicle.luggage}
@@ -100,7 +100,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
               <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
-                Outstation Base
+                Outstation Rate
               </span>
               <span className="tabular mt-1 block text-lg font-bold text-gold">
                 <AnimatedNumber value={vehicle.perKm} prefix="₹" suffix="/km" />
@@ -131,7 +131,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
               href="#booking-tray"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white hover:bg-white/15 transition-colors"
             >
-              Submit Travel Details ↓
+              Send Booking Details ↓
             </a>
           </div>
         </Container>
@@ -140,9 +140,9 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
       {/* Cabin Architecture & Engineering (Apple Bento Grid) */}
       <Section tone="snow" size="md">
         <SectionHeader
-          eyebrow="Inside The Vehicle"
-          title={`${vehicle.name} Anatomy &amp; Engineering`}
-          description={`Every ${vehicle.name} is mechanically audited, deep-sanitized between tours, and equipped with functioning multi-vent air conditioning.`}
+          eyebrow="Cabin"
+          title={`${vehicle.name} cabin, seats and AC`}
+          description={`Every ${vehicle.name} is serviced between tours, cleaned before each trip, and its AC is checked before long drives.`}
         />
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-10">
@@ -156,12 +156,12 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
                 Cabin Layout &amp; Reclining Space
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
-                Generous legroom configured for long desert highway stretches. Seats feature
-                ergonomic lumbar support and individual headrests for effortless long-distance travel.
+                Legroom that holds up on long highway stretches, with reclining seats and
+                headrests for the back row.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold text-text">
-              {vehicle.seats} Dedicated Passenger Capacity
+              {vehicle.seats} seats
             </div>
           </div>
 
@@ -172,15 +172,15 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
                 02 · Climate Control
               </span>
               <h3 className="text-xl font-semibold text-text mb-3">
-                High-Ambient Cooling System
+                Cooling for Rajasthan Heat
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
-                Tested against western Rajasthan desert heat up to 48°C. Dedicated rear vents
-                ensure rapid cabin chilling to 22°C within minutes of boarding.
+                Rear vents keep the cabin down through Rajasthan summers. We check the
+                AC before every long trip so it is blowing cold when you get in.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold text-text">
-              Pre-Cooled Before Pickup
+              AC checked before departure
             </div>
           </div>
 
@@ -194,8 +194,8 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
                 Secure Boot &amp; Luggage Space
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
-                Stowage designed for airport trolley cases and duffels. Clean, covered boot
-                keeps your luggage dust-free across desert highways.
+                Room for airport trolley cases and duffel bags. The boot is covered, so
+                bags stay off the desert dust.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold text-text">
@@ -207,7 +207,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
         {/* Ideal Trip Profiles Pill Strip */}
         <div className="mt-8 rounded-3xl border border-line bg-white p-6 md:p-8 shadow-xs">
           <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">
-            Optimal Use Cases for {vehicle.name}:
+            Best uses for {vehicle.name}:
           </h4>
           <div className="flex flex-wrap gap-3">
             {vehicle.idealFor.map((use) => (
@@ -226,9 +226,9 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
       {/* Outstation Rates for This Vehicle (Spec Sheet) */}
       <Section tone="mist" size="md">
         <SectionHeader
-          eyebrow="Route Spec Sheet"
-          title={`Intercity Fares with ${vehicle.name}`}
-          description={`Starting fixed rates for major highway departures from Jodhpur in a ${vehicle.name}.`}
+          eyebrow="Fares"
+          title={`Intercity fares with ${vehicle.name}`}
+          description={`One-way starting fares from Jodhpur on this route in a ${vehicle.name}.`}
         />
 
         <div className="mt-8">
@@ -283,7 +283,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
 
           <div className="rounded-3xl border border-line bg-white p-6 shadow-xs">
             <span className="text-xs font-semibold text-text-muted uppercase tracking-wider block mb-3">
-              Billed at Government Actuals
+              Billed at Actual Cost
             </span>
             <ul className="space-y-2 text-xs text-text-muted">
               {fareExcludes.slice(0, 4).map((item) => (
@@ -302,13 +302,13 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
         <Container className="max-w-4xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-10">
             <span className="eyebrow text-gold-deep font-semibold uppercase tracking-wider block mb-2">
-              Direct Reservation
+              Book It
             </span>
             <h2 className="text-3xl font-semibold tracking-tight text-text">
               Reserve Your {vehicle.name}
             </h2>
             <p className="mt-2 text-sm text-text-muted">
-              Select dates and route to generate your formatted written reservation.
+              Pick your dates and route and we will send a written quote.
             </p>
           </div>
 
@@ -336,8 +336,8 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
       {/* Compare Other Fleet Classes */}
       <Section tone="snow" size="md">
         <SectionHeader
-          eyebrow="Compare Fleet"
-          title="Alternative Vehicle Categories"
+          eyebrow="Compare"
+          title="Other vehicle types"
         />
         <div className="grid gap-6 sm:grid-cols-3 mt-8">
           {otherVehicles.map((other) => (

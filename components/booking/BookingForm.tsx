@@ -137,8 +137,8 @@ export function BookingForm({
               dark ? "text-text-dark-muted" : "text-text-muted"
             }`}
           >
-            WhatsApp is now opened with your trip details. Send the pre-filled message
-            to confirm availability and exact pricing instantly.
+            WhatsApp is now opened with your trip details. Send the pre-filled
+            message and we’ll reply with availability and the fare for your dates.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button
@@ -213,7 +213,7 @@ export function BookingForm({
       <div className="mb-5 flex items-center justify-between">
         <div>
           <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-0.5">
-            Instant Quote
+            Quick Enquiry
           </span>
           <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
             Book Your Cab

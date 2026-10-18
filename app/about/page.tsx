@@ -14,7 +14,7 @@ import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 export function generateMetadata(): Metadata {
   return buildMetadata({
     title: `About ${site.brandName} — Jodhpur Chauffeur Service`,
-    description: `${site.brandName} operates premium chauffeur-driven cabs from Jodhpur: licensed drivers, published per-km rates, and written fare estimates before every booking.`,
+    description: `${site.brandName} runs chauffeur-driven cabs from Jodhpur: licensed drivers, published per-km rates, and written fare estimates before every booking.`,
     path: "/about",
   });
 }
@@ -36,42 +36,42 @@ export default function AboutPage() {
 
           <div className="mt-6">
             <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-3">
-              Values &amp; Chauffeur Philosophy · Jodhpur, Marwar
+              How We Run · Jodhpur, Marwar
             </span>
-            <h1 className="text-[clamp(2.6rem,6vw,4.6rem)] font-semibold tracking-[-0.035em] leading-[1.04] text-white">
-              Built for Marwar Roads. Driven by Restraint.
+            <h1 className="text-[clamp(2.1rem,5vw,3.6rem)] font-semibold tracking-[-0.02em] leading-[1.12] text-white">
+              A Jodhpur fleet, run properly.
             </h1>
             <p className="mt-6 text-base md:text-xl text-text-dark-muted max-w-[54ch] mx-auto leading-relaxed">
-              We believe road travel across Rajasthan should be as serene as the destination.
-              No haggling at airport gates, no uninspected vehicles, no surprise toll surcharges.
-              Just quiet professionalism, published per-kilometre rates, and verified local chauffeurs.
+              Taxi travel in Rajasthan shouldn’t involve haggling at the airport gate or
+              wondering what the bill will say. We publish our per-km rates, use only
+              commercially licensed vehicles, and put the full fare in writing before you travel.
             </p>
 
             {/* Micro-Spec Ticker */}
             <div className="mt-12 pt-8 border-t border-line-dark/70 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-xs text-text-dark-muted">
               <div>
                 <span className="tabular block text-lg md:text-xl font-bold text-white mb-0.5">
-                  100%
+                  Yellow-plate
                 </span>
-                <span>Commercial Yellow-Plate</span>
+                <span>Commercial vehicles only</span>
               </div>
               <div>
                 <span className="tabular block text-lg md:text-xl font-bold text-white mb-0.5">
                   ₹0
                 </span>
-                <span>Surge Pricing Ever</span>
+                <span>Advance to book</span>
               </div>
               <div>
                 <span className="tabular block text-lg md:text-xl font-bold text-white mb-0.5">
-                  22°C
+                  Written
                 </span>
-                <span>Pre-Cooled Dual AC</span>
+                <span>Quote before pickup</span>
               </div>
               <div>
                 <span className="tabular block text-lg md:text-xl font-bold text-white mb-0.5">
-                  15 Min
+                  Ratanada
                 </span>
-                <span>Early Arrival Buffer</span>
+                <span>Base near JDH &amp; Junction</span>
               </div>
             </div>
           </div>
@@ -83,14 +83,14 @@ export default function AboutPage() {
         <Container className="max-w-4xl mx-auto">
           <div className="relative pl-8 md:pl-12 border-l-2 border-gold">
             <p className="text-xl sm:text-2xl md:text-3xl font-normal tracking-tight text-text leading-relaxed">
-              &ldquo;When you arrive in Jodhpur — whether for dawn light at Mehrangarh Fort
-              or a 300-kilometre run across the Thar to Jaisalmer — the last thing you
-              should negotiate is your safety or your driver&rsquo;s integrity.&rdquo;
+              &ldquo;Whether it’s dawn at Mehrangarh or a long run across the Thar to
+              Jaisalmer, the last thing you should have to negotiate is the fare or who’s
+              driving.&rdquo;
             </p>
             <div className="mt-6 flex items-center gap-3">
               <span className="font-semibold text-text text-sm">{site.brandName} Operations Desk</span>
               <span className="text-line text-xs">/</span>
-              <span className="text-text-muted text-xs">Paota Base, Jodhpur</span>
+              <span className="text-text-muted text-xs">Ratanada Base, Jodhpur</span>
             </div>
           </div>
         </Container>
@@ -99,36 +99,36 @@ export default function AboutPage() {
       {/* The Two Travel Paradigms (Apple Side-by-Side Comparison) */}
       <Section tone="mist" size="md">
         <SectionHeader
-          eyebrow="The Distinction"
-          title="Why We Reject the Aggregator Model"
-          description="Most booking platforms trade driver vetting and vehicle consistency for algorithmic scale. We run a dedicated, permanent fleet."
+          eyebrow="Why book direct"
+          title="Booking direct, without the middlemen"
+          description="On an app, the driver is whoever was free that day and the bill often changes at the end. We run a small permanent fleet and quote the whole trip upfront."
         />
 
         <div className="grid gap-6 md:grid-cols-2 mt-10">
           {/* Column A: Aggregator Reality */}
           <div className="rounded-3xl border border-line bg-white/70 p-8 shadow-xs">
             <div className="inline-block text-[0.6875rem] font-semibold uppercase tracking-wider text-text-muted mb-2">
-              The Common Compromise
+              The Usual Arrangement
             </div>
             <h3 className="text-xl font-semibold text-text mb-4">
-              Generic App &amp; Broker Networks
+              App &amp; Broker Networks
             </h3>
             <ul className="space-y-3.5 text-sm text-text-muted">
               <li className="flex items-start gap-3">
                 <span className="text-rose-600 font-bold shrink-0">✕</span>
-                <span>Unvetted drivers subcontracted across unregulated messaging groups.</span>
+                <span>A different driver each trip, sourced through local brokers.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-rose-600 font-bold shrink-0">✕</span>
-                <span>Arbitrary toll and state tax markups demanded in cash at trip end.</span>
+                <span>Tolls and state taxes settled in cash at trip end, often at marked-up rates.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-rose-600 font-bold shrink-0">✕</span>
-                <span>Air-conditioning turned off or underperforming in 45°C Rajasthan summer.</span>
+                <span>AC switched off on ghat stretches to save fuel.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-rose-600 font-bold shrink-0">✕</span>
-                <span>Last-minute booking cancellations when festival demand spikes.</span>
+                <span>Cancellations when festival demand pushes the surge.</span>
               </li>
             </ul>
           </div>
@@ -140,27 +140,27 @@ export default function AboutPage() {
               className="pointer-events-none absolute top-0 right-0 h-40 w-40 rounded-full bg-gold/10 blur-2xl"
             />
             <div className="inline-block text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep mb-2">
-              The Marwad Cabs Standard
+              How We Work
             </div>
             <h3 className="text-xl font-semibold text-text mb-4">
-              Disciplined Fleet Discipline
+              One fleet, one quote
             </h3>
             <ul className="space-y-3.5 text-sm text-text leading-relaxed">
               <li className="flex items-start gap-3">
                 <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                <span>Permanent, verified highway chauffeurs with commercial permits.</span>
+                <span>The same pool of drivers, trip after trip — all commercially permitted.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                <span>Electronic FASTag tolls billed strictly at physical barrier receipt value.</span>
+                <span>Tolls billed on FASTag at the actual receipt amount.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                <span>Dual-chiller climate systems verified prior to each outstation departure.</span>
+                <span>AC checked before long trips — it is Rajasthan, this isn’t optional.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                <span>Written reservation contract and driver allocation sent in advance.</span>
+                <span>Trip details and your driver’s number sent before pickup.</span>
               </li>
             </ul>
           </div>
@@ -170,9 +170,9 @@ export default function AboutPage() {
       {/* The Four Tenets of Chauffeur Craft (Apple Asymmetric Grid) */}
       <Section tone="snow" size="md">
         <SectionHeader
-          eyebrow="Operating Tenets"
-          title="Four Principles We Never Compromise On"
-          description="Every booking, from a quick dawn railway transfer to a fortnight Rajasthan circuit, adheres to these baseline standards."
+          eyebrow="Principles"
+          title="Four things we don’t cut corners on"
+          description="Whether it’s a 5 am railway pickup or a fortnight Rajasthan circuit, these are the same either way."
         />
 
         <div className="grid gap-6 md:grid-cols-2 mt-10">
@@ -183,16 +183,16 @@ export default function AboutPage() {
                 Tenet 01
               </span>
               <h3 className="text-xl font-semibold text-text mb-3">
-                Licensed Commercial Chauffeurs Only
+                Commercially licensed drivers only
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
-                Every driver holds a valid commercial tourist vehicle badge, verified identity
-                records, and defensive driving experience on Rajasthan national highways.
-                Cabins are strictly non-smoking, clean, and maintained with quiet respect.
+                Every driver carries a valid commercial tourist-vehicle permit and ID on file
+                with us. No unlicensed subcontracting — if we can’t cover a trip with our own
+                drivers, we tell you before you book, not after.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold uppercase tracking-wider text-text">
-              Zero Unlicensed Subcontracting
+              No random third-party drivers
             </div>
           </div>
 
@@ -203,16 +203,16 @@ export default function AboutPage() {
                 Tenet 02
               </span>
               <h3 className="text-xl font-semibold text-text mb-3">
-                The 45°C Dual-Climate Guarantee
+                AC that works, checked before departure
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
-                Rajasthan summers are unforgiving. Every vehicle in our fleet is mechanically
-                audited for AC compressor performance, refrigerant pressures, and cabin filters.
-                Vehicles are pre-chilled to 22°C before airport and railway pickups.
+                Rajasthan summers are unforgiving, so AC gets checked before outstation
+                departures — gas, cooling, the lot. If a car’s AC isn’t right, that car doesn’t
+                go; we send another one.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold uppercase tracking-wider text-text">
-              Full Highway Cabin Chilling
+              Working AC on every trip
             </div>
           </div>
 
@@ -223,16 +223,16 @@ export default function AboutPage() {
                 Tenet 03
               </span>
               <h3 className="text-xl font-semibold text-text mb-3">
-                Itemized Written Pricing First
+                The fare, written down before you travel
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
-                Nothing is locked without your explicit approval. Per-kilometre rates, daily
-                minimums, night allowances, and toll calculation policies are documented in
-                writing beforehand. You never negotiate on the highway.
+                Per-km rate, daily minimum, driver allowance, tolls — all of it, in the quote,
+                before you confirm. Nothing gets renegotiated on the highway or at the end of
+                the trip.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold uppercase tracking-wider text-text">
-              Published Fixed Rates
+              Published rates, itemised quotes
             </div>
           </div>
 
@@ -243,16 +243,16 @@ export default function AboutPage() {
                 Tenet 04
               </span>
               <h3 className="text-xl font-semibold text-text mb-3">
-                Dedicated 24/7 Human Dispatch
+                A real person on the phone
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
-                Our base in Paota, Jodhpur monitors highway travel conditions, airport flight
-                arrival delays, and en-route timing. When you message, you connect with an
-                experienced dispatcher who knows the roads, not a scripted bot.
+                Our desk in Ratanada handles the booking and tracks your flight or train. When
+                you call, you get someone who knows the routes and the drivers — not a call
+                centre reading a script.
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold uppercase tracking-wider text-text">
-              Direct Local Accountability
+              Local desk, direct answers
             </div>
           </div>
         </div>
@@ -261,9 +261,9 @@ export default function AboutPage() {
       {/* Fleet Standards Showcase */}
       <Section tone="mist" size="md">
         <SectionHeader
-          eyebrow="The Fleet Standard"
-          title="Four Disciplined Vehicle Categories"
-          description="We maintain our fleet exclusively across four verified classes, with a strict vehicle age ceiling under 3.5 years."
+          eyebrow="The fleet"
+          title="What we run"
+          description="Sedans, SUVs and Tempo Travellers — all commercial yellow-plate vehicles, kept clean and in working order."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-8">

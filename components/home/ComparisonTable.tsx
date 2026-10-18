@@ -55,7 +55,7 @@ export function ComparisonTable() {
       <SectionHeader
         number="10"
         eyebrow="The difference"
-        title="Booking with us, compared with a street-hail taxi"
+        title="Booked with us vs hailed on the street"
         description="What a written booking gives you that an ad-hoc car usually does not. Every claim in the Marwad Cabs column is something you can check on this site."
       />
       <div className="mt-10 md:mt-14">

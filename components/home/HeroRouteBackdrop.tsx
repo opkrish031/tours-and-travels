@@ -1,342 +1,257 @@
 "use client";
 
 import { useId } from "react";
-import { m } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 
-export type RouteKey = "all" | "jaisalmer" | "udaipur" | "osian" | "jaipur" | "mount-abu" | "nakodaji";
-
-interface HeroRouteBackdropProps {
-  activeRoute?: RouteKey;
+/** Merlon (crenellation) helper — draws raised blocks along a wall top. */
+function crenellations(from: number, to: number, y: number, w = 10, h = 8): string {
+  let d = "";
+  for (let x = from; x < to; x += w * 2) {
+    const notch = Math.min(x + w, to);
+    d += ` L ${x} ${y} L ${x} ${y - h} L ${notch} ${y - h} L ${notch} ${y}`;
+  }
+  return d;
 }
 
-export function HeroRouteBackdrop({ activeRoute = "all" }: HeroRouteBackdropProps) {
+/**
+ * Atmospheric backdrop: Mehrangarh Fort on its hill above the Thar dunes,
+ * with the highway curving in. Full-bleed behind hero content on desktop,
+ * a quiet panorama band along the bottom on mobile. Decorative only.
+ */
+export function HeroRouteBackdrop() {
   const uid = useId();
+  const reduced = useReducedMotion();
 
-  // Highway corridors radiating from Jodhpur Dispatch Hub (cx: 735, cy: 435)
-  // Perfectly positioned in the spatial gap between left content and right booking card
-  const corridors = [
-    {
-      id: "jaisalmer",
-      name: "JAISALMER",
-      distance: "285 KM · NH-125",
-      path: "M 735 435 C 520 510, 260 460, 65 390",
-      destX: 65,
-      destY: 390,
-      textAnchor: "start" as const,
-      textOffsetX: 16,
-      textOffsetY: 4,
-    },
-    {
-      id: "osian",
-      name: "OSIAN DUNES",
-      distance: "65 KM · NH-62",
-      path: "M 735 435 C 770 300, 830 180, 880 75",
-      destX: 880,
-      destY: 75,
-      textAnchor: "middle" as const,
-      textOffsetX: 0,
-      textOffsetY: -14,
-    },
-    {
-      id: "jaipur",
-      name: "JAIPUR",
-      distance: "335 KM · NH-25 / 48",
-      path: "M 735 435 C 920 350, 1120 260, 1360 190",
-      destX: 1360,
-      destY: 190,
-      textAnchor: "end" as const,
-      textOffsetX: -16,
-      textOffsetY: 4,
-    },
-    {
-      id: "udaipur",
-      name: "UDAIPUR",
-      distance: "255 KM · NH-62",
-      path: "M 735 435 C 870 510, 1040 600, 1220 700",
-      destX: 1220,
-      destY: 700,
-      textAnchor: "end" as const,
-      textOffsetX: -16,
-      textOffsetY: 4,
-    },
-    {
-      id: "mount-abu",
-      name: "MOUNT ABU",
-      distance: "265 KM · NH-27",
-      path: "M 735 435 C 600 540, 480 630, 370 710",
-      destX: 370,
-      destY: 710,
-      textAnchor: "middle" as const,
-      textOffsetX: 0,
-      textOffsetY: 20,
-    },
-    {
-      id: "nakodaji",
-      name: "NAKODA JI",
-      distance: "115 KM · SH-65",
-      path: "M 735 435 C 500 510, 280 550, 85 580",
-      destX: 85,
-      destY: 580,
-      textAnchor: "start" as const,
-      textOffsetX: 16,
-      textOffsetY: 4,
-    },
-  ];
+  const routePath = "M 40 728 C 250 708, 470 682, 630 628 C 710 600, 752 584, 788 570";
 
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none"
+      className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-24 overflow-hidden select-none sm:h-36 lg:inset-0 lg:h-auto"
     >
       <svg
         viewBox="0 0 1440 760"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-full w-full object-cover"
-        preserveAspectRatio="xMidYMid slice"
+        className="h-full w-full"
+        preserveAspectRatio="xMidYMax slice"
       >
         <defs>
-          {/* Radial gold underglow centered at Jodhpur hub */}
           <radialGradient
-            id={`${uid}-hub-light`}
-            cx="735"
-            cy="435"
-            r="650"
+            id={`${uid}-sky`}
+            cx="800"
+            cy="300"
+            r="880"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0%" stopColor="#C8962E" stopOpacity="0.28" />
-            <stop offset="35%" stopColor="#EA761F" stopOpacity="0.09" />
-            <stop offset="70%" stopColor="#0B172A" stopOpacity="0.02" />
+            <stop offset="0%" stopColor="#C8962E" stopOpacity="0.3" />
+            <stop offset="48%" stopColor="#EA761F" stopOpacity="0.09" />
             <stop offset="100%" stopColor="#0B172A" stopOpacity="0" />
           </radialGradient>
-
-          {/* Golden Highway Glow Filter */}
-          <filter id={`${uid}-glow`} x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3.5" result="blur" />
+          <linearGradient
+            id={`${uid}-hill`}
+            x1="800"
+            y1="560"
+            x2="800"
+            y2="760"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor="#13233F" />
+            <stop offset="100%" stopColor="#0C1930" />
+          </linearGradient>
+          <filter id={`${uid}-glow`} x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2.5" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-
-          {/* Coordinate Cartography Grid */}
-          <pattern
-            id={`${uid}-geo-grid`}
-            width="90"
-            height="90"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M 90 0 L 0 0 0 90"
-              fill="none"
-              stroke="#C8962E"
-              strokeWidth="0.5"
-              strokeOpacity="0.06"
-            />
-            {/* Fine coordinate crosshair */}
-            <path
-              d="M 45 40 L 45 50 M 40 45 L 50 45"
-              stroke="#E5B84B"
-              strokeWidth="0.6"
-              strokeOpacity="0.12"
-            />
-          </pattern>
         </defs>
 
-        {/* Ambient Grid and Radial Glow */}
-        <rect width="1440" height="760" fill={`url(#${uid}-hub-light)`} />
-        <rect width="1440" height="760" fill={`url(#${uid}-geo-grid)`} />
+        <rect width="1440" height="760" fill={`url(#${uid}-sky)`} />
 
-        {/* Topographic Elevation Curves (Simulating Thar dunes and Aravalli ranges) */}
-        <g stroke="#C8962E" strokeOpacity="0.06" strokeWidth="1" fill="none">
-          <ellipse cx="735" cy="435" rx="150" ry="95" />
-          <ellipse cx="735" cy="435" rx="290" ry="185" strokeDasharray="3 4" />
-          <ellipse cx="735" cy="435" rx="470" ry="300" strokeDasharray="6 8" />
-          <ellipse cx="735" cy="435" rx="700" ry="430" strokeOpacity="0.04" />
+        {/* Sun behind the fort */}
+        <g stroke="#C8962E" fill="none">
+          <circle cx="800" cy="272" r="158" strokeOpacity="0.26" strokeWidth="1" />
+          <circle cx="800" cy="272" r="108" strokeOpacity="0.12" strokeWidth="1" strokeDasharray="2 7" />
+          <circle cx="800" cy="272" r="52" strokeOpacity="0.08" strokeWidth="1" />
         </g>
 
-        {/* Terrain Contours */}
-        <g stroke="#E5B84B" strokeOpacity="0.05" strokeWidth="0.75" fill="none">
-          <path d="M 40 120 Q 340 70 640 110 T 1150 80 T 1400 120" />
-          <path d="M 20 220 Q 300 190 600 210 T 1100 180 T 1420 210" strokeDasharray="4 6" />
-          <path d="M 60 620 Q 360 650 660 600 T 1140 640 T 1420 600" />
+        {/* Far dunes */}
+        <path
+          d="M 0 598 C 170 574, 330 566, 500 582 C 660 598, 790 578, 930 570 C 1100 560, 1280 578, 1440 592"
+          stroke="#C8962E"
+          strokeOpacity="0.24"
+          strokeWidth="1"
+        />
+        <path
+          d="M 0 652 C 210 628, 390 624, 560 642 C 740 662, 900 638, 1080 632 C 1250 626, 1360 642, 1440 650"
+          stroke="#C8962E"
+          strokeOpacity="0.32"
+          strokeWidth="1"
+        />
+
+        {/* The hill Mehrangarh sits on — wide ridge across the scene */}
+        <path
+          d="M 240 760 C 380 736, 500 698, 580 590 L 1020 590 C 1100 656, 1240 720, 1380 760 Z"
+          fill={`url(#${uid}-hill)`}
+          stroke="#C8962E"
+          strokeOpacity="0.48"
+          strokeWidth="1.25"
+          strokeLinejoin="round"
+        />
+        <g stroke="#C8962E" strokeOpacity="0.22" strokeWidth="1" fill="none">
+          <path d="M 660 612 L 700 590" />
+          <path d="M 940 596 L 1000 640" />
+          <path d="M 520 668 L 560 632" />
         </g>
 
-        {/* Technical Perimeter Coordinates (Automotive Instrument Style) */}
-        <text
-          x="48"
-          y="42"
-          fill="#94A3B8"
-          opacity="0.5"
-          fontSize="10"
-          fontFamily="ui-monospace, monospace"
-          letterSpacing="1"
-        >
-          MARWAR CORRIDOR TELEMETRY · 26°17&apos;12&quot;N 73°01&apos;45&quot;E
-        </text>
-        <text
-          x="1392"
-          y="42"
-          textAnchor="end"
-          fill="#E5B84B"
-          opacity="0.55"
-          fontSize="10"
-          fontFamily="ui-monospace, monospace"
-          letterSpacing="1"
-        >
-          DISPATCH RADIUS: 350+ KM · 24×7 DISPATCH
-        </text>
-
-        {/* Illustrated Highway Corridors */}
-        {corridors.map((c) => {
-          const isSelected = activeRoute === c.id || activeRoute === "all";
-          const isFocal = activeRoute === c.id;
-
-          return (
-            <g key={c.id}>
-              {/* Outer Highway Path Line */}
-              <path
-                d={c.path}
-                stroke={isFocal ? "#E5B84B" : isSelected ? "#C8962E" : "#475569"}
-                strokeOpacity={isFocal ? "0.95" : isSelected ? "0.3" : "0.12"}
-                strokeWidth={isFocal ? "2.5" : "1.25"}
-                strokeDasharray={isFocal ? "none" : "5 5"}
-                fill="none"
-                filter={isFocal ? `url(#${uid}-glow)` : undefined}
-                className="transition-all duration-300"
-              />
-
-              {/* Dynamic Light Pulse Trailing Along the Route */}
-              {(isFocal || activeRoute === "all") && (
-                <m.path
-                  d={c.path}
-                  stroke={isFocal ? "#FFFFFF" : "#E5B84B"}
-                  strokeWidth={isFocal ? "2.5" : "1.25"}
-                  strokeDasharray="16 110"
-                  animate={{ strokeDashoffset: [-126, 0] }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: isFocal ? 1.6 : 3.8,
-                    ease: "linear",
-                  }}
-                  fill="none"
-                  strokeOpacity={isFocal ? "1" : "0.45"}
-                />
-              )}
-
-              {/* Destination Beacon Node */}
-              <circle
-                cx={c.destX}
-                cy={c.destY}
-                r={isFocal ? 5.5 : 3.5}
-                fill={isFocal ? "#E5B84B" : "#94A3B8"}
-                stroke="#0B172A"
-                strokeWidth="2"
-                opacity={isFocal ? "1" : "0.75"}
-              />
-
-              {/* Subtle Pulsing Halo around Destination if Active */}
-              {isFocal && (
-                <circle
-                  cx={c.destX}
-                  cy={c.destY}
-                  r="12"
-                  fill="none"
-                  stroke="#E5B84B"
-                  strokeWidth="1.2"
-                  opacity="0.6"
-                >
-                  <animate
-                    attributeName="r"
-                    values="5;14;5"
-                    dur="2.4s"
-                    repeatCount="indefinite"
-                  />
-                  <animate
-                    attributeName="opacity"
-                    values="0.8;0.1;0.8"
-                    dur="2.4s"
-                    repeatCount="indefinite"
-                  />
-                </circle>
-              )}
-
-              {/* Destination Monospace Coordinate Label */}
-              <g transform={`translate(${c.destX + c.textOffsetX}, ${c.destY + c.textOffsetY})`}>
-                <text
-                  x="0"
-                  y="0"
-                  textAnchor={c.textAnchor}
-                  fill={isFocal ? "#FFFFFF" : "#CBD5E1"}
-                  fontSize={isFocal ? "11.5" : "10"}
-                  fontWeight={isFocal ? "800" : "600"}
-                  fontFamily="ui-monospace, monospace"
-                  letterSpacing="0.8"
-                  opacity={isFocal ? "1" : "0.75"}
-                >
-                  {c.name}
-                </text>
-                <text
-                  x="0"
-                  y="12"
-                  textAnchor={c.textAnchor}
-                  fill={isFocal ? "#E5B84B" : "#64748B"}
-                  fontSize="8.5"
-                  fontWeight="600"
-                  fontFamily="ui-monospace, monospace"
-                  opacity={isFocal ? "1" : "0.55"}
-                >
-                  {c.distance}
-                </text>
-              </g>
-            </g>
-          );
-        })}
-
-        {/* Central Origin Hub: JODHPUR */}
+        {/* Mehrangarh Fort — wide ridge silhouette */}
         <g>
-          {/* Subtle Radar Ring Radiating from Hub */}
-          <circle cx="735" cy="435" r="28" fill="#C8962E" opacity="0.12">
-            <animate
-              attributeName="r"
-              values="16;42;16"
-              dur="4s"
-              repeatCount="indefinite"
-            />
-            <animate
-              attributeName="opacity"
-              values="0.25;0.02;0.25"
-              dur="4s"
-              repeatCount="indefinite"
-            />
-          </circle>
+          {/* Body fill */}
+          <path
+            d={`M 480 590 L 480 462${crenellations(480, 1060, 462, 12, 9)} L 1060 590 Z`}
+            fill="#0E1E38"
+            fillOpacity="0.94"
+          />
 
-          {/* Central Hub Core Pin */}
+          {/* Left bastion */}
+          <path
+            d="M 480 590 L 480 418 A 19 19 0 0 1 518 418 L 518 590"
+            fill="#0E1E38"
+            fillOpacity="0.94"
+            stroke="#C8962E"
+            strokeOpacity="0.65"
+            strokeWidth="1.35"
+            strokeLinejoin="round"
+          />
+          <circle cx="499" cy="430" r="2" fill="#C8962E" fillOpacity="0.6" />
+
+          {/* Mid tower */}
+          <path
+            d="M 640 590 L 640 438 A 14 14 0 0 1 668 438 L 668 590"
+            fill="#0E1E38"
+            fillOpacity="0.94"
+            stroke="#C8962E"
+            strokeOpacity="0.6"
+            strokeWidth="1.3"
+            strokeLinejoin="round"
+          />
+
+          {/* Right bastion */}
+          <path
+            d="M 1022 590 L 1022 418 A 19 19 0 0 1 1060 418 L 1060 590"
+            fill="#0E1E38"
+            fillOpacity="0.94"
+            stroke="#C8962E"
+            strokeOpacity="0.65"
+            strokeWidth="1.35"
+            strokeLinejoin="round"
+          />
+          <circle cx="1041" cy="430" r="2" fill="#C8962E" fillOpacity="0.6" />
+
+          {/* Curtain wall + merlons */}
+          <path
+            d={`M 480 590 L 480 462${crenellations(480, 1060, 462, 12, 9)} L 1060 590`}
+            stroke="#C8962E"
+            strokeOpacity="0.72"
+            strokeWidth="1.35"
+            strokeLinejoin="round"
+          />
+
+          {/* Palace block rising behind the wall */}
+          <path
+            d="M 730 462 L 730 396 L 736 396 L 736 388 L 744 388 L 744 396
+               L 766 396 L 766 378 L 774 378 L 774 370 L 782 370 L 782 378
+               L 790 378 L 790 396 L 812 396 L 812 388 L 820 388 L 820 396
+               L 828 396 L 828 462 Z"
+            fill="#101F3A"
+            stroke="#C8962E"
+            strokeOpacity="0.7"
+            strokeWidth="1.35"
+            strokeLinejoin="round"
+          />
+
+          {/* Chhatri (domed kiosk) */}
+          <g stroke="#C8962E" strokeOpacity="0.7" strokeWidth="1.2" fill="none" strokeLinecap="round">
+            <path d="M 769 370 L 769 362" />
+            <path d="M 787 370 L 787 362" />
+            <path d="M 763 362 Q 778 348 793 362" />
+            <path d="M 778 348 L 778 342" />
+          </g>
+
+          {/* Jharokha windows along the ridge */}
+          <g fill="#C8962E" fillOpacity="0.5">
+            <rect x="740" y="414" width="5" height="10" rx="2.5" />
+            <rect x="758" y="414" width="5" height="10" rx="2.5" />
+            <rect x="794" y="414" width="5" height="10" rx="2.5" />
+            <rect x="812" y="414" width="5" height="10" rx="2.5" />
+            <rect x="540" y="500" width="6" height="12" rx="3" />
+            <rect x="580" y="500" width="6" height="12" rx="3" />
+            <rect x="700" y="500" width="6" height="12" rx="3" />
+            <rect x="860" y="500" width="6" height="12" rx="3" />
+            <rect x="920" y="500" width="6" height="12" rx="3" />
+            <rect x="980" y="500" width="6" height="12" rx="3" />
+          </g>
+
+          {/* Gate arch */}
+          <path
+            d="M 768 590 L 768 562 A 13 13 0 0 1 794 562 L 794 590"
+            stroke="#C8962E"
+            strokeOpacity="0.55"
+            strokeWidth="1.2"
+            fill="none"
+          />
+        </g>
+
+        {/* Birds */}
+        <g stroke="#C8962E" strokeOpacity="0.45" strokeWidth="1" fill="none" strokeLinecap="round">
+          <path d="M 470 318 q 6 -6 12 0 q 6 -6 12 0" />
+          <path d="M 518 288 q 5 -5 10 0 q 5 -5 10 0" />
+          <path d="M 1120 330 q 5 -5 10 0 q 5 -5 10 0" />
+        </g>
+
+        {/* Foreground dune */}
+        <path
+          d="M 0 760 L 0 706 C 200 684, 430 680, 640 700 C 850 720, 1060 692, 1260 688
+             C 1340 686, 1402 694, 1440 704 L 1440 760 Z"
+          fill="#0A1526"
+          stroke="#C8962E"
+          strokeOpacity="0.28"
+          strokeWidth="1"
+        />
+
+        {/* The highway */}
+        <g>
+          <path
+            d={routePath}
+            stroke="#C8962E"
+            strokeOpacity="0.48"
+            strokeWidth="1.25"
+            strokeDasharray="6 8"
+            fill="none"
+          />
+          {!reduced ? (
+            <m.path
+              d={routePath}
+              stroke="#E5B84B"
+              strokeWidth="1.5"
+              strokeDasharray="14 140"
+              animate={{ strokeDashoffset: [-154, 0] }}
+              transition={{ repeat: Infinity, duration: 6.5, ease: "linear" }}
+              fill="none"
+              strokeOpacity="0.8"
+            />
+          ) : null}
           <circle
-            cx="735"
-            cy="435"
-            r="7"
-            fill="#C8962E"
-            stroke="#FFFFFF"
-            strokeWidth="2"
+            cx="150"
+            cy="720"
+            r="4"
+            fill="#E5B84B"
+            stroke="#0B172A"
+            strokeWidth="1.5"
             filter={`url(#${uid}-glow)`}
           />
-          <circle cx="735" cy="435" r="2.5" fill="#0B172A" />
-
-          {/* Sleek Hub Coordinate Badge */}
-          <text
-            x="735"
-            y="457"
-            textAnchor="middle"
-            fill="#E5B84B"
-            fontSize="8"
-            fontWeight="700"
-            fontFamily="ui-monospace, monospace"
-            letterSpacing="0.8"
-            opacity="0.8"
-          >
-            JODHPUR DISPATCH BASE
-          </text>
         </g>
       </svg>
     </div>

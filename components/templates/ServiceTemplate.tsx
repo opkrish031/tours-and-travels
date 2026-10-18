@@ -60,10 +60,10 @@ export function ServiceTemplate({ service }: { service: Service }) {
 
           <div className="mt-6 max-w-3xl">
             <span className="eyebrow text-gold-deep font-semibold uppercase tracking-wider block mb-2">
-              Marwad Cabs · Jodhpur &amp; Rajasthan Chauffeur Operations
+              Marwad Cabs · Taxis in Jodhpur &amp; Rajasthan
             </span>
 
-            <h1 className="text-[clamp(2.5rem,6vw,4.4rem)] font-semibold tracking-[-0.035em] leading-[1.06] text-text">
+            <h1 className="text-[clamp(2rem,4.5vw,3.4rem)] font-semibold tracking-[-0.02em] leading-[1.15] text-text">
               {service.name}
             </h1>
 
@@ -74,16 +74,16 @@ export function ServiceTemplate({ service }: { service: Service }) {
             {/* Micro-Assurance Ticker */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="rounded-2xl border border-line bg-white p-3.5 shadow-xs">
-                <span className="block text-xs font-semibold text-text">15-Min Buffer</span>
-                <span className="text-xs text-text-muted">Early arrival at pickup terminal</span>
+                <span className="block text-xs font-semibold text-text">Ahead of Time</span>
+                <span className="text-xs text-text-muted">Driver reaches before pickup</span>
               </div>
               <div className="rounded-2xl border border-line bg-white p-3.5 shadow-xs">
-                <span className="block text-xs font-semibold text-text">Tested Dual AC</span>
-                <span className="text-xs text-text-muted">Pre-cooled cabin chilling</span>
+                <span className="block text-xs font-semibold text-text">Working AC</span>
+                <span className="text-xs text-text-muted">Checked before departure</span>
               </div>
               <div className="rounded-2xl border border-line bg-white p-3.5 shadow-xs">
-                <span className="block text-xs font-semibold text-text">Fixed Written Bill</span>
-                <span className="text-xs text-text-muted">Zero hidden commission</span>
+                <span className="block text-xs font-semibold text-text">Written Bill</span>
+                <span className="text-xs text-text-muted">No hidden charges</span>
               </div>
             </div>
 
@@ -101,7 +101,7 @@ export function ServiceTemplate({ service }: { service: Service }) {
                 href="#service-booking"
                 className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wider text-text hover:bg-mist transition-colors"
               >
-                Submit Request Details ↓
+                Send Booking Request ↓
               </a>
             </div>
           </div>
@@ -111,9 +111,9 @@ export function ServiceTemplate({ service }: { service: Service }) {
       {/* The 4-Stage Chauffeur Protocol */}
       <Section tone="mist" size="md">
         <SectionHeader
-          eyebrow="The Workflow"
-          title="The 4-Stage Service Protocol"
-          description="How our operations desk coordinates every booking from reservation to completion."
+          eyebrow="How booking works"
+          title="From quote to drop, in 4 steps"
+          description="How our booking desk runs a trip, from your first message to the drop."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-10">
@@ -123,15 +123,15 @@ export function ServiceTemplate({ service }: { service: Service }) {
                 Stage 01
               </span>
               <h3 className="text-base font-semibold text-text mb-2">
-                Written Quote &amp; Lock
+                Written Quote
               </h3>
               <p className="text-xs text-text-muted leading-relaxed">
-                Itemized confirmation sent on WhatsApp detailing vehicle class, per-km rates,
-                and toll policies.
+                Vehicle class, per-km rate, and toll terms sent on WhatsApp before you
+                confirm.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-line/60 text-[0.6875rem] font-medium text-text-muted">
-              Zero Advance Required
+              No Advance Needed
             </div>
           </div>
 
@@ -141,15 +141,15 @@ export function ServiceTemplate({ service }: { service: Service }) {
                 Stage 02
               </span>
               <h3 className="text-base font-semibold text-text mb-2">
-                Chauffeur &amp; Car Details
+                Driver &amp; Car Details
               </h3>
               <p className="text-xs text-text-muted leading-relaxed">
-                Driver profile, vehicle registration number, and live phone contact shared
-                hours before departure.
+                Driver name, vehicle registration number, and mobile number shared
+                before departure.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-line/60 text-[0.6875rem] font-medium text-text-muted">
-              Verified Commercial Permit
+              Commercial permit
             </div>
           </div>
 
@@ -159,15 +159,14 @@ export function ServiceTemplate({ service }: { service: Service }) {
                 Stage 03
               </span>
               <h3 className="text-base font-semibold text-text mb-2">
-                Punctual Chilled Arrival
+                On-Time Arrival
               </h3>
               <p className="text-xs text-text-muted leading-relaxed">
-                Vehicle arrives 15 minutes early, cabin pre-chilled to 22°C with full luggage
-                handling assist.
+                Driver reaches ahead of time; AC checked and luggage space ready.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-line/60 text-[0.6875rem] font-medium text-text-muted">
-              Dual Climate Guarantee
+              Working AC, checked before departure
             </div>
           </div>
 
@@ -177,11 +176,11 @@ export function ServiceTemplate({ service }: { service: Service }) {
                 Stage 04
               </span>
               <h3 className="text-base font-semibold text-text mb-2">
-                Physical Slip Billing
+                Toll Slips at Billing
               </h3>
               <p className="text-xs text-text-muted leading-relaxed">
-                Journey concludes with electronic FASTag toll receipts at exact government cost,
-                no hidden extras.
+                Trip ends with FASTag toll receipts at actual cost — you pay what the
+                booth charged, nothing on top.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-line/60 text-[0.6875rem] font-medium text-text-muted">
@@ -196,8 +195,8 @@ export function ServiceTemplate({ service }: { service: Service }) {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             <SectionHeader
-              eyebrow="Service Specifications"
-              title={`How the ${service.name} Operates`}
+              eyebrow="Service details"
+              title={`How the ${service.name} operates`}
             />
             <div className="space-y-4 text-[0.9375rem] md:text-base text-text-muted leading-relaxed">
               {service.body.map((paragraph) => (
@@ -242,13 +241,13 @@ export function ServiceTemplate({ service }: { service: Service }) {
         <Container className="max-w-4xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-10">
             <span className="eyebrow text-gold-deep font-semibold uppercase tracking-wider block mb-2">
-              Instant Request
+              Book It
             </span>
             <h2 className="text-3xl font-semibold tracking-tight text-text">
               Reserve Your {service.name}
             </h2>
             <p className="mt-2 text-sm text-text-muted">
-              Select date and pickup location to generate your formatted written reservation.
+              Pick your date and pickup point and we will send a written quote.
             </p>
           </div>
 
@@ -265,9 +264,9 @@ export function ServiceTemplate({ service }: { service: Service }) {
       {service.packages && service.packages.length > 0 ? (
         <Section tone="mist" size="md">
           <SectionHeader
-            eyebrow="Standard Packages"
-            title="Hourly &amp; Sightseeing Options"
-            description="Fixed package rates covering dedicated waiting, fuel, and chauffeur service."
+            eyebrow="Packages"
+            title="Hourly and sightseeing options"
+            description="Fixed rates covering waiting time, fuel, and driver."
           />
 
           <div className="mt-8">
@@ -314,9 +313,9 @@ export function ServiceTemplate({ service }: { service: Service }) {
       {/* Available Vehicles for this Service */}
       <Section tone="snow" size="md">
         <SectionHeader
-          eyebrow="Car Options"
-          title="Vehicles Available for This Service"
-          description="Select from sedans, premium SUVs, or passenger vans."
+          eyebrow="Cars"
+          title="Vehicles available for this service"
+          description="Sedans, SUVs, or passenger vans — whichever suits your group."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-8">
@@ -358,8 +357,8 @@ export function ServiceTemplate({ service }: { service: Service }) {
         <Section tone="mist" size="md">
           <SectionHeader
             eyebrow="Coverage"
-            title="Sightseeing Locations Covered"
-            description="Our local package includes waiting at all primary Jodhpur landmarks."
+            title="Sightseeing locations covered"
+            description="Our local package covers waiting at Jodhpur's main sights."
           />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 mt-8">
             {attractions.slice(0, 4).map((attraction) => (
@@ -400,8 +399,8 @@ export function ServiceTemplate({ service }: { service: Service }) {
       {relatedRouteCards.length > 0 ? (
         <Section tone="snow" size="md">
           <SectionHeader
-            eyebrow="Popular Routes"
-            title="Routes Connected with This Service"
+            eyebrow="Routes"
+            title="Routes connected with this service"
           />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-8">
             {relatedRouteCards.map((route) => (
@@ -431,8 +430,8 @@ export function ServiceTemplate({ service }: { service: Service }) {
       {/* Related Services */}
       <Section tone="mist" size="md">
         <SectionHeader
-          eyebrow="Explore More"
-          title="Other Chauffeur Services"
+          eyebrow="More"
+          title="Other taxi services"
         />
         <div className="grid gap-6 sm:grid-cols-3 mt-8">
           {relatedServiceCards.map((other) => (

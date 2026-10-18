@@ -4,15 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type RefObject } from "react";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Menu, Phone } from "lucide-react";
 import { m, AnimatePresence } from "motion/react";
 import { Container } from "@/components/ui/Container";
-import { CallButton } from "@/components/booking/CallButton";
 import { WhatsAppButton } from "@/components/booking/WhatsAppButton";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { TopBar } from "@/components/home/TopBar";
 import { navGroups, primaryNav, type NavLink } from "@/lib/nav";
-import { contextMessage } from "@/lib/whatsapp";
+import { contextMessage, telHref } from "@/lib/whatsapp";
 import { site } from "@/data/site";
 import { duration, ease } from "@/lib/motion";
 
@@ -57,7 +56,7 @@ function Dropdown({
           if (open && !hoveredRef.current) close();
           else setOpen();
         }}
-        className={`relative flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[0.875rem] font-medium tracking-tight transition-colors duration-150 cursor-pointer ${
+        className={`relative flex items-center gap-1.5 rounded-full px-3 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.06em] transition-colors duration-150 cursor-pointer ${
           isAnyActive
             ? "text-gold-deep font-semibold"
             : open
@@ -69,7 +68,7 @@ function Dropdown({
         <ChevronDown
           aria-hidden="true"
           strokeWidth={1.75}
-          className={`h-3.5 w-3.5 transition-transform duration-200 ${
+          className={`h-3 w-3 transition-transform duration-200 ${
             open ? "rotate-180 text-text" : "opacity-60"
           }`}
         />
@@ -133,13 +132,13 @@ function TopNavLink({ item, pathname }: { item: NavLink; pathname: string }) {
     <Link
       href={item.href}
       aria-current={active ? "page" : undefined}
-      className={`relative block rounded-full px-3.5 py-1.5 text-[0.875rem] font-medium tracking-tight transition-colors duration-150 ${
+      className={`relative block rounded-full px-3 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.06em] transition-colors duration-150 ${
         active ? "text-gold-deep font-semibold" : "text-text-muted hover:text-text"
       }`}
     >
       {item.label}
       {active && (
-        <span className="absolute bottom-0 inset-x-3.5 h-[2px] bg-gold rounded-full" />
+        <span className="absolute bottom-0.5 inset-x-3 h-px bg-gold rounded-full" />
       )}
     </Link>
   );
@@ -218,11 +217,11 @@ export function Header() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-text leading-tight group-hover:text-gold-deep transition-colors">
+              <span className="text-lg sm:text-xl font-bold tracking-[-0.02em] text-text leading-tight group-hover:text-gold-deep transition-colors">
                 MARWAD CABS
               </span>
-              <span className="text-[0.625rem] sm:text-[0.6875rem] font-semibold tracking-wider text-gold-deep uppercase">
-                Tour and Travels • Jodhpur
+              <span className="font-mono text-[0.5625rem] sm:text-[0.625rem] font-medium tracking-[0.08em] text-gold-deep uppercase">
+                Tour and Travels · Jodhpur
               </span>
             </div>
           </Link>
@@ -255,10 +254,21 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            <div className="hidden items-center gap-3 md:flex">
-              <CallButton variant="secondary" size="sm" location="header" page={pathname}>
-                <span className="tabular font-medium">{site.phoneDisplay}</span>
-              </CallButton>
+            <div className="hidden items-center gap-4 md:flex">
+              <a
+                href={telHref()}
+                className="group inline-flex items-center gap-1.5 text-[0.8125rem] text-text-muted transition-colors hover:text-text"
+                aria-label={`Call ${site.brandName}`}
+              >
+                <Phone
+                  aria-hidden="true"
+                  strokeWidth={1.75}
+                  className="h-3.5 w-3.5 text-gold-deep transition-transform group-hover:rotate-12"
+                />
+                <span className="tabular font-medium border-b border-transparent pb-0.5 group-hover:border-gold/50 transition-colors">
+                  {site.phoneDisplay}
+                </span>
+              </a>
               <WhatsAppButton
                 message={contextMessage("I found your website and would like a quote.")}
                 variant="primary"

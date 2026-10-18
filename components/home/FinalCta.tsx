@@ -17,17 +17,17 @@ export function FinalCta() {
 
       <Container className="relative z-10 text-center max-w-4xl mx-auto">
         <Reveal>
-          <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-3">
-            Immediate Dispatch &amp; Booking
+          <span className="eyebrow text-gold font-semibold block mb-3">
+            Booking &amp; Dispatch
           </span>
 
-          <h2 className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-semibold tracking-[-0.035em] leading-[1.06] text-white">
-            Tell Us Your Date. We Will Dispatch the Car.
+          <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-semibold tracking-[-0.02em] leading-[1.15] text-white">
+            Tell us the date. We’ll confirm the car.
           </h2>
 
           <p className="mt-5 text-base md:text-lg text-text-dark-muted max-w-[54ch] mx-auto leading-relaxed">
-            No advance required. Message your route on WhatsApp to receive the confirmed fare
-            and vehicle details in under five minutes.
+            No advance payment. Send your route on WhatsApp or call — we reply
+            with the fare and car details for your dates.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

@@ -15,8 +15,8 @@ export function RoutesGrid() {
   return (
     <Section tone="mist" size="md">
       <SectionHeader
-        eyebrow="Outstation Directory"
-        title="Intercity Routes Across Rajasthan"
+        eyebrow="Outstation"
+        title="Routes we run from Jodhpur"
         description="Private chauffeur service from Jodhpur to major cities, heritage towns, and desert destinations with fixed starting fares."
       />
 

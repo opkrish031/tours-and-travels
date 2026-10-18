@@ -13,8 +13,8 @@ export function ServicesGrid() {
   return (
     <Section tone="mist" size="md">
       <SectionHeader
-        eyebrow="Specialised Travel"
-        title="Services Designed Around Your Itinerary"
+        eyebrow="What we run"
+        title="Trips people book us for"
         description="From punctual airport pickups to week-long Rajasthan heritage circuits, choose the service that matches your travel plans."
       />
 

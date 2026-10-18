@@ -36,7 +36,7 @@ export default function ContactPage() {
       {/* Apple-Style Concierge Hero (Luminous Light Canvas) */}
       <section className="relative overflow-hidden bg-snow border-b border-line pt-10 pb-16 md:pt-16 md:pb-20">
         <Container className="relative z-10 max-w-5xl mx-auto">
-          <Breadcrumbs items={[{ label: "Concierge & Dispatch" }]} />
+          <Breadcrumbs items={[{ label: "Contact & Dispatch" }]} />
 
           <div className="mt-6 max-w-3xl">
             {/* Live Operations Telemetry Badge */}
@@ -45,33 +45,33 @@ export default function ContactPage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span>Dispatch Desk Active · Paota Base · 24/7 Roadside &amp; Terminal Standby</span>
+              <span>Dispatch Desk · Ratanada, Jodhpur · Near Airport &amp; Junction</span>
             </div>
 
-            <h1 className="text-[clamp(2.4rem,5.5vw,4.2rem)] font-semibold tracking-[-0.035em] leading-[1.06] text-text">
-              Direct Concierge &amp; Dispatch Desk
+            <h1 className="text-[clamp(2rem,4.5vw,3.4rem)] font-semibold tracking-[-0.02em] leading-[1.15] text-text">
+              Call, WhatsApp, or send your dates
             </h1>
 
             <p className="mt-4 text-base md:text-lg text-text-muted leading-relaxed max-w-[56ch]">
-              Connect directly with our local fleet dispatchers in Jodhpur. Transparent written
-              quotes, guaranteed clean vehicles, and immediate coordination without call-center delays.
+              You’ll reach our own dispatch desk in Jodhpur — the same people who assign the
+              cars. Written quotes, clean vehicles, no call-centre in between.
             </p>
 
             {/* Quick Micro-Telemetry Ticker */}
             <div className="mt-8 flex flex-wrap items-center gap-6 text-xs text-text-muted border-t border-line/60 pt-6">
               <div>
-                <span className="font-semibold text-text tabular block text-sm">&lt; 3 Min</span>
-                <span>Avg WhatsApp Reply</span>
+                <span className="font-semibold text-text tabular block text-sm">Ratanada</span>
+                <span>Base near JDH &amp; Junction</span>
               </div>
               <div className="h-6 w-px bg-line/80" />
               <div>
                 <span className="font-semibold text-text tabular block text-sm">₹0 Advance</span>
-                <span>Zero Booking Fee</span>
+                <span>Nothing to pay online</span>
               </div>
               <div className="h-6 w-px bg-line/80" />
               <div>
                 <span className="font-semibold text-text tabular block text-sm">Commercial</span>
-                <span>Licensed Fleet Permit</span>
+                <span>Yellow-plate permitted fleet</span>
               </div>
             </div>
           </div>
@@ -94,13 +94,14 @@ export default function ContactPage() {
                   <MessageCircle className="h-6 w-6" strokeWidth={2} />
                 </div>
                 <div className="inline-block text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep mb-1">
-                  Fastest Channel
+                  Usually Fastest
                 </div>
                 <h2 className="text-xl font-semibold tracking-tight text-text">
-                  WhatsApp Concierge
+                  WhatsApp
                 </h2>
                 <p className="mt-2 text-xs md:text-sm text-text-muted leading-relaxed">
-                  Instant quotes with vehicle photos and fixed rates sent directly to your chat.
+                  Send your route and dates — we reply with the vehicle class, rate and
+                  availability in one message.
                 </p>
 
                 {/* Pre-formatted quick prompts */}
@@ -163,13 +164,13 @@ export default function ContactPage() {
                   {site.phoneDisplay}
                 </div>
                 <p className="mt-3 text-xs md:text-sm text-text-muted leading-relaxed">
-                  Speak directly with our local fleet manager for immediate airport or railway
-                  station pickups.
+                  For airport or railway pickups, outstation trips, and anything same-day —
+                  call the desk and sort it out on the phone.
                 </p>
 
                 <div className="mt-6 rounded-2xl bg-mist p-3.5 text-xs text-text-muted">
-                  <div className="font-semibold text-text mb-0.5">Duty Dispatcher Available</div>
-                  <span>Available 24 hours daily for flight coordination.</span>
+                  <div className="font-semibold text-text mb-0.5">Dispatch desk</div>
+                  <span>Open 24 hours for flight and train coordination.</span>
                 </div>
               </div>
 
@@ -199,8 +200,8 @@ export default function ContactPage() {
                   {site.email}
                 </div>
                 <p className="mt-3 text-xs md:text-sm text-text-muted leading-relaxed">
-                  For corporate GST billings, multi-vehicle wedding fleets, and bespoke luxury
-                  tempo traveller itineraries.
+                  GST invoices for companies, multi-vehicle wedding fleets, and group
+                  Tempo Traveller bookings.
                 </p>
 
                 <div className="mt-6 rounded-2xl bg-mist p-3.5 text-xs text-text-muted">
@@ -232,11 +233,11 @@ export default function ContactPage() {
                 Written Reservation
               </span>
               <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-text">
-                Submit Travel Requirements
+                Send your trip details
               </h2>
               <p className="mt-2 text-sm text-text-muted leading-relaxed">
-                Provide your travel details to generate a customized WhatsApp reservation message
-                with transparent pricing.
+                Fill in your dates and route — we’ll open WhatsApp with the message ready, and
+                reply with the fare.
               </p>
             </div>
             <BookingForm sourcePage="/contact" variant="contact" />
@@ -262,7 +263,8 @@ export default function ContactPage() {
                       {site.brandName} Dispatch Center
                     </h4>
                     <p className="mt-1 text-xs text-text-muted leading-relaxed">
-                      Mandore Road, Paota Circle, Jodhpur, Rajasthan 342001
+                      {site.address.street}, {site.address.locality},{" "}
+                      {site.address.region} {site.address.postalCode}
                     </p>
                   </div>
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-mist text-gold-deep shrink-0">
@@ -276,8 +278,8 @@ export default function ContactPage() {
                     <span className="font-semibold text-text">24 Hours / 7 Days</span>
                   </div>
                   <div>
-                    <span className="text-text-muted block">Airport Proximity:</span>
-                    <span className="font-semibold text-text">12 Minutes to JDH</span>
+                    <span className="text-text-muted block">Location:</span>
+                    <span className="font-semibold text-text">Ratanada, near JDH</span>
                   </div>
                 </div>
               </div>

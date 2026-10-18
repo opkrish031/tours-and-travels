@@ -12,8 +12,8 @@ export function CoverageSection() {
   return (
     <Section tone="mist" size="md">
       <SectionHeader
-        eyebrow="Sightseeing & Coverage"
-        title="Attractions & Heritage Destinations"
+        eyebrow="Sightseeing"
+        title="Places your driver knows"
         description="Experience Jodhpur's cliffside fortresses, royal cenotaphs, and palatial gardens with a private car and dedicated chauffeur waiting at every gate."
         action={
           <Link

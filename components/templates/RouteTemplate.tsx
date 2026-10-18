@@ -59,7 +59,7 @@ export function RouteTemplate({ route }: { route: Route }) {
               <span>Rajasthan Highway Corridor · {route.distanceKm} KM</span>
             </div>
 
-            <h1 className="text-[clamp(2.5rem,6vw,4.4rem)] font-semibold tracking-[-0.035em] leading-[1.06] text-text">
+            <h1 className="text-[clamp(2rem,4.5vw,3.4rem)] font-semibold tracking-[-0.02em] leading-[1.15] text-text">
               {route.from} to {route.to} Private Taxi
             </h1>
 
@@ -71,7 +71,7 @@ export function RouteTemplate({ route }: { route: Route }) {
           {/* Waypoint Journey Progression Path (Apple Maps Style) */}
           <div className="mt-10 rounded-3xl border border-line bg-white p-6 sm:p-8 shadow-xs">
             <span className="text-[0.6875rem] font-semibold uppercase tracking-wider text-text-muted block mb-4">
-              Highway Journey Progression
+              The Route
             </span>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
@@ -84,7 +84,7 @@ export function RouteTemplate({ route }: { route: Route }) {
                   <div className="text-xs uppercase font-semibold text-text-muted">Origin</div>
                   <div className="text-base font-semibold text-text">{route.from}</div>
                   <p className="text-xs text-text-muted mt-0.5">
-                    Doorstep pickup at hotel, residence, or airport terminal.
+                    Pickup from your hotel, home, or the airport terminal.
                   </p>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export function RouteTemplate({ route }: { route: Route }) {
                     {route.highlights[0] || "Scenic Highway Halt"}
                   </div>
                   <p className="text-xs text-text-muted mt-0.5">
-                    Flexible stopover for sightseeing, tea, or photography.
+                    Stop when you like for sightseeing, tea, or photos.
                   </p>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export function RouteTemplate({ route }: { route: Route }) {
                   <div className="text-xs uppercase font-semibold text-text-muted">Destination</div>
                   <div className="text-base font-semibold text-text">{route.to}</div>
                   <p className="text-xs text-text-muted mt-0.5">
-                    Direct drop-off at your destination with zero transfer hassle.
+                    Direct drop at your destination — no changing cars.
                   </p>
                 </div>
               </div>
@@ -125,7 +125,7 @@ export function RouteTemplate({ route }: { route: Route }) {
           <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
             <div className="rounded-2xl border border-line bg-mist/60 p-4">
               <span className="block text-[0.6875rem] uppercase text-text-muted font-medium">
-                Corridor Distance
+                Total Distance
               </span>
               <span className="tabular mt-1 block text-lg font-bold text-text">
                 {route.distanceKm} km
@@ -134,7 +134,7 @@ export function RouteTemplate({ route }: { route: Route }) {
 
             <div className="rounded-2xl border border-line bg-mist/60 p-4">
               <span className="block text-[0.6875rem] uppercase text-text-muted font-medium">
-                Highway Time
+                Drive Time
               </span>
               <span className="tabular mt-1 block text-lg font-bold text-text">
                 {durationLabel(route.durationHours)}
@@ -155,7 +155,7 @@ export function RouteTemplate({ route }: { route: Route }) {
                 Toll Barriers
               </span>
               <span className="tabular mt-1 block text-lg font-bold text-text">
-                FASTag at Cost
+                Billed at FASTag
               </span>
             </div>
           </div>
@@ -184,9 +184,9 @@ export function RouteTemplate({ route }: { route: Route }) {
       <section id="pricing-grid" className="scroll-mt-24">
         <Section tone="mist" size="md">
           <SectionHeader
-            eyebrow="Transparent Rate Studio"
-            title={`Fixed Fares for ${route.from} to ${route.to}`}
-            description="Published fixed distance pricing. Electronic FASTag tolls and state taxes billed at exact physical receipt values."
+            eyebrow="Rates"
+            title={`Fixed fares for ${route.from} to ${route.to}`}
+            description="Published per-kilometre rates. Tolls and state taxes are billed at actual FASTag receipts."
           />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-10">
@@ -250,8 +250,8 @@ export function RouteTemplate({ route }: { route: Route }) {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             <SectionHeader
-              eyebrow="Highway Guide"
-              title={`Driving the Highway to ${route.to}`}
+              eyebrow="Highway"
+              title={`Driving the highway to ${route.to}`}
             />
             <div className="space-y-4 text-[0.9375rem] md:text-base text-text-muted leading-relaxed">
               {route.body.map((paragraph) => (
@@ -271,7 +271,7 @@ export function RouteTemplate({ route }: { route: Route }) {
 
             <div className="mt-8 rounded-3xl border border-line bg-white p-6 shadow-xs">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-gold-deep mb-4">
-                Recommended Highway Stops
+                Suggested Halts
               </h3>
               <ol className="space-y-3">
                 {route.highlights.map((highlight, index) => (
@@ -302,7 +302,7 @@ export function RouteTemplate({ route }: { route: Route }) {
               Reserve Your {route.from} to {route.to} Cab
             </h2>
             <p className="mt-2 text-sm text-text-muted">
-              Receive your confirmed chauffeur and car allocation before departure.
+              We confirm your driver and car before you travel.
             </p>
           </div>
 
@@ -319,9 +319,9 @@ export function RouteTemplate({ route }: { route: Route }) {
       {/* FAQs */}
       <Section tone="snow" size="md">
         <SectionHeader
-          eyebrow="Route FAQ"
-          title={`${route.from} to ${route.to} Travel Specifics`}
-          description="Everything about travel time, vehicle suitability, luggage capacity, and halt points."
+          eyebrow="FAQ"
+          title={`${route.from} to ${route.to} travel specifics`}
+          description="Drive times, which car suits the road, luggage, and halts along the way."
         />
         <div className="mt-8 max-w-4xl mx-auto">
           <Accordion items={route.faqs} defaultOpen={0} />
@@ -331,9 +331,9 @@ export function RouteTemplate({ route }: { route: Route }) {
       {/* Related Routes */}
       <Section tone="mist" size="md">
         <SectionHeader
-          eyebrow="Other Corridors"
-          title="Alternative Travel Routes from Jodhpur"
-          description="Other highly requested chauffeur trips across Rajasthan."
+          eyebrow="Other routes"
+          title="Alternative travel routes from Jodhpur"
+          description="Other routes we run regularly out of Jodhpur."
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {relatedRouteCards.map((related) => (

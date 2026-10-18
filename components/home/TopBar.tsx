@@ -1,13 +1,7 @@
-import { Phone, MessageSquare, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { site } from "@/data/site";
-import { buildWhatsAppUrl, contextMessage, telHref } from "@/lib/whatsapp";
 
 export function TopBar() {
-  const whatsappUrl = buildWhatsAppUrl(
-    contextMessage("Hi Marwad Cabs, I would like to check cab availability and fare."),
-  );
-
   return (
     <div className="bg-[#0B172A] border-b border-[#C8962E]/25 text-white/90 text-[0.8125rem]">
       <Container className="flex flex-wrap items-center justify-between gap-y-2 py-2">
@@ -27,33 +21,10 @@ export function TopBar() {
           </div>
         </div>
 
-        {/* Quick Contact & Action Buttons */}
-        <div className="flex items-center gap-2 sm:gap-3 ml-auto text-xs">
-          <span className="hidden md:inline-flex items-center gap-1.5 text-white/70">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            24×7 Dispatch Office: Ratanada, Jodhpur
-          </span>
-
-          <a
-            href={telHref()}
-            className="inline-flex items-center gap-1.5 rounded-full bg-white/10 hover:bg-white/20 px-3 py-1 font-medium text-white transition-colors border border-white/15"
-            aria-label="Call Marwad Cabs 24x7"
-          >
-            <Phone className="h-3.5 w-3.5 text-[#E5B84B]" />
-            <span className="font-semibold">{site.phoneDisplay}</span>
-          </a>
-
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 hover:bg-emerald-500 px-3 py-1 font-semibold text-white shadow-xs transition-colors"
-            aria-label="Chat with Marwad Cabs on WhatsApp"
-          >
-            <MessageSquare className="h-3.5 w-3.5 fill-current" />
-            <span>WhatsApp</span>
-          </a>
-        </div>
+        <span className="ml-auto hidden md:inline-flex items-center gap-1.5 text-xs text-white/70">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          Dispatch Office: Ratanada, Jodhpur
+        </span>
       </Container>
     </div>
   );

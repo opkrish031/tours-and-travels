@@ -63,12 +63,12 @@ export default function TaxiFarePage() {
             <span className="eyebrow text-gold-deep font-semibold uppercase tracking-wider block mb-2">
               Published Rates · Zero Hidden Surcharges
             </span>
-            <h1 className="text-[clamp(2.5rem,6vw,4.4rem)] font-semibold tracking-[-0.035em] leading-[1.06] text-text">
+            <h1 className="text-[clamp(2rem,4.5vw,3.4rem)] font-semibold tracking-[-0.02em] leading-[1.15] text-text">
               Jodhpur Taxi Rates &amp; Fare Studio
             </h1>
             <p className="mt-4 text-base md:text-lg text-text-muted leading-relaxed">
               Every route and vehicle category with its exact distance, per-kilometre rate,
-              and all-inclusive estimate. What you estimate is what you pay.
+              and a clear estimate. Extras like tolls are itemised in your written quote.
             </p>
 
             {/* Quick Micro-Telemetry Ticker */}
@@ -82,7 +82,7 @@ export default function TaxiFarePage() {
               </span>
               <span className="opacity-40">·</span>
               <span className="inline-flex items-center gap-1.5 font-medium text-text">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Guaranteed Dual-Zone AC
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> AC Checked Before Departure
               </span>
             </div>
           </div>
@@ -97,9 +97,9 @@ export default function TaxiFarePage() {
       {/* Vehicle Rate Compare Studio (Apple Compare Cards) */}
       <Section tone="mist" size="md">
         <SectionHeader
-          eyebrow="Fleet Spec Sheet"
-          title="Vehicle Categories &amp; Per-Kilometre Rates"
-          description="Fixed pricing across verified vehicle classes. Clean air-conditioned cars with commercial transport permits."
+          eyebrow="Fleet"
+          title="Vehicle categories and per-km rates"
+          description="Published per-km rates across our vehicle classes. Clean AC cars with commercial transport permits."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
@@ -163,8 +163,8 @@ export default function TaxiFarePage() {
       {/* Outstation Routes Table */}
       <Section tone="mist" size="md">
         <SectionHeader
-          eyebrow="Outstation Catalog"
-          title="Route Distances &amp; One-Way Starting Fares"
+          eyebrow="Outstation"
+          title="Route distances and one-way starting fares"
           description="Starting rates represent sedan one-way departures from Jodhpur. Round trips price on total distance and duration."
         />
 
@@ -211,7 +211,7 @@ export default function TaxiFarePage() {
         <Section tone="snow" size="md">
           <SectionHeader
             eyebrow="Inside Jodhpur"
-            title="Local Sightseeing Packages"
+            title="Local sightseeing packages"
             description="Hourly packages with car and chauffeur waiting at each landmark."
           />
           <div className="mt-8">
@@ -258,8 +258,8 @@ export default function TaxiFarePage() {
       {/* Inclusions & Exclusions */}
       <Section tone="graphite" size="md">
         <SectionHeader
-          eyebrow="Fair Terms"
-          title="What Your Quoted Fare Covers"
+          eyebrow="What’s included"
+          title="What your quoted fare covers"
           description="Clear division of inclusions and expenses. No surprise surcharges at the end of the trip."
           dark
         />
@@ -297,7 +297,7 @@ export default function TaxiFarePage() {
 
       {/* FAQs */}
       <Section tone="snow" size="md">
-        <SectionHeader eyebrow="Questions" title="Fare Policies Answered" />
+        <SectionHeader eyebrow="Questions" title="Fare policies answered" />
         <div className="mt-8 max-w-4xl mx-auto">
           <Accordion items={fareFaqs} defaultOpen={0} />
         </div>

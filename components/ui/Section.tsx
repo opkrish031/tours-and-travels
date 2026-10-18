@@ -79,7 +79,7 @@ export function SectionHeader({
           ) : null}
           <span>{eyebrow}</span>
         </p>
-        <h2 className="text-[clamp(2rem,3.8vw,3.25rem)] font-semibold tracking-[-0.035em] leading-[1.08]">
+        <h2 className="text-[clamp(1.85rem,3.5vw,2.85rem)] font-semibold tracking-[-0.02em] leading-[1.15]">
           {title}
         </h2>
       </div>

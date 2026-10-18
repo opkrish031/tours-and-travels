@@ -23,7 +23,7 @@ const sections = [
   {
     heading: "Free Cancellation Window",
     body: [
-      `Bookings cancelled at least ${site.cancellationWindowHours} hours prior to scheduled departure are eligible for a 100% full refund of any token advance. (DUMMY — confirm window with client).`,
+      `Bookings cancelled at least ${site.cancellationWindowHours} hours before the scheduled pickup are eligible for a full refund of any advance paid. If plans change, message us — we’ll tell you exactly what applies before anything is charged.`,
     ],
   },
   {
@@ -64,7 +64,7 @@ export default function RefundPolicyPage() {
       <Section tone="snow" size="sm">
         <Container className="max-w-[75ch]">
           <Breadcrumbs items={[{ label: "Refund Policy" }]} />
-          <h1 className="mt-6 text-[clamp(2rem,4.5vw,3rem)] font-semibold tracking-[-0.035em] text-text">
+          <h1 className="mt-6 text-[clamp(1.85rem,3.5vw,2.6rem)] font-semibold tracking-[-0.02em] text-text">
             Refund &amp; Cancellation Policy
           </h1>
           <p className="mt-4 text-sm text-text-muted leading-relaxed">

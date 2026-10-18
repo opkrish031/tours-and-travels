@@ -61,7 +61,7 @@ export default function PrivacyPolicyPage() {
       <Section tone="snow" size="sm">
         <Container className="max-w-[75ch]">
           <Breadcrumbs items={[{ label: "Privacy Policy" }]} />
-          <h1 className="mt-6 text-[clamp(2rem,4.5vw,3rem)] font-semibold tracking-[-0.03em] text-text">
+          <h1 className="mt-6 text-[clamp(1.85rem,3.5vw,2.6rem)] font-semibold tracking-[-0.02em] text-text">
             Privacy Policy
           </h1>
           <p className="mt-4 text-sm text-text-muted leading-relaxed">

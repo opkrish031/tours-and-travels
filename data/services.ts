@@ -25,7 +25,7 @@ export const services: Service[] = [
       "Mandore Gardens Royal Cenotaphs & Hall of Heroes",
       "Evening drop at Clock Tower (Ghanta Ghar) & Toorji Ka Jhalra Stepwell",
       "Fixed 8 Hr / 80 Km or 4 Hr / 40 Km packages with zero hidden parking fees",
-      "Zero commission shopping promise — no forced souvenir stops",
+      "No commission stops — we don't take you shopping for a cut",
     ],
     packages: [
       { label: "Full Day: 8 Hours / 80 Km", hours: 8, km: 80 },
@@ -62,7 +62,7 @@ export const services: Service[] = [
       },
       {
         q: "Will the driver take us to commission handicraft or textile shops?",
-        a: "No. We operate under a strict zero-commission policy. Drivers take you only to genuine historical monuments and eateries you choose, never to sponsored commercial emporiums.",
+        a: "No. We don't take a commission from shops and our drivers don't stop at sponsored emporiums. They take you to the monuments and eateries you choose.",
       },
     ],
   },
@@ -72,9 +72,9 @@ export const services: Service[] = [
     summary:
       "Reliable pickup and drop service for Jodhpur Civil Airport (JDH) and Jodhpur Junction Railway Station with flight tracking and old city auto-transfer assistance.",
     features: [
-      "Punctual arrival 15 minutes before flight landing or train arrival",
+      "Driver reaches ahead of your arrival, tracking your flight or PNR",
       "Coordination at Platform 1 (Main Gate) or Platform 2 (Subhash Nagar)",
-      "Civil Airport Road Ratanada transfer in under 15 minutes",
+      "Ratanada is our base — airport and junction transfers are our shortest runs",
       "Old city haveli drop assistance via Sojati Gate, Jalori Gate, or Chandpole",
       "Fixed transfer pricing with zero midnight or luggage surcharges",
     ],
@@ -91,7 +91,7 @@ export const services: Service[] = [
     relatedRoutes: ["jodhpur-to-jaisalmer-taxi", "jodhpur-to-udaipur-taxi"],
     body: [
       "Marwad Cabs operates its dispatch office from Ratanada, situated just 5 minutes from Jodhpur Civil Airport (JDH) and 7 minutes from Jodhpur Railway Junction. Our drivers monitor domestic flight schedules and train running status so your driver is already at the exit with an identification placard when you step out of the terminal.",
-      "If you are staying at a heritage haveli inside the Blue City old lanes (such as Navchokiya, Brahmpuri, or near Clock Tower) where commercial 4-wheelers are prohibited by police barriers, our driver drops you at the nearest gate (Jalori Gate, Sojati Gate, or Gulab Sagar) and coordinates a trusted ₹100–₹150 local auto-rickshaw directly to your haveli doorstep.",
+      "If you are staying at a heritage haveli inside the Blue City old lanes (such as Navchokiya, Brahmpuri, or near Clock Tower) where commercial 4-wheelers are prohibited by police barriers, our driver drops you at the nearest gate (Jalori Gate, Sojati Gate, or Gulab Sagar) and we arrange a local ₹100–₹150 auto-rickshaw for the last stretch to your haveli doorstep.",
     ],
     image: "/images/services/airport-taxi-jodhpur.jpg",
     imageAlt: "Marwad Cabs airport taxi waiting at Jodhpur Civil Airport Ratanada",
@@ -111,7 +111,7 @@ export const services: Service[] = [
       },
       {
         q: "What if my flight or train is delayed past midnight?",
-        a: "We track your flight number and PNR. We never charge waiting penalties for verified airline or railway delays, and your driver remains on standby until you safely exit.",
+        a: "We track your flight number and PNR. We don't charge waiting penalties when the flight or train is genuinely delayed, and your driver stays on standby until you're out.",
       },
     ],
   },
@@ -145,7 +145,7 @@ export const services: Service[] = [
     ],
     body: [
       "Traditional taxi operators in Rajasthan often charge two-way fares even when a traveler only requires a single drop to another city. Marwad Cabs offers true one-way drop fares across all major highways connecting Jodhpur to Jaisalmer, Udaipur, Mount Abu, Jaipur, and Bikaner.",
-      "Your driver arrives at your home, hotel, or station at the agreed minute. Luggage is loaded carefully in boot space or secured on heavy-duty roof carriers. Highway FASTag toll receipts and state tax slips are presented directly at journey completion for exact reimbursement with zero markups.",
+      "Your driver arrives at your home, hotel, or station at the agreed time. Luggage is loaded carefully in the boot or secured on heavy-duty roof carriers. Highway FASTag toll receipts and state tax slips are handed over at the end of the journey for reimbursement at the actual amount, with no markup.",
     ],
     image: "/images/services/one-way-taxi-jodhpur.jpg",
     imageAlt: "Marwad Cabs one-way intercity cab cruising on Rajasthan highway",
@@ -175,7 +175,7 @@ export const services: Service[] = [
     summary:
       "Multi-day Rajasthan circuit packages with dedicated AC vehicle, experienced local driver, standard 250 km/day calculation, and ₹300 driver bhatta.",
     features: [
-      "Fixed 250 km/day minimum average calculation for fair highway billing",
+      "Fixed 250 km/day minimum average, the standard Rajasthan tour billing",
       "Same vehicle and courteous driver stays with you throughout your tour",
       "Nominal ₹300/day driver allowance covering food and stay",
       "Customizable itineraries covering Jodhpur, Jaisalmer, Udaipur, and Mount Abu",
@@ -198,8 +198,8 @@ export const services: Service[] = [
       "jodhpur-to-mount-abu-taxi",
     ],
     body: [
-      "When planning a holiday circuit across western Rajasthan, hiring a single dedicated cab and driver ensures your luggage stays safely in the vehicle during sightseeing stops and gives you total schedule freedom. Marwad Cabs provides round-trip vehicles starting at ₹10/km for sedans and ₹17/km for Innova Crystas.",
-      "We follow the transparent Rajasthan tour transport standard: a 250 km/day minimum average, which allows you to take relaxed short-distance days in cities like Udaipur or Jaisalmer while balancing longer highway driving days without penalty. Driver bhatta is capped at ₹300/day.",
+      "When planning a holiday circuit across western Rajasthan, hiring a single dedicated cab and driver ensures your luggage stays safely in the vehicle during sightseeing stops and keeps the day yours to plan. Marwad Cabs provides round-trip vehicles starting at ₹10/km for sedans and ₹17/km for Innova Crystas.",
+      "We follow the standard Rajasthan tour billing: a 250 km/day minimum average, which lets you take short, relaxed days in cities like Udaipur or Jaisalmer while balancing longer highway days without penalty. Driver bhatta is capped at ₹300/day.",
     ],
     image: "/images/services/round-trip-taxi-jodhpur.jpg",
     imageAlt: "Marwad Cabs touring vehicle parked beside a scenic lake in Rajasthan",
@@ -227,7 +227,7 @@ export const services: Service[] = [
     slug: "outstation-taxi-jodhpur",
     name: "Outstation Cabs from Jodhpur",
     summary:
-      "Per-kilometre outstation cabs across Rajasthan, Gujarat, and Delhi NCR with clean AC vehicles, roof carriers, and verified local chauffeurs.",
+      "Per-kilometre outstation cabs across Rajasthan, Gujarat, and Delhi NCR with clean AC vehicles, roof carriers, and licensed local drivers.",
     features: [
       "Full fleet availability: Dzire, Etios, Ertiga, Innova Crysta, and Tempo Travellers",
       "Transparent per-km pricing starting at ₹10/km with clear written estimates",
@@ -255,8 +255,8 @@ export const services: Service[] = [
       "jodhpur-to-mount-abu-taxi",
     ],
     body: [
-      "Whether you are planning an outstation road trip to the Sam sand dunes of Jaisalmer, the marble palaces of Udaipur, the holy shrine of Shri Nakoda Ji, or Ahmedabad airport, Marwad Cabs provides clean, verified vehicles maintained specifically for long highway stretches.",
-      "Every vehicle undergoes inspection of tire tread, air conditioning pressure, and coolant before departing on an outstation trip. We provide written fare breakdowns on WhatsApp before you pay any advance so you have total clarity on kilometre rates, driver bhatta, and toll procedures.",
+      "Whether you are planning an outstation road trip to the Sam sand dunes of Jaisalmer, the marble palaces of Udaipur, the holy shrine of Shri Nakoda Ji, or Ahmedabad airport, Marwad Cabs provides clean, well-maintained vehicles set up for long highway runs.",
+      "Every vehicle undergoes inspection of tire tread, air conditioning pressure, and coolant before departing on an outstation trip. We provide written fare breakdowns on WhatsApp before you confirm the booking, so you know the kilometre rates, driver bhatta, and toll procedure.",
     ],
     image: "/images/services/outstation-taxi-jodhpur.jpg",
     imageAlt: "Marwad Cabs fleet lined up ready for long highway outstation departure",
@@ -276,7 +276,7 @@ export const services: Service[] = [
       },
       {
         q: "How do I book an outstation cab?",
-        a: "Send your itinerary, travel dates, pickup location, and passenger count on WhatsApp. We send a complete quote with vehicle options in under 10 minutes.",
+        a: "Send your itinerary, travel dates, pickup location, and passenger count on WhatsApp. We reply with a complete quote and vehicle options, and nothing is payable until you confirm.",
       },
     ],
   },
@@ -303,8 +303,8 @@ export const services: Service[] = [
     ],
     relatedRoutes: ["jodhpur-to-osian-taxi", "jodhpur-to-nakodaji-taxi"],
     body: [
-      "The Bishnoi community is celebrated worldwide for its five-century-old tradition of environmental protection and sacred reverence for wildlife and trees. Located 20 km south of Jodhpur, the Bishnoi villages offer a peaceful glimpse into rural Marwari life away from tourist crowds.",
-      "Our half-day safari takes you to Guda Bishnoi Lake, where herds of wild blackbucks, chinkaras, and peacocks roam freely alongside winter demoiselle cranes (Kurjan). You also visit genuine artisan workshops in Kakani for traditional terracotta pottery and Salawas for world-famous dhurrie hand-weaving.",
+      "The Bishnoi community has held to its five-century-old tradition of protecting wildlife and trees. Located 20 km south of Jodhpur, the Bishnoi villages offer a peaceful glimpse into rural Marwari life away from tourist crowds.",
+      "Our half-day safari takes you to Guda Bishnoi Lake, where herds of wild blackbucks, chinkaras, and peacocks roam freely alongside winter demoiselle cranes (Kurjan). You also visit genuine artisan workshops in Kakani for traditional terracotta pottery and Salawas, known for its dhurrie hand-weaving.",
     ],
     image: "/images/services/bishnoi-village-safari-jodhpur.jpg",
     imageAlt: "Marwad Cabs vehicle during Bishnoi Village cultural safari near Jodhpur",
@@ -332,12 +332,12 @@ export const services: Service[] = [
     slug: "wedding-car-rental-jodhpur",
     name: "Wedding & Corporate Car Rental in Jodhpur",
     summary:
-      "Premium wedding car hire, guest transfer fleets, Innova Crystas, and 26-seater Tempo Travellers for royal destination weddings at Umaid Bhawan and heritage resorts.",
+      "Wedding car hire, guest transfer fleets, Innova Crystas, and 26-seater Tempo Travellers for royal destination weddings at Umaid Bhawan and heritage resorts.",
     features: [
       "Fleet coordination for destination weddings at Umaid Bhawan, Ajit Bhawan & Indana Palace",
       "Dedicated airport & railway station reception coordinator desks",
       "Uniformed, courteous chauffeurs fluent in Hindi and English",
-      "Luxury Fortuners, Mercedes, vintage cars, and decorated bridal sedans",
+      "Fortuners, Mercedes, vintage cars, and decorated bridal sedans",
       "Bulk Tempo Travellers (12, 17, 26 seater) for wedding guest logistics",
     ],
     packages: [
@@ -352,24 +352,24 @@ export const services: Service[] = [
     ],
     relatedRoutes: ["jodhpur-to-jaisalmer-taxi", "jodhpur-to-udaipur-taxi"],
     body: [
-      "Jodhpur is one of India's premier destination wedding capitals, hosting grand celebrations at Umaid Bhawan Palace, Raas, Indana Palace, Ajit Bhawan, and Bijolai Palace. Managing smooth airport transfers and guest transit between hotels and sangeet venues requires punctual logistics.",
-      "Marwad Cabs provides full-service wedding transport management. We assign on-site transport managers with a dedicated fleet of gleaming white Innova Crystas and luxury Tempo Travellers. We ensure every arriving guest receives a courteous greeting at Jodhpur Airport (JDH) with luggage handled attentively.",
+      "Jodhpur is a busy destination wedding venue, with celebrations at Umaid Bhawan Palace, Raas, Indana Palace, Ajit Bhawan, and Bijolai Palace. Getting guests between the airport, hotels, and sangeet venues takes organised logistics.",
+      "Marwad Cabs provides full-service wedding transport. We assign on-site transport managers with a dedicated fleet of white Innova Crystas and Tempo Travellers. Every arriving guest is met at Jodhpur Airport (JDH) and shown to their vehicle with their luggage handled.",
     ],
     image: "/images/services/wedding-car-rental-jodhpur.jpg",
-    imageAlt: "Marwad Cabs wedding fleet of white luxury cars lined up outside a palace in Jodhpur",
+    imageAlt: "Marwad Cabs wedding fleet of white cars lined up outside a palace in Jodhpur",
     seo: {
       title: "Wedding Car Rental in Jodhpur | Marwad Cabs",
       description:
-        "Hire luxury wedding cars and guest transfer fleets in Jodhpur with Marwad Cabs. Innova Crystas, luxury Fortuner and Tempo Travellers for palace weddings.",
+        "Hire luxury wedding cars and guest transfer fleets in Jodhpur with Marwad Cabs. Innova Crystas, Fortuners and Tempo Travellers for palace weddings.",
     },
     faqs: [
       {
         q: "How many vehicles can Marwad Cabs supply for a destination wedding?",
-        a: "We regularly manage fleets of 15 to 40 vehicles, including Innova Crystas, sedans, luxury Fortuners, and 26-seater Tempo Travellers with dedicated dispatch coordinators.",
+        a: "We regularly manage fleets of 15 to 40 vehicles, including Innova Crystas, sedans, Fortuners, and 26-seater Tempo Travellers with dedicated dispatch coordinators.",
       },
       {
         q: "Can you provide decorated cars for bridal or groom entry?",
-        a: "Yes. We offer fresh floral decorations and luxury sedans or vintage cars tailored to your wedding decor specifications.",
+        a: "Yes. We offer fresh floral decorations and sedans or vintage cars tailored to your wedding decor.",
       },
       {
         q: "Do you offer airport coordinator desks for arriving guests?",

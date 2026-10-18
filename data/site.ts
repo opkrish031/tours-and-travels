@@ -22,9 +22,9 @@ export const site = {
   description:
     "Direct cab booking in Jodhpur with Marwad Cabs. Clean AC Dzire, Ertiga, Innova Crysta & Tempo Travellers with local Marwari drivers. Upfront per-km rates for Jodhpur sightseeing, Jaisalmer, Udaipur, Ranakpur, Mount Abu & Osian.",
   trustStats: [
-    { value: "₹10/km", label: "AC Sedan Starting Rate" },
-    { value: "15 Mins", label: "Airport & Junction Pickup" },
-    { value: "100% Clear", label: "No Hidden Night or AC Fees" },
-    { value: "Local Drivers", label: "Jodhpur & Marwar Route Experts" },
+    { value: "₹10/km", label: "AC sedan starting rate" },
+    { value: "250 km", label: "Daily minimum, outstation" },
+    { value: "₹300", label: "Driver allowance per day" },
+    { value: "Local Drivers", label: "Jodhpur-based, Marwar routes" },
   ],
 } as const;

@@ -18,7 +18,7 @@ export type FareResult = {
   breakdown: string;
 };
 
-/** DUMMY constant — confirm the per-day minimum with the client (PRD open question 2). */
+/** Default outstation billing floor, km per day. */
 export const DEFAULT_MIN_KM_PER_DAY = 250;
 
 /** Round to the nearest ₹10 for display. */

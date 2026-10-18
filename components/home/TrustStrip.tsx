@@ -5,23 +5,23 @@ import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 const items = [
   {
     icon: Clock,
-    title: "Always On Call",
-    note: "Instant dispatch any hour of day or night.",
+    title: "Dispatch desk in Ratanada",
+    note: "Call or WhatsApp — we answer and confirm the car.",
   },
   {
     icon: Wallet,
-    title: "Transparent Fares",
-    note: "Complete quote provided before you travel.",
+    title: "Fare quoted before travel",
+    note: "Per-km rate, distance and extras, in writing.",
   },
   {
     icon: ShieldCheck,
-    title: "Verified Chauffeurs",
-    note: "Commercial permits and highway specialists.",
+    title: "Licensed local drivers",
+    note: "Commercial permits; drivers who know the Marwar routes.",
   },
   {
     icon: Receipt,
-    title: "Zero Hidden Costs",
-    note: "Tolls and parking billed at exact cost.",
+    title: "No surprise charges",
+    note: "Tolls and parking at actuals; allowance stated upfront.",
   },
 ] as const;
 

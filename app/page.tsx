@@ -31,7 +31,7 @@ export default function Home() {
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd data={faqJsonLd(homeFaqs)} />
 
-      {/* 1. Hero (Dark, Huge Type, SplitHeadline, Gold Glow, Highway Route Visualizer, Booking Card) */}
+      {/* 1. Hero (Editorial: mono masthead, Fraunces headline, Swiss stat rule, WhatsApp CTA, Booking Card) */}
       <Hero />
 
       {/* 2. Assurance Strip (Light, 4 Short Statements, Stagger Reveal) */}

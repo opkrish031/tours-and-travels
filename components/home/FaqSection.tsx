@@ -6,8 +6,8 @@ export function FaqSection() {
   return (
     <Section tone="snow" size="md">
       <SectionHeader
-        eyebrow="Clear Answers"
-        title="Frequently Asked Questions"
+        eyebrow="Questions"
+        title="Common questions"
         description="Key information regarding upfront quotes, toll receipts, airport waiting policies, and booking confirmation."
       />
       <div className="mt-8 max-w-4xl mx-auto">

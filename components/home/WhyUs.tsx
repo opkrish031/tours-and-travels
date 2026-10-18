@@ -8,9 +8,9 @@ export function WhyUs() {
   return (
     <Section tone="snow" size="md">
       <SectionHeader
-        eyebrow="The Marwad Cabs Standard"
-        title="Reliability in Every Kilometre"
-        description="We eliminate travel uncertainty with fixed rates, vetted drivers, and transparent communication from pickup to destination."
+        eyebrow="How we work"
+        title="Straightforward, start to finish"
+        description="Published per-km rates, drivers with commercial permits, and the full fare in writing before pickup. No commission on trips, no detours you didn’t ask for."
       />
 
       {/* Bento Grid */}
@@ -18,17 +18,17 @@ export function WhyUs() {
         {/* Large Tile (spans 2 columns on lg) */}
         <Tile
           icon={<IndianRupee className="h-5 w-5" />}
-          badge="Guaranteed Transparency"
-          title="Fares Published and Verified Upfront"
-          subtitle="Every route and vehicle has an exact per-kilometre rate. The calculation shows distance, vehicle tier, and total before you confirm anything."
+          badge="Published Rates"
+          title="The rate you see is the rate you pay"
+          subtitle="Every route and vehicle has a per-km rate. The calculator shows distance, vehicle tier, and the estimate before you confirm anything."
           highlight
           className="lg:col-span-2"
         >
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
               <Chip variant="gold">Zero Online Advance</Chip>
-              <Chip variant="default">Tolls at Exact Cost</Chip>
-              <Chip variant="default">No Hidden Driver Fees</Chip>
+              <Chip variant="default">Tolls at Actuals</Chip>
+              <Chip variant="default">Allowance Stated Upfront</Chip>
             </div>
             <Link
               href="/taxi-fare"
@@ -42,9 +42,9 @@ export function WhyUs() {
         {/* Tile 2 */}
         <Tile
           icon={<CalendarClock className="h-5 w-5" />}
-          badge="Flight Sync"
-          title="Punctual Airport Dispatches"
-          subtitle="Early morning flights or midnight arrivals — driver arrives 15 minutes before landing with nameplate greeting."
+          badge="Airport"
+          title="Airport and station pickups"
+          subtitle="We track your flight or train. The driver plans to reach the terminal or platform before you do, whatever the hour."
         >
           <Link
             href="/airport-taxi-jodhpur"
@@ -57,9 +57,9 @@ export function WhyUs() {
         {/* Tile 3 */}
         <Tile
           icon={<BadgeCheck className="h-5 w-5" />}
-          badge="Commercial License"
-          title="Verified Highway Chauffeurs"
-          subtitle="Every driver holds a commercial licence with 5+ years of highway experience across Rajasthan roads."
+          badge="Commercial Permit"
+          title="Licensed local drivers"
+          subtitle="Every driver carries a commercial tourist-vehicle permit and drives the Rajasthan highways we quote on regularly."
         >
           <Link
             href="/about"
@@ -75,14 +75,14 @@ export function WhyUs() {
           dark
           highlight
           badge="Round Trips"
-          title="One Dedicated Vehicle Across Your Entire Tour"
-          subtitle="Keep the exact same car and driver across multi-day circuits. Sightseeing detours at Ranakpur or Kumbhalgarh are accommodated directly without hidden fees."
+          title="The same car and driver for your whole trip"
+          subtitle="One vehicle stays with you across multi-day circuits. Extra stops like Ranakpur or Kumbhalgarh are agreed in the quote — no surprise fees at the end."
           className="lg:col-span-2"
         >
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
-              <Chip variant="dark">Custom Detours</Chip>
-              <Chip variant="gold">Fixed Daily Minimums</Chip>
+              <Chip variant="dark">Stops Agreed Upfront</Chip>
+              <Chip variant="gold">250 km/Day Minimum</Chip>
             </div>
             <Link
               href="/round-trip-taxi-jodhpur"

@@ -63,7 +63,7 @@ export const vehicles: Vehicle[] = [
       },
       {
         q: "Can the sedan pick up from Jodhpur Railway Station?",
-        a: "Yes. Our driver arrives 15 minutes before train arrival and parks at either Platform 1 (main entrance) or Platform 2 (subhash nagar side), sending vehicle number and live location to your WhatsApp.",
+        a: "Yes. Our driver reaches ahead of your train, tracking the PNR, and parks at either Platform 1 (main entrance) or Platform 2 (Subhash Nagar side), sending the vehicle number and live location to your WhatsApp.",
       },
     ],
   },

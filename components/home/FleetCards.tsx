@@ -29,14 +29,15 @@ export function FleetCards() {
     <Section tone="snow" size="md">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div>
-          <span className="eyebrow text-gold font-bold uppercase tracking-wider block mb-1">
-            Marwad Cabs Fleet
+          <span className="eyebrow text-gold font-semibold block mb-2">
+            Our fleet
           </span>
-          <h2 className="text-[clamp(2rem,3.8vw,3.25rem)] font-bold font-serif tracking-tight leading-[1.08] text-text">
+          <h2 className="text-[clamp(2rem,3.8vw,3rem)] font-semibold tracking-[-0.02em] leading-[1.12] text-text">
             Chauffeured AC Cabs & Fixed Rates
           </h2>
           <p className="mt-2 text-text-muted max-w-[54ch] text-sm md:text-base leading-relaxed">
-            Direct taxi operator fleet with clean air-conditioned vehicles, roof luggage carriers, and verified local Marwari drivers. No hidden fees or night surcharges.
+            Direct taxi operator fleet with clean air-conditioned vehicles, roof luggage carriers,
+            and local Marwari drivers holding commercial permits. Tolls billed at actuals.
           </p>
         </div>
 
@@ -83,7 +84,7 @@ export function FleetCards() {
                 <div className="mt-5 flex flex-1 flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-lg font-bold font-serif tracking-tight text-text">
+                      <h3 className="text-lg font-semibold tracking-[-0.01em] text-text">
                         {vehicle.name}
                       </h3>
                       {vehicle.popular ? (

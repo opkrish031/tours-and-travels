@@ -51,8 +51,8 @@ export default function NotFound() {
           </h1>
 
           <p className="mt-3 text-base text-text-dark-muted max-w-[46ch] leading-relaxed">
-            The page you are looking for has moved or does not exist. Browse our most booked
-            destinations below or return to the main station.
+            The page you are looking for has moved or does not exist. Browse the routes and
+            services below, or head back to the home page.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
@@ -79,8 +79,8 @@ export default function NotFound() {
       {/* Popular Services Directory */}
       <Section tone="snow" size="md">
         <SectionHeader
-          eyebrow="Explore Fleet"
-          title="Popular Travel Categories"
+          eyebrow="Fleet"
+          title="Popular travel categories"
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {services.map((service) => (
@@ -109,8 +109,8 @@ export default function NotFound() {
       {/* Popular Routes */}
       <Section tone="mist" size="md">
         <SectionHeader
-          eyebrow="Direct Routes"
-          title="Frequent Highway Destinations"
+          eyebrow="Routes"
+          title="Frequent highway destinations"
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-8">
           {routes.slice(0, 6).map((route) => (
