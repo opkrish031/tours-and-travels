@@ -15,8 +15,8 @@ function crenellations(from: number, to: number, y: number, w = 10, h = 8): stri
 
 /**
  * Atmospheric backdrop: Mehrangarh Fort on its hill above the Thar dunes,
- * with the highway curving in. Full-bleed behind hero content on desktop,
- * a quiet panorama band along the bottom on mobile. Decorative only.
+ * with the highway curving in. Sits behind the hero headline on all breakpoints.
+ * Decorative only.
  */
 export function HeroRouteBackdrop() {
   const uid = useId();
@@ -27,7 +27,7 @@ export function HeroRouteBackdrop() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-24 overflow-hidden select-none sm:h-36 lg:inset-0 lg:h-auto"
+      className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[min(560px,72vh)] overflow-hidden select-none lg:inset-0 lg:h-auto"
     >
       <svg
         viewBox="0 0 1440 760"
@@ -154,7 +154,7 @@ export function HeroRouteBackdrop() {
           <path
             d={`M 480 590 L 480 462${crenellations(480, 1060, 462, 12, 9)} L 1060 590`}
             stroke="#C8962E"
-            strokeOpacity="0.72"
+            strokeOpacity="0.9"
             strokeWidth="1.35"
             strokeLinejoin="round"
           />

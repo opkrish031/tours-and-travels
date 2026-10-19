@@ -9,7 +9,6 @@ import { m, AnimatePresence } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { WhatsAppButton } from "@/components/booking/WhatsAppButton";
 import { MobileNav } from "@/components/layout/MobileNav";
-import { TopBar } from "@/components/home/TopBar";
 import { navGroups, primaryNav, type NavLink } from "@/lib/nav";
 import { contextMessage, telHref } from "@/lib/whatsapp";
 import { site } from "@/data/site";
@@ -186,7 +185,6 @@ export function Header() {
 
   return (
     <>
-      <TopBar />
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled

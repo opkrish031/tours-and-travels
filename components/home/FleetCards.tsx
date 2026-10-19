@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Users, Briefcase, MessageSquare, ArrowRight, ShieldCheck, Fuel } from "lucide-react";
+import { Users, Briefcase, MessageSquare, ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { MediaFrame } from "@/components/ui/MediaFrame";
 import { SegmentedControl } from "@/components/ui/SegmentedControl";
-import { Button } from "@/components/ui/Button";
 import { vehicles } from "@/data/vehicles";
 import { formatRupees } from "@/lib/fare";
 import { Chip } from "@/components/ui/Chip";
@@ -27,17 +26,15 @@ export function FleetCards() {
 
   return (
     <Section tone="snow" size="md">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
-          <span className="eyebrow text-gold font-semibold block mb-2">
-            Our fleet
-          </span>
-          <h2 className="text-[clamp(2rem,3.8vw,3rem)] font-semibold tracking-[-0.02em] leading-[1.12] text-text">
-            Chauffeured AC Cabs & Fixed Rates
+          <span className="eyebrow text-gold mb-2 block font-semibold">Our fleet</span>
+          <h2 className="text-text text-[clamp(2rem,3.8vw,3rem)] leading-[1.12] font-semibold tracking-[-0.02em]">
+            Chauffeured AC cabs
           </h2>
-          <p className="mt-2 text-text-muted max-w-[54ch] text-sm md:text-base leading-relaxed">
-            Direct taxi operator fleet with clean air-conditioned vehicles, roof luggage carriers,
-            and local Marwari drivers holding commercial permits. Tolls billed at actuals.
+          <p className="text-text-muted mt-2 max-w-[54ch] text-sm leading-relaxed md:text-base">
+            Our own yellow-plate fleet: clean air-conditioned vehicles, roof luggage
+            carriers, and local Marwari drivers holding commercial permits.
           </p>
         </div>
 
@@ -58,16 +55,18 @@ export function FleetCards() {
 
       {/* Responsive Grid of Cards */}
       <div className="-mx-5 px-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0">
-        <ul className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none lg:grid lg:grid-cols-3 lg:overflow-visible">
+        <ul className="flex snap-x snap-mandatory scrollbar-none gap-6 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
           {filteredVehicles.map((vehicle) => {
             const waBookingUrl = buildWhatsAppUrl(
-              contextMessage(`Hi Marwad Cabs, I want to book the ${vehicle.name} for my trip.`),
+              contextMessage(
+                `Hi Marwad Cabs, I want to book the ${vehicle.name} for my trip.`,
+              ),
             );
 
             return (
               <li
                 key={vehicle.slug}
-                className="flex w-[85vw] sm:w-[340px] lg:w-auto shrink-0 snap-start flex-col rounded-3xl border border-line bg-white p-5 shadow-xs transition-all duration-300 hover:border-gold/50 hover:shadow-md"
+                className="border-line hover:border-gold/50 flex w-[85vw] shrink-0 snap-start flex-col rounded-3xl border bg-white p-5 shadow-xs transition-all duration-300 hover:shadow-md sm:w-[340px] lg:w-auto"
               >
                 {/* Vehicle MediaFrame */}
                 <div className="relative">
@@ -84,7 +83,7 @@ export function FleetCards() {
                 <div className="mt-5 flex flex-1 flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-lg font-semibold tracking-[-0.01em] text-text">
+                      <h3 className="text-text text-lg font-semibold tracking-[-0.01em]">
                         {vehicle.name}
                       </h3>
                       {vehicle.popular ? (
@@ -94,44 +93,47 @@ export function FleetCards() {
                       ) : null}
                     </div>
 
-                    <p className="text-xs text-text-muted mt-1 font-medium">
+                    <p className="text-text-muted mt-1 text-xs font-medium">
                       {vehicle.models.join(" · ")}
                     </p>
 
                     {/* Capacity Specs */}
-                    <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-text-muted">
+                    <div className="text-text-muted mt-3 flex flex-wrap items-center gap-3 text-xs">
                       <span className="flex items-center gap-1 font-medium">
-                        <Users className="h-3.5 w-3.5 text-gold" />
+                        <Users className="text-gold h-3.5 w-3.5" />
                         {vehicle.seats}
                       </span>
                       <span>•</span>
                       <span className="flex items-center gap-1 font-medium">
-                        <Briefcase className="h-3.5 w-3.5 text-gold" />
+                        <Briefcase className="text-gold h-3.5 w-3.5" />
                         {vehicle.luggage}
                       </span>
                     </div>
 
                     {/* Genuine Note */}
-                    <p className="mt-3 text-xs text-text-muted/90 line-clamp-2 leading-relaxed italic bg-mist/40 p-2.5 rounded-xl border border-line/50">
+                    <p className="text-text-muted/90 bg-mist/40 border-line/50 mt-3 line-clamp-2 rounded-xl border p-2.5 text-xs leading-relaxed italic">
                       &ldquo;{vehicle.comfort}&rdquo;
                     </p>
                   </div>
 
                   {/* Rate card & CTAs */}
-                  <div className="mt-5 pt-4 border-t border-line/70">
-                    <div className="flex items-baseline justify-between mb-2">
+                  <div className="border-line/70 mt-5 border-t pt-4">
+                    <div className="mb-2 flex items-baseline justify-between">
                       <div>
-                        <span className="tabular text-2xl font-bold tracking-tight text-text">
+                        <span className="tabular text-text text-2xl font-bold tracking-tight">
                           {formatRupees(vehicle.perKm)}
                         </span>
-                        <span className="text-xs font-semibold text-text-muted"> / km</span>
+                        <span className="text-text-muted text-xs font-semibold">
+                          {" "}
+                          / km
+                        </span>
                       </div>
-                      <span className="text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">
                         {vehicle.localPackages?.eightHours ?? "₹1,800 Local"}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between text-[0.6875rem] text-text-muted mb-4 font-medium">
+                    <div className="text-text-muted mb-4 flex items-center justify-between text-[0.6875rem] font-medium">
                       <span>Min. {vehicle.dailyKmLimit} km/day</span>
                       <span>Driver Bhatta: {vehicle.driverBhatta ?? "₹300/day"}</span>
                     </div>
@@ -141,7 +143,7 @@ export function FleetCards() {
                         href={waBookingUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 py-2.5 px-3 text-xs font-bold text-white transition-colors shadow-xs"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-3 py-2.5 text-xs font-bold text-white shadow-xs transition-colors hover:bg-emerald-500"
                       >
                         <MessageSquare className="h-3.5 w-3.5 fill-current" />
                         <span>Book on WA</span>
@@ -149,10 +151,10 @@ export function FleetCards() {
 
                       <Link
                         href={`/${vehicle.slug}`}
-                        className="inline-flex items-center justify-center gap-1 rounded-xl border border-line bg-mist/60 hover:bg-mist py-2.5 px-3 text-xs font-semibold text-text transition-colors"
+                        className="border-line bg-mist/60 hover:bg-mist text-text inline-flex items-center justify-center gap-1 rounded-xl border px-3 py-2.5 text-xs font-semibold transition-colors"
                       >
                         <span>Details</span>
-                        <ArrowRight className="h-3 w-3 text-gold" />
+                        <ArrowRight className="text-gold h-3 w-3" />
                       </Link>
                     </div>
                   </div>

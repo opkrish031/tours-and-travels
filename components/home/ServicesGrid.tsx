@@ -6,7 +6,7 @@ import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 
 // Exclude repetitive sub-variants (one-way and round-trip are encompassed by outstation-taxi-jodhpur)
 const primaryServices = services.filter(
-  (s) => s.slug !== "one-way-taxi-jodhpur" && s.slug !== "round-trip-taxi-jodhpur"
+  (s) => s.slug !== "one-way-taxi-jodhpur" && s.slug !== "round-trip-taxi-jodhpur",
 );
 
 export function ServicesGrid() {
@@ -23,33 +23,33 @@ export function ServicesGrid() {
           <StaggerItem key={service.slug} as="div">
             <Link
               href={`/${service.slug}`}
-              className="group relative flex flex-col md:flex-row md:items-center justify-between gap-6 rounded-3xl border border-line bg-white/80 p-7 md:p-8 transition-all duration-300 hover:border-black/20 hover:bg-white hover:shadow-md"
+              className="group border-line relative flex flex-col justify-between gap-6 rounded-3xl border bg-white/80 p-7 transition-all duration-300 hover:border-black/20 hover:bg-white hover:shadow-md md:flex-row md:items-center md:p-8"
             >
-              <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 flex-1">
+              <div className="flex flex-1 flex-col gap-6 md:flex-row md:items-center md:gap-8">
                 {/* Index & Category */}
-                <span className="font-mono text-xs font-semibold text-gold-deep tabular bg-gold/10 px-2.5 py-1 rounded-full w-fit">
+                <span className="text-gold-deep tabular bg-gold/10 w-fit rounded-full px-2.5 py-1 font-mono text-xs font-semibold">
                   0{index + 1}
                 </span>
 
                 {/* Title & Summary */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-text group-hover:text-black transition-colors">
+                    <h3 className="text-text text-xl font-semibold tracking-tight transition-colors group-hover:text-black md:text-2xl">
                       {service.name}
                     </h3>
                   </div>
-                  <p className="mt-1.5 text-sm md:text-[0.9375rem] text-text-muted max-w-[60ch] leading-relaxed">
+                  <p className="text-text-muted mt-1.5 max-w-[60ch] text-sm leading-relaxed md:text-[0.9375rem]">
                     {service.summary}
                   </p>
                 </div>
               </div>
 
               {/* Action and Arrow */}
-              <div className="flex items-center gap-4 shrink-0">
-                <span className="text-xs font-semibold uppercase tracking-wider text-text-muted group-hover:text-text transition-colors hidden sm:inline">
+              <div className="flex shrink-0 items-center gap-4">
+                <span className="text-text-muted group-hover:text-text hidden text-xs font-semibold transition-colors sm:inline">
                   View Details
                 </span>
-                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-mist text-text transition-all duration-300 group-hover:bg-black group-hover:text-white group-hover:scale-105">
+                <div className="border-line bg-mist text-text flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 group-hover:scale-105 group-hover:bg-black group-hover:text-white">
                   <ArrowUpRight
                     aria-hidden="true"
                     className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

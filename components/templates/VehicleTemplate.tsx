@@ -42,27 +42,27 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
       />
 
       {/* Apple Hardware Studio Showcase Hero (Dark Studio Presentation) */}
-      <section className="relative overflow-hidden bg-black text-text-dark border-b border-line-dark pt-12 pb-20 md:pt-16 md:pb-28">
-        <Container className="relative z-10 max-w-5xl mx-auto text-center">
+      <section className="text-text-dark border-line-dark relative overflow-hidden border-b bg-black pt-12 pb-20 md:pt-16 md:pb-28">
+        <Container className="relative z-10 mx-auto max-w-5xl text-center">
           <Breadcrumbs items={[{ label: vehicle.name }]} />
 
-          <div className="mt-6 max-w-3xl mx-auto">
-            <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-3">
+          <div className="mx-auto mt-6 max-w-3xl">
+            <span className="eyebrow text-gold mb-3 block font-semibold">
               Vehicle Class · {vehicle.category.toUpperCase()}
             </span>
 
-            <h1 className="text-[clamp(2.1rem,5vw,3.6rem)] font-semibold tracking-[-0.02em] leading-[1.12] text-white">
+            <h1 className="text-[clamp(2.1rem,5vw,3.6rem)] leading-[1.12] font-semibold tracking-[-0.02em] text-white">
               {vehicle.name}
             </h1>
 
-            <p className="mt-5 text-base md:text-xl text-text-dark-muted max-w-[50ch] mx-auto leading-relaxed">
+            <p className="text-text-dark-muted mx-auto mt-5 max-w-[50ch] text-base leading-relaxed md:text-xl">
               {vehicle.comfort}
             </p>
           </div>
 
           {/* Centerstage Hardware Vehicle Showcase */}
-          <div className="mt-10 max-w-3xl mx-auto relative">
-            <div className="rounded-3xl border border-white/10 bg-graphite p-4 sm:p-6 shadow-2xl relative overflow-hidden">
+          <div className="relative mx-auto mt-10 max-w-3xl">
+            <div className="bg-graphite relative overflow-hidden rounded-3xl border border-white/10 p-4 shadow-2xl sm:p-6">
               <MediaFrame
                 label={`${vehicle.name} Photo`}
                 alt={vehicle.imageAlt}
@@ -71,7 +71,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
                 category={vehicle.popular ? "Most Booked" : "Standard Fleet"}
               />
 
-              <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-text-dark-muted pt-3 border-t border-white/10">
+              <div className="text-text-dark-muted mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-3 text-xs">
                 <span>Models in Fleet: {vehicle.models.join(" · ")}</span>
                 <span className="text-gold font-medium">Serviced and checked</span>
               </div>
@@ -79,9 +79,9 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
           </div>
 
           {/* Hardware Specs Pill Ticker (Apple Hardware Spec Grid) */}
-          <div className="mt-10 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-3 text-center sm:grid-cols-4">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
-              <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
+              <span className="text-text-dark-muted block text-[0.6875rem] font-medium">
                 Seats
               </span>
               <span className="tabular mt-1 block text-lg font-bold text-white">
@@ -90,25 +90,25 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
             </div>
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
-              <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
+              <span className="text-text-dark-muted block text-[0.6875rem] font-medium">
                 Luggage
               </span>
-              <span className="mt-1 block text-base font-bold text-white truncate">
+              <span className="mt-1 block truncate text-base font-bold text-white">
                 {vehicle.luggage}
               </span>
             </div>
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
-              <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
+              <span className="text-text-dark-muted block text-[0.6875rem] font-medium">
                 Outstation Rate
               </span>
-              <span className="tabular mt-1 block text-lg font-bold text-gold">
+              <span className="tabular text-gold mt-1 block text-lg font-bold">
                 <AnimatedNumber value={vehicle.perKm} prefix="₹" suffix="/km" />
               </span>
             </div>
 
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
-              <span className="block text-[0.6875rem] uppercase text-text-dark-muted font-medium">
+              <span className="text-text-dark-muted block text-[0.6875rem] font-medium">
                 Daily Minimum
               </span>
               <span className="tabular mt-1 block text-lg font-bold text-white">
@@ -120,16 +120,18 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
           {/* Quick Action Dock */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
-              href={buildWhatsAppUrl(contextMessage(`I want to book ${vehicle.name} in Jodhpur`))}
+              href={buildWhatsAppUrl(
+                contextMessage(`I want to book ${vehicle.name} in Jodhpur`),
+              )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-wider text-black shadow-sm hover:bg-gold-bright transition-colors"
+              className="bg-gold hover:bg-gold-bright inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-black shadow-sm transition-colors"
             >
               Reserve {vehicle.name} on WhatsApp →
             </a>
             <a
               href="#booking-tray"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white hover:bg-white/15 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/15"
             >
               Send Booking Details ↓
             </a>
@@ -145,77 +147,77 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
           description={`Every ${vehicle.name} is serviced between tours, cleaned before each trip, and its AC is checked before long drives.`}
         />
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-10">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Card 1: Seating & Ergonomics */}
-          <div className="rounded-3xl border border-line bg-mist/60 p-8 flex flex-col justify-between">
+          <div className="border-line bg-mist/60 flex flex-col justify-between rounded-3xl border p-8">
             <div>
-              <span className="text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep block mb-2">
+              <span className="text-gold-deep mb-2 block text-[0.6875rem] font-semibold">
                 01 · Ergonomics
               </span>
-              <h3 className="text-xl font-semibold text-text mb-3">
+              <h3 className="text-text mb-3 text-xl font-semibold">
                 Cabin Layout &amp; Reclining Space
               </h3>
-              <p className="text-sm text-text-muted leading-relaxed">
+              <p className="text-text-muted text-sm leading-relaxed">
                 Legroom that holds up on long highway stretches, with reclining seats and
                 headrests for the back row.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold text-text">
+            <div className="border-line/60 text-text mt-6 border-t pt-4 text-xs font-semibold">
               {vehicle.seats} seats
             </div>
           </div>
 
           {/* Card 2: Climate Protection */}
-          <div className="rounded-3xl border border-line bg-mist/60 p-8 flex flex-col justify-between">
+          <div className="border-line bg-mist/60 flex flex-col justify-between rounded-3xl border p-8">
             <div>
-              <span className="text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep block mb-2">
+              <span className="text-gold-deep mb-2 block text-[0.6875rem] font-semibold">
                 02 · Climate Control
               </span>
-              <h3 className="text-xl font-semibold text-text mb-3">
+              <h3 className="text-text mb-3 text-xl font-semibold">
                 Cooling for Rajasthan Heat
               </h3>
-              <p className="text-sm text-text-muted leading-relaxed">
-                Rear vents keep the cabin down through Rajasthan summers. We check the
-                AC before every long trip so it is blowing cold when you get in.
+              <p className="text-text-muted text-sm leading-relaxed">
+                Rear vents keep the cabin down through Rajasthan summers. We check the AC
+                before every long trip so it is blowing cold when you get in.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold text-text">
+            <div className="border-line/60 text-text mt-6 border-t pt-4 text-xs font-semibold">
               AC checked before departure
             </div>
           </div>
 
           {/* Card 3: Luggage Stowing */}
-          <div className="rounded-3xl border border-line bg-mist/60 p-8 flex flex-col justify-between">
+          <div className="border-line bg-mist/60 flex flex-col justify-between rounded-3xl border p-8">
             <div>
-              <span className="text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep block mb-2">
+              <span className="text-gold-deep mb-2 block text-[0.6875rem] font-semibold">
                 03 · Cargo Volume
               </span>
-              <h3 className="text-xl font-semibold text-text mb-3">
+              <h3 className="text-text mb-3 text-xl font-semibold">
                 Secure Boot &amp; Luggage Space
               </h3>
-              <p className="text-sm text-text-muted leading-relaxed">
+              <p className="text-text-muted text-sm leading-relaxed">
                 Room for airport trolley cases and duffel bags. The boot is covered, so
                 bags stay off the desert dust.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-line/60 text-xs font-semibold text-text">
+            <div className="border-line/60 text-text mt-6 border-t pt-4 text-xs font-semibold">
               Capacity: {vehicle.luggage}
             </div>
           </div>
         </div>
 
         {/* Ideal Trip Profiles Pill Strip */}
-        <div className="mt-8 rounded-3xl border border-line bg-white p-6 md:p-8 shadow-xs">
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">
+        <div className="border-line mt-8 rounded-3xl border bg-white p-6 shadow-xs md:p-8">
+          <h4 className="text-text-muted mb-4 text-xs font-semibold">
             Best uses for {vehicle.name}:
           </h4>
           <div className="flex flex-wrap gap-3">
             {vehicle.idealFor.map((use) => (
               <span
                 key={use}
-                className="inline-flex items-center gap-2 rounded-full border border-line bg-snow px-4 py-2 text-xs font-medium text-text"
+                className="border-line bg-snow text-text inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium"
               >
-                <Check className="h-3.5 w-3.5 text-gold-deep shrink-0" />
+                <Check className="text-gold-deep h-3.5 w-3.5 shrink-0" />
                 <span>{use}</span>
               </span>
             ))}
@@ -235,10 +237,18 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
           <Table caption={`Intercity fares for ${vehicle.name} by route`}>
             <thead>
               <tr>
-                <th scope="col" className={thClass}>Destination</th>
-                <th scope="col" className={thClass}>Highway Distance</th>
-                <th scope="col" className={thClass}>Drive Time</th>
-                <th scope="col" className={thClass}>One-Way Fare</th>
+                <th scope="col" className={thClass}>
+                  Destination
+                </th>
+                <th scope="col" className={thClass}>
+                  Highway Distance
+                </th>
+                <th scope="col" className={thClass}>
+                  Drive Time
+                </th>
+                <th scope="col" className={thClass}>
+                  One-Way Fare
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -247,7 +257,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
                   <td className={tdClass}>
                     <Link
                       href={`/${route.slug}`}
-                      className="font-medium text-text hover:text-gold-deep transition-colors"
+                      className="text-text hover:text-gold-deep font-medium transition-colors"
                     >
                       {route.from} to {route.to}
                     </Link>
@@ -255,7 +265,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
                   <td className={tdClass}>{route.distanceKm} km</td>
                   <td className={tdClass}>{route.durationHours} hrs</td>
                   <td className={tdClass}>
-                    <span className="tabular font-semibold text-gold-deep">
+                    <span className="tabular text-gold-deep font-semibold">
                       {formatRupees(estimate.total)}
                     </span>
                   </td>
@@ -267,28 +277,28 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
 
         {/* Inclusions / Exclusions Charter */}
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-3xl border border-line bg-white p-6 shadow-xs">
-            <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider block mb-3">
+          <div className="border-line rounded-3xl border bg-white p-6 shadow-xs">
+            <span className="mb-3 block text-xs font-semibold text-emerald-800">
               Standard Fare Inclusions
             </span>
-            <ul className="space-y-2 text-xs text-text-muted">
+            <ul className="text-text-muted space-y-2 text-xs">
               {fareIncludes.slice(0, 4).map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <Check className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                  <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-3xl border border-line bg-white p-6 shadow-xs">
-            <span className="text-xs font-semibold text-text-muted uppercase tracking-wider block mb-3">
+          <div className="border-line rounded-3xl border bg-white p-6 shadow-xs">
+            <span className="text-text-muted mb-3 block text-xs font-semibold">
               Billed at Actual Cost
             </span>
-            <ul className="space-y-2 text-xs text-text-muted">
+            <ul className="text-text-muted space-y-2 text-xs">
               {fareExcludes.slice(0, 4).map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="text-text-muted font-bold shrink-0">·</span>
+                  <span className="text-text-muted shrink-0 font-bold">·</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -298,21 +308,24 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
       </Section>
 
       {/* Dedicated Reservation Tray */}
-      <section id="booking-tray" className="scroll-mt-24 bg-snow border-y border-line py-16 md:py-24">
-        <Container className="max-w-4xl mx-auto">
-          <div className="text-center max-w-xl mx-auto mb-10">
-            <span className="eyebrow text-gold-deep font-semibold uppercase tracking-wider block mb-2">
+      <section
+        id="booking-tray"
+        className="bg-snow border-line scroll-mt-24 border-y py-16 md:py-24"
+      >
+        <Container className="mx-auto max-w-4xl">
+          <div className="mx-auto mb-10 max-w-xl text-center">
+            <span className="eyebrow text-gold-deep mb-2 block font-semibold">
               Book It
             </span>
-            <h2 className="text-3xl font-semibold tracking-tight text-text">
+            <h2 className="text-text text-3xl font-semibold tracking-tight">
               Reserve Your {vehicle.name}
             </h2>
-            <p className="mt-2 text-sm text-text-muted">
+            <p className="text-text-muted mt-2 text-sm">
               Pick your dates and route and we will send a written quote.
             </p>
           </div>
 
-          <div className="max-w-xl mx-auto rounded-3xl border border-line bg-white p-6 sm:p-8 shadow-sm">
+          <div className="border-line mx-auto max-w-xl rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
             <BookingForm
               sourcePage={`/${vehicle.slug}`}
               defaultPickup="Jodhpur"
@@ -324,27 +337,21 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
 
       {/* FAQs */}
       <Section tone="mist" size="md">
-        <SectionHeader
-          eyebrow="Questions"
-          title={`${vehicle.name} FAQs`}
-        />
-        <div className="mt-8 max-w-4xl mx-auto">
+        <SectionHeader eyebrow="Questions" title={`${vehicle.name} FAQs`} />
+        <div className="mx-auto mt-8 max-w-4xl">
           <Accordion items={vehicle.faqs} defaultOpen={0} />
         </div>
       </Section>
 
       {/* Compare Other Fleet Classes */}
       <Section tone="snow" size="md">
-        <SectionHeader
-          eyebrow="Compare"
-          title="Other vehicle types"
-        />
-        <div className="grid gap-6 sm:grid-cols-3 mt-8">
+        <SectionHeader eyebrow="Compare" title="Other vehicle types" />
+        <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {otherVehicles.map((other) => (
             <Link
               key={other.slug}
               href={`/${other.slug}`}
-              className="group flex flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md"
+              className="group border-line flex flex-col justify-between rounded-3xl border bg-white p-6 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md"
             >
               <div>
                 <MediaFrame
@@ -353,14 +360,14 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
                   aspect="16 / 9"
                   icon="car"
                 />
-                <h3 className="mt-4 text-base font-semibold text-text group-hover:text-gold-deep transition-colors">
+                <h3 className="text-text group-hover:text-gold-deep mt-4 text-base font-semibold transition-colors">
                   {other.name}
                 </h3>
-                <p className="mt-1 text-xs text-text-muted">
+                <p className="text-text-muted mt-1 text-xs">
                   {other.seats} seats · {formatRupees(other.perKm)}/km
                 </p>
               </div>
-              <div className="mt-5 pt-3 border-t border-line/70 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-text-muted group-hover:text-black">
+              <div className="border-line/70 text-text-muted mt-5 flex items-center justify-between border-t pt-3 text-xs font-semibold group-hover:text-black">
                 <span>View Details</span>
                 <ArrowUpRight className="h-4 w-4" />
               </div>

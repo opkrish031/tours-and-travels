@@ -98,7 +98,8 @@ describe("localBusinessJsonLd", () => {
   });
 
   it("emits sameAs only for populated socials", () => {
-    expect(json.sameAs).toBeUndefined();
+    const expected = Object.values(site.socials).filter(Boolean);
+    expect(json.sameAs).toEqual(expected.length > 0 ? expected : undefined);
   });
 });
 

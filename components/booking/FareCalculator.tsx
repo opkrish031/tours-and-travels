@@ -20,8 +20,7 @@ import { SegmentedControl } from "@/components/ui/SegmentedControl";
 
 const inputClass =
   "w-full rounded-xl border border-white/10 bg-graphite-2 px-4 py-3 text-sm text-text-dark transition-all focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20";
-const labelClass =
-  "mb-2 block text-xs font-semibold tracking-tight text-text-dark-muted";
+const labelClass = "mb-2 block text-xs font-semibold tracking-tight text-text-dark-muted";
 
 const localService = services.find((service) => (service.packages?.length ?? 0) > 0);
 const packages = localService?.packages ?? [];
@@ -59,8 +58,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
 
   const isPackage = dest.startsWith("package:");
   const packageIndex = isPackage ? Number(dest.slice("package:".length)) : -1;
-  const vehicle =
-    vehicles.find((item) => item.slug === vehicleSlug) ?? vehicles[0];
+  const vehicle = vehicles.find((item) => item.slug === vehicleSlug) ?? vehicles[0];
   const allowedSlugs = useMemo(() => allowedVehicleSlugs(dest), [dest]);
 
   const estimate = useMemo((): FareResult | null => {
@@ -114,16 +112,14 @@ export function FareCalculator({ className = "" }: { className?: string }) {
         tripType: isPackage
           ? "Local package"
           : tripType === "one-way"
-          ? "One-way"
-          : "Round trip",
+            ? "One-way"
+            : "Round trip",
         vehicle: vehicle.name,
         total: estimate.total,
         billedKm: estimate.billedKm,
       }),
     );
-    const isMobile = /android|iphone|ipad|ipod|mobile/i.test(
-      navigator.userAgent,
-    );
+    const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
     if (isMobile) {
       window.location.href = url;
     } else {
@@ -133,21 +129,21 @@ export function FareCalculator({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`relative overflow-hidden rounded-3xl border border-line-dark bg-graphite/95 p-6 sm:p-10 text-text-dark shadow-2xl backdrop-blur-2xl ${className}`}
+      className={`border-line-dark bg-graphite/95 text-text-dark relative overflow-hidden rounded-3xl border p-6 shadow-2xl backdrop-blur-2xl sm:p-10 ${className}`}
     >
       {/* Background ambient gold glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl"
+        className="bg-gold/10 pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full blur-3xl"
       />
 
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-1">
+          <span className="eyebrow text-gold mb-1 block font-semibold">
             Fare Calculator
           </span>
-          <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+          <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Estimate Your Travel Cost
           </h3>
         </div>
@@ -172,7 +168,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
         <div>
           <label className={labelClass} htmlFor="calc-pickup">
             <span className="flex items-center gap-1.5">
-              <MapPin className="h-3.5 w-3.5 text-gold" /> Pickup Point
+              <MapPin className="text-gold h-3.5 w-3.5" /> Pickup Point
             </span>
           </label>
           <select
@@ -193,7 +189,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
         <div>
           <label className={labelClass} htmlFor="calc-dest">
             <span className="flex items-center gap-1.5">
-              <Navigation className="h-3.5 w-3.5 text-gold" /> Destination
+              <Navigation className="text-gold h-3.5 w-3.5" /> Destination
             </span>
           </label>
           <select
@@ -225,7 +221,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
         <div>
           <label className={labelClass} htmlFor="calc-vehicle">
             <span className="flex items-center gap-1.5">
-              <Car className="h-3.5 w-3.5 text-gold" /> Vehicle Category
+              <Car className="text-gold h-3.5 w-3.5" /> Vehicle Category
             </span>
           </label>
           <select
@@ -260,9 +256,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
               value={String(days)}
               onChange={(event) => {
                 const next = Number.parseInt(event.target.value, 10);
-                setDays(
-                  Number.isFinite(next) ? Math.min(30, Math.max(1, next)) : 1,
-                );
+                setDays(Number.isFinite(next) ? Math.min(30, Math.max(1, next)) : 1);
               }}
             />
           </div>
@@ -270,34 +264,31 @@ export function FareCalculator({ className = "" }: { className?: string }) {
       </div>
 
       {/* Result Section */}
-      <div
-        aria-live="polite"
-        className="mt-8 border-t border-line-dark pt-8"
-      >
+      <div aria-live="polite" className="border-line-dark mt-8 border-t pt-8">
         {estimate && vehicle ? (
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
             <div>
-              <span className="text-xs uppercase tracking-wider text-text-dark-muted font-medium">
+              <span className="text-text-dark-muted text-xs font-medium tracking-wider uppercase">
                 Estimated Total Fare
               </span>
               <div className="mt-1 flex items-baseline gap-2">
-                <span className="text-[clamp(2rem,4.5vw,3rem)] font-semibold tracking-[-0.02em] text-white leading-none">
+                <span className="text-[clamp(2rem,4.5vw,3rem)] leading-none font-semibold tracking-[-0.02em] text-white">
                   <AnimatedNumber value={estimate.total} prefix="₹" />
                 </span>
-                <span className="text-xs text-gold font-medium bg-gold/10 px-2.5 py-0.5 rounded-full border border-gold/20">
+                <span className="text-gold bg-gold/10 border-gold/20 rounded-full border px-2.5 py-0.5 text-xs font-medium">
                   Before extras
                 </span>
               </div>
-              <p className="mt-3 text-xs md:text-sm text-text-dark-muted max-w-[50ch] leading-relaxed">
-                {estimate.breakdown}. Fuel and driver included. Tolls, parking
-                and any extras are itemised in your written quote.
+              <p className="text-text-dark-muted mt-3 max-w-[50ch] text-xs leading-relaxed md:text-sm">
+                {estimate.breakdown}. Fuel and driver included. Tolls, parking and any
+                extras are itemised in your written quote.
               </p>
             </div>
 
             {/* Stat tiles */}
             <div className="grid grid-cols-3 gap-3 self-stretch lg:self-auto">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center">
-                <span className="block text-[0.6875rem] uppercase text-text-dark-muted">
+                <span className="text-text-dark-muted block text-[0.6875rem] uppercase">
                   Billed Distance
                 </span>
                 <span className="tabular mt-1 block text-base font-semibold text-white">
@@ -305,7 +296,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
                 </span>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center">
-                <span className="block text-[0.6875rem] uppercase text-text-dark-muted">
+                <span className="text-text-dark-muted block text-[0.6875rem] uppercase">
                   Per Km Rate
                 </span>
                 <span className="tabular mt-1 block text-base font-semibold text-white">
@@ -313,10 +304,10 @@ export function FareCalculator({ className = "" }: { className?: string }) {
                 </span>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center">
-                <span className="block text-[0.6875rem] uppercase text-text-dark-muted">
+                <span className="text-text-dark-muted block text-[0.6875rem] uppercase">
                   Vehicle
                 </span>
-                <span className="mt-1 block text-sm font-semibold text-gold truncate">
+                <span className="text-gold mt-1 block truncate text-sm font-semibold">
                   {vehicle.name}
                 </span>
               </div>
@@ -336,7 +327,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
             </div>
           </div>
         ) : (
-          <p className="text-sm text-text-dark-muted">
+          <p className="text-text-dark-muted text-sm">
             Select a destination and vehicle to view instant fare calculation.
           </p>
         )}

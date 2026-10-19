@@ -62,7 +62,7 @@ export function Button({
   "aria-label": ariaLabel,
 }: ButtonProps) {
   const cls = [
-    "group inline-flex items-center justify-center rounded-full font-medium tracking-[-0.01em] whitespace-nowrap",
+    "group inline-flex items-center justify-center whitespace-nowrap rounded-full font-medium tracking-[-0.01em] whitespace-nowrap",
     "transition-all duration-200 ease-out active:scale-[0.98] select-none",
     "focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2",
     sizes[size],

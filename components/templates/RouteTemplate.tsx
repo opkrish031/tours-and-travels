@@ -49,41 +49,41 @@ export function RouteTemplate({ route }: { route: Route }) {
       />
 
       {/* Apple-Style Highway Expedition Hero (Luminous Light Canvas) */}
-      <section className="relative overflow-hidden bg-snow border-b border-line pt-12 pb-20 md:pt-16 md:pb-24">
-        <Container className="relative z-10 max-w-5xl mx-auto">
+      <section className="bg-snow border-line relative overflow-hidden border-b pt-12 pb-20 md:pt-16 md:pb-24">
+        <Container className="relative z-10 mx-auto max-w-5xl">
           <Breadcrumbs items={[{ label: `${route.from} to ${route.to}` }]} />
 
           <div className="mt-6 max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-gold-deep mb-3">
+            <div className="border-gold/40 bg-gold/10 text-gold-deep mb-3 inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-xs font-semibold">
               <Navigation className="h-3.5 w-3.5" />
               <span>Rajasthan Highway Corridor · {route.distanceKm} KM</span>
             </div>
 
-            <h1 className="text-[clamp(2rem,4.5vw,3.4rem)] font-semibold tracking-[-0.02em] leading-[1.15] text-text">
+            <h1 className="text-text text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.15] font-semibold tracking-[-0.02em]">
               {route.from} to {route.to} Private Taxi
             </h1>
 
-            <p className="mt-4 text-base md:text-lg text-text-muted leading-relaxed max-w-[56ch]">
+            <p className="text-text-muted mt-4 max-w-[56ch] text-base leading-relaxed md:text-lg">
               {route.intro}
             </p>
           </div>
 
           {/* Waypoint Journey Progression Path (Apple Maps Style) */}
-          <div className="mt-10 rounded-3xl border border-line bg-white p-6 sm:p-8 shadow-xs">
-            <span className="text-[0.6875rem] font-semibold uppercase tracking-wider text-text-muted block mb-4">
+          <div className="border-line mt-10 rounded-3xl border bg-white p-6 shadow-xs sm:p-8">
+            <span className="text-text-muted mb-4 block text-[0.6875rem] font-semibold">
               The Route
             </span>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            <div className="relative grid grid-cols-1 gap-6 md:grid-cols-3">
               {/* Point 1: Origin */}
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-black text-white font-mono text-xs font-bold shadow-xs">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-black font-mono text-xs font-bold text-white shadow-xs">
                   01
                 </div>
                 <div>
-                  <div className="text-xs uppercase font-semibold text-text-muted">Origin</div>
-                  <div className="text-base font-semibold text-text">{route.from}</div>
-                  <p className="text-xs text-text-muted mt-0.5">
+                  <div className="text-text-muted text-xs font-semibold">Origin</div>
+                  <div className="text-text text-base font-semibold">{route.from}</div>
+                  <p className="text-text-muted mt-0.5 text-xs">
                     Pickup from your hotel, home, or the airport terminal.
                   </p>
                 </div>
@@ -91,15 +91,17 @@ export function RouteTemplate({ route }: { route: Route }) {
 
               {/* Point 2: Scenic Waypoint */}
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gold text-black font-mono text-xs font-bold shadow-xs">
+                <div className="bg-gold flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl font-mono text-xs font-bold text-black shadow-xs">
                   02
                 </div>
                 <div>
-                  <div className="text-xs uppercase font-semibold text-gold-deep">En-Route Waypoint</div>
-                  <div className="text-base font-semibold text-text truncate">
+                  <div className="text-gold-deep text-xs font-semibold">
+                    En-Route Waypoint
+                  </div>
+                  <div className="text-text truncate text-base font-semibold">
                     {route.highlights[0] || "Scenic Highway Halt"}
                   </div>
-                  <p className="text-xs text-text-muted mt-0.5">
+                  <p className="text-text-muted mt-0.5 text-xs">
                     Stop when you like for sightseeing, tea, or photos.
                   </p>
                 </div>
@@ -107,13 +109,13 @@ export function RouteTemplate({ route }: { route: Route }) {
 
               {/* Point 3: Destination */}
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-black text-white font-mono text-xs font-bold shadow-xs">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-black font-mono text-xs font-bold text-white shadow-xs">
                   03
                 </div>
                 <div>
-                  <div className="text-xs uppercase font-semibold text-text-muted">Destination</div>
-                  <div className="text-base font-semibold text-text">{route.to}</div>
-                  <p className="text-xs text-text-muted mt-0.5">
+                  <div className="text-text-muted text-xs font-semibold">Destination</div>
+                  <div className="text-text text-base font-semibold">{route.to}</div>
+                  <p className="text-text-muted mt-0.5 text-xs">
                     Direct drop at your destination — no changing cars.
                   </p>
                 </div>
@@ -122,39 +124,39 @@ export function RouteTemplate({ route }: { route: Route }) {
           </div>
 
           {/* Highway Telemetry Strip (4 Horizontal Metrics) */}
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
-            <div className="rounded-2xl border border-line bg-mist/60 p-4">
-              <span className="block text-[0.6875rem] uppercase text-text-muted font-medium">
+          <div className="mt-6 grid grid-cols-2 gap-3 text-center md:grid-cols-4">
+            <div className="border-line bg-mist/60 rounded-2xl border p-4">
+              <span className="text-text-muted block text-[0.6875rem] font-medium">
                 Total Distance
               </span>
-              <span className="tabular mt-1 block text-lg font-bold text-text">
+              <span className="tabular text-text mt-1 block text-lg font-bold">
                 {route.distanceKm} km
               </span>
             </div>
 
-            <div className="rounded-2xl border border-line bg-mist/60 p-4">
-              <span className="block text-[0.6875rem] uppercase text-text-muted font-medium">
+            <div className="border-line bg-mist/60 rounded-2xl border p-4">
+              <span className="text-text-muted block text-[0.6875rem] font-medium">
                 Drive Time
               </span>
-              <span className="tabular mt-1 block text-lg font-bold text-text">
+              <span className="tabular text-text mt-1 block text-lg font-bold">
                 {durationLabel(route.durationHours)}
               </span>
             </div>
 
-            <div className="rounded-2xl border border-line bg-mist/60 p-4">
-              <span className="block text-[0.6875rem] uppercase text-text-muted font-medium">
+            <div className="border-line bg-mist/60 rounded-2xl border p-4">
+              <span className="text-text-muted block text-[0.6875rem] font-medium">
                 One-Way From
               </span>
-              <span className="tabular mt-1 block text-lg font-bold text-gold-deep">
+              <span className="tabular text-gold-deep mt-1 block text-lg font-bold">
                 <AnimatedNumber value={route.startingFare} prefix="₹" />
               </span>
             </div>
 
-            <div className="rounded-2xl border border-line bg-mist/60 p-4">
-              <span className="block text-[0.6875rem] uppercase text-text-muted font-medium">
+            <div className="border-line bg-mist/60 rounded-2xl border p-4">
+              <span className="text-text-muted block text-[0.6875rem] font-medium">
                 Toll Barriers
               </span>
-              <span className="tabular mt-1 block text-lg font-bold text-text">
+              <span className="tabular text-text mt-1 block text-lg font-bold">
                 Billed at FASTag
               </span>
             </div>
@@ -163,16 +165,20 @@ export function RouteTemplate({ route }: { route: Route }) {
           {/* Actions */}
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
-              href={buildWhatsAppUrl(contextMessage(`I would like to book a taxi from ${route.from} to ${route.to}`))}
+              href={buildWhatsAppUrl(
+                contextMessage(
+                  `I would like to book a taxi from ${route.from} to ${route.to}`,
+                ),
+              )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-wider text-black shadow-xs hover:bg-gold-bright transition-colors"
+              className="bg-gold hover:bg-gold-bright inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-black shadow-xs transition-colors"
             >
               Book {route.from} → {route.to} on WhatsApp
             </a>
             <a
               href="#pricing-grid"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wider text-text hover:bg-mist transition-colors"
+              className="border-line text-text hover:bg-mist inline-flex items-center gap-2 rounded-full border bg-white px-6 py-3 text-sm font-semibold transition-colors"
             >
               Compare Vehicle Rates ↓
             </a>
@@ -189,52 +195,50 @@ export function RouteTemplate({ route }: { route: Route }) {
             description="Published per-kilometre rates. Tolls and state taxes are billed at actual FASTag receipts."
           />
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-10">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {priceRows.map(({ vehicle, oneWay, round }) => (
               <div
                 key={vehicle.slug}
-                className="rounded-3xl border border-line bg-white p-6 shadow-xs flex flex-col justify-between"
+                className="border-line flex flex-col justify-between rounded-3xl border bg-white p-6 shadow-xs"
               >
                 <div>
-                  <div className="text-[0.6875rem] font-semibold uppercase tracking-wider text-gold-deep mb-1">
+                  <div className="text-gold-deep mb-1 text-xs font-semibold">
                     {vehicle.category} Class
                   </div>
-                  <h3 className="text-xl font-semibold text-text">
-                    {vehicle.name}
-                  </h3>
-                  <div className="text-xs text-text-muted mt-0.5">
+                  <h3 className="text-text text-xl font-semibold">{vehicle.name}</h3>
+                  <div className="text-text-muted mt-0.5 text-xs">
                     {vehicle.seats} seats · {vehicle.models[0]}
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-line/60 space-y-3">
+                  <div className="border-line/60 mt-6 space-y-3 border-t pt-4">
                     <div>
-                      <span className="text-[0.6875rem] uppercase text-text-muted block">
+                      <span className="text-text-muted block text-[0.6875rem]">
                         One-Way Drop
                       </span>
-                      <span className="tabular text-xl font-bold text-text">
+                      <span className="tabular text-text text-xl font-bold">
                         {formatRupees(oneWay.total)}
                       </span>
                     </div>
 
                     <div>
-                      <span className="text-[0.6875rem] uppercase text-text-muted block">
+                      <span className="text-text-muted block text-[0.6875rem]">
                         Same-Day Round Trip
                       </span>
-                      <span className="tabular text-lg font-semibold text-text">
+                      <span className="tabular text-text text-lg font-semibold">
                         {formatRupees(round.total)}
                       </span>
                     </div>
 
-                    <div className="text-xs text-text-muted pt-2 border-t border-line/40">
+                    <div className="text-text-muted border-line/40 border-t pt-2 text-xs">
                       Rate base: ₹{vehicle.perKm}/km · Daily {vehicle.dailyKmLimit} km
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-line/60">
+                <div className="border-line/60 mt-6 border-t pt-4">
                   <Link
                     href={`/${vehicle.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-gold-deep hover:text-black transition-colors"
+                    className="text-gold-deep inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:text-black"
                   >
                     View Vehicle Specs <ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
@@ -253,7 +257,7 @@ export function RouteTemplate({ route }: { route: Route }) {
               eyebrow="Highway"
               title={`Driving the highway to ${route.to}`}
             />
-            <div className="space-y-4 text-[0.9375rem] md:text-base text-text-muted leading-relaxed">
+            <div className="text-text-muted space-y-4 text-[0.9375rem] leading-relaxed md:text-base">
               {route.body.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>
               ))}
@@ -269,17 +273,17 @@ export function RouteTemplate({ route }: { route: Route }) {
               category="Highway Landscape"
             />
 
-            <div className="mt-8 rounded-3xl border border-line bg-white p-6 shadow-xs">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-gold-deep mb-4">
+            <div className="border-line mt-8 rounded-3xl border bg-white p-6 shadow-xs">
+              <h3 className="text-gold-deep mb-4 text-xs font-semibold">
                 Suggested Halts
               </h3>
               <ol className="space-y-3">
                 {route.highlights.map((highlight, index) => (
                   <li
                     key={highlight}
-                    className="flex items-start gap-3 text-sm text-text leading-relaxed"
+                    className="text-text flex items-start gap-3 text-sm leading-relaxed"
                   >
-                    <span className="font-mono text-xs font-semibold text-gold-deep tabular bg-gold/10 px-2 py-0.5 rounded-full shrink-0">
+                    <span className="text-gold-deep tabular bg-gold/10 shrink-0 rounded-full px-2 py-0.5 font-mono text-xs font-semibold">
                       0{index + 1}
                     </span>
                     <span>{highlight}</span>
@@ -292,21 +296,21 @@ export function RouteTemplate({ route }: { route: Route }) {
       </Section>
 
       {/* Dedicated Route Reservation Section */}
-      <section className="bg-mist border-y border-line py-16 md:py-24">
-        <Container className="max-w-4xl mx-auto">
-          <div className="text-center max-w-xl mx-auto mb-10">
-            <span className="eyebrow text-gold-deep font-semibold uppercase tracking-wider block mb-2">
+      <section className="bg-mist border-line border-y py-16 md:py-24">
+        <Container className="mx-auto max-w-4xl">
+          <div className="mx-auto mb-10 max-w-xl text-center">
+            <span className="eyebrow text-gold-deep mb-2 block font-semibold">
               Book Route
             </span>
-            <h2 className="text-3xl font-semibold tracking-tight text-text">
+            <h2 className="text-text text-3xl font-semibold tracking-tight">
               Reserve Your {route.from} to {route.to} Cab
             </h2>
-            <p className="mt-2 text-sm text-text-muted">
+            <p className="text-text-muted mt-2 text-sm">
               We confirm your driver and car before you travel.
             </p>
           </div>
 
-          <div className="max-w-xl mx-auto rounded-3xl border border-line bg-white p-6 sm:p-8 shadow-sm">
+          <div className="border-line mx-auto max-w-xl rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
             <BookingForm
               sourcePage={`/${route.slug}`}
               defaultPickup={route.from}
@@ -323,7 +327,7 @@ export function RouteTemplate({ route }: { route: Route }) {
           title={`${route.from} to ${route.to} travel specifics`}
           description="Drive times, which car suits the road, luggage, and halts along the way."
         />
-        <div className="mt-8 max-w-4xl mx-auto">
+        <div className="mx-auto mt-8 max-w-4xl">
           <Accordion items={route.faqs} defaultOpen={0} />
         </div>
       </Section>
@@ -335,28 +339,28 @@ export function RouteTemplate({ route }: { route: Route }) {
           title="Alternative travel routes from Jodhpur"
           description="Other routes we run regularly out of Jodhpur."
         />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {relatedRouteCards.map((related) => (
             <Link
               key={related.slug}
               href={`/${related.slug}`}
-              className="group flex flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md"
+              className="group border-line flex flex-col justify-between rounded-3xl border bg-white p-6 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md"
             >
               <div>
-                <div className="flex items-baseline justify-between gap-3 mb-2">
-                  <h3 className="text-lg font-semibold tracking-tight text-text group-hover:text-gold-deep transition-colors">
+                <div className="mb-2 flex items-baseline justify-between gap-3">
+                  <h3 className="text-text group-hover:text-gold-deep text-lg font-semibold tracking-tight transition-colors">
                     {related.from} → {related.to}
                   </h3>
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-mist text-text group-hover:bg-black group-hover:text-white transition-all">
+                  <div className="bg-mist text-text flex h-8 w-8 items-center justify-center rounded-full transition-all group-hover:bg-black group-hover:text-white">
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>
-                <p className="text-xs text-text-muted">{related.tagline}</p>
+                <p className="text-text-muted text-xs">{related.tagline}</p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-line/70 flex items-center justify-between text-xs text-text-muted">
+              <div className="border-line/70 text-text-muted mt-6 flex items-center justify-between border-t pt-4 text-xs">
                 <span>{related.distanceKm} km</span>
-                <span className="tabular font-semibold text-gold-deep text-sm">
+                <span className="tabular text-gold-deep text-sm font-semibold">
                   From {formatRupees(related.startingFare)}
                 </span>
               </div>

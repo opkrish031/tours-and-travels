@@ -2,31 +2,31 @@
 
 @theme {
   /* ── Surfaces: Marwad Cabs Palette ── */
-  --color-black: #0B172A; /* Mehrangarh Midnight Navy */
-  --color-navy: #0B172A;
-  --color-navy-dark: #060D17;
+  --color-black: #0b172a; /* Mehrangarh Midnight Navy */
+  --color-navy: #0b172a;
+  --color-navy-dark: #060d17;
   --color-graphite: #132542; /* Secondary Dark Surface */
-  --color-graphite-2: #1B335A;
-  --color-white: #FFFFFF;
-  --color-snow: #FAF7F2; /* Jodhpur Sandstone Ivory */
-  --color-mist: #F2ECE1;
-  --color-sandstone: #E6DEC8;
+  --color-graphite-2: #1b335a;
+  --color-white: #ffffff;
+  --color-snow: #faf7f2; /* Jodhpur Sandstone Ivory */
+  --color-mist: #f2ece1;
+  --color-sandstone: #e6dec8;
 
   /* ── Text ── */
-  --color-text: #1C2331;
-  --color-text-muted: #64748B;
-  --color-text-dark: #FAF7F2;
-  --color-text-dark-muted: #94A3B8;
+  --color-text: #1c2331;
+  --color-text-muted: #64748b;
+  --color-text-dark: #faf7f2;
+  --color-text-dark-muted: #94a3b8;
 
   /* ── Accent: Marwad Royal Gold & Sunset Amber ── */
-  --color-gold: #C8962E; /* Marwad Royal Gold */
-  --color-gold-bright: #E5B84B; /* Bright Gold Highlight */
-  --color-gold-deep: #9B6E16;
-  --color-amber: #EA761F; /* Mehrangarh Sunset Amber */
-  --color-amber-hover: #D36210;
+  --color-gold: #c8962e; /* Marwad Royal Gold */
+  --color-gold-bright: #e5b84b; /* Bright Gold Highlight */
+  --color-gold-deep: #9b6e16;
+  --color-amber: #ea761f; /* Mehrangarh Sunset Amber */
+  --color-amber-hover: #d36210;
 
   /* ── Lines & Borders ── */
-  --color-line: #E6DEC8; /* Warm Sandstone Border */
+  --color-line: #e6dec8; /* Warm Sandstone Border */
   --color-line-dark: rgba(200, 150, 46, 0.25);
 
   /* ── Radii: Apple-scale soft corners ── */
@@ -40,6 +40,8 @@
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display:
+    var(--font-fraunces), "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 }
 
 @layer base {
@@ -73,12 +75,23 @@
   }
 
   h1,
-  h2,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+
   h3,
   h4 {
     text-wrap: balance;
     font-weight: 600;
     letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  h1,
+  h2 {
+    text-wrap: balance;
     line-height: 1.15;
   }
 
@@ -105,11 +118,48 @@
   .tabular {
     font-variant-numeric: tabular-nums;
   }
+
+  /* Hero entrance — pure CSS so content is visible without JS */
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.55em);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-fade {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-word {
+    display: inline-block;
+    animation: hero-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-fade {
+    animation: hero-fade 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .hero-word,
+  .hero-fade {
+    animation: none;
   }
 
   *,

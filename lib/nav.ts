@@ -59,7 +59,7 @@ export const navGroups: NavGroup[] = [
 
 export const footerNav: NavGroup[] = [
   { label: "Company", items: primaryNav },
-  { label: "Services", items: serviceLinks },
-  { label: "Routes", items: routeLinks },
-  { label: "Fleet", items: vehicleLinks },
+  { label: "Services", items: conciseServiceLinks },
+  { label: "Routes", items: conciseRouteLinks },
+  { label: "Fleet", items: conciseVehicleLinks },
 ];

@@ -3,7 +3,8 @@ export type AnalyticsEvent =
   | "whatsapp_click"
   | "form_submit"
   | "calculator_use"
-  | "calculator_book_click";
+  | "calculator_book_click"
+  | "popular_route_click";
 
 type EventParams = Record<string, string | number | undefined>;
 

@@ -2,14 +2,7 @@ import type { ReactNode } from "react";
 import { Container } from "./Container";
 
 export type SectionTone =
-  | "snow"
-  | "mist"
-  | "graphite"
-  | "black"
-  | "paper"
-  | "sand"
-  | "umber"
-  | "ink";
+  "snow" | "mist" | "graphite" | "black" | "paper" | "sand" | "umber" | "ink";
 
 const toneStyles: Record<SectionTone, string> = {
   snow: "bg-snow text-text",
@@ -25,8 +18,8 @@ const toneStyles: Record<SectionTone, string> = {
 
 const sizes = {
   sm: "py-12 md:py-16",
-  md: "py-20 md:py-28",
-  lg: "py-24 md:py-36",
+  md: "py-16 md:py-20",
+  lg: "py-16 md:py-24",
 };
 
 export function Section({
@@ -45,7 +38,10 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className={`${toneStyles[tone]} ${sizes[size]} relative ${className}`}>
+    <section
+      id={id}
+      className={`${toneStyles[tone]} ${sizes[size]} relative ${className}`}
+    >
       {container ? <Container>{children}</Container> : children}
     </section>
   );
@@ -67,19 +63,17 @@ export function SectionHeader({
   number?: string;
 }) {
   return (
-    <div className="grid gap-x-12 gap-y-6 lg:grid-cols-12 mb-12 md:mb-16">
+    <div className="mb-12 grid gap-x-12 gap-y-6 md:mb-16 lg:grid-cols-12">
       <div className="lg:col-span-7">
         <p
           className={`eyebrow mb-3.5 flex items-center gap-2.5 ${
             dark ? "text-gold" : "text-gold-deep"
           }`}
         >
-          {number ? (
-            <span className="font-mono text-xs opacity-75">{number}</span>
-          ) : null}
+          {number ? <span className="font-mono text-xs opacity-75">{number}</span> : null}
           <span>{eyebrow}</span>
         </p>
-        <h2 className="text-[clamp(1.85rem,3.5vw,2.85rem)] font-semibold tracking-[-0.02em] leading-[1.15]">
+        <h2 className="text-[clamp(1.85rem,3.5vw,2.85rem)] leading-[1.15] font-semibold tracking-[-0.02em]">
           {title}
         </h2>
       </div>
@@ -87,7 +81,7 @@ export function SectionHeader({
         <div className="flex flex-col justify-end gap-5 lg:col-span-5 lg:col-start-8">
           {description ? (
             <p
-              className={`max-w-[48ch] text-[0.9375rem] md:text-base leading-relaxed ${
+              className={`max-w-[48ch] text-[0.9375rem] leading-relaxed md:text-base ${
                 dark ? "text-text-dark-muted" : "text-text-muted"
               }`}
             >

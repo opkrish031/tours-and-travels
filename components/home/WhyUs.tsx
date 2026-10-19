@@ -32,7 +32,7 @@ export function WhyUs() {
             </div>
             <Link
               href="/taxi-fare"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold-deep hover:text-black transition-colors"
+              className="text-gold-deep inline-flex items-center gap-1.5 text-xs font-semibold transition-colors hover:text-black"
             >
               See Fare Calculator <ArrowRight className="h-3.5 w-3.5" />
             </Link>
@@ -48,7 +48,7 @@ export function WhyUs() {
         >
           <Link
             href="/airport-taxi-jodhpur"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-text-muted hover:text-text transition-colors"
+            className="text-text-muted hover:text-text inline-flex items-center gap-1.5 text-xs font-semibold transition-colors"
           >
             Airport Transfers <ArrowRight className="h-3.5 w-3.5" />
           </Link>
@@ -63,7 +63,7 @@ export function WhyUs() {
         >
           <Link
             href="/about"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-text-muted hover:text-text transition-colors"
+            className="text-text-muted hover:text-text inline-flex items-center gap-1.5 text-xs font-semibold transition-colors"
           >
             How We Operate <ArrowRight className="h-3.5 w-3.5" />
           </Link>
@@ -86,7 +86,7 @@ export function WhyUs() {
             </div>
             <Link
               href="/round-trip-taxi-jodhpur"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gold hover:text-white transition-colors"
+              className="text-gold inline-flex items-center gap-1.5 text-xs font-semibold transition-colors hover:text-white"
             >
               Explore Round Trips <ArrowRight className="h-3.5 w-3.5" />
             </Link>

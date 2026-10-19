@@ -4,9 +4,9 @@ export const site = {
     "Jodhpur Local Sightseeing, Outstation Cabs & Airport Taxi — Fixed Per-KM Rates",
   legalName: "Marwad Cabs — Tour and Travels",
   domain: "https://marwadcabs.com",
-  phone: "+919414141414",
-  phoneDisplay: "+91 94141 41414",
-  whatsapp: "919414141414",
+  phone: "+918955033005",
+  phoneDisplay: "+91 89550 33005",
+  whatsapp: "918955033005",
   email: "booking@marwadcabs.com",
   address: {
     street: "Civil Airport Road, Ratanada (5 mins from Jodhpur Airport & Junction)",
@@ -17,7 +17,14 @@ export const site = {
   },
   geo: { lat: 26.2735, lng: 73.0315 },
   hours: "24x7",
-  socials: { facebook: "", instagram: "", youtube: "", googleBusiness: "" },
+  socials: {
+    facebook: "",
+    instagram: "https://www.instagram.com/marwarcabs/",
+    youtube: "",
+    googleBusiness: "",
+  },
+  /** Optional GST / registration line — leave empty until verified details are available. */
+  gstNumber: "",
   cancellationWindowHours: 6,
   description:
     "Direct cab booking in Jodhpur with Marwad Cabs. Clean AC Dzire, Ertiga, Innova Crysta & Tempo Travellers with local Marwari drivers. Upfront per-km rates for Jodhpur sightseeing, Jaisalmer, Udaipur, Ranakpur, Mount Abu & Osian.",

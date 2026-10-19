@@ -30,6 +30,7 @@ describe("trackEvent", () => {
       "form_submit",
       "calculator_use",
       "calculator_book_click",
+      "popular_route_click",
     ];
     for (const name of events) {
       trackEvent(name, { location: "header", page: "/" });

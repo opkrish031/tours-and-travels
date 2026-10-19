@@ -8,26 +8,26 @@ import { contextMessage } from "@/lib/whatsapp";
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden bg-black text-text-dark border-t border-line-dark py-24 md:py-36">
+    <section className="text-text-dark border-line-dark relative overflow-hidden border-t bg-black py-16 md:py-24">
       {/* Ambient gold glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-[450px] w-[750px] rounded-full bg-gold/10 blur-[140px]"
+        className="bg-gold/10 pointer-events-none absolute bottom-0 left-1/2 h-[450px] w-[750px] -translate-x-1/2 rounded-full blur-[140px]"
       />
 
-      <Container className="relative z-10 text-center max-w-4xl mx-auto">
+      <Container className="relative z-10 mx-auto max-w-4xl text-center">
         <Reveal>
-          <span className="eyebrow text-gold font-semibold block mb-3">
+          <span className="eyebrow text-gold mb-3 block font-semibold">
             Booking &amp; Dispatch
           </span>
 
-          <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-semibold tracking-[-0.02em] leading-[1.15] text-white">
+          <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.15] font-semibold tracking-[-0.02em] text-white">
             Tell us the date. We’ll confirm the car.
           </h2>
 
-          <p className="mt-5 text-base md:text-lg text-text-dark-muted max-w-[54ch] mx-auto leading-relaxed">
-            No advance payment. Send your route on WhatsApp or call — we reply
-            with the fare and car details for your dates.
+          <p className="text-text-dark-muted mx-auto mt-5 max-w-[54ch] text-base leading-relaxed md:text-lg">
+            Send your dates on WhatsApp or call the Ratanada desk — we reply with the car,
+            the driver&rsquo;s number, and the full fare before you travel.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

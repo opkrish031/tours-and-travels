@@ -13,23 +13,23 @@ import { ArrowUpRight } from "lucide-react";
 export default function NotFound() {
   return (
     <>
-      <Section tone="black" size="lg" className="text-center relative overflow-hidden">
+      <Section tone="black" size="lg" className="relative overflow-hidden text-center">
         {/* Ambient gold glow */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[750px] rounded-full bg-gold/10 blur-[140px]"
+          className="bg-gold/10 pointer-events-none absolute top-1/2 left-1/2 h-[450px] w-[750px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px]"
         />
 
-        <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+        <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center">
           {/* Animated 404 & route line illustration */}
           <div className="relative mb-6">
-            <span className="font-mono text-8xl md:text-9xl font-bold tracking-tighter text-white/90 select-none">
+            <span className="font-mono text-8xl font-bold tracking-tighter text-white/90 select-none md:text-9xl">
               404
             </span>
 
             {/* Gently moving route line illustration */}
-            <div className="w-48 h-12 mx-auto mt-2">
-              <svg viewBox="0 0 200 40" fill="none" className="w-full h-full text-gold">
+            <div className="mx-auto mt-2 h-12 w-48">
+              <svg viewBox="0 0 200 40" fill="none" className="text-gold h-full w-full">
                 <m.path
                   d="M 10 20 Q 50 5 100 20 T 190 20"
                   stroke="currentColor"
@@ -46,13 +46,13 @@ export default function NotFound() {
             </div>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+          <h1 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             This Route Took a Detour
           </h1>
 
-          <p className="mt-3 text-base text-text-dark-muted max-w-[46ch] leading-relaxed">
-            The page you are looking for has moved or does not exist. Browse the routes and
-            services below, or head back to the home page.
+          <p className="text-text-dark-muted mt-3 max-w-[46ch] text-base leading-relaxed">
+            The page you are looking for has moved or does not exist. Browse the routes
+            and services below, or head back to the home page.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
@@ -78,26 +78,23 @@ export default function NotFound() {
 
       {/* Popular Services Directory */}
       <Section tone="snow" size="md">
-        <SectionHeader
-          eyebrow="Fleet"
-          title="Popular travel categories"
-        />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+        <SectionHeader eyebrow="Fleet" title="Popular travel categories" />
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <Link
               key={service.slug}
               href={`/${service.slug}`}
-              className="group flex flex-col justify-between rounded-3xl border border-line bg-white p-6 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md"
+              className="group border-line flex flex-col justify-between rounded-3xl border bg-white p-6 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md"
             >
               <div>
-                <h3 className="text-lg font-semibold tracking-tight text-text group-hover:text-gold-deep transition-colors">
+                <h3 className="text-text group-hover:text-gold-deep text-lg font-semibold tracking-tight transition-colors">
                   {service.name}
                 </h3>
-                <p className="mt-2 text-xs md:text-sm text-text-muted leading-relaxed">
+                <p className="text-text-muted mt-2 text-xs leading-relaxed md:text-sm">
                   {service.summary}
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-line/70 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-text-muted group-hover:text-black">
+              <div className="border-line/70 text-text-muted mt-6 flex items-center justify-between border-t pt-4 text-xs font-semibold group-hover:text-black">
                 <span>View Details</span>
                 <ArrowUpRight className="h-4 w-4" />
               </div>
@@ -108,21 +105,18 @@ export default function NotFound() {
 
       {/* Popular Routes */}
       <Section tone="mist" size="md">
-        <SectionHeader
-          eyebrow="Routes"
-          title="Frequent highway destinations"
-        />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+        <SectionHeader eyebrow="Routes" title="Frequent highway destinations" />
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {routes.slice(0, 6).map((route) => (
             <Link
               key={route.slug}
               href={`/${route.slug}`}
-              className="group rounded-2xl border border-line bg-white p-5 shadow-xs transition-all hover:border-black/20"
+              className="group border-line rounded-2xl border bg-white p-5 shadow-xs transition-all hover:border-black/20"
             >
-              <h3 className="font-semibold text-text group-hover:text-gold-deep transition-colors">
+              <h3 className="text-text group-hover:text-gold-deep font-semibold transition-colors">
                 {route.from} to {route.to}
               </h3>
-              <p className="text-xs text-text-muted mt-1">{route.tagline}</p>
+              <p className="text-text-muted mt-1 text-xs">{route.tagline}</p>
             </Link>
           ))}
         </div>

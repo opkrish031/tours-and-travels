@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useId, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
-import { Check, ShieldCheck } from "lucide-react";
+import { Check } from "lucide-react";
 import { m, AnimatePresence } from "motion/react";
 import { vehicles } from "@/data/vehicles";
 import { trackEvent } from "@/lib/analytics";
@@ -18,9 +18,32 @@ type FormValues = z.output<BookingSchema>;
 
 const inputClass =
   "w-full rounded-xl border border-line bg-mist/60 px-4 py-3 text-sm text-text placeholder:text-text-muted/60 transition-all focus:border-gold focus:bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 dark:border-white/10 dark:bg-white/5 dark:text-text-dark dark:focus:bg-graphite-2";
-const labelClass =
-  "mb-1.5 block text-xs font-semibold tracking-tight text-text-muted";
+const inputClassDark =
+  "w-full rounded-xl border border-white/15 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all focus:border-gold focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gold/25 [color-scheme:dark]";
+const labelClass = "mb-1.5 block text-xs font-semibold tracking-tight text-text-muted";
+const labelClassDark = "mb-1.5 block text-xs font-semibold tracking-tight text-white/70";
 const errorClass = "mt-1.5 block text-xs font-medium text-rose-600 dark:text-rose-400";
+
+const TRIP_TYPES = [
+  {
+    id: "sightseeing",
+    label: "Sightseeing",
+    pickup: "Hotel / Residence in Jodhpur",
+    drop: "Jodhpur Sightseeing (Mehrangarh, Jaswant Thada, Umaid Bhawan)",
+  },
+  {
+    id: "outstation",
+    label: "Outstation",
+    pickup: "Jodhpur",
+    drop: "Jaisalmer / Udaipur / Jaipur",
+  },
+  {
+    id: "transfer",
+    label: "Airport",
+    pickup: "Jodhpur Airport (JDH) / Junction",
+    drop: "Hotel / Haveli in Jodhpur",
+  },
+] as const;
 
 /** Pad a Date into a datetime-local value in browser's local time. */
 function toInputValue(date: Date): string {
@@ -62,11 +85,15 @@ export function BookingForm({
   dark = false,
 }: BookingFormProps) {
   const uid = useId();
+  const field = dark ? inputClassDark : inputClass;
+  const label = dark ? labelClassDark : labelClass;
   const [submitted, setSubmitted] = useState(false);
   const datetimeRef = useRef<HTMLInputElement | null>(null);
   const mountedAtRef = useRef<number>(0);
 
-  const [tripType, setTripType] = useState<"sightseeing" | "outstation" | "transfer">("sightseeing");
+  const [tripType, setTripType] = useState<"sightseeing" | "outstation" | "transfer">(
+    "sightseeing",
+  );
   const requireContact = variant === "contact";
   const {
     register,
@@ -99,6 +126,19 @@ export function BookingForm({
     }
   }, []);
 
+  // Popular-routes strip (and similar) can prefill pickup/drop without a full page state lift.
+  useEffect(() => {
+    const onPrefill = (event: Event) => {
+      const detail = (event as CustomEvent<{ pickup?: string; drop?: string }>).detail;
+      if (!detail) return;
+      if (detail.pickup) setValue("pickup", detail.pickup);
+      if (detail.drop) setValue("drop", detail.drop);
+      setTripType("outstation");
+    };
+    window.addEventListener("marwad:prefill", onPrefill);
+    return () => window.removeEventListener("marwad:prefill", onPrefill);
+  }, [setValue]);
+
   const onReset = () => {
     reset({
       pickup: defaultPickup,
@@ -123,30 +163,23 @@ export function BookingForm({
           className={`overflow-hidden rounded-3xl border ${
             dark
               ? "border-line-dark bg-graphite text-text-dark"
-              : "border-line bg-white text-text shadow-sm"
+              : "border-line text-text bg-white shadow-sm"
           } p-8 text-center ${className}`}
         >
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold border border-gold/30">
+          <div className="bg-gold/15 text-gold border-gold/30 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border">
             <Check aria-hidden="true" className="h-7 w-7" strokeWidth={2} />
           </div>
-          <h3 className="text-2xl font-semibold tracking-tight">
-            Enquiry Prepared
-          </h3>
+          <h3 className="text-2xl font-semibold tracking-tight">Enquiry Prepared</h3>
           <p
             className={`mx-auto mt-2 max-w-sm text-sm leading-relaxed ${
               dark ? "text-text-dark-muted" : "text-text-muted"
             }`}
           >
-            WhatsApp is now opened with your trip details. Send the pre-filled
-            message and we’ll reply with availability and the fare for your dates.
+            WhatsApp is now opened with your trip details. Send the pre-filled message and
+            we’ll reply with availability and the fare for your dates.
           </p>
-          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Button
-              variant="secondary"
-              size="sm"
-              onDark={dark}
-              onClick={onReset}
-            >
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button variant="secondary" size="sm" onDark={dark} onClick={onReset}>
               Send another enquiry
             </Button>
           </div>
@@ -192,9 +225,7 @@ export function BookingForm({
             }),
           );
 
-          const isMobile = /android|iphone|ipad|ipod|mobile/i.test(
-            navigator.userAgent,
-          );
+          const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
           if (isMobile) {
             window.location.href = url;
           } else {
@@ -207,85 +238,62 @@ export function BookingForm({
       className={`relative overflow-hidden rounded-3xl border ${
         dark
           ? "border-line-dark bg-graphite/90 text-text-dark backdrop-blur-xl"
-          : "border-line bg-white/95 text-text shadow-sm backdrop-blur-xl"
+          : "border-line text-text bg-white/95 shadow-sm backdrop-blur-xl"
       } p-6 sm:p-8 ${className}`}
     >
-      <div className="mb-5 flex items-center justify-between">
-        <div>
-          <span className="eyebrow text-gold font-semibold uppercase tracking-wider block mb-0.5">
-            Quick Enquiry
-          </span>
-          <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
-            Book Your Cab
-          </h3>
-        </div>
-        <div className="flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-xs font-medium text-gold">
-          <ShieldCheck className="h-3.5 w-3.5" />
-          <span>Zero Advance</span>
-        </div>
+      <div className="mb-6">
+        <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          Check fare and availability
+        </h3>
+        <p className={`mt-1.5 text-sm ${dark ? "text-white/65" : "text-text-muted"}`}>
+          We reply on WhatsApp within minutes.
+        </p>
       </div>
 
-      {/* Booking Form Service Tabs */}
-      <div className="mb-5 grid grid-cols-3 gap-1 rounded-2xl bg-mist/60 p-1 dark:bg-white/5 border border-line dark:border-white/10 text-xs font-semibold">
-        <button
-          type="button"
-          onClick={() => {
-            setTripType("sightseeing");
-            setValue("pickup", "Hotel / Residence in Jodhpur");
-            setValue("drop", "Jodhpur Sightseeing (Mehrangarh, Jaswant Thada, Umaid Bhawan)");
-          }}
-          className={`rounded-xl py-2 px-1 text-center transition-all ${
-            tripType === "sightseeing"
-              ? "bg-gold text-black shadow-xs font-bold"
-              : "text-text-muted hover:text-text dark:text-text-dark-muted dark:hover:text-white"
-          }`}
-        >
-          Sightseeing
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setTripType("outstation");
-            setValue("pickup", "Jodhpur");
-            setValue("drop", "Jaisalmer / Udaipur / Jaipur");
-          }}
-          className={`rounded-xl py-2 px-1 text-center transition-all ${
-            tripType === "outstation"
-              ? "bg-gold text-black shadow-xs font-bold"
-              : "text-text-muted hover:text-text dark:text-text-dark-muted dark:hover:text-white"
-          }`}
-        >
-          Outstation
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setTripType("transfer");
-            setValue("pickup", "Jodhpur Airport (JDH) / Junction");
-            setValue("drop", "Hotel / Haveli in Jodhpur");
-          }}
-          className={`rounded-xl py-2 px-1 text-center transition-all ${
-            tripType === "transfer"
-              ? "bg-gold text-black shadow-xs font-bold"
-              : "text-text-muted hover:text-text dark:text-text-dark-muted dark:hover:text-white"
-          }`}
-        >
-          Airport/Stn
-        </button>
+      <div
+        role="group"
+        aria-label="Trip type"
+        className={`mb-5 grid grid-cols-3 gap-1 rounded-2xl border p-1 text-sm font-medium ${
+          dark ? "border-white/15 bg-white/[0.06]" : "border-line bg-mist/60"
+        }`}
+      >
+        {TRIP_TYPES.map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            aria-pressed={tripType === t.id}
+            onClick={() => {
+              setTripType(t.id);
+              setValue("pickup", t.pickup);
+              setValue("drop", t.drop);
+            }}
+            className={`cursor-pointer rounded-xl px-1 py-2 text-center transition-colors ${
+              tripType === t.id
+                ? dark
+                  ? "bg-gold font-semibold text-black"
+                  : "bg-navy font-semibold text-white"
+                : dark
+                  ? "text-white/70 hover:text-white"
+                  : "text-text-muted hover:text-text"
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-[1.25fr_1fr] [&>*]:min-w-0 [&>*:nth-child(-n+2)]:sm:col-span-2">
         {/* Pickup */}
         <div>
-          <label className={labelClass} htmlFor={`${uid}-pickup`}>
-            Pickup Location
+          <label className={label} htmlFor={`${uid}-pickup`}>
+            Pickup
           </label>
           <input
             id={`${uid}-pickup`}
             type="text"
             autoComplete="off"
-            placeholder="Airport, Railway Stn, Hotel..."
-            className={inputClass}
+            placeholder="Airport, station or hotel"
+            className={field}
             aria-invalid={errors.pickup ? true : undefined}
             aria-describedby={errors.pickup ? `${uid}-pickup-error` : undefined}
             {...register("pickup")}
@@ -299,15 +307,15 @@ export function BookingForm({
 
         {/* Drop */}
         <div>
-          <label className={labelClass} htmlFor={`${uid}-drop`}>
-            Destination / Drop
+          <label className={label} htmlFor={`${uid}-drop`}>
+            Drop
           </label>
           <input
             id={`${uid}-drop`}
             type="text"
             autoComplete="off"
-            placeholder="Jaisalmer, Udaipur, City Sightseeing..."
-            className={inputClass}
+            placeholder="Jaisalmer, Udaipur, city tour"
+            className={field}
             aria-invalid={errors.drop ? true : undefined}
             aria-describedby={errors.drop ? `${uid}-drop-error` : undefined}
             {...register("drop")}
@@ -321,17 +329,15 @@ export function BookingForm({
 
         {/* Pickup Date & Time */}
         <div>
-          <label className={labelClass} htmlFor={`${uid}-datetime`}>
-            Date &amp; Time
+          <label className={label} htmlFor={`${uid}-datetime`}>
+            Date and time
           </label>
           <input
             id={`${uid}-datetime`}
             type="datetime-local"
-            className={inputClass}
+            className={field}
             aria-invalid={errors.datetime ? true : undefined}
-            aria-describedby={
-              errors.datetime ? `${uid}-datetime-error` : undefined
-            }
+            aria-describedby={errors.datetime ? `${uid}-datetime-error` : undefined}
             {...datetimeField}
             ref={(node) => {
               datetimeRef.current = node;
@@ -347,19 +353,21 @@ export function BookingForm({
 
         {/* Vehicle */}
         <div>
-          <label className={labelClass} htmlFor={`${uid}-vehicle`}>
-            Select Vehicle
+          <label className={label} htmlFor={`${uid}-vehicle`}>
+            Vehicle
           </label>
           <select
             id={`${uid}-vehicle`}
-            className={inputClass}
+            className={field}
             aria-invalid={errors.vehicle ? true : undefined}
             aria-describedby={errors.vehicle ? `${uid}-vehicle-error` : undefined}
             {...register("vehicle")}
           >
-            <option value="">Choose vehicle model</option>
+            <option value="" className="text-black">
+              Select
+            </option>
             {vehicles.map((vehicle) => (
-              <option key={vehicle.slug} value={vehicle.slug}>
+              <option key={vehicle.slug} value={vehicle.slug} className="text-black">
                 {vehicle.name} · {vehicle.seats} seats · ₹{vehicle.perKm}/km
               </option>
             ))}
@@ -371,49 +379,53 @@ export function BookingForm({
           ) : null}
         </div>
 
-        {/* Name */}
-        <div>
-          <label className={labelClass} htmlFor={`${uid}-name`}>
-            Your Name{requireContact ? "" : " (optional)"}
-          </label>
-          <input
-            id={`${uid}-name`}
-            type="text"
-            autoComplete="name"
-            placeholder="Full Name"
-            className={inputClass}
-            aria-invalid={errors.name ? true : undefined}
-            aria-describedby={errors.name ? `${uid}-name-error` : undefined}
-            {...register("name")}
-          />
-          {errors.name ? (
-            <span id={`${uid}-name-error`} className={errorClass}>
-              {errors.name.message}
-            </span>
-          ) : null}
-        </div>
+        {requireContact ? (
+          <>
+            {/* Name */}
+            <div>
+              <label className={label} htmlFor={`${uid}-name`}>
+                Your Name{requireContact ? "" : " (optional)"}
+              </label>
+              <input
+                id={`${uid}-name`}
+                type="text"
+                autoComplete="name"
+                placeholder="Full Name"
+                className={field}
+                aria-invalid={errors.name ? true : undefined}
+                aria-describedby={errors.name ? `${uid}-name-error` : undefined}
+                {...register("name")}
+              />
+              {errors.name ? (
+                <span id={`${uid}-name-error`} className={errorClass}>
+                  {errors.name.message}
+                </span>
+              ) : null}
+            </div>
 
-        {/* Phone */}
-        <div>
-          <label className={labelClass} htmlFor={`${uid}-phone`}>
-            Contact Number{requireContact ? "" : " (optional)"}
-          </label>
-          <input
-            id={`${uid}-phone`}
-            type="tel"
-            autoComplete="tel"
-            placeholder="+91 98765 43210"
-            className={inputClass}
-            aria-invalid={errors.phone ? true : undefined}
-            aria-describedby={errors.phone ? `${uid}-phone-error` : undefined}
-            {...register("phone")}
-          />
-          {errors.phone ? (
-            <span id={`${uid}-phone-error`} className={errorClass}>
-              {errors.phone.message}
-            </span>
-          ) : null}
-        </div>
+            {/* Phone */}
+            <div>
+              <label className={label} htmlFor={`${uid}-phone`}>
+                Contact Number{requireContact ? "" : " (optional)"}
+              </label>
+              <input
+                id={`${uid}-phone`}
+                type="tel"
+                autoComplete="tel"
+                placeholder="+91 98765 43210"
+                className={field}
+                aria-invalid={errors.phone ? true : undefined}
+                aria-describedby={errors.phone ? `${uid}-phone-error` : undefined}
+                {...register("phone")}
+              />
+              {errors.phone ? (
+                <span id={`${uid}-phone-error`} className={errorClass}>
+                  {errors.phone.message}
+                </span>
+              ) : null}
+            </div>
+          </>
+        ) : null}
       </div>
 
       {/* Honeypot field */}
@@ -443,14 +455,6 @@ export function BookingForm({
           Book on WhatsApp
         </Button>
       </div>
-
-      <p
-        className={`mt-3.5 text-center text-xs leading-relaxed ${
-          dark ? "text-text-dark-muted" : "text-text-muted"
-        }`}
-      >
-        Direct confirmation with our local dispatch team. Pay nothing online.
-      </p>
     </form>
   );
 }
