@@ -211,6 +211,7 @@ export function ServiceTemplate({ service }: { service: Service }) {
 
           <div className="lg:col-span-5">
             <MediaFrame
+              src={service.image}
               label={`${service.name}`}
               alt={service.imageAlt}
               aspect="4 / 3"
@@ -338,6 +339,7 @@ export function ServiceTemplate({ service }: { service: Service }) {
             >
               <div>
                 <MediaFrame
+                  src={vehicle.image}
                   label={vehicle.name}
                   alt={vehicle.imageAlt}
                   aspect="4 / 3"
@@ -377,6 +379,7 @@ export function ServiceTemplate({ service }: { service: Service }) {
                 className="border-line rounded-3xl border bg-white p-5 shadow-xs"
               >
                 <MediaFrame
+                  src={attraction.image}
                   label={attraction.name}
                   alt={attraction.name}
                   aspect="16 / 9"

@@ -39,6 +39,28 @@ export function formatRupees(amount: number): string {
   return `₹${groupIndian(amount)}`;
 }
 
+export function formatVehicleOption(vehicle: {
+  name: string;
+  seats: string;
+  perKm: number;
+  slug: string;
+}): string {
+  let capacity = "";
+  if (vehicle.slug === "sedan-taxi-jodhpur") capacity = "4 Seats";
+  else if (vehicle.slug === "suv-taxi-jodhpur") capacity = "5–6 Seats";
+  else if (vehicle.slug === "toyota-innova-jodhpur") capacity = "6–7 Seats";
+  else if (vehicle.slug === "innova-crysta-jodhpur") capacity = "6–7 Seats";
+  else if (vehicle.slug === "tempo-traveller-jodhpur") capacity = "12–26 Seats";
+  else if (vehicle.slug === "force-urbania-jodhpur") capacity = "10–17 Seats";
+  else if (vehicle.slug === "luxury-cab-jodhpur") capacity = "6–7 Seats";
+  else {
+    const match = vehicle.seats.match(/(\d+[\s–-]*\d*|\d+)/);
+    capacity = match ? `${match[1]} Seats` : "AC";
+  }
+
+  return `${vehicle.name} (${capacity}) · ₹${vehicle.perKm}/km`;
+}
+
 export function estimateFare(input: FareInput): FareResult {
   const { distanceKm, perKm, tripType } = input;
 

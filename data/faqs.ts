@@ -2,7 +2,7 @@ export type Faq = { q: string; a: string };
 
 export const homeFaqs: Faq[] = [
   {
-    q: "What is included and excluded in your ₹10/km outstation rate?",
+    q: "What is included and excluded in your ₹11/km outstation rate?",
     a: "The per-km rate covers the AC vehicle, fuel, and driver. For outstation trips, billing follows the standard Rajasthan 250 km/day minimum and ₹300/day driver allowance (bhatta) for the driver's meals and night stay. Highway FASTag tolls, state entry taxes, and monument parking are billed at actual cost against the FASTag and government receipts.",
   },
   {

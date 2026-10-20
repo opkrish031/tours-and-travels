@@ -8,7 +8,7 @@ import { site } from "@/data/site";
 import { Phone } from "lucide-react";
 
 const stats = [
-  { value: "₹10/km", label: "AC sedan rate" },
+  { value: "₹11/km", label: "AC sedan rate" },
   { value: "250 km", label: "Daily minimum" },
   { value: "₹300", label: "Driver allowance/day" },
 ] as const;

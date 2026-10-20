@@ -34,6 +34,7 @@ export function CoverageSection() {
               className="border-line flex w-[82vw] shrink-0 snap-start flex-col rounded-3xl border bg-white p-5 shadow-xs transition-all duration-300 hover:border-black/15 hover:shadow-md sm:w-[320px] md:w-[360px]"
             >
               <MediaFrame
+                src={spot.image}
                 label={spot.name}
                 alt={spot.name}
                 aspect="16 / 9"

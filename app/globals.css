@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* ── Surfaces: Marwad Cabs Palette ── */
   --color-black: #0b172a; /* Mehrangarh Midnight Navy */

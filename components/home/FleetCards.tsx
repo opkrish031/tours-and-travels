@@ -71,6 +71,7 @@ export function FleetCards() {
                 {/* Vehicle MediaFrame */}
                 <div className="relative">
                   <MediaFrame
+                    src={vehicle.image}
                     label={`${vehicle.name}`}
                     alt={vehicle.imageAlt}
                     aspect="4 / 3"
@@ -110,10 +111,18 @@ export function FleetCards() {
                       </span>
                     </div>
 
-                    {/* Genuine Note */}
-                    <p className="text-text-muted/90 bg-mist/40 border-line/50 mt-3 line-clamp-2 rounded-xl border p-2.5 text-xs leading-relaxed italic">
-                      &ldquo;{vehicle.comfort}&rdquo;
-                    </p>
+                    {/* Ideal For Badges */}
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {vehicle.idealFor.slice(0, 2).map((item) => (
+                        <span
+                          key={item}
+                          className="border-line/70 bg-mist/60 text-text-muted inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[0.6875rem] font-medium"
+                        >
+                          <span className="bg-gold h-1 w-1 rounded-full" />
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Rate card & CTAs */}

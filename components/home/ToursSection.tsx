@@ -47,6 +47,7 @@ export function ToursSection() {
           <li key={route.slug}>
             <Link href={`/${route.slug}`} className="group block">
               <PhotoPlaceholder
+                src={route.image}
                 label={entry.photo}
                 alt={route.imageAlt}
                 aspect="16 / 9"

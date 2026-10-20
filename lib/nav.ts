@@ -44,10 +44,11 @@ export const conciseRouteLinks: NavLink[] = [
 ];
 
 export const conciseVehicleLinks: NavLink[] = [
-  { label: "AC Sedan (Dzire / Etios) · ₹10/km", href: "/sedan-taxi-jodhpur" },
+  { label: "AC Sedan (Dzire / Etios) · ₹11/km", href: "/sedan-taxi-jodhpur" },
   { label: "Maruti Ertiga (Family MUV) · ₹13/km", href: "/suv-taxi-jodhpur" },
-  { label: "Toyota Innova Crysta · ₹17/km", href: "/innova-crysta-jodhpur" },
+  { label: "Toyota Innova Crysta · ₹16/km", href: "/innova-crysta-jodhpur" },
   { label: "Tempo Traveller (12–26 Seater) · ₹24/km", href: "/tempo-traveller-jodhpur" },
+  { label: "Force Urbania (Luxury Van) · ₹30/km", href: "/force-urbania-jodhpur" },
   { label: "All Taxi Rates & Calculator ➔", href: "/taxi-fare" },
 ];
 

@@ -32,7 +32,7 @@ const sections = [
   {
     heading: "Data Retention",
     body: [
-      `Enquiry records are retained solely for booking coordination, official invoices, and customer assistance. You may request record deletion at any time by writing to ${site.email}.`,
+      `Enquiry records are retained solely for booking coordination, official invoices, and customer assistance. You may request record deletion at any time by contacting our dispatch desk (${site.phoneDisplay} / WhatsApp).`,
     ],
   },
   {
@@ -44,7 +44,7 @@ const sections = [
   {
     heading: "Your Rights",
     body: [
-      `You may request a copy of information held regarding your trips, or request correction and deletion, by contacting ${site.email}. We respond promptly to all verified requests.`,
+      `You may request a copy of information held regarding your trips, or request correction and deletion, by contacting our dispatch desk (${site.phoneDisplay} / WhatsApp). We respond promptly to all verified requests.`,
     ],
   },
 ] as const;

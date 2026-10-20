@@ -10,6 +10,7 @@ import {
   DEFAULT_MIN_KM_PER_DAY,
   estimateFare,
   formatRupees,
+  formatVehicleOption,
   type FareResult,
   type TripType,
 } from "@/lib/fare";
@@ -234,7 +235,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
               .filter((item) => allowedSlugs.includes(item.slug))
               .map((item) => (
                 <option key={item.slug} value={item.slug}>
-                  {item.name} · {item.seats} seats · ₹{item.perKm}/km
+                  {formatVehicleOption(item)}
                 </option>
               ))}
           </select>
@@ -266,64 +267,67 @@ export function FareCalculator({ className = "" }: { className?: string }) {
       {/* Result Section */}
       <div aria-live="polite" className="border-line-dark mt-8 border-t pt-8">
         {estimate && vehicle ? (
-          <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
-            <div>
-              <span className="text-text-dark-muted text-xs font-medium tracking-wider uppercase">
-                Estimated Total Fare
-              </span>
-              <div className="mt-1 flex items-baseline gap-2">
-                <span className="text-[clamp(2rem,4.5vw,3rem)] leading-none font-semibold tracking-[-0.02em] text-white">
-                  <AnimatedNumber value={estimate.total} prefix="₹" />
+          <div className="flex flex-col gap-6">
+            {/* Top row: Fare summary + CTA Button */}
+            <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
+              <div>
+                <span className="text-text-dark-muted text-xs font-semibold tracking-wider uppercase">
+                  Estimated Total Fare
                 </span>
-                <span className="text-gold bg-gold/10 border-gold/20 rounded-full border px-2.5 py-0.5 text-xs font-medium">
-                  Before extras
-                </span>
+                <div className="mt-1 flex items-baseline gap-2.5">
+                  <span className="text-[clamp(2.25rem,4.5vw,3.25rem)] leading-none font-bold tracking-tight text-white">
+                    <AnimatedNumber value={estimate.total} prefix="₹" />
+                  </span>
+                  <span className="text-gold bg-gold/10 border-gold/30 rounded-full border px-2.5 py-0.5 text-xs font-semibold">
+                    Before extras
+                  </span>
+                </div>
+                <p className="text-text-dark-muted mt-2 max-w-[54ch] text-xs leading-relaxed md:text-sm">
+                  {estimate.breakdown}. Fuel and driver included. Tolls, parking and any
+                  extras are itemised in your written quote.
+                </p>
               </div>
-              <p className="text-text-dark-muted mt-3 max-w-[50ch] text-xs leading-relaxed md:text-sm">
-                {estimate.breakdown}. Fuel and driver included. Tolls, parking and any
-                extras are itemised in your written quote.
-              </p>
+
+              {/* Action Button */}
+              <div className="shrink-0 sm:self-center">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={handleBook}
+                  arrow
+                  className="w-full sm:w-auto text-sm font-bold shadow-lg shadow-gold/10"
+                >
+                  Book This Fare on WhatsApp
+                </Button>
+              </div>
             </div>
 
-            {/* Stat tiles */}
-            <div className="grid grid-cols-3 gap-3 self-stretch lg:self-auto">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center">
-                <span className="text-text-dark-muted block text-[0.6875rem] uppercase">
+            {/* Stat tiles: Full-width spacious 3-col grid */}
+            <div className="grid grid-cols-1 gap-3 border-t border-white/10 pt-5 sm:grid-cols-3">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center sm:text-left flex items-center justify-between sm:block">
+                <span className="text-text-dark-muted block text-[0.6875rem] font-semibold uppercase tracking-wider">
                   Billed Distance
                 </span>
-                <span className="tabular mt-1 block text-base font-semibold text-white">
+                <span className="tabular mt-1 block text-base font-bold text-white">
                   {estimate.billedKm} km
                 </span>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center">
-                <span className="text-text-dark-muted block text-[0.6875rem] uppercase">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center sm:text-left flex items-center justify-between sm:block">
+                <span className="text-text-dark-muted block text-[0.6875rem] font-semibold uppercase tracking-wider">
                   Per Km Rate
                 </span>
-                <span className="tabular mt-1 block text-base font-semibold text-white">
-                  {formatRupees(vehicle.perKm)}
+                <span className="tabular mt-1 block text-base font-bold text-white">
+                  {formatRupees(vehicle.perKm)} / km
                 </span>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center">
-                <span className="text-text-dark-muted block text-[0.6875rem] uppercase">
-                  Vehicle
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center sm:text-left flex items-center justify-between sm:block">
+                <span className="text-text-dark-muted block text-[0.6875rem] font-semibold uppercase tracking-wider">
+                  Vehicle Selected
                 </span>
-                <span className="text-gold mt-1 block truncate text-sm font-semibold">
+                <span className="text-gold mt-1 block truncate text-sm font-bold">
                   {vehicle.name}
                 </span>
               </div>
-            </div>
-
-            {/* Action Button */}
-            <div className="shrink-0">
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={handleBook}
-                arrow
-                className="w-full sm:w-auto"
-              >
-                Book This Fare on WhatsApp
-              </Button>
             </div>
           </div>
         ) : (

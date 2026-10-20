@@ -10,6 +10,8 @@ import { buildMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const instant = false;
+
 export function generateStaticParams() {
   return [
     ...services.map((service) => ({ slug: service.slug })),

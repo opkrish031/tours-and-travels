@@ -11,11 +11,13 @@
 //             <Zap className="h-3 w-3 text-[#E5B84B]" /> Fixed Rates
 //           </span>
 //           <div className="flex items-center gap-2 text-xs text-white/80">
-//             <span className="font-medium text-white">Sedan <span className="text-[#E5B84B] font-semibold">₹10/km</span></span>
+//             <span className="font-medium text-white">Sedan <span className="text-[#E5B84B] font-semibold">₹11/km</span></span>
 //             <span className="text-white/30">•</span>
 //             <span className="font-medium text-white">Ertiga <span className="text-[#E5B84B] font-semibold">₹13/km</span></span>
 //             <span className="text-white/30">•</span>
-//             <span className="font-medium text-white">Crysta <span className="text-[#E5B84B] font-semibold">₹17/km</span></span>
+//             <span className="font-medium text-white">Crysta <span className="text-[#E5B84B] font-semibold">₹16/km</span></span>
+//             <span className="text-white/30">•</span>
+//             <span className="font-medium text-white">Urbania <span className="text-[#E5B84B] font-semibold">₹30/km</span></span>
 //             <span className="text-white/30">•</span>
 //             <span className="font-medium text-white">Tempo <span className="text-[#E5B84B] font-semibold">₹24/km</span></span>
 //           </div>

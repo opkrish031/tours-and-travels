@@ -41,77 +41,79 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
         ])}
       />
 
-      {/* Apple Hardware Studio Showcase Hero (Dark Studio Presentation) */}
-      <section className="text-text-dark border-line-dark relative overflow-hidden border-b bg-black pt-12 pb-20 md:pt-16 md:pb-28">
+      {/* Luminous Sandstone Showcase Hero */}
+      <section className="bg-snow border-line relative overflow-hidden border-b pt-12 pb-20 md:pt-16 md:pb-24">
         <Container className="relative z-10 mx-auto max-w-5xl text-center">
           <Breadcrumbs items={[{ label: vehicle.name }]} />
 
           <div className="mx-auto mt-6 max-w-3xl">
-            <span className="eyebrow text-gold mb-3 block font-semibold">
-              Vehicle Class · {vehicle.category.toUpperCase()}
-            </span>
+            <div className="border-gold/40 bg-gold/10 text-gold-deep mb-3 inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-xs font-semibold">
+              <span>Vehicle Class · {vehicle.category.toUpperCase()}</span>
+            </div>
 
-            <h1 className="text-[clamp(2.1rem,5vw,3.6rem)] leading-[1.12] font-semibold tracking-[-0.02em] text-white">
+            <h1 className="text-[clamp(2.1rem,5vw,3.6rem)] leading-[1.12] font-semibold tracking-[-0.02em] text-text">
               {vehicle.name}
             </h1>
 
-            <p className="text-text-dark-muted mx-auto mt-5 max-w-[50ch] text-base leading-relaxed md:text-xl">
+            <p className="text-text-muted mx-auto mt-5 max-w-[50ch] text-base leading-relaxed md:text-xl">
               {vehicle.comfort}
             </p>
           </div>
 
           {/* Centerstage Hardware Vehicle Showcase */}
           <div className="relative mx-auto mt-10 max-w-3xl">
-            <div className="bg-graphite relative overflow-hidden rounded-3xl border border-white/10 p-4 shadow-2xl sm:p-6">
+            <div className="border-line relative overflow-hidden rounded-3xl border bg-white p-4 shadow-md sm:p-6">
               <MediaFrame
+                src={vehicle.image}
                 label={`${vehicle.name} Photo`}
                 alt={vehicle.imageAlt}
                 aspect="16 / 9"
                 icon="car"
                 category={vehicle.popular ? "Most Booked" : "Standard Fleet"}
+                priority
               />
 
-              <div className="text-text-dark-muted mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-3 text-xs">
+              <div className="border-line/60 text-text-muted mt-4 flex flex-wrap items-center justify-between gap-3 border-t pt-3 text-xs">
                 <span>Models in Fleet: {vehicle.models.join(" · ")}</span>
-                <span className="text-gold font-medium">Serviced and checked</span>
+                <span className="text-gold-deep font-semibold">Serviced and checked</span>
               </div>
             </div>
           </div>
 
-          {/* Hardware Specs Pill Ticker (Apple Hardware Spec Grid) */}
+          {/* Hardware Specs Pill Ticker */}
           <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-3 text-center sm:grid-cols-4">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
-              <span className="text-text-dark-muted block text-[0.6875rem] font-medium">
+            <div className="border-line rounded-2xl border bg-white p-4 shadow-xs">
+              <span className="text-text-muted block text-[0.6875rem] font-medium">
                 Seats
               </span>
-              <span className="tabular mt-1 block text-lg font-bold text-white">
-                {vehicle.seats} Seats
+              <span className="tabular text-text mt-1 block text-lg font-bold">
+                {vehicle.seats}
               </span>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
-              <span className="text-text-dark-muted block text-[0.6875rem] font-medium">
+            <div className="border-line rounded-2xl border bg-white p-4 shadow-xs">
+              <span className="text-text-muted block text-[0.6875rem] font-medium">
                 Luggage
               </span>
-              <span className="mt-1 block truncate text-base font-bold text-white">
+              <span className="text-text mt-1 block truncate text-base font-bold">
                 {vehicle.luggage}
               </span>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
-              <span className="text-text-dark-muted block text-[0.6875rem] font-medium">
+            <div className="border-line rounded-2xl border bg-white p-4 shadow-xs">
+              <span className="text-text-muted block text-[0.6875rem] font-medium">
                 Outstation Rate
               </span>
-              <span className="tabular text-gold mt-1 block text-lg font-bold">
+              <span className="tabular text-gold-deep mt-1 block text-lg font-bold">
                 <AnimatedNumber value={vehicle.perKm} prefix="₹" suffix="/km" />
               </span>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs">
-              <span className="text-text-dark-muted block text-[0.6875rem] font-medium">
+            <div className="border-line rounded-2xl border bg-white p-4 shadow-xs">
+              <span className="text-text-muted block text-[0.6875rem] font-medium">
                 Daily Minimum
               </span>
-              <span className="tabular mt-1 block text-lg font-bold text-white">
+              <span className="tabular text-text mt-1 block text-lg font-bold">
                 {vehicle.dailyKmLimit} km / Day
               </span>
             </div>
@@ -131,7 +133,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
             </a>
             <a
               href="#booking-tray"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/15"
+              className="border-line bg-white text-text hover:bg-mist inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold shadow-xs transition-colors"
             >
               Send Booking Details ↓
             </a>
@@ -355,6 +357,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
             >
               <div>
                 <MediaFrame
+                  src={other.image}
                   label={other.name}
                   alt={other.imageAlt}
                   aspect="16 / 9"

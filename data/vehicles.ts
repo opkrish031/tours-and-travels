@@ -30,7 +30,7 @@ export const vehicles: Vehicle[] = [
     models: ["Maruti Suzuki Dzire", "Toyota Etios"],
     seats: "4 Passengers + 1 Driver",
     luggage: "2 Medium Suitcases + 1 Duffel (Boot space)",
-    perKm: 10,
+    perKm: 11,
     dailyKmLimit: 250,
     comfort:
       "Best for couples or 3 adults. Toyota Etios has a bigger 592-liter boot if you are carrying 3 large suitcases; tell us on WhatsApp if you specifically need an Etios over a Dzire.",
@@ -50,7 +50,7 @@ export const vehicles: Vehicle[] = [
     seo: {
       title: "Sedan Taxi in Jodhpur | Marwad Cabs",
       description:
-        "Book an AC Dzire or Etios sedan taxi in Jodhpur with Marwad Cabs. Fixed per-km outstation rates from Rs 10/km and local 8hr/80km packages from Rs 1,800.",
+        "Book an AC Dzire or Etios sedan taxi in Jodhpur with Marwad Cabs. Fixed per-km outstation rates from Rs 11/km and local 8hr/80km packages from Rs 1,800.",
     },
     faqs: [
       {
@@ -58,8 +58,8 @@ export const vehicles: Vehicle[] = [
         a: "We assign either a clean Maruti Suzuki Dzire or Toyota Etios. If you are carrying 3 large trolley bags, tell us in advance so we specifically dispatch an Etios with its larger 592-litre boot.",
       },
       {
-        q: "What is included in the ₹10/km outstation rate?",
-        a: "The ₹10/km rate covers the vehicle, driver, and diesel for a minimum of 250 km/day. Driver bhatta is ₹300/day. Tolls, parking, and state border taxes are paid directly against actual receipts.",
+        q: "What is included in the ₹11/km outstation rate?",
+        a: "The ₹11/km rate covers the vehicle, driver, and diesel for a minimum of 250 km/day. Driver bhatta is ₹300/day. Tolls, parking, and state border taxes are paid directly against actual receipts.",
       },
       {
         q: "Can the sedan pick up from Jodhpur Railway Station?",
@@ -162,7 +162,7 @@ export const vehicles: Vehicle[] = [
     models: ["Toyota Innova Crysta (6+1 Captain / 7+1 Bench)"],
     seats: "6+1 (Captain Seats) or 7+1 (Bench)",
     luggage: "5–6 Large Suitcases (Roof carrier + cover)",
-    perKm: 17,
+    perKm: 16,
     dailyKmLimit: 250,
     popular: true,
     comfort:
@@ -183,7 +183,7 @@ export const vehicles: Vehicle[] = [
     seo: {
       title: "Innova Crysta Taxi in Jodhpur | Marwad Cabs",
       description:
-        "Book a premium Innova Crysta taxi in Jodhpur with Marwad Cabs. Captain seats, roof carrier, and experienced drivers. Outstation from Rs 17/km. Call or WhatsApp.",
+        "Book a premium Innova Crysta taxi in Jodhpur with Marwad Cabs. Captain seats, roof carrier, and experienced drivers. Outstation from Rs 16/km. Call or WhatsApp.",
     },
     faqs: [
       {
@@ -196,7 +196,7 @@ export const vehicles: Vehicle[] = [
       },
       {
         q: "What is the per-km rate and driver allowance for Crysta?",
-        a: "Outstation rate is ₹17/km on a 250 km/day minimum calculation. Driver allowance (bhatta) is ₹300/day covering driver food and accommodation.",
+        a: "Outstation rate is ₹16/km on a 250 km/day minimum calculation. Driver allowance (bhatta) is ₹300/day covering driver food and accommodation.",
       },
     ],
   },
@@ -245,11 +245,55 @@ export const vehicles: Vehicle[] = [
     ],
   },
   {
+    slug: "force-urbania-jodhpur",
+    name: "Force Urbania Luxury Van",
+    category: "tempo",
+    models: ["Force Urbania 10-Seater", "Force Urbania 13-Seater", "Force Urbania 17-Seater"],
+    seats: "10, 13, or 17 Luxury Recliner Seats + Driver",
+    luggage: "Executive Rear Boot + Overhead Storage",
+    perKm: 30,
+    dailyKmLimit: 250,
+    comfort:
+      "Next-generation luxury passenger van featuring individual aircraft-style reclining seats, panoramic windows, independent air suspension, sealed dust-proof cabin, and individual USB charging ports at every row.",
+    idealFor: [
+      "Royal Palace Weddings (Umaid Bhawan, Ajit Bhawan, Indana)",
+      "VIP & Corporate Executive Delegations",
+      "Luxury Family Circuits (Jodhpur, Jaisalmer, Udaipur)",
+    ],
+    image: "/images/vehicles/force-urbania-jodhpur.jpg",
+    imageAlt: "White Force Urbania luxury van parked in front of Umaid Bhawan Palace in Jodhpur",
+    localPackages: {
+      fourHours: "₹3,500 (4 Hr / 40 Km)",
+      eightHours: "₹5,500 (8 Hr / 80 Km)",
+      airportDrop: "₹2,000 – ₹2,800 (Fixed)",
+    },
+    driverBhatta: "₹500/day",
+    seo: {
+      title: "Force Urbania Rental in Jodhpur | ₹30/km | Marwad Cabs",
+      description:
+        "Rent Force Urbania luxury van in Jodhpur at ₹30/km with Marwad Cabs. 10 to 17 seater premium luxury travel with reclining seats for weddings & VIP tours.",
+    },
+    faqs: [
+      {
+        q: "What is the per-km billing for Force Urbania?",
+        a: "Force Urbania outstation billing is ₹30/km with a 250 km/day minimum floor plus ₹500/day driver allowance (bhatta). FASTag highway tolls and parking are charged at actuals.",
+      },
+      {
+        q: "Which seating capacities are available for Force Urbania in Jodhpur?",
+        a: "We offer 10-seater, 13-seater, and 17-seater configurations, all equipped with pushback reclining seats, separate luggage compartment, and powerful rooftop AC.",
+      },
+      {
+        q: "Is the Force Urbania suitable for wedding guest convoys?",
+        a: "Yes. It is our most requested luxury group vehicle for palace weddings at Umaid Bhawan, Ajit Bhawan, Indana Palace, and Welcomhotel Jodhpur.",
+      },
+    ],
+  },
+  {
     slug: "luxury-cab-jodhpur",
-    name: "Force Urbania & Toyota Fortuner",
+    name: "Toyota Fortuner (Luxury SUV)",
     category: "suv",
-    models: ["Toyota Fortuner 4x4", "Force Urbania Luxury Van"],
-    seats: "7 Seater (Fortuner) / 13–17 Seater (Urbania)",
+    models: ["Toyota Fortuner 4x4 Sigma"],
+    seats: "6–7 Passengers + 1 Driver",
     luggage: "Executive luggage capacity",
     perKm: 35,
     dailyKmLimit: 250,
@@ -261,7 +305,7 @@ export const vehicles: Vehicle[] = [
       "Luxury High-Speed Highway Travel",
     ],
     image: "/images/vehicles/luxury-cab-jodhpur.jpg",
-    imageAlt: "Luxury cab parked in front of heritage palace in Jodhpur",
+    imageAlt: "Toyota Fortuner luxury SUV parked at heritage palace courtyard in Jodhpur",
     localPackages: {
       fourHours: "₹5,000 (4 Hr / 40 Km)",
       eightHours: "₹8,500 (8 Hr / 80 Km)",
@@ -269,13 +313,13 @@ export const vehicles: Vehicle[] = [
     },
     driverBhatta: "₹500/day",
     seo: {
-      title: "Luxury Fortuner & Urbania | Marwad Cabs",
+      title: "Luxury Fortuner Rental Jodhpur | Marwad Cabs",
       description:
-        "Hire Toyota Fortuner & Force Urbania in Jodhpur for palace weddings, VIP transfers and royal events. Premium chauffeurs. Reserve on WhatsApp.",
+        "Hire Toyota Fortuner luxury 4x4 in Jodhpur for palace weddings, VIP transfers and royal events. Premium chauffeurs. Reserve on WhatsApp.",
     },
     faqs: [
       {
-        q: "How far in advance should I book an Urbania or Fortuner?",
+        q: "How far in advance should I book a Fortuner?",
         a: "During the high wedding season (October to March), we recommend locking these vehicles at least 2 to 3 weeks ahead with a small advance.",
       },
       {
@@ -283,8 +327,8 @@ export const vehicles: Vehicle[] = [
         a: "Yes. They are commonly booked for bridal entries, VIP guest pickup from Jodhpur Airport (JDH), and convoy duty for celebrations at Umaid Bhawan, Ajit Bhawan, and Indana Palace.",
       },
       {
-        q: "What is the per-km billing for luxury fleet?",
-        a: "Fortuner outstation runs start at ₹35/km, while the luxury Force Urbania ranges from ₹38 to ₹42/km depending on seating size, with 250 km/day minimum.",
+        q: "What is the per-km billing for Toyota Fortuner?",
+        a: "Toyota Fortuner 4x4 outstation runs start at ₹35/km with a 250 km/day minimum floor plus ₹500/day driver allowance.",
       },
     ],
   },

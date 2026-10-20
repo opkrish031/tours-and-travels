@@ -43,14 +43,23 @@ export function MediaFrame({
         />
 
         {src ? (
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-            priority={priority}
-          />
+          <>
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              priority={priority}
+            />
+            {category ? (
+              <div className="absolute top-3 left-3 z-10">
+                <span className="inline-block rounded-full border border-gold/40 bg-black/70 px-2.5 py-0.5 text-[0.6875rem] font-semibold tracking-wide text-gold backdrop-blur-xs shadow-sm">
+                  {category}
+                </span>
+              </div>
+            ) : null}
+          </>
         ) : (
           <div className="relative flex h-full w-full flex-col items-center justify-center p-6 text-center select-none">
             {/* Fine geometric watermark / SVG silhouette */}

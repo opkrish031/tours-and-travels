@@ -7,6 +7,7 @@ import type { z } from "zod";
 import { Check } from "lucide-react";
 import { m, AnimatePresence } from "motion/react";
 import { vehicles } from "@/data/vehicles";
+import { formatVehicleOption } from "@/lib/fare";
 import { trackEvent } from "@/lib/analytics";
 import { bookingMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
 import { buildBookingSchema } from "@/lib/validation";
@@ -17,31 +18,31 @@ type BookingSchema = ReturnType<typeof buildBookingSchema>;
 type FormValues = z.output<BookingSchema>;
 
 const inputClass =
-  "w-full rounded-xl border border-line bg-mist/60 px-4 py-3 text-sm text-text placeholder:text-text-muted/60 transition-all focus:border-gold focus:bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 dark:border-white/10 dark:bg-white/5 dark:text-text-dark dark:focus:bg-graphite-2";
+  "w-full rounded-xl border border-line bg-mist/60 px-4 py-3 text-sm text-text placeholder:text-stone-500 transition-all focus:border-gold focus:bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 [color-scheme:light]";
 const inputClassDark =
   "w-full rounded-xl border border-white/15 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all focus:border-gold focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gold/25 [color-scheme:dark]";
-const labelClass = "mb-1.5 block text-xs font-semibold tracking-tight text-text-muted";
-const labelClassDark = "mb-1.5 block text-xs font-semibold tracking-tight text-white/70";
-const errorClass = "mt-1.5 block text-xs font-medium text-rose-600 dark:text-rose-400";
+const labelClass = "mb-1.5 block text-xs font-semibold tracking-tight text-text";
+const labelClassDark = "mb-1.5 block text-xs font-semibold tracking-tight text-white/80";
+const errorClass = "mt-1.5 block text-xs font-medium text-rose-600";
 
 const TRIP_TYPES = [
   {
     id: "sightseeing",
     label: "Sightseeing",
     pickup: "Hotel / Residence in Jodhpur",
-    drop: "Jodhpur Sightseeing (Mehrangarh, Jaswant Thada, Umaid Bhawan)",
+    drop: "Mehrangarh, Jaswant Thada, Umaid Bhawan",
   },
   {
     id: "outstation",
     label: "Outstation",
-    pickup: "Jodhpur",
-    drop: "Jaisalmer / Udaipur / Jaipur",
+    pickup: "Pickup location in Jodhpur",
+    drop: "Jaisalmer, Udaipur, Jaipur...",
   },
   {
     id: "transfer",
     label: "Airport",
-    pickup: "Jodhpur Airport (JDH) / Junction",
-    drop: "Hotel / Haveli in Jodhpur",
+    pickup: "Jodhpur Airport (JDH) or Junction",
+    drop: "Hotel or destination address",
   },
 ] as const;
 
@@ -94,6 +95,7 @@ export function BookingForm({
   const [tripType, setTripType] = useState<"sightseeing" | "outstation" | "transfer">(
     "sightseeing",
   );
+  const activeTrip = TRIP_TYPES.find((t) => t.id === tripType) ?? TRIP_TYPES[0];
   const requireContact = variant === "contact";
   const {
     register,
@@ -264,8 +266,6 @@ export function BookingForm({
             aria-pressed={tripType === t.id}
             onClick={() => {
               setTripType(t.id);
-              setValue("pickup", t.pickup);
-              setValue("drop", t.drop);
             }}
             className={`cursor-pointer rounded-xl px-1 py-2 text-center transition-colors ${
               tripType === t.id
@@ -292,7 +292,7 @@ export function BookingForm({
             id={`${uid}-pickup`}
             type="text"
             autoComplete="off"
-            placeholder="Airport, station or hotel"
+            placeholder={activeTrip.pickup}
             className={field}
             aria-invalid={errors.pickup ? true : undefined}
             aria-describedby={errors.pickup ? `${uid}-pickup-error` : undefined}
@@ -314,7 +314,7 @@ export function BookingForm({
             id={`${uid}-drop`}
             type="text"
             autoComplete="off"
-            placeholder="Jaisalmer, Udaipur, city tour"
+            placeholder={activeTrip.drop}
             className={field}
             aria-invalid={errors.drop ? true : undefined}
             aria-describedby={errors.drop ? `${uid}-drop-error` : undefined}
@@ -368,7 +368,7 @@ export function BookingForm({
             </option>
             {vehicles.map((vehicle) => (
               <option key={vehicle.slug} value={vehicle.slug} className="text-black">
-                {vehicle.name} · {vehicle.seats} seats · ₹{vehicle.perKm}/km
+                {formatVehicleOption(vehicle)}
               </option>
             ))}
           </select>

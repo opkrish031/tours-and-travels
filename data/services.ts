@@ -198,7 +198,7 @@ export const services: Service[] = [
       "jodhpur-to-mount-abu-taxi",
     ],
     body: [
-      "When planning a holiday circuit across western Rajasthan, hiring a single dedicated cab and driver ensures your luggage stays safely in the vehicle during sightseeing stops and keeps the day yours to plan. Marwad Cabs provides round-trip vehicles starting at ₹10/km for sedans and ₹17/km for Innova Crystas.",
+      "When planning a holiday circuit across western Rajasthan, hiring a single dedicated cab and driver ensures your luggage stays safely in the vehicle during sightseeing stops and keeps the day yours to plan. Marwad Cabs provides round-trip vehicles starting at ₹11/km for sedans and ₹16/km for Innova Crystas.",
       "We follow the standard Rajasthan tour billing: a 250 km/day minimum average, which lets you take short, relaxed days in cities like Udaipur or Jaisalmer while balancing longer highway days without penalty. Driver bhatta is capped at ₹300/day.",
     ],
     image: "/images/services/round-trip-taxi-jodhpur.jpg",
@@ -229,16 +229,17 @@ export const services: Service[] = [
     summary:
       "Per-kilometre outstation cabs across Rajasthan, Gujarat, and Delhi NCR with clean AC vehicles, roof carriers, and licensed local drivers.",
     features: [
-      "Full fleet availability: Dzire, Etios, Ertiga, Innova Crysta, and Tempo Travellers",
-      "Transparent per-km pricing starting at ₹10/km with clear written estimates",
+      "Full fleet availability: Dzire, Etios, Ertiga, Innova Crysta, Urbania, and Tempo Travellers",
+      "Transparent per-km pricing starting at ₹11/km with clear written estimates",
       "Heavy-duty roof luggage carriers with waterproof protective covers",
       "Coverage for desert runs, pilgrimage tirths, and hill stations",
     ],
     packages: [
-      { label: "Outstation Sedan: ₹10 – ₹11 / km", km: 250 },
-      { label: "Outstation Ertiga: ₹13 – ₹14 / km", km: 250 },
-      { label: "Outstation Innova Crysta: ₹17 – ₹18 / km", km: 250 },
-      { label: "Outstation Tempo Traveller: ₹24 – ₹32 / km", km: 250 },
+      { label: "Outstation Sedan: ₹11 / km", km: 250 },
+      { label: "Outstation Ertiga: ₹13 / km", km: 250 },
+      { label: "Outstation Innova Crysta: ₹16 / km", km: 250 },
+      { label: "Outstation Tempo Traveller: ₹24 / km", km: 250 },
+      { label: "Outstation Force Urbania: ₹30 / km", km: 250 },
     ],
     applicableVehicles: [
       "sedan-taxi-jodhpur",
@@ -246,6 +247,7 @@ export const services: Service[] = [
       "toyota-innova-jodhpur",
       "innova-crysta-jodhpur",
       "tempo-traveller-jodhpur",
+      "force-urbania-jodhpur",
       "luxury-cab-jodhpur",
     ],
     relatedRoutes: [
@@ -268,7 +270,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What is the starting per-km rate for an outstation cab from Jodhpur?",
-        a: "Outstation rates start at ₹10/km for a Swift Dzire / Toyota Etios sedan, ₹13/km for a Maruti Ertiga, ₹17/km for an Innova Crysta, and ₹24/km for a Force Tempo Traveller.",
+        a: "Outstation rates start at ₹11/km for a Swift Dzire / Toyota Etios sedan, ₹13/km for a Maruti Ertiga, ₹16/km for an Innova Crysta, ₹24/km for a Force Tempo Traveller, and ₹30/km for a Force Urbania.",
       },
       {
         q: "Are outstation cabs equipped with luggage carriers?",
@@ -346,6 +348,7 @@ export const services: Service[] = [
     ],
     applicableVehicles: [
       "innova-crysta-jodhpur",
+      "force-urbania-jodhpur",
       "luxury-cab-jodhpur",
       "tempo-traveller-jodhpur",
       "sedan-taxi-jodhpur",

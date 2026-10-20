@@ -7,7 +7,7 @@ Official website and lead-generation portal for **Marwad Cabs** (`Marwad Cabs �
 - **Domain:** [https://marwadcabs.com](https://marwadcabs.com)
 - **Email:** booking@marwadcabs.com
 - **Dispatch Center:** Civil Airport Road, Ratanada (5 mins from Jodhpur Airport & Railway Junction), Jodhpur, Rajasthan 342001
-- **Contact:** +91 94141 41414 (Call 24×7 & WhatsApp)
+- **Contact:** +91 89550 33005 (Call 24×7 & WhatsApp)
 
 ---
 
@@ -16,12 +16,13 @@ Official website and lead-generation portal for **Marwad Cabs** (`Marwad Cabs �
 - **Local Sightseeing:** 8 Hr / 80 Km packages for Mehrangarh Fort, Jaswant Thada, Umaid Bhawan Palace, Mandore Gardens, and Clock Tower.
 - **Airport & Station Transfers:** Fixed rates from ₹450 with flight tracking and old city haveli transfer coordination from Sojati/Jalori Gate.
 - **Outstation Tours:** Fixed per-km rates with standard 250 km/day minimum floor and ₹300/day driver allowance (bhatta).
-  - AC Sedan (Swift Dzire / Toyota Etios): ₹10 – ₹11 / km
-  - AC MUV (Maruti Suzuki Ertiga): ₹13 – ₹14 / km
-  - AC SUV (Toyota Innova): ₹15 – ₹16 / km
-  - Premium SUV (Toyota Innova Crysta): ₹17 – ₹18 / km
-  - Force Tempo Traveller (12, 17, 20, 26 Seater): ₹24 – ₹32 / km
-  - Luxury Fleet (Force Urbania & Toyota Fortuner): ₹35 – ₹42 / km
+  - AC Sedan (Swift Dzire / Toyota Etios): ₹11 / km
+  - AC MUV (Maruti Suzuki Ertiga): ₹13 / km
+  - AC SUV (Toyota Innova): ₹15 / km
+  - Premium SUV (Toyota Innova Crysta): ₹16 / km
+  - Force Tempo Traveller (12, 17, 20, 26 Seater): ₹24 / km
+  - Force Urbania Luxury Van (10, 13, 17 Seater): ₹30 / km
+  - Luxury SUV (Toyota Fortuner 4x4): ₹35 / km
 
 ---
 

@@ -282,6 +282,7 @@ export default function AboutPage() {
             >
               <div>
                 <MediaFrame
+                  src={vehicle.image}
                   label={vehicle.name}
                   alt={vehicle.imageAlt}
                   aspect="4 / 3"
@@ -289,7 +290,7 @@ export default function AboutPage() {
                 />
                 <h3 className="text-text mt-4 text-base font-semibold">{vehicle.name}</h3>
                 <p className="text-text-muted mt-1 text-xs">
-                  {vehicle.seats} seats · {vehicle.luggage}
+                  {vehicle.seats} · {vehicle.luggage}
                 </p>
               </div>
 

@@ -74,15 +74,15 @@ export function RouteTemplate({ route }: { route: Route }) {
               The Route
             </span>
 
-            <div className="relative grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="relative grid grid-cols-1 gap-6 md:grid-cols-3 [&>*]:min-w-0">
               {/* Point 1: Origin */}
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3.5 min-w-0">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-black font-mono text-xs font-bold text-white shadow-xs">
                   01
                 </div>
-                <div>
+                <div className="min-w-0">
                   <div className="text-text-muted text-xs font-semibold">Origin</div>
-                  <div className="text-text text-base font-semibold">{route.from}</div>
+                  <div className="text-text truncate text-base font-semibold">{route.from}</div>
                   <p className="text-text-muted mt-0.5 text-xs">
                     Pickup from your hotel, home, or the airport terminal.
                   </p>
@@ -90,15 +90,15 @@ export function RouteTemplate({ route }: { route: Route }) {
               </div>
 
               {/* Point 2: Scenic Waypoint */}
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3.5 min-w-0">
                 <div className="bg-gold flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl font-mono text-xs font-bold text-black shadow-xs">
                   02
                 </div>
-                <div>
+                <div className="min-w-0">
                   <div className="text-gold-deep text-xs font-semibold">
                     En-Route Waypoint
                   </div>
-                  <div className="text-text truncate text-base font-semibold">
+                  <div className="text-text truncate text-base font-semibold" title={route.highlights[0] || "Scenic Highway Halt"}>
                     {route.highlights[0] || "Scenic Highway Halt"}
                   </div>
                   <p className="text-text-muted mt-0.5 text-xs">
@@ -108,13 +108,13 @@ export function RouteTemplate({ route }: { route: Route }) {
               </div>
 
               {/* Point 3: Destination */}
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3.5 min-w-0">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-black font-mono text-xs font-bold text-white shadow-xs">
                   03
                 </div>
-                <div>
+                <div className="min-w-0">
                   <div className="text-text-muted text-xs font-semibold">Destination</div>
-                  <div className="text-text text-base font-semibold">{route.to}</div>
+                  <div className="text-text truncate text-base font-semibold">{route.to}</div>
                   <p className="text-text-muted mt-0.5 text-xs">
                     Direct drop at your destination — no changing cars.
                   </p>
@@ -266,6 +266,7 @@ export function RouteTemplate({ route }: { route: Route }) {
 
           <div className="lg:col-span-5">
             <MediaFrame
+              src={route.image}
               label={`${route.to} Scenic Road`}
               alt={route.imageAlt}
               aspect="4 / 3"

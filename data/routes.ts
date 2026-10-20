@@ -43,7 +43,7 @@ export const routes: Route[] = [
     seo: {
       title: "Jodhpur to Jaisalmer Taxi | Marwad Cabs",
       description:
-        "Book a direct Jodhpur to Jaisalmer cab with Marwad Cabs. AC Dzire, Ertiga & Crysta. One-way from Rs 4,200, round-trip Rs 10/km. Optional halt at Pokhran Fort.",
+        "Book a direct Jodhpur to Jaisalmer cab with Marwad Cabs. AC Dzire, Ertiga & Crysta. One-way from Rs 4,200, round-trip Rs 11/km. Optional halt at Pokhran Fort.",
     },
     faqs: [
       {
@@ -224,7 +224,7 @@ export const routes: Route[] = [
       },
       {
         q: "What is the starting fare for Jodhpur to Mount Abu?",
-        a: "One-way drops start at ₹4,200 for a sedan and ₹5,800 for an Innova. Round-trip bookings are billed at ₹10/km (Sedan) with a 250 km/day minimum floor.",
+        a: "One-way drops start at ₹4,200 for a sedan and ₹5,800 for an Innova. Round-trip bookings are billed at ₹11/km (Sedan) with a 250 km/day minimum floor.",
       },
       {
         q: "Are local sightseeing spots in Mount Abu covered in round trips?",

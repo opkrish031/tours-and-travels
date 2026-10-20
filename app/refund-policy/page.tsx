@@ -41,7 +41,7 @@ const sections = [
   {
     heading: "Refund Processing",
     body: [
-      `Eligible refunds are returned via the original payment method (UPI or bank transfer) within standard banking turnaround days following confirmation with ${site.email}.`,
+      `Eligible refunds are returned via the original payment method (UPI or bank transfer) within standard banking turnaround days following confirmation with our booking dispatch desk (${site.phoneDisplay} / WhatsApp).`,
     ],
   },
   {

@@ -1,6 +1,7 @@
 import { MediaFrame, type MediaFrameProps } from "./MediaFrame";
 
 export interface PhotoPlaceholderProps {
+  src?: string;
   label: string;
   alt: string;
   caption?: string;
@@ -11,6 +12,7 @@ export interface PhotoPlaceholderProps {
 }
 
 export function PhotoPlaceholder({
+  src,
   label,
   alt,
   caption,
@@ -20,6 +22,7 @@ export function PhotoPlaceholder({
 }: PhotoPlaceholderProps) {
   return (
     <MediaFrame
+      src={src}
       label={label}
       alt={alt}
       caption={caption}

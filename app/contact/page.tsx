@@ -87,7 +87,7 @@ export default function ContactPage() {
       {/* Tactile Concierge Channels Deck (3 Columns) */}
       <Section tone="mist" size="md">
         <div className="mx-auto max-w-5xl">
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {/* Primary Channel: WhatsApp Priority Concierge */}
             <div className="border-gold/40 group hover:border-gold relative flex flex-col justify-between overflow-hidden rounded-3xl border bg-white p-7 shadow-xs transition-all duration-300 hover:shadow-md md:col-span-1">
               <div
@@ -198,7 +198,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Corporate & Invoicing */}
+            {/* Corporate & Invoicing — commented out pending official client email
             <div className="border-line group flex flex-col justify-between rounded-3xl border bg-white p-7 shadow-xs transition-all duration-300 hover:border-black/20 hover:shadow-md md:col-span-1">
               <div>
                 <div className="bg-mist text-text border-line mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border shadow-xs">
@@ -233,6 +233,7 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
+            */}
           </div>
         </div>
       </Section>
