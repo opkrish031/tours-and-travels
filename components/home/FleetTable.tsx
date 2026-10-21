@@ -13,7 +13,7 @@ export function FleetTable() {
         number="07"
         eyebrow="Rate card"
         title="Compare rates by vehicle"
-        description="Transparent side-by-side rates. Outstation billing is based on per-km rates with a standard 250 km/day minimum floor. Driver allowance is ₹300/day."
+        description="Transparent side-by-side rates. Outstation billing is based on per-km rates with a standard 300 km/day minimum floor. Driver allowance is ₹300/day."
       />
       <div className="mt-8 md:mt-12">
         <Table

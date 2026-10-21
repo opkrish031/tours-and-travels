@@ -25,19 +25,20 @@ export function WhatsAppButton({
   location: string;
   page: string;
 }) {
-  const handleClick = () => {
+  const href = buildWhatsAppUrl(message);
+
+  const handleClick = (e: React.MouseEvent) => {
     trackEvent("whatsapp_click", { location, page });
-    const href = buildWhatsAppUrl(message);
     const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
     if (isMobile) {
+      e.preventDefault();
       window.location.href = href;
-    } else {
-      window.open(href, "_blank", "noopener");
     }
   };
 
   return (
     <Button
+      href={href}
       variant={variant}
       size={size}
       onDark={onDark}

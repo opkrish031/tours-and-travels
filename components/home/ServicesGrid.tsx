@@ -11,7 +11,7 @@ const primaryServices = services.filter(
 
 export function ServicesGrid() {
   return (
-    <Section tone="mist" size="md">
+    <Section tone="snow" size="md">
       <SectionHeader
         eyebrow="What we run"
         title="Trips people book us for"

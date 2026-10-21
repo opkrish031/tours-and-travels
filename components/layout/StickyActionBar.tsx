@@ -45,6 +45,8 @@ export function StickyActionBar() {
           href={buildWhatsAppUrl(
             contextMessage("I found your website and would like a quote."),
           )}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex flex-[1.4] items-center justify-center gap-1.5 rounded-full bg-gold py-2.5 text-xs font-semibold tracking-tight text-black shadow-sm transition-transform active:scale-95"
           onClick={() =>
             trackEvent("whatsapp_click", { location: "sticky-bar", page: pathname })

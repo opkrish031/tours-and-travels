@@ -14,7 +14,7 @@ export function TestimonialsSection() {
   const googleReviewsUrl = site.socials.googleBusiness;
 
   return (
-    <Section tone="mist" size="md">
+    <Section tone="snow" size="md">
       <SectionHeader
         eyebrow="Passenger notes"
         title="What outstation guests say"

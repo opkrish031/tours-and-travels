@@ -55,7 +55,15 @@ export function FleetCards() {
 
       {/* Responsive Grid of Cards */}
       <div className="-mx-5 px-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0">
-        <ul className="flex snap-x snap-mandatory scrollbar-none gap-6 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
+        <ul
+          className={`flex snap-x snap-mandatory scrollbar-none gap-6 overflow-x-auto pb-4 lg:overflow-visible ${
+            filteredVehicles.length === 1
+              ? "lg:flex lg:justify-center"
+              : filteredVehicles.length === 2
+                ? "lg:grid lg:grid-cols-2 lg:max-w-3xl lg:mx-auto"
+                : "lg:grid lg:grid-cols-3"
+          }`}
+        >
           {filteredVehicles.map((vehicle) => {
             const waBookingUrl = buildWhatsAppUrl(
               contextMessage(
@@ -66,7 +74,11 @@ export function FleetCards() {
             return (
               <li
                 key={vehicle.slug}
-                className="border-line hover:border-gold/50 flex w-[85vw] shrink-0 snap-start flex-col rounded-3xl border bg-white p-5 shadow-xs transition-all duration-300 hover:shadow-md sm:w-[340px] lg:w-auto"
+                className={`border-line hover:border-gold/50 flex shrink-0 snap-start flex-col rounded-3xl border bg-white p-5 shadow-xs transition-all duration-300 hover:shadow-md ${
+                  filteredVehicles.length === 1
+                    ? "w-[85vw] sm:w-[380px] lg:w-[400px]"
+                    : "w-[85vw] sm:w-[340px] lg:w-auto"
+                }`}
               >
                 {/* Vehicle MediaFrame */}
                 <div className="relative">

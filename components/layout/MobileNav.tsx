@@ -11,6 +11,7 @@ import { navGroups, primaryNav } from "@/lib/nav";
 import { contextMessage } from "@/lib/whatsapp";
 import { site } from "@/data/site";
 import { duration, ease, stagger } from "@/lib/motion";
+import { InstagramIcon } from "@/components/icons/InstagramIcon";
 
 export function MobileNav({
   open,
@@ -276,6 +277,17 @@ export function MobileNav({
                 >
                   Chat on WhatsApp
                 </WhatsAppButton>
+                {site.socials.instagram ? (
+                  <a
+                    href={site.socials.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-white px-4 py-3 text-sm font-semibold text-text shadow-xs transition-colors hover:bg-mist"
+                  >
+                    <InstagramIcon className="h-4 w-4 text-pink-600" />
+                    <span>Follow @marwarcabs on Instagram</span>
+                  </a>
+                ) : null}
               </div>
             </nav>
           </m.div>

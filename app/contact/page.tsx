@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Clock, Mail, Phone, MessageCircle } from "lucide-react";
+import { Clock, Phone, MessageCircle } from "lucide-react";
+import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { BookingForm } from "@/components/booking/BookingForm";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -197,6 +198,39 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
+
+            {/* Instagram Social Channel */}
+            {site.socials.instagram ? (
+              <div className="border-line group flex flex-col justify-between rounded-3xl border bg-white p-6 shadow-xs transition-all duration-300 hover:border-pink-500/30 hover:shadow-md md:col-span-2">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 text-white shadow-xs">
+                      <InstagramIcon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <div className="text-text-muted text-[0.6875rem] font-semibold">
+                        Photos &amp; Road Stories
+                      </div>
+                      <h2 className="text-text text-lg font-semibold tracking-tight">
+                        Follow @marwarcabs on Instagram
+                      </h2>
+                      <p className="text-text-muted text-xs">
+                        Fleet photos, Rajasthan road trip moments, and temple route guides.
+                      </p>
+                    </div>
+                  </div>
+                  <a
+                    href={site.socials.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border-line bg-snow text-text hover:bg-mist inline-flex items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-xs font-semibold shadow-xs transition-colors shrink-0"
+                  >
+                    <InstagramIcon className="h-4 w-4 text-pink-600" />
+                    <span>View Profile →</span>
+                  </a>
+                </div>
+              </div>
+            ) : null}
 
             {/* Corporate & Invoicing — commented out pending official client email
             <div className="border-line group flex flex-col justify-between rounded-3xl border bg-white p-7 shadow-xs transition-all duration-300 hover:border-black/20 hover:shadow-md md:col-span-1">

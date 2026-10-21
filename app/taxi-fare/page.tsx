@@ -92,7 +92,7 @@ export default function TaxiFarePage() {
           </div>
 
           {/* Interactive Calculator Workbench in Studio Card */}
-          <div className="border-line mx-auto max-w-4xl rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
+          <div className="mx-auto max-w-4xl">
             <FareCalculator />
           </div>
         </Container>
@@ -167,7 +167,7 @@ export default function TaxiFarePage() {
       </Section>
 
       {/* Outstation Routes Table */}
-      <Section tone="mist" size="md">
+      <Section tone="snow" size="md">
         <SectionHeader
           eyebrow="Outstation"
           title="Route distances and one-way starting fares"
@@ -222,7 +222,7 @@ export default function TaxiFarePage() {
 
       {/* Local Sightseeing Packages */}
       {localService?.packages?.length ? (
-        <Section tone="snow" size="md">
+        <Section tone="mist" size="md">
           <SectionHeader
             eyebrow="Inside Jodhpur"
             title="Local sightseeing packages"

@@ -19,7 +19,7 @@ export type FareResult = {
 };
 
 /** Default outstation billing floor, km per day. */
-export const DEFAULT_MIN_KM_PER_DAY = 250;
+export const DEFAULT_MIN_KM_PER_DAY = 300;
 
 /** Round to the nearest ₹10 for display. */
 export function roundToTen(amount: number): number {

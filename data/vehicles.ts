@@ -31,7 +31,7 @@ export const vehicles: Vehicle[] = [
     seats: "4 Passengers + 1 Driver",
     luggage: "2 Medium Suitcases + 1 Duffel (Boot space)",
     perKm: 11,
-    dailyKmLimit: 250,
+    dailyKmLimit: 300,
     comfort:
       "Best for couples or 3 adults. Toyota Etios has a bigger 592-liter boot if you are carrying 3 large suitcases; tell us on WhatsApp if you specifically need an Etios over a Dzire.",
     idealFor: [
@@ -59,7 +59,7 @@ export const vehicles: Vehicle[] = [
       },
       {
         q: "What is included in the ₹11/km outstation rate?",
-        a: "The ₹11/km rate covers the vehicle, driver, and diesel for a minimum of 250 km/day. Driver bhatta is ₹300/day. Tolls, parking, and state border taxes are paid directly against actual receipts.",
+        a: "The ₹11/km rate covers the vehicle, driver, and diesel for a minimum of 300 km/day. Driver bhatta is ₹300/day. Tolls, parking, and state border taxes are paid directly against actual receipts.",
       },
       {
         q: "Can the sedan pick up from Jodhpur Railway Station?",
@@ -75,7 +75,7 @@ export const vehicles: Vehicle[] = [
     seats: "5–6 Passengers + 1 Driver",
     luggage: "3–4 Suitcases (Roof carrier included)",
     perKm: 13,
-    dailyKmLimit: 250,
+    dailyKmLimit: 300,
     comfort:
       "Good budget choice for a family of 4–5 with kids. If 6 adults are travelling with heavy bags, we fold the last row or load bags on the roof carrier with a waterproof tarpaulin cover.",
     idealFor: [
@@ -107,7 +107,7 @@ export const vehicles: Vehicle[] = [
       },
       {
         q: "What is the daily billing for an outstation Ertiga?",
-        a: "Outstation round trips are billed at ₹13/km with a standard 250 km/day minimum floor plus ₹300/day driver allowance. Highway FASTag tolls and monument parking are extra at actual cost.",
+        a: "Outstation round trips are billed at ₹13/km with a standard 300 km/day minimum floor plus ₹300/day driver allowance. Highway FASTag tolls and monument parking are extra at actual cost.",
       },
     ],
   },
@@ -119,7 +119,7 @@ export const vehicles: Vehicle[] = [
     seats: "6–7 Passengers + 1 Driver",
     luggage: "5 Large Suitcases (Heavy-duty roof carrier)",
     perKm: 15,
-    dailyKmLimit: 250,
+    dailyKmLimit: 300,
     comfort:
       "Proven highway workhorse for long Rajasthan circuits (Jodhpur–Jaisalmer–Bikaner–Jaipur). Strong AC vents in all 3 rows even in 45°C summer heat.",
     idealFor: [
@@ -151,7 +151,7 @@ export const vehicles: Vehicle[] = [
       },
       {
         q: "Can we hire an Innova for a multi-day Rajasthan tour?",
-        a: "Yes. Multi-day tours from Jodhpur to Jaisalmer, Udaipur, Mount Abu, and Jaipur are billed at ₹15/km with a 250 km/day minimum average plus ₹300/day driver bhatta.",
+        a: "Yes. Multi-day tours from Jodhpur to Jaisalmer, Udaipur, Mount Abu, and Jaipur are billed at ₹15/km with a 300 km/day minimum average plus ₹300/day driver bhatta.",
       },
     ],
   },
@@ -163,7 +163,7 @@ export const vehicles: Vehicle[] = [
     seats: "6+1 (Captain Seats) or 7+1 (Bench)",
     luggage: "5–6 Large Suitcases (Roof carrier + cover)",
     perKm: 16,
-    dailyKmLimit: 250,
+    dailyKmLimit: 300,
     popular: true,
     comfort:
       "Our most booked family SUV for Jodhpur to Udaipur (via Ranakpur & Kumbhalgarh ghat roads) and Jaisalmer Sam Sand Dunes. Captain seats available on request.",
@@ -196,7 +196,7 @@ export const vehicles: Vehicle[] = [
       },
       {
         q: "What is the per-km rate and driver allowance for Crysta?",
-        a: "Outstation rate is ₹16/km on a 250 km/day minimum calculation. Driver allowance (bhatta) is ₹300/day covering driver food and accommodation.",
+        a: "Outstation rate is ₹16/km on a 300 km/day minimum calculation. Driver allowance (bhatta) is ₹300/day covering driver food and accommodation.",
       },
     ],
   },
@@ -208,7 +208,7 @@ export const vehicles: Vehicle[] = [
     seats: "12, 17, 20, or 26 Pushback Seats + Driver & Helper",
     luggage: "Dedicated rear boot + full roof rack",
     perKm: 24,
-    dailyKmLimit: 250,
+    dailyKmLimit: 300,
     comfort:
       "Equipped with Maharaja 1x1 or 2x1 pushback seats, individual AC vents, charging sockets at every row, icebox, and curtain blinds for wedding guests and group tours.",
     idealFor: [
@@ -252,7 +252,7 @@ export const vehicles: Vehicle[] = [
     seats: "10, 13, or 17 Luxury Recliner Seats + Driver",
     luggage: "Executive Rear Boot + Overhead Storage",
     perKm: 30,
-    dailyKmLimit: 250,
+    dailyKmLimit: 300,
     comfort:
       "Next-generation luxury passenger van featuring individual aircraft-style reclining seats, panoramic windows, independent air suspension, sealed dust-proof cabin, and individual USB charging ports at every row.",
     idealFor: [
@@ -276,7 +276,7 @@ export const vehicles: Vehicle[] = [
     faqs: [
       {
         q: "What is the per-km billing for Force Urbania?",
-        a: "Force Urbania outstation billing is ₹30/km with a 250 km/day minimum floor plus ₹500/day driver allowance (bhatta). FASTag highway tolls and parking are charged at actuals.",
+        a: "Force Urbania outstation billing is ₹30/km with a 300 km/day minimum floor plus ₹500/day driver allowance (bhatta). FASTag highway tolls and parking are charged at actuals.",
       },
       {
         q: "Which seating capacities are available for Force Urbania in Jodhpur?",
@@ -296,7 +296,7 @@ export const vehicles: Vehicle[] = [
     seats: "6–7 Passengers + 1 Driver",
     luggage: "Executive luggage capacity",
     perKm: 35,
-    dailyKmLimit: 250,
+    dailyKmLimit: 300,
     comfort:
       "Booked heavily during October–March wedding and NRI season in Jodhpur (Umaid Bhawan, Ajit Bhawan, Indana Palace events). Advance booking required.",
     idealFor: [
@@ -328,7 +328,7 @@ export const vehicles: Vehicle[] = [
       },
       {
         q: "What is the per-km billing for Toyota Fortuner?",
-        a: "Toyota Fortuner 4x4 outstation runs start at ₹35/km with a 250 km/day minimum floor plus ₹500/day driver allowance.",
+        a: "Toyota Fortuner 4x4 outstation runs start at ₹35/km with a 300 km/day minimum floor plus ₹500/day driver allowance.",
       },
     ],
   },

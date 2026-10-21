@@ -13,6 +13,7 @@ import { navGroups, primaryNav, type NavLink } from "@/lib/nav";
 import { contextMessage, telHref } from "@/lib/whatsapp";
 import { site } from "@/data/site";
 import { duration, ease } from "@/lib/motion";
+import { InstagramIcon } from "@/components/icons/InstagramIcon";
 
 function Dropdown({
   label,
@@ -253,6 +254,17 @@ export function Header() {
           {/* Actions */}
           <div className="flex items-center gap-3">
             <div className="hidden items-center gap-4 md:flex">
+              {site.socials.instagram ? (
+                <a
+                  href={site.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex h-8 w-8 items-center justify-center rounded-full border border-line bg-white/80 text-text-muted transition-all hover:border-pink-500/40 hover:text-pink-600 hover:bg-white active:scale-95"
+                  aria-label="Follow Marwad Cabs on Instagram"
+                >
+                  <InstagramIcon className="h-3.5 w-3.5 transition-transform group-hover:scale-110" />
+                </a>
+              ) : null}
               <a
                 href={telHref()}
                 className="group inline-flex items-center gap-1.5 text-[0.8125rem] text-text-muted transition-colors hover:text-text"

@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useId, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
-import { Check } from "lucide-react";
+import { Check, MessageSquare } from "lucide-react";
 import { m, AnimatePresence } from "motion/react";
 import { vehicles } from "@/data/vehicles";
 import { formatVehicleOption } from "@/lib/fare";
@@ -89,6 +89,7 @@ export function BookingForm({
   const field = dark ? inputClassDark : inputClass;
   const label = dark ? labelClassDark : labelClass;
   const [submitted, setSubmitted] = useState(false);
+  const [submittedUrl, setSubmittedUrl] = useState<string>("");
   const datetimeRef = useRef<HTMLInputElement | null>(null);
   const mountedAtRef = useRef<number>(0);
 
@@ -151,6 +152,7 @@ export function BookingForm({
       phone: "",
       website: "",
     });
+    setSubmittedUrl("");
     setSubmitted(false);
   };
 
@@ -181,6 +183,17 @@ export function BookingForm({
             we’ll reply with availability and the fare for your dates.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            {submittedUrl && (
+              <a
+                href={submittedUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-forest px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-forest/90"
+              >
+                <MessageSquare className="h-4 w-4" aria-hidden="true" />
+                Open WhatsApp Chat
+              </a>
+            )}
             <Button variant="secondary" size="sm" onDark={dark} onClick={onReset}>
               Send another enquiry
             </Button>
@@ -227,11 +240,16 @@ export function BookingForm({
             }),
           );
 
+          setSubmittedUrl(url);
+
           const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
           if (isMobile) {
             window.location.href = url;
           } else {
-            window.open(url, "_blank", "noopener");
+            const win = window.open(url, "_blank", "noopener,noreferrer");
+            if (!win) {
+              window.location.href = url;
+            }
           }
           setSubmitted(true);
         })(event);

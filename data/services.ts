@@ -173,17 +173,17 @@ export const services: Service[] = [
     slug: "round-trip-taxi-jodhpur",
     name: "Round-Trip Rajasthan Tour Cabs",
     summary:
-      "Multi-day Rajasthan circuit packages with dedicated AC vehicle, experienced local driver, standard 250 km/day calculation, and ₹300 driver bhatta.",
+      "Multi-day Rajasthan circuit packages with dedicated AC vehicle, experienced local driver, standard 300 km/day calculation, and ₹300 driver bhatta.",
     features: [
-      "Fixed 250 km/day minimum average, the standard Rajasthan tour billing",
+      "Fixed 300 km/day minimum average, the standard Rajasthan tour billing",
       "Same vehicle and courteous driver stays with you throughout your tour",
       "Nominal ₹300/day driver allowance covering food and stay",
       "Customizable itineraries covering Jodhpur, Jaisalmer, Udaipur, and Mount Abu",
     ],
     packages: [
-      { label: "2 Days / 500 Km Minimum Floor", km: 500 },
-      { label: "3 Days / 750 Km Minimum Floor", km: 750 },
-      { label: "5 Days / 1250 Km Minimum Floor", km: 1250 },
+      { label: "2 Days / 600 Km Minimum Floor", km: 600 },
+      { label: "3 Days / 900 Km Minimum Floor", km: 900 },
+      { label: "5 Days / 1500 Km Minimum Floor", km: 1500 },
     ],
     applicableVehicles: [
       "sedan-taxi-jodhpur",
@@ -199,19 +199,19 @@ export const services: Service[] = [
     ],
     body: [
       "When planning a holiday circuit across western Rajasthan, hiring a single dedicated cab and driver ensures your luggage stays safely in the vehicle during sightseeing stops and keeps the day yours to plan. Marwad Cabs provides round-trip vehicles starting at ₹11/km for sedans and ₹16/km for Innova Crystas.",
-      "We follow the standard Rajasthan tour billing: a 250 km/day minimum average, which lets you take short, relaxed days in cities like Udaipur or Jaisalmer while balancing longer highway days without penalty. Driver bhatta is capped at ₹300/day.",
+      "We follow the standard Rajasthan tour billing: a 300 km/day minimum average, which lets you take short, relaxed days in cities like Udaipur or Jaisalmer while balancing longer highway days without penalty. Driver bhatta is capped at ₹300/day.",
     ],
     image: "/images/services/round-trip-taxi-jodhpur.jpg",
     imageAlt: "Marwad Cabs touring vehicle parked beside a scenic lake in Rajasthan",
     seo: {
       title: "Round Trip Taxi from Jodhpur | Marwad Cabs",
       description:
-        "Book round trip Rajasthan tour cabs from Jodhpur. Fixed 250 km/day minimum, Rs 300 driver allowance, and same dedicated chauffeur for your whole trip.",
+        "Book round trip Rajasthan tour cabs from Jodhpur. Fixed 300 km/day minimum, Rs 300 driver allowance, and same dedicated chauffeur for your whole trip.",
     },
     faqs: [
       {
-        q: "How does the 250 km/day minimum calculation work on round trips?",
-        a: "On a 3-day trip, the minimum billed distance is 750 km (3 x 250 km). If your total meter reading is 710 km, you pay for 750 km. If you drive 820 km, you pay for exactly 820 km at your per-km vehicle rate.",
+        q: "How does the 300 km/day minimum calculation work on round trips?",
+        a: "On a 3-day trip, the minimum billed distance is 900 km (3 x 300 km). If your total meter reading is 850 km, you pay for 900 km. If you drive 950 km, you pay for exactly 950 km at your per-km vehicle rate.",
       },
       {
         q: "Do I have to arrange hotel accommodation for the driver?",
@@ -235,11 +235,11 @@ export const services: Service[] = [
       "Coverage for desert runs, pilgrimage tirths, and hill stations",
     ],
     packages: [
-      { label: "Outstation Sedan: ₹11 / km", km: 250 },
-      { label: "Outstation Ertiga: ₹13 / km", km: 250 },
-      { label: "Outstation Innova Crysta: ₹16 / km", km: 250 },
-      { label: "Outstation Tempo Traveller: ₹24 / km", km: 250 },
-      { label: "Outstation Force Urbania: ₹30 / km", km: 250 },
+      { label: "Outstation Sedan: ₹11 / km", km: 300 },
+      { label: "Outstation Ertiga: ₹13 / km", km: 300 },
+      { label: "Outstation Innova Crysta: ₹16 / km", km: 300 },
+      { label: "Outstation Tempo Traveller: ₹24 / km", km: 300 },
+      { label: "Outstation Force Urbania: ₹30 / km", km: 300 },
     ],
     applicableVehicles: [
       "sedan-taxi-jodhpur",
@@ -344,7 +344,7 @@ export const services: Service[] = [
     ],
     packages: [
       { label: "Wedding Day Disposal: 12 Hours / 100 Km", hours: 12, km: 100 },
-      { label: "Multi-Day Wedding Fleet Contract", hours: 24, km: 250 },
+      { label: "Multi-Day Wedding Fleet Contract", hours: 24, km: 300 },
     ],
     applicableVehicles: [
       "innova-crysta-jodhpur",

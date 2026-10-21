@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { footerNav } from "@/lib/nav";
 import { site } from "@/data/site";
 import { buildWhatsAppUrl, contextMessage, telHref } from "@/lib/whatsapp";
+import { InstagramIcon } from "@/components/icons/InstagramIcon";
 
 const year = new Date().getFullYear();
 
@@ -95,6 +96,19 @@ export function Footer() {
                   <MessageSquare className="h-3.5 w-3.5 fill-current" />
                   <span>WhatsApp</span>
                 </a>
+
+                {site.socials.instagram ? (
+                  <a
+                    href={site.socials.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow Marwad Cabs on Instagram"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-pink-500/30 bg-white/10 px-3.5 py-1.5 font-semibold text-white transition-all hover:border-pink-500/60 hover:bg-white/20 hover:text-pink-300"
+                  >
+                    <InstagramIcon className="h-3.5 w-3.5 text-pink-400" />
+                    <span>Instagram</span>
+                  </a>
+                ) : null}
               </div>
             </div>
           </div>
@@ -130,7 +144,7 @@ export function Footer() {
           <p className="max-w-full text-balance">
             © {year} {site.brandName}. All rights reserved.
           </p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link
               href="/privacy-policy"
               className="transition-colors hover:text-[#E5B84B]"
@@ -146,6 +160,18 @@ export function Footer() {
             >
               Refunds
             </Link>
+            {site.socials.instagram ? (
+              <a
+                href={site.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram profile"
+                className="inline-flex items-center gap-1.5 transition-colors hover:text-[#E5B84B]"
+              >
+                <InstagramIcon className="h-3.5 w-3.5 text-pink-400" />
+                <span>Instagram</span>
+              </a>
+            ) : null}
           </div>
         </Container>
       </div>

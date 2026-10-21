@@ -83,7 +83,7 @@ export function PopularRoutes() {
           >
             See the full rate card
           </Link>{" "}
-          · sedan from ₹11/km with a 250 km/day minimum on round trips.
+          · sedan from ₹11/km with a 300 km/day minimum on round trips.
         </p>
       </Container>
     </section>

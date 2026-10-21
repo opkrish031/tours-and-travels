@@ -6,7 +6,7 @@ import { Chip } from "@/components/ui/Chip";
 
 export function WhyUs() {
   return (
-    <Section tone="snow" size="md">
+    <Section tone="mist" size="md">
       <SectionHeader
         eyebrow="How we work"
         title="Straightforward, start to finish"
@@ -82,7 +82,7 @@ export function WhyUs() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
               <Chip variant="dark">Stops Agreed Upfront</Chip>
-              <Chip variant="gold">250 km/Day Minimum</Chip>
+              <Chip variant="gold">300 km/Day Minimum</Chip>
             </div>
             <Link
               href="/round-trip-taxi-jodhpur"

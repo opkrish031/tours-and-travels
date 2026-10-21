@@ -27,7 +27,7 @@ const items = [
 
 export function TrustStrip() {
   return (
-    <section className="bg-snow text-text border-line border-b py-8 md:py-10">
+    <section className="bg-mist/80 text-text border-line border-y py-7 md:py-9">
       <Container>
         <Stagger as="ul" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => (

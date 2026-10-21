@@ -49,7 +49,11 @@ export function buildWhatsAppUrl(message: string): string {
 
 /** Prefilled message for context CTAs (route / service / vehicle pages). */
 export function contextMessage(context: string): string {
-  return `Hi ${site.brandName}, I want to book a taxi. ${sanitizeField(context)}`;
+  const clean = sanitizeField(context);
+  if (/^(hi|hello)\b/i.test(clean)) {
+    return clean;
+  }
+  return `Hi ${site.brandName}, I want to book a taxi. ${clean}`;
 }
 
 export function telHref(): string {

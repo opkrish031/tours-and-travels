@@ -49,7 +49,7 @@ describe("estimateFare — round trip", () => {
       perKm: 11,
       tripType: "round-trip",
       days: 1,
-      minKmPerDay: 250,
+      minKmPerDay: 300,
     });
     expect(result.billedKm).toBe(680);
     expect(result.total).toBe(7480);
@@ -63,22 +63,22 @@ describe("estimateFare — round trip", () => {
       perKm: 11,
       tripType: "round-trip",
       days: 3,
-      minKmPerDay: 250,
+      minKmPerDay: 300,
     });
-    expect(result.billedKm).toBe(750);
-    expect(result.total).toBe(8250);
-    expect(result.breakdown).toContain("250 km/day × 3 days = 750 km");
+    expect(result.billedKm).toBe(900);
+    expect(result.total).toBe(9900);
+    expect(result.breakdown).toContain("300 km/day × 3 days = 900 km");
   });
 
   it("defaults minKmPerDay to DEFAULT_MIN_KM_PER_DAY", () => {
-    expect(DEFAULT_MIN_KM_PER_DAY).toBe(250);
+    expect(DEFAULT_MIN_KM_PER_DAY).toBe(300);
     const result = estimateFare({
       distanceKm: 100,
       perKm: 11,
       tripType: "round-trip",
       days: 3,
     });
-    expect(result.billedKm).toBe(750);
+    expect(result.billedKm).toBe(900);
   });
 
   it("handles singular day wording", () => {

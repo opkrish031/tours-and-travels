@@ -15,7 +15,7 @@ Official website and lead-generation portal for **Marwad Cabs** (`Marwad Cabs �
 
 - **Local Sightseeing:** 8 Hr / 80 Km packages for Mehrangarh Fort, Jaswant Thada, Umaid Bhawan Palace, Mandore Gardens, and Clock Tower.
 - **Airport & Station Transfers:** Fixed rates from ₹450 with flight tracking and old city haveli transfer coordination from Sojati/Jalori Gate.
-- **Outstation Tours:** Fixed per-km rates with standard 250 km/day minimum floor and ₹300/day driver allowance (bhatta).
+- **Outstation Tours:** Fixed per-km rates with standard 300 km/day minimum floor and ₹300/day driver allowance (bhatta).
   - AC Sedan (Swift Dzire / Toyota Etios): ₹11 / km
   - AC MUV (Maruti Suzuki Ertiga): ₹13 / km
   - AC SUV (Toyota Innova): ₹15 / km

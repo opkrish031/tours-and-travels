@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 
 export type ButtonVariant = "primary" | "secondary" | "brass" | "outline" | "ghost";
@@ -19,7 +19,7 @@ export type ButtonProps = BaseProps & {
   href?: string;
   type?: "button" | "submit";
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLElement>;
 };
 
 const sizes: Record<ButtonSize, string> = {

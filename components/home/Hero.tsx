@@ -9,7 +9,7 @@ import { Phone } from "lucide-react";
 
 const stats = [
   { value: "₹11/km", label: "AC sedan rate" },
-  { value: "250 km", label: "Daily minimum" },
+  { value: "300 km", label: "Daily minimum" },
   { value: "₹300", label: "Driver allowance/day" },
 ] as const;
 
@@ -37,7 +37,7 @@ export function Hero() {
         className="from-navy via-navy/45 to-transparent pointer-events-none absolute inset-0 bg-gradient-to-b lg:hidden"
       />
 
-      <Container className="relative z-10 grid items-start gap-x-10 gap-y-12 pt-10 pb-28 sm:pb-36 md:pb-40 lg:grid-cols-12 lg:gap-x-14 lg:pt-20 lg:pb-24">
+      <Container className="relative z-10 grid items-start gap-x-10 gap-y-12 pt-10 pb-12 sm:pb-16 lg:grid-cols-12 lg:gap-x-14 lg:pt-20 lg:pb-20">
         {/* Left: masthead meta → headline → proof → action */}
         <div className="lg:col-span-7">
           <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[0.6875rem] tracking-[0.08em] text-white/60 uppercase">

@@ -60,6 +60,33 @@ describe("contextMessage", () => {
     expect(message.startsWith(`Hi ${site.brandName}`)).toBe(true);
     expect(message).toContain("Jodhpur to Jaipur");
   });
+
+  it("avoids stutter when context already starts with Hi or Hello", () => {
+    const message = contextMessage("Hi Marwad Cabs, I would like to book the Innova.");
+    expect(message).toBe(`Hi ${site.brandName}, I would like to book the Innova.`);
+    expect(message).not.toContain(`Hi ${site.brandName}, Hi`);
+  });
+});
+
+describe("WhatsApp URL integrity across site", () => {
+  it("configures site.whatsapp as a valid international number", () => {
+    expect(site.whatsapp).toMatch(/^91\d{10}$/);
+  });
+
+  it("generates valid wa.me URLs for all context messages", () => {
+    const testCases = [
+      "Airport pickup enquiry for Jodhpur",
+      "Quote for Jodhpur to Jaisalmer cab",
+      "Local full day sightseeing enquiry in Jodhpur",
+      "I found your website and would like a quote.",
+    ];
+    for (const text of testCases) {
+      const url = buildWhatsAppUrl(contextMessage(text));
+      expect(url.startsWith(`https://wa.me/918955033005?text=`)).toBe(true);
+      const decoded = decodeURIComponent(url.split("text=")[1]);
+      expect(decoded.startsWith(`Hi ${site.brandName}`)).toBe(true);
+    }
+  });
 });
 
 describe("bookingMessage", () => {

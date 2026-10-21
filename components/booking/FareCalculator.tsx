@@ -124,9 +124,14 @@ export function FareCalculator({ className = "" }: { className?: string }) {
     if (isMobile) {
       window.location.href = url;
     } else {
-      window.open(url, "_blank", "noopener");
+      const win = window.open(url, "_blank", "noopener,noreferrer");
+      if (!win) {
+        window.location.href = url;
+      }
     }
   };
+
+  const hasFourFields = !isPackage && tripType === "round-trip";
 
   return (
     <div
@@ -164,7 +169,11 @@ export function FareCalculator({ className = "" }: { className?: string }) {
       </div>
 
       {/* Selection Grid */}
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={`grid gap-5 sm:grid-cols-2 ${
+          hasFourFields ? "lg:grid-cols-4" : "lg:grid-cols-3"
+        }`}
+      >
         {/* Pickup */}
         <div>
           <label className={labelClass} htmlFor="calc-pickup">

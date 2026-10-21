@@ -80,7 +80,7 @@ export default function AboutPage() {
       </section>
 
       {/* Editorial Pull-Quote Statement */}
-      <section className="bg-snow border-line border-b py-20 md:py-28">
+      <section className="bg-snow border-line border-b py-12 md:py-16">
         <Container className="mx-auto max-w-4xl">
           <div className="border-gold relative border-l-2 pl-8 md:pl-12">
             <p className="text-text text-xl leading-relaxed font-normal tracking-tight sm:text-2xl md:text-3xl">

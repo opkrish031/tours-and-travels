@@ -17,7 +17,7 @@ This codebase powers the website for **Marwad Cabs** (`Marwad Cabs — Tour and 
 - **Domain:** https://marwadcabs.com
 - **Email:** booking@marwadcabs.com
 - **Base:** Civil Airport Road, Ratanada, Jodhpur, Rajasthan 342001
-- **Fares:** Standard outstation rate from ₹11/km, 250 km/day minimum floor, ₹300/day driver allowance (bhatta).
+- **Fares:** Standard outstation rate from ₹11/km, 300 km/day minimum floor, ₹300/day driver allowance (bhatta).
 
 <!-- BEGIN:nextjs-agent-feedback -->
 

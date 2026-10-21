@@ -4,7 +4,7 @@ import { homeFaqs } from "@/data/faqs";
 
 export function FaqSection() {
   return (
-    <Section tone="snow" size="md">
+    <Section tone="mist" size="md">
       <SectionHeader
         eyebrow="Questions"
         title="Common questions"

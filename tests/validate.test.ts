@@ -49,7 +49,7 @@ function cleanBundle(): DataBundle {
         seats: "4",
         luggage: "2 bags",
         perKm: 10,
-        dailyKmLimit: 250,
+        dailyKmLimit: 300,
         comfort: "Comfortable sedan.",
         idealFor: ["City trips"],
         image: "/images/vehicles/clean-sedan.jpg",
