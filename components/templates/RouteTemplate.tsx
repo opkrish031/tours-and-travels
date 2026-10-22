@@ -311,7 +311,7 @@ export function RouteTemplate({ route }: { route: Route }) {
             </p>
           </div>
 
-          <div className="border-line mx-auto max-w-xl rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
+          <div className="mx-auto max-w-xl">
             <BookingForm
               sourcePage={`/${route.slug}`}
               defaultPickup={route.from}

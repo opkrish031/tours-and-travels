@@ -56,7 +56,7 @@ function Dropdown({
           if (open && !hoveredRef.current) close();
           else setOpen();
         }}
-        className={`relative flex items-center gap-1.5 rounded-full px-3 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.06em] transition-colors duration-150 cursor-pointer ${
+        className={`relative inline-flex items-center gap-1.5 rounded-full px-3 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.06em] transition-colors duration-150 cursor-pointer ${
           isAnyActive
             ? "text-gold-deep font-semibold"
             : open
@@ -72,6 +72,9 @@ function Dropdown({
             open ? "rotate-180 text-text" : "opacity-60"
           }`}
         />
+        {isAnyActive && (
+          <span className="absolute bottom-1 inset-x-3 h-0.5 bg-gold rounded-full" />
+        )}
       </button>
 
       <AnimatePresence>
@@ -132,13 +135,13 @@ function TopNavLink({ item, pathname }: { item: NavLink; pathname: string }) {
     <Link
       href={item.href}
       aria-current={active ? "page" : undefined}
-      className={`relative block rounded-full px-3 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.06em] transition-colors duration-150 ${
+      className={`relative inline-flex items-center justify-center rounded-full px-3 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.06em] transition-colors duration-150 ${
         active ? "text-gold-deep font-semibold" : "text-text-muted hover:text-text"
       }`}
     >
-      {item.label}
+      <span>{item.label}</span>
       {active && (
-        <span className="absolute bottom-0.5 inset-x-3 h-px bg-gold rounded-full" />
+        <span className="absolute bottom-1 inset-x-3 h-0.5 bg-gold rounded-full" />
       )}
     </Link>
   );

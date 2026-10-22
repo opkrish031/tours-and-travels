@@ -228,7 +228,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
         </div>
 
         {/* Vehicle */}
-        <div>
+        <div className={!hasFourFields ? "sm:col-span-2 lg:col-span-1" : undefined}>
           <label className={labelClass} htmlFor="calc-vehicle">
             <span className="flex items-center gap-1.5">
               <Car className="text-gold h-3.5 w-3.5" /> Vehicle Category

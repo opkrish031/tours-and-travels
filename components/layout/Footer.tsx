@@ -11,6 +11,9 @@ const year = new Date().getFullYear();
 
 function formatAddress() {
   const a = site.address;
+  if (a.street === a.locality) {
+    return `${a.locality}, ${a.region} ${a.postalCode}, India`;
+  }
   return `${a.street}, ${a.locality}, ${a.region} ${a.postalCode}, India`;
 }
 
@@ -140,7 +143,7 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <Container className="flex flex-col gap-3 py-5 text-xs text-[#FAF7F2]/60 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <Container className="flex flex-col gap-3 pt-5 pb-8 text-xs text-[#FAF7F2]/60 sm:py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <p className="max-w-full text-balance">
             © {year} {site.brandName}. All rights reserved.
           </p>

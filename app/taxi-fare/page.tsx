@@ -107,62 +107,69 @@ export default function TaxiFarePage() {
         />
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {vehicles.map((vehicle) => (
-            <div
-              key={vehicle.slug}
-              className="border-line flex flex-col justify-between rounded-3xl border bg-white p-6 shadow-xs"
-            >
-              <div>
-                <span className="text-gold-deep mb-1 block text-[0.6875rem] font-semibold">
-                  {vehicle.category} Class
-                </span>
-                <h3 className="text-text text-xl font-semibold">{vehicle.name}</h3>
-                <div className="text-text-muted mt-0.5 text-xs">
-                  {vehicle.models.join(", ")}
+          {vehicles.map((vehicle, idx) => {
+            const isLastOfSeven = vehicles.length === 7 && idx === 6;
+            return (
+              <div
+                key={vehicle.slug}
+                className={`border-line flex flex-col justify-between rounded-3xl border bg-white p-6 shadow-xs ${
+                  isLastOfSeven
+                    ? "sm:col-span-2 sm:max-w-md sm:mx-auto lg:col-span-1 lg:col-start-2 lg:max-w-none lg:w-full"
+                    : ""
+                }`}
+              >
+                <div>
+                  <span className="text-gold-deep mb-1 block text-[0.6875rem] font-semibold">
+                    {vehicle.category} Class
+                  </span>
+                  <h3 className="text-text text-xl font-semibold">{vehicle.name}</h3>
+                  <div className="text-text-muted mt-0.5 text-xs">
+                    {vehicle.models.join(", ")}
+                  </div>
+
+                  <div className="border-line/60 mt-6 border-t pt-4">
+                    <span className="text-text-muted block text-[0.6875rem]">
+                      Outstation Rate
+                    </span>
+                    <div className="mt-1 flex items-baseline gap-1">
+                      <span className="tabular text-text text-2xl font-bold">
+                        {formatRupees(vehicle.perKm)}
+                      </span>
+                      <span className="text-text-muted text-xs font-medium">/ km</span>
+                    </div>
+                  </div>
+
+                  <div className="text-text-muted border-line/40 mt-4 space-y-2 border-t pt-3 text-xs">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="shrink-0">Passenger Seating:</span>
+                      <span className="text-text text-right font-semibold">{vehicle.seats}</span>
+                    </div>
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="shrink-0">Luggage Capacity:</span>
+                      <span className="text-text text-right font-semibold">
+                        {vehicle.luggage}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="shrink-0">Daily Minimum:</span>
+                      <span className="text-text text-right font-semibold">
+                        {vehicle.dailyKmLimit} km / Day
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="border-line/60 mt-6 border-t pt-4">
-                  <span className="text-text-muted block text-[0.6875rem]">
-                    Outstation Rate
-                  </span>
-                  <div className="mt-1 flex items-baseline gap-1">
-                    <span className="tabular text-text text-2xl font-bold">
-                      {formatRupees(vehicle.perKm)}
-                    </span>
-                    <span className="text-text-muted text-xs font-medium">/ km</span>
-                  </div>
-                </div>
-
-                <div className="text-text-muted border-line/40 mt-4 space-y-2 border-t pt-3 text-xs">
-                  <div className="flex justify-between">
-                    <span>Passenger Seating:</span>
-                    <span className="text-text font-semibold">{vehicle.seats} Seats</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Luggage Capacity:</span>
-                    <span className="text-text max-w-[12ch] truncate font-semibold">
-                      {vehicle.luggage}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Daily Minimum:</span>
-                    <span className="text-text font-semibold">
-                      {vehicle.dailyKmLimit} km / Day
-                    </span>
-                  </div>
+                  <Link
+                    href={`/${vehicle.slug}`}
+                    className="border-line bg-snow text-text hover:bg-mist inline-flex w-full items-center justify-center gap-1 rounded-full border px-3 py-2 text-xs font-semibold transition-colors"
+                  >
+                    View Details &rarr;
+                  </Link>
                 </div>
               </div>
-
-              <div className="border-line/60 mt-6 border-t pt-4">
-                <Link
-                  href={`/${vehicle.slug}`}
-                  className="border-line bg-snow text-text hover:bg-mist inline-flex w-full items-center justify-center gap-1 rounded-full border px-3 py-2 text-xs font-semibold transition-colors"
-                >
-                  View Details &rarr;
-                </Link>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </Section>
 

@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { BookingForm } from "@/components/booking/BookingForm";
 import { WhatsAppButton } from "@/components/booking/WhatsAppButton";
 import { HeroRouteBackdrop } from "@/components/home/HeroRouteBackdrop";
@@ -40,26 +39,11 @@ export function Hero() {
       <Container className="relative z-10 grid items-start gap-x-10 gap-y-12 pt-10 pb-12 sm:pb-16 lg:grid-cols-12 lg:gap-x-14 lg:pt-20 lg:pb-20">
         {/* Left: masthead meta → headline → proof → action */}
         <div className="lg:col-span-7">
-          <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[0.6875rem] tracking-[0.08em] text-white/60 uppercase">
-            {meta.map((item, index) => (
-              <Fragment key={item}>
-                {index > 0 ? (
-                  <>
-                    <span aria-hidden="true" className="text-white/35 sm:hidden">
-                      ·
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="hidden h-px w-6 bg-white/20 sm:block"
-                    />
-                  </>
-                ) : null}
-                <span className={index === 0 ? "text-gold-bright" : undefined}>
-                  {item}
-                </span>
-              </Fragment>
-            ))}
-          </p>
+          <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 font-mono text-[0.6875rem] tracking-[0.08em] text-white/60 uppercase">
+            <span className="text-gold-bright font-medium">{meta[0]}</span>
+            <span aria-hidden="true" className="hidden h-px w-6 bg-white/20 sm:block" />
+            <span className="text-white/75">{meta[1]}</span>
+          </div>
 
           <h1
             aria-label={headline}
@@ -86,13 +70,13 @@ export function Hero() {
           </p>
 
           {/* The numbers, plain and scannable */}
-          <dl className="hero-fade mt-8 grid grid-cols-3 gap-4 border-t border-white/15 pt-5 [animation-delay:0.42s] sm:gap-8">
+          <dl className="hero-fade mt-8 grid grid-cols-3 gap-3 border-t border-white/15 pt-5 [animation-delay:0.42s] sm:gap-8">
             {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col-reverse gap-1">
-                <dt className="font-mono text-[0.625rem] tracking-[0.08em] text-white/55 uppercase sm:text-[0.6875rem]">
+              <div key={stat.label} className="flex flex-col-reverse justify-end gap-1.5">
+                <dt className="font-mono text-[0.625rem] tracking-[0.08em] text-white/55 uppercase sm:text-[0.6875rem] min-h-[2.25rem] sm:min-h-0 flex items-start">
                   {stat.label}
                 </dt>
-                <dd className="tabular text-xl font-semibold tracking-tight text-white sm:text-2xl md:text-[1.75rem]">
+                <dd className="tabular text-xl font-semibold tracking-tight text-white sm:text-2xl md:text-[1.75rem] leading-tight">
                   {stat.value}
                 </dd>
               </div>

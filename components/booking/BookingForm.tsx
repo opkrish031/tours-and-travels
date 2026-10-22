@@ -18,9 +18,9 @@ type BookingSchema = ReturnType<typeof buildBookingSchema>;
 type FormValues = z.output<BookingSchema>;
 
 const inputClass =
-  "w-full rounded-xl border border-line bg-mist/60 px-4 py-3 text-sm text-text placeholder:text-stone-500 transition-all focus:border-gold focus:bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 [color-scheme:light]";
+  "w-full rounded-xl border border-line bg-mist/60 px-4 py-2.5 text-sm text-text placeholder:text-stone-500 transition-all focus:border-gold focus:bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 [color-scheme:light] min-h-[46px]";
 const inputClassDark =
-  "w-full rounded-xl border border-white/15 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all focus:border-gold focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gold/25 [color-scheme:dark]";
+  "w-full rounded-xl border border-white/15 bg-white/[0.06] px-4 py-2.5 text-sm text-white placeholder:text-white/40 transition-all focus:border-gold focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gold/25 [color-scheme:dark] min-h-[46px]";
 const labelClass = "mb-1.5 block text-xs font-semibold tracking-tight text-text";
 const labelClassDark = "mb-1.5 block text-xs font-semibold tracking-tight text-white/80";
 const errorClass = "mt-1.5 block text-xs font-medium text-rose-600";
@@ -300,7 +300,7 @@ export function BookingForm({
         ))}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-[1.25fr_1fr] [&>*]:min-w-0 [&>*:nth-child(-n+2)]:sm:col-span-2">
+      <div className="grid gap-4 sm:grid-cols-2 [&>*]:min-w-0 [&>*:nth-child(-n+2)]:sm:col-span-2">
         {/* Pickup */}
         <div>
           <label className={label} htmlFor={`${uid}-pickup`}>

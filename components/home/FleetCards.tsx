@@ -56,28 +56,32 @@ export function FleetCards() {
       {/* Responsive Grid of Cards */}
       <div className="-mx-5 px-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0">
         <ul
-          className={`flex snap-x snap-mandatory scrollbar-none gap-6 overflow-x-auto pb-4 lg:overflow-visible ${
+          className={`flex snap-x snap-mandatory scrollbar-none gap-6 overflow-x-auto pb-4 md:overflow-visible ${
             filteredVehicles.length === 1
-              ? "lg:flex lg:justify-center"
+              ? "md:flex md:justify-center"
               : filteredVehicles.length === 2
-                ? "lg:grid lg:grid-cols-2 lg:max-w-3xl lg:mx-auto"
-                : "lg:grid lg:grid-cols-3"
+                ? "md:grid md:grid-cols-2 md:max-w-3xl md:mx-auto"
+                : "md:grid md:grid-cols-2 lg:grid-cols-3"
           }`}
         >
-          {filteredVehicles.map((vehicle) => {
+          {filteredVehicles.map((vehicle, idx) => {
             const waBookingUrl = buildWhatsAppUrl(
               contextMessage(
                 `Hi Marwad Cabs, I want to book the ${vehicle.name} for my trip.`,
               ),
             );
 
+            const isLastOfSeven = filteredVehicles.length === 7 && idx === 6;
+
             return (
               <li
                 key={vehicle.slug}
                 className={`border-line hover:border-gold/50 flex shrink-0 snap-start flex-col rounded-3xl border bg-white p-5 shadow-xs transition-all duration-300 hover:shadow-md ${
                   filteredVehicles.length === 1
-                    ? "w-[85vw] sm:w-[380px] lg:w-[400px]"
-                    : "w-[85vw] sm:w-[340px] lg:w-auto"
+                    ? "w-[85vw] sm:w-[380px] md:w-[400px]"
+                    : isLastOfSeven
+                      ? "w-[85vw] sm:w-[340px] md:w-auto md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:col-start-2 lg:max-w-none lg:w-full"
+                      : "w-[85vw] sm:w-[340px] md:w-auto"
                 }`}
               >
                 {/* Vehicle MediaFrame */}
@@ -95,7 +99,7 @@ export function FleetCards() {
                 {/* Specs and Details */}
                 <div className="mt-5 flex flex-1 flex-col justify-between">
                   <div>
-                    <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center justify-between gap-2 min-h-[1.75rem]">
                       <h3 className="text-text text-lg font-semibold tracking-[-0.01em]">
                         {vehicle.name}
                       </h3>
@@ -110,21 +114,20 @@ export function FleetCards() {
                       {vehicle.models.join(" · ")}
                     </p>
 
-                    {/* Capacity Specs */}
-                    <div className="text-text-muted mt-3 flex flex-wrap items-center gap-3 text-xs">
-                      <span className="flex items-center gap-1 font-medium">
-                        <Users className="text-gold h-3.5 w-3.5" />
-                        {vehicle.seats}
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1 font-medium">
-                        <Briefcase className="text-gold h-3.5 w-3.5" />
-                        {vehicle.luggage}
-                      </span>
+                    {/* Capacity Specs (Structured rows to eliminate wrapping distortion) */}
+                    <div className="text-text-muted mt-3 space-y-1.5 text-xs">
+                      <div className="flex items-center gap-2 font-medium">
+                        <Users className="text-gold h-3.5 w-3.5 shrink-0" />
+                        <span>{vehicle.seats}</span>
+                      </div>
+                      <div className="flex items-center gap-2 font-medium">
+                        <Briefcase className="text-gold h-3.5 w-3.5 shrink-0" />
+                        <span className="line-clamp-1">{vehicle.luggage}</span>
+                      </div>
                     </div>
 
                     {/* Ideal For Badges */}
-                    <div className="mt-3 flex flex-wrap gap-1.5">
+                    <div className="mt-3 flex flex-wrap gap-1.5 min-h-[1.75rem]">
                       {vehicle.idealFor.slice(0, 2).map((item) => (
                         <span
                           key={item}

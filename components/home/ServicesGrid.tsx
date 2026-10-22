@@ -49,10 +49,10 @@ export function ServicesGrid() {
                 <span className="text-text-muted group-hover:text-text hidden text-xs font-semibold transition-colors sm:inline">
                   View Details
                 </span>
-                <div className="border-line bg-mist text-text flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 group-hover:scale-105 group-hover:bg-black group-hover:text-white">
+                <div className="border-line bg-mist text-text flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-all duration-300 group-hover:scale-105 group-hover:bg-black group-hover:text-white">
                   <ArrowUpRight
                     aria-hidden="true"
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
                     strokeWidth={2}
                   />
                 </div>

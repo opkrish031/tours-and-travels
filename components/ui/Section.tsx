@@ -78,7 +78,7 @@ export function SectionHeader({
         </h2>
       </div>
       {description || action ? (
-        <div className="flex flex-col justify-end gap-5 lg:col-span-5 lg:col-start-8">
+        <div className="flex flex-col justify-start gap-4 lg:col-span-5 lg:col-start-8 lg:pt-7">
           {description ? (
             <p
               className={`max-w-[48ch] text-[0.9375rem] leading-relaxed md:text-base ${

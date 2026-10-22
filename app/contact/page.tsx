@@ -59,21 +59,21 @@ export default function ContactPage() {
             </p>
 
             {/* Quick Micro-Telemetry Ticker */}
-            <div className="text-text-muted border-line/60 mt-8 flex flex-wrap items-center gap-6 border-t pt-6 text-xs">
+            <div className="text-text-muted border-line/60 mt-8 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 border-t pt-6 text-xs">
               <div>
                 <span className="text-text tabular block text-sm font-semibold">
                   Ratanada
                 </span>
                 <span>Base near JDH &amp; Junction</span>
               </div>
-              <div className="bg-line/80 h-6 w-px" />
+              <div className="bg-line/80 hidden sm:block h-6 w-px shrink-0" aria-hidden="true" />
               <div>
                 <span className="text-text tabular block text-sm font-semibold">
                   ₹0 Advance
                 </span>
                 <span>Nothing to pay online</span>
               </div>
-              <div className="bg-line/80 h-6 w-px" />
+              <div className="bg-line/80 hidden sm:block h-6 w-px shrink-0" aria-hidden="true" />
               <div>
                 <span className="text-text tabular block text-sm font-semibold">
                   Commercial
@@ -312,8 +312,9 @@ export default function ContactPage() {
                       {site.brandName} Dispatch Center
                     </h4>
                     <p className="text-text-muted mt-1 text-xs leading-relaxed">
-                      {site.address.street}, {site.address.locality},{" "}
-                      {site.address.region} {site.address.postalCode}
+                      {site.address.street === site.address.locality
+                        ? `${site.address.locality}, ${site.address.region} ${site.address.postalCode}`
+                        : `${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode}`}
                     </p>
                   </div>
                   <div className="bg-mist text-gold-deep flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
@@ -328,7 +329,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="text-text-muted block">Location:</span>
-                    <span className="text-text font-semibold">Ratanada, near JDH</span>
+                    <span className="text-text font-semibold">Jodhpur, Rajasthan</span>
                   </div>
                 </div>
               </div>

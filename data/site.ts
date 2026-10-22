@@ -9,7 +9,7 @@ export const site = {
   whatsapp: "918955033005",
   email: "booking@marwadcabs.com",
   address: {
-    street: "Civil Airport Road, Ratanada (5 mins from Jodhpur Airport & Junction)",
+    street: "Jodhpur",
     locality: "Jodhpur",
     region: "Rajasthan",
     postalCode: "342001",

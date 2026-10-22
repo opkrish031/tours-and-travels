@@ -95,7 +95,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
               <span className="text-text-muted block text-[0.6875rem] font-medium">
                 Luggage
               </span>
-              <span className="text-text mt-1 block truncate text-base font-bold">
+              <span className="text-text mt-1 block text-sm font-bold sm:text-base leading-tight">
                 {vehicle.luggage}
               </span>
             </div>
@@ -327,7 +327,7 @@ export function VehicleTemplate({ vehicle }: { vehicle: Vehicle }) {
             </p>
           </div>
 
-          <div className="border-line mx-auto max-w-xl rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
+          <div className="mx-auto max-w-xl">
             <BookingForm
               sourcePage={`/${vehicle.slug}`}
               defaultPickup="Jodhpur"
