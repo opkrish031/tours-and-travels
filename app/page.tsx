@@ -15,6 +15,7 @@ import {
   buildMetadata,
   faqJsonLd,
   HOME_DESCRIPTION,
+  HOME_OG_DESCRIPTION,
   HOME_TITLE,
   localBusinessJsonLd,
   websiteJsonLd,
@@ -24,6 +25,7 @@ export function generateMetadata(): Metadata {
   return buildMetadata({
     title: HOME_TITLE,
     description: HOME_DESCRIPTION,
+    ogDescription: HOME_OG_DESCRIPTION,
     path: "/",
   });
 }

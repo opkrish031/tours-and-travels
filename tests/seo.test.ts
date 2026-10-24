@@ -5,7 +5,10 @@ import {
   breadcrumbJsonLd,
   buildMetadata,
   canonicalUrl,
+  cleanSocialDescription,
   faqJsonLd,
+  getSiteUrl,
+  HOME_OG_DESCRIPTION,
   localBusinessJsonLd,
   serviceJsonLd,
   titleFor,
@@ -20,7 +23,11 @@ describe("titleFor", () => {
   });
 });
 
-describe("canonicalUrl", () => {
+describe("getSiteUrl and canonicalUrl", () => {
+  it("defaults to site.domain in test environment", () => {
+    expect(getSiteUrl()).toBe("https://marwadcabs.com");
+  });
+
   it("builds absolute URLs without trailing slashes", () => {
     expect(canonicalUrl("/taxi-fare")).toBe("https://marwadcabs.com/taxi-fare");
     expect(canonicalUrl("/about/")).toBe("https://marwadcabs.com/about");
@@ -32,6 +39,29 @@ describe("canonicalUrl", () => {
   it("keeps the root path", () => {
     expect(canonicalUrl()).toBe("https://marwadcabs.com/");
     expect(canonicalUrl("/")).toBe("https://marwadcabs.com/");
+  });
+});
+
+describe("cleanSocialDescription", () => {
+  it("keeps descriptions under 125 characters intact", () => {
+    const shortDesc = "Book a quick cab in Jodhpur today.";
+    expect(cleanSocialDescription(shortDesc)).toBe(shortDesc);
+  });
+
+  it("uses the first sentence if it is under 125 characters", () => {
+    const longDesc =
+      "Book a Jodhpur taxi for airport transfers, local sightseeing and outstation trips across Rajasthan. Check per-km rates, then confirm your fare on WhatsApp.";
+    expect(cleanSocialDescription(longDesc)).toBe(
+      "Book a Jodhpur taxi for airport transfers, local sightseeing and outstation trips across Rajasthan.",
+    );
+    expect(cleanSocialDescription(longDesc).length).toBeLessThanOrEqual(125);
+  });
+
+  it("honors explicit ogDescription when provided", () => {
+    expect(cleanSocialDescription("Any long description", HOME_OG_DESCRIPTION)).toBe(
+      HOME_OG_DESCRIPTION,
+    );
+    expect(HOME_OG_DESCRIPTION.length).toBeLessThanOrEqual(125);
   });
 });
 
@@ -58,13 +88,18 @@ describe("buildMetadata", () => {
     expect(metadata.robots).toEqual({ index: false, follow: false });
   });
 
-  it("populates Open Graph and Twitter fields", () => {
+  it("populates Open Graph and Twitter fields with summary_large_image", () => {
     const metadata = buildMetadata({ ...base, image: "/images/og/home.jpg" });
     expect(metadata.openGraph?.url).toBe("https://marwadcabs.com/jodhpur-one-way-taxi");
     expect(metadata.openGraph?.siteName).toBe(site.brandName);
     expect(metadata.openGraph?.locale).toBe("en_IN");
     expect(metadata.openGraph?.images).toEqual([
-      { url: "https://marwadcabs.com/images/og/home.jpg" },
+      {
+        url: "https://marwadcabs.com/images/og/home.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${base.title} - ${site.brandName}`,
+      },
     ]);
     const twitter = metadata.twitter;
     expect(twitter && "card" in twitter ? twitter.card : undefined).toBe(
@@ -73,9 +108,20 @@ describe("buildMetadata", () => {
     expect(twitter?.title).toBe(base.title);
   });
 
-  it("defaults to a summary card without an image", () => {
-    const twitter = buildMetadata(base).twitter;
-    expect(twitter && "card" in twitter ? twitter.card : undefined).toBe("summary");
+  it("defaults to summary_large_image card with site OG image when image is omitted", () => {
+    const metadata = buildMetadata(base);
+    const twitter = metadata.twitter;
+    expect(twitter && "card" in twitter ? twitter.card : undefined).toBe(
+      "summary_large_image",
+    );
+    expect(metadata.openGraph?.images).toEqual([
+      {
+        url: "https://marwadcabs.com/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${base.title} - ${site.brandName}`,
+      },
+    ]);
   });
 });
 

@@ -12,12 +12,21 @@ const allowedOrigins = new Set<string>();
 function originAllowed(origin: string | null, referer: string | null): boolean {
   allowedOrigins.clear();
   allowedOrigins.add(new URL(site.domain).origin);
-  const envUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  if (envUrl) {
-    try {
-      allowedOrigins.add(new URL(envUrl).origin);
-    } catch {
-      // ignore malformed NEXT_PUBLIC_SITE_URL
+  for (const rawUrl of [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : undefined,
+    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+  ]) {
+    if (rawUrl) {
+      try {
+        allowedOrigins.add(
+          new URL(rawUrl.startsWith("http") ? rawUrl : `https://${rawUrl}`).origin,
+        );
+      } catch {
+        // ignore malformed URLs
+      }
     }
   }
   if (allowedOrigins.has(origin ?? "")) return true;
@@ -89,7 +98,9 @@ export async function POST(request: Request): Promise<NextResponse> {
 
   const parsed = buildBookingSchema().safeParse(body);
   if (!parsed.success) {
-    return errorResponse(400, "Invalid submission", { fields: fieldErrors(parsed.error) });
+    return errorResponse(400, "Invalid submission", {
+      fields: fieldErrors(parsed.error),
+    });
   }
   const data = parsed.data;
 
@@ -141,7 +152,10 @@ export async function POST(request: Request): Promise<NextResponse> {
     });
     if (!response.ok) {
       console.error(`[lead] webhook failed with status ${response.status}`);
-      return errorResponse(502, "Could not save your enquiry, please call or WhatsApp us");
+      return errorResponse(
+        502,
+        "Could not save your enquiry, please call or WhatsApp us",
+      );
     }
   } catch {
     console.error("[lead] webhook unreachable");

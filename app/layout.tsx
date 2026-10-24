@@ -6,7 +6,7 @@ import { StickyActionBar } from "@/components/layout/StickyActionBar";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { site } from "@/data/site";
-import { HOME_DESCRIPTION, HOME_TITLE } from "@/lib/seo";
+import { HOME_DESCRIPTION, HOME_OG_DESCRIPTION, HOME_TITLE, getSiteUrl } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,7 +29,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? site.domain),
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: HOME_TITLE,
     template: `%s | ${site.brandName}`,
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     locale: "en_IN",
     type: "website",
     title: HOME_TITLE,
-    description: HOME_DESCRIPTION,
-    url: site.domain,
+    description: HOME_OG_DESCRIPTION,
+    url: "/",
     images: [
       {
         url: "/opengraph-image.png",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: HOME_TITLE,
-    description: HOME_DESCRIPTION,
+    description: HOME_OG_DESCRIPTION,
     images: ["/opengraph-image.png"],
   },
   icons: {
@@ -78,9 +78,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body
-        className="flex min-h-full flex-col pb-[calc(4.25rem+env(safe-area-inset-bottom))] md:pb-0"
-      >
+      <body className="flex min-h-full flex-col pb-[calc(4.25rem+env(safe-area-inset-bottom))] md:pb-0">
         <MotionProvider>
           <SmoothScroll />
           <a

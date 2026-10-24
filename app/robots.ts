@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/data/site";
+import { canonicalUrl } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: "/api/",
       },
     ],
-    sitemap: new URL("/sitemap.xml", site.domain).href,
+    sitemap: canonicalUrl("/sitemap.xml"),
   };
 }

@@ -4,6 +4,8 @@ import { site } from "@/data/site";
 export type SeoInput = {
   title: string;
   description: string;
+  /** Concise description for Open Graph & Twitter (recommended <= 125 chars to avoid mobile truncation). */
+  ogDescription?: string;
   /** Path like "/taxi-fare" (leading slash required). */
   path?: string;
   image?: string;
@@ -18,28 +20,75 @@ export function titleFor(primary: string): string {
 /** Home title (57 chars) — shared by layout default and the home page. */
 export const HOME_TITLE = `${site.brandName} — Jodhpur Taxi Service, Outstation Cab Booking`;
 
-/** Home meta description (within PRD's 140–160 chars). */
+/** Home meta description (within PRD's 140–160 chars for search engine results). */
 export const HOME_DESCRIPTION =
   "Book a Jodhpur taxi for airport transfers, local sightseeing and outstation trips across Rajasthan. Check per-km rates, then confirm your fare on WhatsApp.";
 
+/** Home social preview description (<= 125 chars to prevent mobile preview truncation). */
+export const HOME_OG_DESCRIPTION =
+  "Book a Jodhpur taxi for airport transfers, sightseeing & Rajasthan outstation trips. Per-km rates, instant WhatsApp quote.";
+
+/**
+ * Resolves the primary base URL for metadata, Open Graph, Twitter, and canonicals.
+ * Priorities:
+ * 1. NEXT_PUBLIC_SITE_URL (explicit manual config in .env or hosting settings)
+ * 2. VERCEL_PROJECT_PRODUCTION_URL (Vercel production domain, e.g. marwad-cabs.vercel.app or assigned custom domain)
+ * 3. VERCEL_URL (Vercel deployment URL)
+ * 4. site.domain (default registered brand domain: https://marwadcabs.com)
+ */
+export function getSiteUrl(): string {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    const raw = process.env.NEXT_PUBLIC_SITE_URL.trim().replace(/\/+$/, "");
+    return raw.startsWith("http") ? raw : `https://${raw}`;
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL.trim().replace(/\/+$/, "")}`;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL.trim().replace(/\/+$/, "")}`;
+  }
+  return site.domain;
+}
+
 /** Absolute canonical URL with no trailing slash (root excepted). */
 export function canonicalUrl(path = "/"): string {
-  const url = new URL(path, site.domain);
+  const url = new URL(path, getSiteUrl());
   if (url.pathname.length > 1 && url.pathname.endsWith("/")) {
     url.pathname = url.pathname.replace(/\/+$/, "");
   }
   return url.href;
 }
 
+/** Clean social description truncated cleanly under 125 chars to prevent mobile truncation. */
+export function cleanSocialDescription(
+  description: string,
+  ogDescription?: string,
+): string {
+  if (ogDescription) return ogDescription;
+  if (description.length <= 125) return description;
+  const firstSentence = description.split(/\.\s+/)[0];
+  if (firstSentence && firstSentence.length >= 60 && firstSentence.length <= 124) {
+    return firstSentence.endsWith(".") ? firstSentence : `${firstSentence}.`;
+  }
+  const sliced = description.slice(0, 122);
+  const lastSpace = sliced.lastIndexOf(" ");
+  const trimmed = lastSpace > 40 ? sliced.slice(0, lastSpace) : sliced;
+  return `${trimmed.replace(/[,;:\s]+$/, "")}...`;
+}
+
 export function buildMetadata({
   title,
   description,
+  ogDescription,
   path = "/",
   image,
   noindex = false,
 }: SeoInput): Metadata {
   const canonical = canonicalUrl(path);
-  const ogImage = image ? new URL(image, site.domain).href : undefined;
+  const socialDescription = cleanSocialDescription(description, ogDescription);
+  const ogImageUrl = image
+    ? new URL(image, getSiteUrl()).href
+    : canonicalUrl("/opengraph-image.png");
 
   return {
     // absolute: callers pass the full title (titleFor already appends the
@@ -50,18 +99,25 @@ export function buildMetadata({
     robots: noindex ? { index: false, follow: false } : { index: true, follow: true },
     openGraph: {
       title,
-      description,
+      description: socialDescription,
       url: canonical,
       siteName: site.brandName,
       locale: "en_IN",
       type: "website",
-      ...(ogImage ? { images: [{ url: ogImage }] } : {}),
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${title} - ${site.brandName}`,
+        },
+      ],
     },
     twitter: {
-      card: ogImage ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title,
-      description,
-      ...(ogImage ? { images: [ogImage] } : {}),
+      description: socialDescription,
+      images: [ogImageUrl],
     },
   };
 }
