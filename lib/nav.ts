@@ -1,7 +1,3 @@
-import { routes } from "@/data/routes";
-import { services } from "@/data/services";
-import { vehicles } from "@/data/vehicles";
-
 export type NavLink = { label: string; href: string };
 export type NavGroup = { label: string; items: NavLink[] };
 
@@ -11,21 +7,6 @@ export const primaryNav: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
-
-export const serviceLinks: NavLink[] = services.map((service) => ({
-  label: service.name,
-  href: `/${service.slug}`,
-}));
-
-export const vehicleLinks: NavLink[] = vehicles.map((vehicle) => ({
-  label: vehicle.name,
-  href: `/${vehicle.slug}`,
-}));
-
-export const routeLinks: NavLink[] = routes.map((route) => ({
-  label: `${route.from} to ${route.to}`,
-  href: `/${route.slug}`,
-}));
 
 export const conciseServiceLinks: NavLink[] = [
   { label: "Jodhpur Local Sightseeing", href: "/local-taxi-jodhpur" },

@@ -11,9 +11,6 @@ const year = new Date().getFullYear();
 
 function formatAddress() {
   const a = site.address;
-  if (a.street === a.locality) {
-    return `${a.locality}, ${a.region} ${a.postalCode}, India`;
-  }
   return `${a.street}, ${a.locality}, ${a.region} ${a.postalCode}, India`;
 }
 

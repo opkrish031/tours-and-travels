@@ -88,15 +88,23 @@ export type FareMessageData = {
   vehicle: string;
   total: number;
   billedKm: number;
+  driverAllowance?: number;
 };
 
 /** Prefilled message from the calculator's "Book this fare" button (PRD 5.2). */
 export function fareMessage(data: FareMessageData): string {
-  return [
+  const lines = [
     `Hi ${site.brandName}, fare estimate from your calculator.`,
     `Route: ${sanitizeField(data.route)} (${sanitizeField(data.tripType)})`,
     `Vehicle: ${sanitizeField(data.vehicle)}`,
     `Estimated fare: ${formatRupees(data.total)} for ${data.billedKm} km`,
+  ];
+  if (data.driverAllowance && data.driverAllowance > 0) {
+    lines.push(`Driver allowance (bhatta): ${formatRupees(data.driverAllowance)}`);
+    lines.push(`Estimated total: ${formatRupees(data.total + data.driverAllowance)}`);
+  }
+  lines.push(
     "Tolls, state entry tax and parking are extra, charged as per actual receipts. Final fare confirmed on WhatsApp or call.",
-  ].join("\n");
+  );
+  return lines.join("\n");
 }

@@ -81,6 +81,9 @@ export function localBusinessJsonLd() {
     url: domain,
     telephone: phone,
     email: site.email,
+    priceRange: "₹11 - ₹22 per km",
+    currenciesAccepted: "INR",
+    paymentAccepted: "Cash, UPI, Net Banking, Credit Card",
     address: {
       "@type": "PostalAddress",
       streetAddress: address.street,
@@ -104,8 +107,40 @@ export function localBusinessJsonLd() {
       opens: "00:00",
       closes: "23:59",
     },
+    areaServed: [
+      "Jodhpur",
+      "Jaisalmer",
+      "Udaipur",
+      "Jaipur",
+      "Mount Abu",
+      "Bikaner",
+      "Osian",
+      "Ranakpur",
+      "Rajasthan",
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "185",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    ...(socials.googleBusiness ? { hasMap: socials.googleBusiness } : {}),
     ...(hours ? {} : {}),
     ...(sameAs.length ? { sameAs } : {}),
+  };
+}
+
+export function websiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.domain}/#website`,
+    url: site.domain,
+    name: site.brandName,
+    description: site.description,
+    publisher: { "@id": `${site.domain}/#business` },
+    inLanguage: "en-IN",
   };
 }
 

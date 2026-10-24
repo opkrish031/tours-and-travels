@@ -1,0 +1,48 @@
+{
+  "name": "Marwad Cabs — Tour and Travels",
+  "short_name": "Marwad Cabs",
+  "description": "Direct cab booking in Jodhpur with Marwad Cabs. Clean AC Dzire, Ertiga, Innova Crysta & Tempo Travellers with local Marwari drivers.",
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0B172A",
+  "theme_color": "#0B172A",
+  "orientation": "portrait",
+  "categories": ["travel", "transportation"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Calculate Taxi Fare",
+      "short_name": "Fare Calc",
+      "description": "Calculate exact taxi fare with transparent per-km rates",
+      "url": "/taxi-fare",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contact & Booking",
+      "short_name": "Contact",
+      "description": "Contact Marwad Cabs 24/7 dispatch desk",
+      "url": "/contact",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

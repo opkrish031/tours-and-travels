@@ -8,6 +8,7 @@ import { vehicles } from "@/data/vehicles";
 import { trackEvent } from "@/lib/analytics";
 import {
   DEFAULT_MIN_KM_PER_DAY,
+  DRIVER_ALLOWANCE_PER_DAY,
   estimateFare,
   formatRupees,
   formatVehicleOption,
@@ -107,6 +108,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
       route: routeLabel(dest),
       vehicle: vehicle.slug,
     });
+    const driverAllowance = !isPackage ? days * DRIVER_ALLOWANCE_PER_DAY : 0;
     const url = buildWhatsAppUrl(
       fareMessage({
         route: routeLabel(dest),
@@ -118,6 +120,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
         vehicle: vehicle.name,
         total: estimate.total,
         billedKm: estimate.billedKm,
+        driverAllowance,
       }),
     );
     const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
@@ -292,7 +295,7 @@ export function FareCalculator({ className = "" }: { className?: string }) {
                   </span>
                 </div>
                 <p className="text-text-dark-muted mt-2 max-w-[54ch] text-xs leading-relaxed md:text-sm">
-                  {estimate.breakdown}. Fuel and driver included. Tolls, parking and any
+                  {estimate.breakdown}. Fuel and driver included{!isPackage ? ` (₹${DRIVER_ALLOWANCE_PER_DAY}/day driver allowance applies for outstation)` : ""}. Tolls, parking and any
                   extras are itemised in your written quote.
                 </p>
               </div>

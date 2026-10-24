@@ -1,3 +1,4 @@
+import { createHmac } from "node:crypto";
 import { NextResponse } from "next/server";
 import { site } from "@/data/site";
 import { rateLimit } from "@/lib/rateLimit";
@@ -46,9 +47,11 @@ export async function POST(request: Request): Promise<NextResponse> {
     return errorResponse(403, "Invalid submission");
   }
 
+  // Prefer platform-provided headers (x-real-ip from Vercel/nginx) over the
+  // easily-spoofable x-forwarded-for chain.
   const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     request.headers.get("x-real-ip") ||
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     "unknown";
   const limit = rateLimit(`lead:${ip}`);
   if (!limit.ok) {
@@ -121,10 +124,19 @@ export async function POST(request: Request): Promise<NextResponse> {
   };
 
   try {
+    const secret = process.env.LEAD_WEBHOOK_SECRET ?? "";
+    const payload = { ...row, secret };
+    const bodyStr = JSON.stringify(payload);
+    const signature = secret
+      ? createHmac("sha256", secret).update(bodyStr).digest("hex")
+      : "";
     const response = await fetch(webhook, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...row, secret: process.env.LEAD_WEBHOOK_SECRET ?? "" }),
+      headers: {
+        "Content-Type": "application/json",
+        ...(signature ? { "X-Webhook-Signature": `sha256=${signature}` } : {}),
+      },
+      body: bodyStr,
       signal: AbortSignal.timeout(5_000),
     });
     if (!response.ok) {

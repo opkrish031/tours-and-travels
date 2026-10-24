@@ -17,6 +17,7 @@ import {
   HOME_DESCRIPTION,
   HOME_TITLE,
   localBusinessJsonLd,
+  websiteJsonLd,
 } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
@@ -31,6 +32,7 @@ export default function Home() {
   return (
     <>
       <JsonLd data={localBusinessJsonLd()} />
+      <JsonLd data={websiteJsonLd()} />
       <JsonLd data={faqJsonLd(homeFaqs)} />
 
       {/* 1. Hero (Editorial: mono masthead, Fraunces headline, WhatsApp CTA, Booking Card) */}

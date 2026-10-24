@@ -57,7 +57,7 @@ export type ValidateOptions = {
 };
 
 /** Slugs owned by static routes under app/ — content slugs must not shadow them. */
-export const STATIC_SLUGS = [
+const STATIC_SLUGS = [
   "about",
   "contact",
   "taxi-fare",

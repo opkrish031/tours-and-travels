@@ -4,7 +4,7 @@ import { m, type Variants } from "motion/react";
 import type { ReactNode } from "react";
 import { duration, ease, stagger, viewportOnce } from "@/lib/motion";
 
-export const defaultStaggerContainerVariants: Variants = {
+const defaultStaggerContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: (customStagger = stagger.base) => ({
     opacity: 1,
@@ -15,7 +15,7 @@ export const defaultStaggerContainerVariants: Variants = {
   }),
 };
 
-export const defaultStaggerItemVariants: Variants = {
+const defaultStaggerItemVariants: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
   visible: {
     opacity: 1,

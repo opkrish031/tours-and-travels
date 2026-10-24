@@ -9,6 +9,7 @@ import {
   localBusinessJsonLd,
   serviceJsonLd,
   titleFor,
+  websiteJsonLd,
 } from "@/lib/seo";
 
 describe("titleFor", () => {
@@ -153,5 +154,15 @@ describe("serviceJsonLd", () => {
     });
     expect(json.offers?.price).toBe(3740);
     expect(json.offers?.priceCurrency).toBe("INR");
+  });
+});
+
+describe("websiteJsonLd", () => {
+  it("describes the website with schema.org WebSite structure", () => {
+    const json = websiteJsonLd();
+    expect(json["@type"]).toBe("WebSite");
+    expect(json["@id"]).toBe("https://marwadcabs.com/#website");
+    expect(json.name).toBe(site.brandName);
+    expect(json.inLanguage).toBe("en-IN");
   });
 });

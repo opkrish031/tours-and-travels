@@ -6,11 +6,6 @@ export const thClass =
 export const tdClass =
   "border-b border-line/60 px-5 py-4 align-middle text-sm text-text";
 
-export const thClassDark =
-  "border-b border-white/10 px-5 py-3.5 text-left align-bottom eyebrow text-white/70 whitespace-nowrap font-semibold";
-
-export const tdClassDark =
-  "border-b border-white/10 px-5 py-4 align-middle text-sm text-white";
 
 export function Table({
   caption,

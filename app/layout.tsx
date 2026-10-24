@@ -65,6 +65,10 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  manifest: "/manifest.json",
+  other: {
+    "theme-color": "#0b172a",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -75,7 +79,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body
-        suppressHydrationWarning
         className="flex min-h-full flex-col pb-[calc(4.25rem+env(safe-area-inset-bottom))] md:pb-0"
       >
         <MotionProvider>

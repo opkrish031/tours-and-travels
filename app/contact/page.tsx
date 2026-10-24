@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock, Phone, MessageCircle } from "lucide-react";
+import { Clock, Phone, MessageCircle, Mail } from "lucide-react";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { BookingForm } from "@/components/booking/BookingForm";
@@ -232,7 +232,7 @@ export default function ContactPage() {
               </div>
             ) : null}
 
-            {/* Corporate & Invoicing — commented out pending official client email
+            {/* Corporate & Invoicing */}
             <div className="border-line group flex flex-col justify-between rounded-3xl border bg-white p-7 shadow-xs transition-all duration-300 hover:border-black/20 hover:shadow-md md:col-span-1">
               <div>
                 <div className="bg-mist text-text border-line mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border shadow-xs">
@@ -267,7 +267,6 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
-            */}
           </div>
         </div>
       </Section>
@@ -312,9 +311,7 @@ export default function ContactPage() {
                       {site.brandName} Dispatch Center
                     </h4>
                     <p className="text-text-muted mt-1 text-xs leading-relaxed">
-                      {site.address.street === site.address.locality
-                        ? `${site.address.locality}, ${site.address.region} ${site.address.postalCode}`
-                        : `${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode}`}
+                      {`${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode}`}
                     </p>
                   </div>
                   <div className="bg-mist text-gold-deep flex h-8 w-8 shrink-0 items-center justify-center rounded-full">

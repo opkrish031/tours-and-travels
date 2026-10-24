@@ -9,7 +9,7 @@ export const site = {
   whatsapp: "918955033005",
   email: "booking@marwadcabs.com",
   address: {
-    street: "Jodhpur",
+    street: "Civil Airport Road, Ratanada",
     locality: "Jodhpur",
     region: "Rajasthan",
     postalCode: "342001",
@@ -21,7 +21,8 @@ export const site = {
     facebook: "",
     instagram: "https://www.instagram.com/marwarcabs/",
     youtube: "",
-    googleBusiness: "",
+    googleBusiness:
+      "https://www.google.com/maps/place/Marwad+Cabs+-+Tour+and+Travels/",
   },
   /** Optional GST / registration line — leave empty until verified details are available. */
   gstNumber: "",
